@@ -106,28 +106,31 @@ task :default do
 	puts "
 app instruction
 ===============
-# performs all unit tests in spec folder.
-	$ rake test
 
+Test and Debug
+-----------------
 # initiate irb console for this web server
 	$ rake console
+
+# performs all unit tests in spec folder.
+	$ rake test
 
 # spec - to create unit test 'spec/<filename>_spec.rb' file
 	$ rake generate:spec NAME=<filename>
 
-# database - to create the database
+Database
+-----------------
+# to create the database
 	$ rake db:create
 
-# database - to create migration file 'db/migrate/<timestamp>_<filename>.rb'
+# to create migration file 'db/migrate/<timestamp>_<filename>.rb'
 	$ rake generate:migration NAME=<filename>
-	# REMINDER:
-	1)	ActiveRecord is very strict with naming convention.
-		Please ensure the filename abides to its standards.
+# REMINDER: be careful with ActiveRecord naming convention!
 
-# database - to perform migration
+# to perform migration
 	$ rake db:migrate
 
-# database - to drop database
+# to drop database
 	$ rake db:drop
 "
 end
