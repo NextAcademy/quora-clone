@@ -38,6 +38,32 @@ namespace :generate do
 			EOF
 		end
 	end
+
+
+	desc "Create an empty migration in db/migrate, e.g., rake generate:migration NAME=create_tasks"
+	task :migration do
+		unless ENV.has_key?('NAME')
+			raise "Must specificy migration name, e.g., rake generate:migration NAME=create_tasks"
+		end
+
+		name			= ENV['NAME'].camelize
+		filename	= "%s_%s.rb" % [Time.now.strftime('%Y%m%d%H%M%S'), ENV['NAME'].underscore]
+		path			= APP_ROOT.join('db', 'migrate', filename)
+
+		if File.exist?(path)
+			raise "ERROR: File '#{path}' already exists"
+		end
+
+		puts "Creating #{path}"
+		File.open(path, 'w+') do |f|
+			f.write(<<-EOF.strip_heredoc)
+				class #{name} < ActiveRecord::Migration
+					def change
+					end
+				end
+			EOF
+		end
+	end
 end
 
 namespace :db do
@@ -91,6 +117,12 @@ app instruction
 
 # database - to create the database
 	$ rake db:create
+
+# database - to create migration file 'db/migrate/<timestamp>_<filename>.rb'
+	$ rake generate:migration NAME=<filename>
+	# REMINDER:
+	1)	ActiveRecord is very strict with naming convention.
+		Please ensure the filename abides to its standards.
 
 # database - to perform migration
 	$ rake db:migrate
