@@ -29,6 +29,12 @@ require 'uri'
 APP_ROOT = Pathname.new(File.expand_path('../../../', __FILE__))
 APP_NAME = APP_ROOT.basename.to_s
 
+# Setup sessions, logging and dump_errors
+use Rack::Session::Cookie, expire_after: ENV['SESSION_EXPIRE'] || 2592000, # seconds
+                           secret: ENV['SESSION_SECRET'] || 'this is a secret shhhhh'
+set :logging, true
+set :dump_errors, false
+
 # Setup Models (M) and its database
 require APP_ROOT.join('config', 'database')
 
