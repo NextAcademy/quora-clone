@@ -8,3 +8,7 @@ desc 'Initiate IRB console with environment loaded'
 task "console" do
 	exec "irb -r./config/environments/init"
 end
+
+
+desc 'Execute unit tests in spec'
+RSpec::Core::RakeTask.new(:test)
