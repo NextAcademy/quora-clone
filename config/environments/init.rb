@@ -29,6 +29,9 @@ require 'uri'
 APP_ROOT = Pathname.new(File.expand_path('../../../', __FILE__))
 APP_NAME = APP_ROOT.basename.to_s
 
+# Setup Models (M) and its database
+require APP_ROOT.join('config', 'database')
+
 # Setup views (V)
 set :views, File.join(APP_ROOT, "app", "views")
 
