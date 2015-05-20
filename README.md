@@ -7,7 +7,7 @@
 | Contribution:    | Hobby. Best effort basis.   |
 <br><br>
 ## Purpose
-This Ruby Sinatra web framework was re-furbished for rapid prototyping a web API before deploying to rails server. It's referenced from Rails file structure with mild tweaking and CodeDivision Sinatra skeleton.
+This Ruby Sinatra web skeleton was re-furbished for rapid prototyping a web API before deploying to rails server. It's referenced from Rails file structure with mild tweaking and CodeDivision Sinatra skeleton.
 <br><br>
 ##Supports
 1. Local Support
@@ -26,11 +26,11 @@ https://github.com/hollowaykeanho/sinatra-web-server.git
 # ssh
 git@github.com:hollowaykeanho/sinatra-web-server.git
 ```
-2)  Rename the framework if needed
+2)  Rename the skeleton if needed
 ```
 $ mv sinatra-web-server <your-desired-app-name>
 ```
-3) Enter into the framework and perform bundle install
+3) Enter into the skeleton and perform bundle install
 ```
 $ cd <your-desired-app-name>
 $ bundle install  
@@ -44,7 +44,7 @@ $ rake server
 <br><br>
 
 ## How To Use
-The framework is primarily based on Rails file structure with focus towards MVC architectural pattern. However, unlike Rails, this framework is to provide more structural freedom for you to prototype or to bootstrap and idea quickly. The flexibility is up to deploying the app in Heroku.
+The skeleton is primarily based on Rails file structure with focus towards MVC architectural pattern. However, unlike Rails, this skeleton is to provide more structural freedom for you to prototype or to bootstrap and idea quickly. The flexibility is up to deploying the app in Heroku.
 <br>
 ### To Launch the Server
 Rakefile has a simplified command for launching the server in development mode. To perform, execute:
