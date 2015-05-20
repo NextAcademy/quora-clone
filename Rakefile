@@ -40,6 +40,31 @@ namespace :generate do
 	end
 end
 
+namespace :db do
+	desc "Create the database at #{DB_NAME}"
+	task :create do
+		puts "Create database #{DB_NAME} if it doesn't exist..."
+		exec("createdb #{DB_NAME}")
+	end
+
+	desc "Drop the database at #{DB_NAME}"
+	task :drop do
+		puts "Dropping database #{DB_NAME}..."
+		exec("dropdb #{DB_NAME}")
+	end
+
+	desc "Migrate the database (options: VERSION=x, VERBOSE=false, SCOPE=blog)."
+	task :migrate do
+		ActiveRecord::Migrator.migrations_paths << File.dirname(__FILE__) + 'db/migrate'
+		ActiveRecord::Migration.verbose = ENV["VERBOSE"] ? ENV["VERBOSE"] == "true" : true
+		ActiveRecord::Migrator.migrate(ActiveRecord::Migrator.migrations_paths, ENV["VERSION"] ? ENV["VERSION"].to_i : nil) do |migration|
+			ENV["SCOPE"].blank? || (ENV["SCOPE"] == migration.scope)
+		end
+	end
+
+end
+
+
 desc 'Initiate IRB console with environment loaded'
 task "console" do
 	exec "irb -r./config/environments/init"
@@ -63,5 +88,14 @@ app instruction
 
 # spec - to create unit test 'spec/<filename>_spec.rb' file
 	$ rake generate:spec NAME=<filename>
+
+# database - to create the database
+	$ rake db:create
+
+# database - to perform migration
+	$ rake db:migrate
+
+# database - to drop database
+	$ rake db:drop
 "
 end
