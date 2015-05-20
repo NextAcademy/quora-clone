@@ -118,6 +118,15 @@ namespace :db do
 		end
 	end
 
+	desc "Populate the database with dummy data by running db/seeds.rb"
+	task :seed do
+		require APP_ROOT.join('db', 'seeds.rb')
+	end
+
+	desc "Returns the current schema version number"
+	task :version do
+		puts "Current version: #{ActiveRecord::Migrator.current_version}"
+	end
 end
 
 
@@ -178,5 +187,11 @@ Database
 
 # to drop database
 	$ rake db:drop
+
+# to seed data into database
+	$ rake db:seed
+
+# to view current migration version
+	$ rake db:version
 "
 end
