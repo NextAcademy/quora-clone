@@ -22,3 +22,8 @@ gem 'rake'
 
 # Adding shotgun for local web hosting
 gem 'shotgun'
+
+group :development, :test do
+	gem 'rspec'
+	gem 'rack-test'
+end
