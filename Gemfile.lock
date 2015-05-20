@@ -74,6 +74,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  activesupport
   pg
   rack-test
   rake
