@@ -21,10 +21,17 @@ gem 'pg'
 # Adding rake for management
 gem 'rake'
 
-# Adding shotgun for local web hosting
-gem 'shotgun'
+# Adding rspec for running unit testing
+gem 'rspec'
 
 group :development, :test do
-	gem 'rspec'
-	gem 'rack-test'
+	# Adding shotgun for local web hosting
+	gem 'shotgun'
+end
+
+group :production do
+	# Heroku
+	# ==================
+	gem 'rails_12factor' # Heroku Gem Supports	
+	gem 'puma' # Using puma for  
 end
