@@ -127,6 +127,12 @@ task "console" do
 end
 
 
+desc 'Initiate IRB console with environment loaded'
+task "server" do
+	exec "shotgun config.ru"
+end
+
+
 desc 'Execute unit tests in spec'
 RSpec::Core::RakeTask.new(:test)
 
@@ -136,6 +142,10 @@ task :default do
 	puts "
 app instruction
 ===============
+Server
+-----------------
+# launch the server
+	$ rake server
 
 Test and Debug
 -----------------
