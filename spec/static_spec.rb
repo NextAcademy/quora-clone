@@ -1,5 +1,5 @@
 # Requiring test environment file
-require File.expand_path("../../config/environments/test", __FILE__)
+require 'spec_helper'
 
 # Requiring test subject file
 require_relative File.join(APP_CONTROLLER, "static")

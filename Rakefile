@@ -11,7 +11,7 @@ namespace :generate do
 	desc "Create empty model spec in spec, e.g., rake generate:spec NAME=test_name"
 	task :spec do
 		unless ENV.has_key?('NAME')
-			raise "Must specificy migration name, e.g., rake generate:spec NAME=user"
+			raise "Must specificy migration name, e.g., rake generate:spec NAME=test_name"
 		end
 
 		name			= ENV['NAME'].camelize
@@ -26,7 +26,7 @@ namespace :generate do
 		File.open(path, 'w+') do |f|
 			f.write(<<-EOF.strip_heredoc)
 				# Requiring test environment file
-				require File.expand_path("../../config/environments/test", __FILE__)
+				require 'spec_helper'
 
 				# Requiring test subject file. Uncomment below.
 				# require_relative File.join(APP_CONTROLLER, "static")
