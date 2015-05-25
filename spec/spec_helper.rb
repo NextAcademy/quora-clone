@@ -7,3 +7,6 @@
 
 # Requiring test environment file
 require File.expand_path("../../config/environments/test", __FILE__)
+
+# Include racks test methods
+include Rack::Test::Methods
