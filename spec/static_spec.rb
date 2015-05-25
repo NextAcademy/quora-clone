@@ -6,8 +6,6 @@ require_relative File.join(APP_CONTROLLERS, "static")
 
 # Test cases
 describe 'Routing for root' do
-	include Rack::Test::Methods
-
 	it "has ok response when get '/' is called." do
 		get '/'
 		expect(last_response).to be_ok
