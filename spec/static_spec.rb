@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 # Requiring test subject file
-require_relative File.join(APP_CONTROLLER, "static")
+require_relative File.join(APP_CONTROLLERS, "static")
 
 # Test cases
 describe 'Routing for root' do
