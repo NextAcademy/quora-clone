@@ -4,7 +4,7 @@ This is your routing and logic folder. It starts with routing address and end wi
 providing a view or redirection. This framework provides full flexibility and room for
 customization.
 
-you can create a controller ruby file, in this example, let's create 'sessions' routing:
+you can create a controller ruby file, in this example, let's create 'users' routing:
 ```
 # app/controllers/users.rb
 
