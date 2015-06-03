@@ -35,6 +35,7 @@ use Rack::Session::Cookie, expire_after: ENV['SESSION_EXPIRE'] || 2592000, # sec
 set :logging, true
 set :dump_errors, false
 set :app_file, __FILE__
+enable :sessions
 
 # Setup Models (M) and its database
 require APP_ROOT.join('config', 'database')
