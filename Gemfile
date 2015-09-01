@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Ruby Version
-ruby "2.2.1"
+# ruby "2.2.1"
 
 # Adding Sinatra Drivers
 gem 'sinatra'
@@ -32,6 +32,6 @@ end
 group :production do
 	# Heroku
 	# ==================
-	gem 'rails_12factor' # Heroku Gem Supports	
-	gem 'puma' # Using puma for  
+	gem 'rails_12factor' # Heroku Gem Supports
+	gem 'puma' # Using puma for
 end
