@@ -12,9 +12,17 @@ This Ruby Sinatra web skeleton was re-furbished for rapid prototyping a web API 
 ##Supports
 1. Local Support
 2. Heroku Support - using PUMA
+3. Bluemix Support - using PUMA
 
 >**NOTE**:
->This guide assumes you are good with Ruby, Heroku and understands MVC architecture patterns.
+>This guide assumes you are good with Ruby, Heroku, Bluemix and understands MVC architecture patterns.
+
+# To go for platform specific code, please visit these pages:
+1. Heroku - https://github.com/hollowaykeanho/sinatra-web-server/tree/heroku
+2. Bluemix - https://github.com/hollowaykeanho/sinatra-web-server/tree/bluemix
+
+# Master Branch
+> Master branch currently based on Heroku platform. Please use with caution.
 
 <br><br>
 ## Common Setup
