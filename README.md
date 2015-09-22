@@ -29,10 +29,15 @@ This Ruby Sinatra web skeleton was re-furbished for rapid prototyping a web API 
 1) Perform a git clone to this repo using the following link:
 ```
 # http
-https://github.com/hollowaykeanho/sinatra-web-server.git
-
+$ git clone https://github.com/hollowaykeanho/sinatra-web-server.git
 # ssh
-git@github.com:hollowaykeanho/sinatra-web-server.git
+$ git clone git@github.com:hollowaykeanho/sinatra-web-server.git
+
+# Heroku Platform
+$ git clone -b heroku https://github.com/hollowaykeanho/sinatra-web-server.git
+
+# Bluemix Platform
+$ git clone -b bluemix https://github.com/hollowaykeanho/sinatra-web-server.git
 ```
 2)  Rename the skeleton if needed
 ```
@@ -52,7 +57,7 @@ $ rake server
 <br><br>
 
 ## How To Use
-The skeleton is primarily based on Rails file structure with focus towards MVC architectural pattern. However, unlike Rails, this skeleton is to provide more structural freedom for you to prototype or to bootstrap and idea quickly. The flexibility is up to deploying the app in Heroku.
+The skeleton is primarily based on Rails file structure with focus towards MVC architectural pattern. However, unlike Rails, this skeleton is to provide more structural freedom for you to prototype or to bootstrap and idea quickly. The flexibility is up to deploying the SaaS platform.
 <br>
 ### To Launch the Server
 Rakefile has a simplified command for launching the server in development mode. To perform, execute:
@@ -62,7 +67,7 @@ $ rake server
 <br><br>
 
 ### To Include/Remove a Gem
-1) Include/remove your gem inside Gemfile depending on group. Please note that Heroku will use production only.
+1) Include/remove your gem inside Gemfile depending on group.
 ```
 # File location: <repo_root>\Gemfile
 ```
@@ -240,46 +245,6 @@ Database current migration version view is supported by Rakefile. To perform, ex
 $ rake db:version
 ```
 <br><br>
-
-### To Push to Heroku
->**NOTE**:
->This section assumes you have Heroku Toolbelt installed inside your local computer.
-
-1) Login into your Heroku 
-```
-$ heroku login
-```
-<br>
-2) Inside your code repo, create a Heroku app:
-```
-$ heroku create
-```
-<br>
-3) Rename your Heroku app if needed:
-```
-$ heroku apps:rename new-name
-```
-<br>
-4) Push to heroku server
-```
-$ git push heroku master
-```
-<br>
-5) Skip this step if you're not pushing the app for the first time. Otherwise if you're using database, create the database by:
-```
-$ heroku run rake db:create
-```
-<br>
-6) Perform database migration if you're using database
-```
-$ heroku run rake db:migrate
-```
-<br><br>
-
-### Looking for more Heroku Toolbelt Commands
-Please refer to: https://devcenter.heroku.com/categories/command-line
-<br><br>
-
 ## Special Thanks
 1. CodeDivision for their code bootcamp training.
 2. Josh who motivated me to re-code this framework.
