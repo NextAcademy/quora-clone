@@ -3,7 +3,7 @@
 | Details   |  | 
 | :--------------- | -------: |
 | Re-created by: | Holloway, Chew Kean Ho |
-| Version:    | 0.0.5   |
+| Version:    | 0.0.6   |
 | Contribution:    | Hobby. Best effort basis.   |
 <br><br>
 ## Purpose
