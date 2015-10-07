@@ -43,6 +43,9 @@ require APP_ROOT.join('config', 'database')
 # Setup views (V)
 set :views, File.join(APP_ROOT, "app", "views")
 
+# Setup helper (H)
+Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
+
 # Setup controller (C)
 Dir[APP_ROOT.join('app', 'controllers', '*.rb')].each { |file| require file }
 ######################################################################
