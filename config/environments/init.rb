@@ -44,6 +44,7 @@ require APP_ROOT.join('config', 'database')
 
 # Setup views (V)
 set :views, File.join(APP_ROOT, "app", "views")
+set :erb, layout: :'layouts/application'
 
 # Setup helper (H)
 Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
