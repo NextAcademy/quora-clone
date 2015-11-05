@@ -3,7 +3,7 @@
 | Details   |  | 
 | :--------------- | -------: |
 | Re-created by: | Holloway, Chew Kean Ho |
-| Version:    | 0.0.7   |
+| Version:    | 0.0.8   |
 | Contribution:    | Hobby. Best effort basis.   |
 <br><br>
 ## Purpose
@@ -269,3 +269,6 @@ $ rake db:version
 15. http://www.getlaura.com/how-to-enable-sessions-with-sinatra/
 16. http://stackoverflow.com/questions/5693528/how-to-use-sinatra-session
 17. http://www.sinatrarb.com/configuration.html
+18. https://github.com/sinatra/sinatra/issues/495
+19. http://stackoverflow.com/questions/18302934/how-to-set-a-custom-directory-for-layouts-in-sinatra
+20. http://www.sinatrarb.com/intro.html#Inline%20Templates
