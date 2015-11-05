@@ -161,6 +161,8 @@ Server
 -----------------
 # launch the server
 	$ rake server
+# launch the server on Cloud-9
+	$ rake c9-server
 
 Test and Debug
 -----------------
