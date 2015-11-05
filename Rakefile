@@ -136,9 +136,15 @@ task "console" do
 end
 
 
-desc 'Initiate IRB console with environment loaded'
+desc 'Initiate shotgun in localhost'
 task "server" do
 	exec "shotgun config.ru"
+end
+
+
+desc 'Initiate shotgun server in cloud9 environment'
+task "c9-server" do
+	exec "shotgun --host $IP --port $PORT config.ru"
 end
 
 
