@@ -24,14 +24,22 @@ gem 'rake'
 # Adding rspec for running unit testing
 gem 'rspec'
 
+# Adding flash to display errors
+gem 'sinatra-flash'
+
+# Adding byebug for debugging
+gem 'byebug'
 group :development, :test do
-	# Adding shotgun for local web hosting
-	gem 'shotgun'
+# Adding shotgun for local web hosting
+  gem 'shotgun'
+
+# Adding bcrypt for password encryption
+  gem 'bcrypt'
 end
 
 group :production do
-	# Heroku
-	# ==================
-	gem 'rails_12factor' # Heroku Gem Supports
-	gem 'puma' # Using puma for
+  # Heroku
+  # ==================
+  gem 'rails_12factor' # Heroku Gem Supports
+  gem 'puma' # Using puma for
 end

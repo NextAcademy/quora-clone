@@ -6,12 +6,6 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
 
 
-  # def initialize(params = {})
-    # username = params["username"]
-    # email = params["email"]
-    # password = params["password"]
-    # password_confirmation = params["password_confirmation"]
-  # end 
 
   # def authenticate(unencrypted_password)
   #   BCrypt::Password.new(password_digest).is_password?(unencrypted_password) && self
