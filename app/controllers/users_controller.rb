@@ -9,7 +9,7 @@ get '/main' do
 end
 
 get '/' do
-  if logged_in? 
+  if logged_in?
     erb :"user/main"
   else
     erb :"static/home"
@@ -18,7 +18,7 @@ end
 
 get '/profile' do
   erb :"user/profile"
-end 
+end
 
 get '/register' do
   erb :"static/register"
@@ -42,16 +42,20 @@ end
 
 post '/login' do
   user = User.find_by(username: params[:user]["username"])
-  if user.authenticate(params[:user]["password"])
-    puts "logged in"
-    session[:current_user_id] = user.id
-    byebug
-    redirect '/main'
+  if user
+    if user.authenticate(params[:user]["password"])
+      puts "logged in"
+      session[:current_user_id] = user.id
+      redirect '/main'
+    else
+      flash[:login] = user.errors.full_messages
+    end
   else
-    flash[:login] = user.errors.full_messages
+    flash[:login] = "Invalid username or password!"
   end
 end
 
 get '/logout' do
-  session.clear 
+  session.clear
+  redirect '/'
 end
