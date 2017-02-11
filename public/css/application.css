@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Vollkorn:700');
+
+.background-img {
+	background-size: cover;
+	background-repeat: no-repeat;
+	max-width: 100%;
+	display: block;
+	position: fixed;
+	left: 0;
+	right: 0;
+	-webkit-filter: blur(4px);
+}
+
+/* LOGIN */
+
+#login-header {
+	margin-top: 2em;
+	font-family: 'Vollkorn', serif;
+	font-weight: 700px;
+	font-size: 100px;
+	color: #FF3333;
+}
+
+.login-form-box {
+	border: 0px solid ;
+	border-radius: 10px;
+	margin-top: 1em;
+	padding: 70px 40px 40px 40px;
+	box-shadow: 0px 2px 14px 1px rgba(0,0,0,0.75);
+	background-color: #FAFAFA;
+}
+
+#login-btn {
+	background-color: #FF3333;
+	color: white;
+}
