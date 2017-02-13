@@ -1,0 +1,19 @@
+<div class="background-img">
+	<img src="/img/wave.jpg">
+</div>
+
+<div class="vertical-center">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div id="login-header">
+				Quora
+			</div>
+		</div>
+
+		<div class="row justify-content-center">
+			<div class="login-form-box col-4">
+				<h5><%= "Hello, #{current_user(session[:id]).username}" %></h5>
+			</div>
+		</div>
+	</div>
+</div>

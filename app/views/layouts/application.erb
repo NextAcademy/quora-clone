@@ -1,7 +1,32 @@
 <html>
 	<head>
-		<title>Sinatra Framework</title>
+		<title>Quora Clone</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<link rel="stylesheet" href="/css/application.css">
 	</head>
+	<header class="header">
+		<span class="header-links">
+			<a href="/">
+			Home
+			</a>
+		</span>
+		<span class="header-links">
+			<a href="/howto">
+			How to use
+			</a>
+		</span>
+		<span class="header-links">
+			<a href="/about">
+			About
+			</a>
+		</span>
+		<span class="username">
+			<% if current_user(session[:id]) %>
+				<%= "Welcome, #{current_user(session[:id]).username}" %>
+				<a href='/sessions/logout' class="logout">Logout</a>
+			<% end %>
+		</span>
+</header>
 	<body>
 		<%= yield %>
 	</body>

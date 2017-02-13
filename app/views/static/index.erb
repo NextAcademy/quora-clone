@@ -1,2 +1,44 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<div class="background-img">
+	<img src="/img/wave.jpg">
+</div>
+
+<div class="vertical-center">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div id="login-header">
+				Quora
+			</div>
+		</div>
+
+		<div class="row justify-content-center">
+			<div class="login-form-box col-4">
+				<h5>Login. Ask away.</h5>
+				<span id="invalid-login">
+					<% if @login_error %>
+					<%= "#{@login_error}" %>
+					<% end %>
+				</span>
+				<form action="/sessions" method="POST">
+
+					<div class="form-group">
+							<input type="text" class="form-control" id="user-email" name="email" placeholder="Email" />
+					</div>
+					
+					<div class="form-group">
+							<input type="password" class="form-control" id="user-password" name="password" placeholder="Password" />
+					</div>
+
+					<div class="form-group">
+						<div class="text-left">
+							<a href="/users/new">Not a member?</a>
+						</div>
+						<div class="text-right">
+							<button type="submit" class="btn" id="login-btn">Login</button>
+						</div>			
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
