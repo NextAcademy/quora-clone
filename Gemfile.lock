@@ -18,6 +18,7 @@ GEM
     backports (3.6.7)
     bcrypt (3.1.11)
     builder (3.2.2)
+    byebug (9.0.6)
     daemons (1.2.3)
     diff-lcs (1.2.5)
     eventmachine (1.0.8)
@@ -83,6 +84,7 @@ DEPENDENCIES
   activerecord
   activesupport
   bcrypt
+  byebug
   pg
   puma
   rails_12factor

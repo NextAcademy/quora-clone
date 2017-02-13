@@ -23,6 +23,8 @@ require 'uri'
 
 	# user password encryption
 require 'bcrypt'
+
+require 'byebug'
 ######################################################################
 
 
