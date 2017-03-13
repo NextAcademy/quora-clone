@@ -1,0 +1,24 @@
+<div ='home-page'>
+  <div id="home-header">
+    <a href="#"><img src="/img/quora-logo.png" id='home-logo'></a>
+    <h1 id='tag-line'>A place to share knowledge and ideas to the world</h1>
+  </div>
+  <div class="row">
+    <div class = "col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2">
+      <div class="col-md-12 text-center col-md-12">
+        <h2>Login</h2>
+        <form method="post" action="/login">
+          <div class="form-group">
+            <input type=text placeholder="Email" name="user[email]" class="form-control login-failure-form">
+          </div>
+          <div class="form-group">
+            <input type=password placeholder="Password" name="user[password]" class="form-control login-failure-form">
+          </div>
+          <div id='ajax-show'>
+            <input id='sign-in-btn-failure' class="btn btn-success login-failure-btn" type=submit value="Sign in">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

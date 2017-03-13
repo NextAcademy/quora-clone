@@ -23,6 +23,8 @@ gem 'rake'
 
 # Adding rspec for running unit testing
 gem 'rspec'
+gem 'bcrypt'
+gem 'byebug'
 
 group :development, :test do
 	# Adding shotgun for local web hosting
