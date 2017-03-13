@@ -1,0 +1,41 @@
+<div id='home-page'>
+  <div id="home-header">
+    <a href="#"><img src="/img/quora-logo.png" id='home-logo'></a>
+    <h1 id='tag-line'>A place to share knowledge and ideas to the world</h1>
+  </div>
+  <div class="row">
+    <div class = "col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2">
+      <div class="col-md-6 col-xs-6 text-center">
+        <h2>Sign up for an account!</h2>
+        <form method="post" action="/signup">
+          <div class="form-group">
+            <input type=text placeholder="First Name" name="user[first_name]" class='full-name' >
+            <input type=text placeholder="Last Name" name="user[last_name]" class='full-name' >
+          </div>
+          <div class="form-group">
+            <input type=text placeholder="Email" name="user[email]" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type=password placeholder="Password" name="user[password]" class="form-control">
+          </div>
+          <input id='sign-up-btn' class="btn btn-success btn-block" type=submit value="Sign up">
+        </form>
+      </div>
+      <div class="col-md-6 text-center col-xs-6">
+        <h2>Login</h2>
+        <form method="post" action="/login">
+          <div class="form-group">
+            <input type=text placeholder="Email" name="user[email]" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type=password placeholder="Password" name="user[password]" class="form-control">
+          </div>
+          <input id='sign-in-btn' class="btn btn-success btn-block" type=submit value="Sign in">
+        </form>
+        <div id='ajax-show'>
+          <<button</button>>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
