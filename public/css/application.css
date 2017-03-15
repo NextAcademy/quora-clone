@@ -1,19 +1,26 @@
 /**************************************************************************************************
 /****************************************TABLE OF CONTENTS*****************************************
 /**************************************************************************************************
-/******     1. QUORA HOMEPAGE.ERB BEFORE LOGIN                ***********************************
-/******     2. QUORA USERDASHBOARD.ERB PAGE AFTER LOGIN       ***********************************
-/******     3. QUORA LOGINFAILURE.ERB PAGE AFTER FAIL LOGIN   ***********************************
-
+/******     1. QUORA STATIC/HOMEPAGE.ERB BEFORE LOGIN           ***********************************
+/******     2. QUORA USERS/SHOW.ERB PAGE AFTER LOGIN            ***********************************
+/******     3. QUORA STATIC/LOGINFAILURE.ERB                    ***********************************
+/******     4. QUORA QUESTIONS/INDEX.ERB PAGE:                  ***********************************
+/******     5. QUORA QUESTIONS/NEW.ERB PAGE                     ***********************************
+/******     6. QUORA QUESTIONS/SHOW.ERB PAGE                    ***********************************
+/******     7. QUORA USERS/EDIT.ERB PAGE                        ***********************************
 */
 
 
-/********   1. QUORA HOMEPAGE.ERB BEFORE LOGIN   */
+/********   1. QUORA STATIC/HOMEPAGE.ERB BEFORE LOGIN   */
 #home-logo {
   width: 15%;
   height: 18%;
   display: block;
   margin: 0 auto;
+}
+
+#home-logo-text {
+  color: red;
 }
 
 #tag-line {
@@ -58,12 +65,12 @@ body {
 
 
 /************************************************************************/
-/********   2. QUORA USERDASHBOARD.ERB PAGE AFTER LOGIN   ******************/
+/********   2. QUORA USERS/SHOW.ERB PAGE AFTER LOGIN   ******************/
 /************************************************************************/
 #user-dashboard-logo {
   width: 6%;
   height: 7%;
-  margin-left: 200px;
+  /*margin-left: 200px;*/
 }
 
 #user-dashboard-header {
@@ -99,18 +106,18 @@ body {
 #user-welcome {
   font-size: 25px;
   margin-left: 5px;
-  /*margin-bottom: 5px;*/
-  padding-top: 10px;
+  padding-top: 5px;
   padding-right: 30px;
   padding-left: 90px;
   text-align: center;
   display: inline-block;
   vertical-align: bottom;
   font-weight: bold;
+  color: white !important;
 }
 
 #main-dashboard {
-  margin-top: 100px;
+  margin-top: 30px;
   background-color: white;
 }
 
@@ -121,14 +128,44 @@ body {
 
 .head-line-dashboard {
   text-align: center;
+  border-bottom: solid 3px;
 }
 
-.dashboard-main-stories{
+.dashboard-main-questions{
   text-align: center;
+  color: black;
+  font-weight: bold;
+  font-size: 25px;
 }
 
+.question-text-title-container-dashboard {
+  margin: 20px 0px 20px 15px;
+  border-bottom: solid 2px grey;
+}
+
+#dashboard-main-questions-container {
+  margin-top: 50px;
+}
+
+.dashboard-main-questions-text {
+  font-size: 15px;
+  color: grey;
+}
+
+#popular-stories-container {
+  margin: 50px 20px 20px 10px;
+}
+
+#popular-stories-title-container {
+  border-right: solid 2px grey;
+}
+
+#popular-stories-title {
+  color: black;
+  font-weight: bold;
+}
 /*******************************************************************************/
-/********   3. QUORA LOGINFAILURE.ERB PAGE AFTER FAIL LOGIN   ******************/
+/********   3. QUORA STATIC/LOGINFAILURE.ERB PAGE AFTER FAIL LOGIN   ******************/
 /*******************************************************************************/
 
 .login-failure-form {
@@ -139,4 +176,156 @@ body {
   width: 100px;
   float: left;
   margin-left: 265px;
+}
+
+/*******************************************************************************/
+/********   4. QUORA QUESTIONS/INDEX.ERB PAGE   ******************/
+/*******************************************************************************/
+
+.user-avatar{
+  width: 100%;
+}
+
+#post-new-question-btn{
+  width: 50%;
+}
+
+#user-profile {
+  margin-top: 40px;
+  margin-left: 30px;
+  margin-bottom: 50px;
+  padding-bottom: 25px;
+  border-bottom: solid 2px #CDCAC8;
+}
+
+#user-full-name {
+  font-size: 30px;
+  font-weight: 5px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#user-questions-container {
+  border-right: solid 2px #CDCAC8;;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.answer-question-text {
+  font-size: 25px !important;
+  font-family: 'q_serif',Georgia,Times,"Times New Roman",serif;
+  font-size: 15px;
+  line-height: 1.6;
+  word-wrap: break-word;
+  /*color: #333;*/
+  color: grey;
+  font-weight: 50;
+}
+
+.user-questions-answers-header {
+  padding-bottom: 20px;
+  border-bottom: solid 2px #CDCAC8;
+}
+
+.user-question-answer-spaces {
+  margin: 20px 0px 20px 15px;
+  border-bottom: solid 2px #CDCAC8;
+  /*background-color: #B7B3B0;*/
+}
+
+.question-answer-link {
+  color: #333;
+  font-family: 'q_serif',Georgia,Times,"Times New Roman",serif;
+  font-size: 30px;
+  word-wrap: break-word;
+  text-decoration: none;
+  font-weight: bold;
+}
+/*******************************************************************************/
+/********   5. QUORA QUESTIONS/NEW.ERB PAGE   ******************/
+/*******************************************************************************/
+
+#create-a-question {
+  margin-top: 50px;
+}
+
+#comment {
+  margin: 0px;
+  width: 100%;
+}
+
+#question-title{
+  width: 400px;
+  height: 30px;
+}
+
+
+/*******************************************************************************/
+/********   6. QUORA QUESTIONS/SHOW.ERB PAGE   ******************/
+/*******************************************************************************/
+
+.user-avatar-question-show {
+  width: 10% !important;
+}
+
+#user-details {
+  text-align: center;
+}
+
+#question-owner-name {
+  font-size: 20px;
+  color: #333;
+  font-family: 'q_serif',Georgia,Times,"Times New Roman",serif;
+  font-weight: bold;
+}
+
+#question-details-container {
+  background-color: white;
+  margin: 30px 15px 30px 15px;
+  padding: 20px 30px 20px 30px;
+}
+ #question-show-title {
+   color: #333;
+   font-family: 'q_serif',Georgia,Times,"Times New Roman",serif;
+   font-size: 30px;
+   word-wrap: break-word;
+   text-decoration: none;
+   font-weight: bold;
+   text-align: center;
+ }
+
+ #question-show-text-container {
+   margin-top: 30px;
+ }
+
+#question-show-text {
+  color: #333;
+  font-family: 'q_serif',Georgia,Times,"Times New Roman",serif;
+  font-size: 15px;
+  word-wrap: break-word;
+  text-decoration: none;
+}
+
+#answer-a-question {
+  width: 400px;
+}
+
+#answers-container {
+  background-color: white;
+  margin: 30px 15px 30px 15px;
+  padding: 20px 30px 20px 30px;
+}
+/*******************************************************************************/
+/********   7. QUORA USERS/EDIT.ERB PAGE                      ******************/
+/*******************************************************************************/
+
+#edit-form {
+  margin: 15px 40px 15px 40px;
+}
+
+#form-control-edit {
+  margin-left: 0px;
+}
+
+#edit-name {
+  width: 434px;
 }

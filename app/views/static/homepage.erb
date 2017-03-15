@@ -1,6 +1,6 @@
 <div id='home-page'>
   <div id="home-header">
-    <a href="#"><img src="/img/quora-logo.png" id='home-logo'></a>
+    <a href="/"><img src="/img/quora-logo.png" id='home-logo'></a>
     <h1 id='tag-line'>A place to share knowledge and ideas to the world</h1>
   </div>
   <div class="row">
@@ -9,14 +9,14 @@
         <h2>Sign up for an account!</h2>
         <form method="post" action="/signup">
           <div class="form-group">
-            <input type=text placeholder="First Name" name="user[first_name]" class='full-name' >
-            <input type=text placeholder="Last Name" name="user[last_name]" class='full-name' >
+            <input type=text placeholder="First Name" name="user[first_name]" class='full-name' required>
+            <input type=text placeholder="Last Name" name="user[last_name]" class='full-name' required>
           </div>
           <div class="form-group">
-            <input type=text placeholder="Email" name="user[email]" class="form-control">
+            <input type=text placeholder="Email" name="user[email]" class="form-control" required>
           </div>
           <div class="form-group">
-            <input type=password placeholder="Password" name="user[password]" class="form-control">
+            <input type=password placeholder="Password" name="user[password]" class="form-control" required>
           </div>
           <input id='sign-up-btn' class="btn btn-success btn-block" type=submit value="Sign up">
         </form>

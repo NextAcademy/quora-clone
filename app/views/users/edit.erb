@@ -1,0 +1,33 @@
+<div id="main-dashboard" class="col-md-offset-1 col-md-10  col-xs-offset-1 col-xs-10">
+  <div class='row'>
+    <div class='col-md-10 col-xs-10' id='user-profile'>
+      <div class="col-md-2 col-xs-2">
+          <%if current_user.gender == "male"%>
+              <img class='user-avatar' src="/img/male-avatar.png">
+          <%elsif current_user.gender == "female"%>
+              <img class='user-avatar' src="/img/female-avatar.png">
+          <%else%>
+              <img class='user-avatar' src="/img/default-avatar.png" align="right">
+          <% end %>
+      </div>
+      <div class='col-md-10 col-xs-10'>
+        <p id='user-full-name'><%= current_user.full_name %></p>
+      </div>
+    </div>
+  </div>
+  <div class='row' id='edit-form'>
+    <form action="/users/<%=current_user.id%>" method="post">
+      <div class="form-group">
+        <input type=text placeholder="First Name" name="user[first_name]" class='full-name' id='edit-name' value="<%= current_user.first_name %>" required>
+        <input type=text placeholder="Last Name" name="user[last_name]" class='full-name' id='edit-name' value="<%= current_user.last_name %>" required>
+      </div>
+      <div class='form-group'>
+        <input type="radio" name="user[gender]" value="male" <%='checked' if current_user.gender == 'male' %> > Male<br>
+        <input type="radio" name="user[gender]" value="female" <%= 'checked' if current_user.gender == 'female' %>> Female<br>
+      </div>
+      <div class='form-group'>
+        <input id='post-new-question-btn' class="btn btn-success btn-block" type=submit value="Update Profile">
+      </div>
+    </form>
+  </div>
+</div>
