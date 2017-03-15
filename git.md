@@ -1,5 +1,6 @@
 make sure you are at local master branch
-to create a branch
+
+*to create a branch*
 
 1)  
 $git checkout -b "abc" #creating a branch on local machine (locally)
