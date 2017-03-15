@@ -1,0 +1,50 @@
+
+<div id="main-dashboard" class="col-md-offset-1 col-md-10  col-xs-offset-1 col-xs-10">
+  <div class="col-md-2 col-xs-2">
+    <div class='head-line-dashboard'>
+      <h4>Popular Question</h3>
+    </div>
+    <div id='popular-stories-container'>
+      <% if Question.all.length == 0 %>
+        <div>
+          <p> There is no question yet </p>
+        </div>
+      <% else %>
+        <div class='row'  id='popular-stories-title-container'>
+          <% random_questions.each do |question|%>
+            <div>
+              <a href="/questions/<%=question.id%>">
+                <p id='popular-stories-title'> <%= question.title %></p>
+              </a>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-10 col-xs-10">
+    <div class='head-line-dashboard'>
+      <h4> Top Questions For You </h4>
+    </div>
+      <div id='dashboard-main-questions-container'>
+        <% if Question.all.length == 0 %>
+          <div id='empty-question'>
+            <p class='dashboard-main-questions'> There is no question yet </p>
+            <center><a class='dashboard-main-questions' href ='/questions/new'>Let's post question here and start to share with others</a></center>
+          </div>
+        <% else %>
+          <div>
+              <% Question.all.each do |question|%>
+                <div class="question-text-title-container-dashboard">
+                  <a href="/questions/<%=question.id%>"
+                    <p class='dashboard-main-questions'> <%=question.title%> </p>
+                  </a>
+                    <p class='dashboard-main-questions-text'> <%=question.question_text%> </p>
+                </div>
+              <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

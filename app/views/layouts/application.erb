@@ -1,12 +1,54 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 		<link rel="stylesheet" type="text/css" href="/css/application.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="/js/application.js"></script>
 		<title>Sinatra Framework</title>
 	</head>
 	<body>
+		<%if logged_in? %>
+
+			<nav class="navbar navbar-inverse">
+			  <div class="container-fluid">
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+						<!-- <a href="#"><img src="/img/quora-logo.png" id='user-dashboard-logo'></a> -->
+						<!-- <a id='home-logo-text' class="navbar-brand" href="/">QUORA</a> -->
+			    </div>
+			    <div class="collapse navbar-collapse" id="myNavbar">
+						<a href="#"><img src="/img/quora-logo.png" id='user-dashboard-logo' align="left"></a>
+			      <ul class="nav navbar-nav">
+			        <li class="active"><a class='header-btns' id='home-btn' href="/">HOME</a></li>
+			        <li><a class='header-btns' href='/users/<%=current_user.id%>/questions'> MY POSTS </a></li>
+			        <li><a class='header-btns' href='/users/<%=current_user.id%>/edit'> MY PROFILE </a></li>
+			      </ul>
+			      <ul class="nav navbar-nav navbar-right">
+			        <li><a class='header-btns' href='/sign_out' href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+			      </ul>
+						<p id='user-welcome'> HI <%= current_user.last_name.capitalize %>, Welcome to Quora </p>
+			    </div>
+			  </div>
+			</nav>
+					<!-- <div id='user-dashboard-header'>
+					  <div class="form-group">
+					    <a href="#"><img src="/img/quora-logo.png" id='user-dashboard-logo'></a>
+					    <p id='user-welcome'> HI <%= User.find(session[:user_id]).last_name.capitalize %>, Welcome to Quora </p>
+					      <a class='header-btns' id='home-btn' href="/">HOME</a>
+					      <a class='header-btns' href='/users/<%=current_user.id%>/questions'> MY POSTS </a>
+					      <a class='header-btns' href='#'> MY PROFILE </a>
+					      <a class='header-btns' href='/sign_out'> LOG OUT </a>
+					    </div>
+					  </div>
+					</div> -->
+		<% end %>
 		<%= yield %>
 	</body>
 </html>

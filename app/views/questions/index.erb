@@ -1,0 +1,64 @@
+
+<div id="main-dashboard" class="col-md-offset-1 col-md-10  col-xs-offset-1 col-xs-10">
+  <div class='col-md-10 col-xs-10' id='user-profile'>
+    <div class="col-md-2 col-xs-2">
+        <%if User.find(session[:user_id]).gender == "male"%>
+            <img class='user-avatar' src="/img/male-avatar.png">
+        <%elsif User.find(session[:user_id]).gender == "female"%>
+            <img class='user-avatar' src="/img/female-avatar.png">
+        <%else%>
+            <img class='user-avatar' src="/img/default-avatar.png" align="right">
+        <% end %>
+    </div>
+    <div class='col-md-10 col-xs-10'>
+      <p id='user-full-name'><%= User.find(session[:user_id]).full_name %></p>
+      <form method="get" action="/questions/new">
+        <input id='post-new-question-btn' class="btn btn-success btn-block" type=submit value="Post new question">
+      </form>
+    </div>
+  </div>
+</div>
+<div id="main-dashboard" class="col-md-offset-1 col-md-10  col-xs-offset-1 col-xs-10">
+  <div class='col-md-6 col-xs-6' class='questions-answers-user' >
+    <div class="row" align='center'>
+      <center><h3 class='user-questions-answers-header'> Questions </h3></center>
+    </div>
+    <% @user_questions = current_user.questions %>
+    <% if @user_questions.nil? %>
+      <div class="row" id='user-questions-container'>
+        <center><h4> You haven't post any question yet </h4>
+        <a class='dashboard-main-questions' href ='/questions/new'>Let's post question here and start to share with others</a></center>
+      </div>
+    <% else %>
+      <div class="row" id='user-questions-container'>
+        <% @user_questions.each do |question| %>
+          <div class="row user-question-answer-spaces">
+            <a href="/questions/<%=question.id%>">
+              <p class="text-left question-answer-link"><%= question.title %></p>
+            </a>
+            <p class="text-left answer-question-text"><%= question.question_text %></p>
+          </div>
+        <% end %>
+    <% end %>
+      </div>
+  </div>
+  <div class='col-md-6 col-xs-6' class='questions-answers-user'>
+    <div class="row" align='center'>
+      <center><h3 class='user-questions-answers-header'> Answers </h3></center>
+    </div>
+    <% @user_answers = current_user.answers %>
+    <% if @user_answers.nil? %>
+        <div class='row' align='center'>
+          <center><h4> You haven't post any answer yet </h4></center>
+        </div>
+    <% else @user_answers.each do |answer| %>
+        <div class="row user-question-answer-spaces">
+          <a href="#">
+            <p class="text-left question-answer-link"><%= Question.find(answer.question_id).title %></p>
+          </a>
+          <p class="text-left answer-question-text"><%= answer.answer_text %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<div class='col-md-8 col-xs-8 col-md-offset-2 col-xs-offset-2'>
+  <div class='col-md-12 col-xs-12'>
+    <div class='row'>
+      <div id='user-details'>
+        <% if current_user.gender == 'male'%>
+            <img src="/img/male-avatar.png" align="middle" class='user-avatar-question-show'>
+        <%elsif current_user.gender == "female"%>
+            <img src="/img/female-avatar.png" class='user-avatar-question-show' align="middle" >
+        <%else%>
+            <img src="/img/default-avatar.png" class='user-avatar-question-show' align="middle" >
+        <% end %>
+        <% question_owner = User.find(@question_show.user_id) %>
+        <p id='question-owner-name'><%= question_owner.full_name %></p>
+        <p> Question owner </p>
+      </div>
+      <div id='question-details-container'>
+        <p id='question-show-title'> <%= @question_show.title %> </p>
+        <div id='question-show-text-container'>
+          <p id='question-show-text'> <%=@question_show.question_text %> </p>
+        </div>
+      </div>
+      <center>
+        <% if current_user.id == @question_show.user_id %>
+        <div class='row'>
+          <form action='/users/<%=current_user.id%>/questions/<%=params[:id]%>' method='post'>
+            <input name="_method" type="hidden" value="delete">
+            <button type="submit" class="btn btn-danger" data-toggle="modal"> Delete My Question </button>
+          </form>
+        </div>
+        <%end%>
+
+        <div class='row'>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">Answer This Question</button>
+          <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="/questions/<%=params[:id]%>/answers" method="post" id="submit-an-answer">
+                    <textarea type="text" placeholder="Answers" name="answer[answer_text]" class='user-answer-text' rows="8" cols="65"></textarea>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary" form="submit-an-answer" value="submit">Submit Answer</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </center>
+    </div>
+  </div>
+  <% answers_container = @question_show.answers %>
+  <% if answers_container.length > 0 %>
+      <div class='col-md-12 col-xs-12'>
+
+        <div class='row'>
+          <% answers_container.each do |answer| %>
+              <div id='answers-container'>
+                <%= answer.answer_text %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+</div>
