@@ -35,3 +35,5 @@ group :production do
 	gem 'rails_12factor' # Heroku Gem Supports
 	gem 'puma' # Using puma for
 end
+
+gem 'bcrypt'
