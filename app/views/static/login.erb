@@ -1,0 +1,10 @@
+<h1><a href='/'>Tanya Lah</a></h1>
+<h2>Login</h2>
+<form method=post action=/login>
+  <input type=text placeholder="Email" name="user[email]"><br>
+  <input type=password placeholder="Password" name="user[password]"></br>
+  <input type=submit value="Login">
+</form>
+<% if @no_account %>
+	<p><%=@no_account%><a href="/signup">here</a>.</p>
+<% end %>
