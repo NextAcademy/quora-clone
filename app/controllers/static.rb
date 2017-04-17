@@ -27,20 +27,24 @@ get '/users/:id' do
   erb :"users/profile"
 end
 
-# get '/login' do
-#   erb :"static/login"
-# end
+get '/login' do
+  erb :"static/login"
+end
 
-# post '/login' do
-#  user = User.find_by_email(params[:user][:email])
-
-#   # apply a authentication method to check if a user has entered a valid email and password
-#   # if a user has successfully been authenticated, you can assign the current user id to a session
-# end
+post '/login' do
+ user = User.find_by_email(params[:user][:email])
+  if !user.nil? && user.try(:authenticate, params[:user][:password])
+    # "SUCCESS"
+    session["user"] = user.id
+    redirect "users/#{user.id}"
+  else
+    erb :"static/login"
+  end
+end
 
 # get '/logout' do
 #   session.delete("user")
-#   redirect to("/")
+#   redirect '/'
 # end
 
 # post '/logout' do
