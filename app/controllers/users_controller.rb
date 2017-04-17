@@ -3,19 +3,39 @@ enable :sessions
 post '/signup' do
 	user = User.new(params[:user])
 	if user.save
-		# do something later
+		redirect "/users/#{user.id}"
 	else
-		@error_messages = user.errors.full_messages
-		erb :'static/sign_up'
+		flash[:error_sign_up] = user.errors.full_messages
+		redirect '/signup'
 	end
 end
 
 post '/login' do 
-	user = User.find_by(email:params[:user][:email])
-	if !user 
-		@no_account = "You do not have an account. Please sign up "
-		erb :'static/login'
+	result = User.email_password_matches?(params[:user][:email],params[:user][:password])
+	if result.nil?
+		flash[:no_account] = "You do not have an account. Please sign up "
+		redirect '/login'
 	else 
-		# if user.authenticate(params[:user][:password])
+		if result.class != String
+			session[:user_id] = result.id
+			redirect "/users/#{result.id}"
+		else 
+			flash[:wrong_password] = result
+			redirect '/login'
+		end 
 	end
 end
+
+post '/logout' do
+	session[:user_id] = nil
+	redirect '/'
+end
+
+get '/users/:id' do
+	if logged_in?
+		erb :'users/profile'
+	else 
+		redirect '/login'
+	end
+end
+

@@ -7,5 +7,9 @@ get '/signup' do
 end
 
 get '/login' do
-	erb :"static/login"
+	if logged_in?
+		redirect "/users/#{current_user.id}"
+	else 
+	 	erb :"static/login"
+	 end
 end

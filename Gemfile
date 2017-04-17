@@ -36,4 +36,6 @@ group :production do
 	gem 'puma' # Using puma for
 end
 
+# self-add
 gem 'bcrypt'
+gem 'sinatra-flash'

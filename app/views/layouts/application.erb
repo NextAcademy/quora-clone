@@ -3,6 +3,15 @@
 		<title>Quora Clone</title>
 	</head>
 	<body>
+		<h1><a href='/'>Tanya Lah</a></h1>
+		<%= create_buttons %>
 		<%= yield %>
+		<% if flash[:error_sign_up] %>
+			<div><%= flash[:error_sign_up].join(", ") %></div>
+		<% end %>
+		<% if flash[:no_account] %>
+			<div><%= flash[:no_account] %><a href='/signup'>here</a>.</div>
+		<% end %>
+		<%= flash[:wrong_password] %>
 	</body>
 </html>

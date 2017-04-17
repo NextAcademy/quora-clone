@@ -53,7 +53,6 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 Dir[APP_ROOT.join('app', 'controllers', '*.rb')].each { |file| require file }
 ######################################################################
 
-# Using Bcrypt
-
+# additional
 require 'bcrypt'
-
+require 'sinatra/flash'
