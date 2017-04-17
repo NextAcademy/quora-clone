@@ -17,3 +17,12 @@
 	<input type="submit" value="Sign up!">
 </form>
 
+
+<% if @errors != nil %>
+    <ul>
+    <% @errors.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+<% end %>
+
