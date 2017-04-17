@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'bcrypt', '~> 3.1.7'
+#bcrypt (~> 3.1.7) 
 # Ruby Version
 # ruby "2.2.1"
 
