@@ -3,9 +3,15 @@ get '/' do
 end
 
 get '/signup' do
-  erb :static/signup
+  erb :"static/signup"
 end
+
 
 get '/login' do
   erb :"static/login"
 end
+
+get 'users/:id' do
+  erb :"static/profile"
+end
+

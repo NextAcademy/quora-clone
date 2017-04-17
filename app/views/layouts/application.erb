@@ -3,6 +3,13 @@
 		<title>Sinatra Framework</title>
 	</head>
 	<body>
+		<div id="error">
+		<% flash[:img] %>
+		</div>
+		<% if logged_in? %>
+		<h3>Welcome </h3>
+		<%= current_user.fullname %>
+		<%end%>
 		<%= yield %>
 	</body>
 </html>
