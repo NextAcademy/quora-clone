@@ -1,8 +1,12 @@
 <html>
 	<head>
-		<title>Sinatra Framework</title>
+		<title>Quora</title>
 	</head>
 	<body>
+      <% if current_user %>
+        Signed in as <%= current_user.name %>    
+      <% end %>
+
 		<%= yield %>
 	</body>
 </html>
