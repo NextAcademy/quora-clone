@@ -4,11 +4,19 @@
 	</head>
 	<body>
 		<div id="error">
-		<% flash[:img] %>
+		<%= flash[:img] %>
 		</div>
+		<a href="/">Homepage</a>
+		<p>
 		<% if logged_in? %>
-		<h3>Welcome </h3>
-		<%= current_user.fullname %>
+			<%= current_user.fullname %>
+			<form action="/logout" method="post">
+			<button type="submit">Log out</button>
+			</form>
+			<% else %>
+			<form action="/login" method="get">
+			<button type="submit">Log In</button>
+			</form>
 		<%end%>
 		<%= yield %>
 	</body>

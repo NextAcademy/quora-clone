@@ -7,8 +7,8 @@ end
 
 
 post '/signup' do
-  user = User.new(params[:user])
-  if user.save
+  @user = User.new(params[:user])
+  if @user.save
     flash[:img] = "<h1>user has been created.</h2>"
     else
     flash[:img] = "<h2> There is an error </h2>"
@@ -16,22 +16,26 @@ post '/signup' do
     flash[:img] = @err_email
     @err_pass = "Password: " + user.errors[:password].join(",")
     flash[:img] = @err_pass
-    erb :"/signup"
+    erb :"static/signup"
   end
 end  
+
+get '/login' do
+  erb :"static/index"
+end
 
 post '/login' do
   # apply a authentication method to check if a user has entered a valid email and password
   # if a user has successfully been authenticated, you can assign the current user id to a session
  
-  user = User.find_by_email(params[:user][:email])
-    if user.authenticate(params[:user][:password])
-      session["user"] = user.id
+  @user = User.find_by_email(params[:user][:email])
+    if @user.authenticate(params[:user][:password])
+      session["user"] = @user.id
       # "<h2> Logged In </h2>"
-      redirect '/login'
+      erb :"static/profile"
     else
       flash[:img] = "<h2> Wrong password </h2>"
-      redirect '/login' #YOU STOP HERE
+      erb :'static/login' #YOU STOP HERE
     end
 end
 
