@@ -3,6 +3,18 @@
 		<title>Sinatra Framework</title>
 	</head>
 	<body>
+		<div id="error">
+			<%= flash[:msg] %>
+		</div>
+
+		<%= logged_in? %>
+		<% if logged_in? %>
+			<form method="post" action="/logout" class="button_to">
+      	<input value="logout" type="submit" />
+	   	</form>
+		<% end %>
+
+
 		<%= yield %>
 	</body>
 </html>
