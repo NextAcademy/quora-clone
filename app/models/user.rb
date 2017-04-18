@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
 	validates :first_name, :last_name, :email, :password, :password_confirmation, presence: { message: "field is required" }
 	validates :email, format: { with: /\A[^@]+@[^@]+\z/,
   message: "invalid email address" }, uniqueness: { case_sensitive: false, message: "we already have an account for that email"}
+  has_many :questions, dependent: :destroy
+  has_many :answers, dependent: :destroy
 end

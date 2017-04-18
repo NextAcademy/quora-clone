@@ -1,12 +1,28 @@
-<h2>Homepage - show feed and stuff</h2>
 
-<% if logged_in? %>
-	<form action="/sessions/:id" method="post">
-	<input id="hidden" type="hidden" name="_method" value="delete">
-	<input type="submit" value="Logout">
-	</form>
-<% else %>
-	<form action="/sessions/new" method="get">
-	<input type="submit" value="Login">
-	</form>
+<h2>Hi <%= current_user.first_name %>! </h2>
+
+
+<form action="/sessions/:id" method="post">
+<input id="hidden" type="hidden" name="_method" value="delete">
+<input type="submit" value="Logout">
+</form>
+
+<form action="/users/<%= current_user.id%>" method="get">
+<input type="submit" value="My profile">
+</form>
+
+<form action="/questions" method="post">
+<input type="text" name="question[text]" placeholder="Do you have a question?" required pattern=".+?">
+<input type="submit" value="Ask!">
+</form>
+
+<% Question.all.each do |q| %>
+	<div>
+		<h2> <%= q.text %> </h2>
+		<p> Asked by: <%= User.find(q.user_id).first_name %> </p>
+		<form action="/answers" method="post">
+			<input type="text" name="answer[text]" placeholder="Do you have an answer?" required pattern=".+">
+			<input type="submit" value="Submit answer">
+		</form>
+	</div>
 <% end %>

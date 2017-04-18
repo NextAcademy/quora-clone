@@ -1,7 +1,11 @@
 enable :sessions
 
 get '/' do
-  erb :"static/index"
+	if current_user
+	  erb :"static/index"
+	else
+		erb :"static/login"
+	end
 end
 
 get '/sessions/new' do
@@ -14,7 +18,7 @@ end
 
 delete '/sessions/:id' do
 	session[:id] = nil
-	erb :"static/index"
+	erb :"static/login"
 end
 
 
@@ -22,11 +26,11 @@ post '/users' do
   user = User.new(params[:user])
 	if user.save
 		session[:id] = user.id
-		redirect "user_profile/#{user.id}"
+		erb :"static/index"
+		#redirect "user_profile/#{user.id}"
 	else
 		@errors = user.errors.full_messages
 		erb :'static/login'
-		#Display errors on page
 	end
 end
 
@@ -38,8 +42,8 @@ post '/sessions' do
 	else
 		if user.authenticate(params[:user][:password])   
 			session[:id] = user.id
-			p current_user
-			redirect "users/#{user.id}"
+			erb :"static/index"
+			#redirect "users/#{user.id}"
 		else
 			@errors = ["Hi #{user.first_name}, unfortunately the password that you entered is incorrect."]
 			erb :'static/login'
@@ -54,6 +58,17 @@ get "/users/:id" do
 		@user = User.find(id)
 		erb :"users/profile"
 	else
-		redirect "/login"
+		redirect "/sessions/new"
 	end
 end
+
+post "/questions" do
+	question = Question.new(params[:question])
+	question.user_id = current_user.id
+	if question.save
+		p question
+		erb :"static/index"
+	end
+end
+
+
