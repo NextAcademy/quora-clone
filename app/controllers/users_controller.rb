@@ -10,7 +10,7 @@ end
 
 
 # In users_controller.rb
-post '/signup' do
+post '/register' do
 	# p params
 	#params was automatically created into a hash
   user = User.new(params[:user])
@@ -18,14 +18,22 @@ post '/signup' do
   if user.save
     # what should happen if the user is saved?
     flash[:msg] = "Success!"
-  else
-    # what should happen if the user keyed in invalid date?
-    @err = user.errors.full_messages
-    flash[:msg] = @err
-    erb :"user/new"
-    # require 'byebug'
-    # byebug
+    redirect '/'
+  else  
+    flash[:msg] = user.errors.full_messages
+    redirect '/register'
   end
+
+=begin
+In a POST method, put "redirect", not erb.
+
+Why?
+
+Because if you've done an action, and HTML is rendered, the link is still the same.
+
+If people refresh, you resubmit in the action again (though it looks different). BAD! Imagine this is a payment page!
+
+=end
 end  
 ##########################
 

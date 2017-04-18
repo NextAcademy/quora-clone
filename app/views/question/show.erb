@@ -1,0 +1,11 @@
+<h2>Now you are at question <%= @question.id %></h2>
+
+<p>This is brought to you by user <%= @question.user.full_name %><p>
+
+<p>This is the question<p>
+<p><%= @question.text %><p>
+
+<form action="#" method="post">
+	<input type="text" placeholder="Type your answers here" name="answer[text]">
+	<input type="submit" value="Submit my answers!">
+</form>

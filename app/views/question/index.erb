@@ -1,0 +1,12 @@
+<h2>CHECK OUT THE QUESTIONS!</h2>
+
+<table>
+	<tbody>
+		<% Question.last(10).each do |q| %>
+			<tr>
+				<td><%= q.user_id %></td>
+				<td><%= q.text %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

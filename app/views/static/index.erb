@@ -3,3 +3,16 @@
 <!-- <form action="/logout" method="post">
 	<input type="submit" value="logout">
 </form> -->
+
+<h2>CHECK OUT THE QUESTIONS!</h2>
+
+<table>
+	<tbody>
+		<% Question.last(10).reverse.each do |q| %>
+			<tr>
+				<td><%= q.user.full_name %></td>
+				<td><%= q.text %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
