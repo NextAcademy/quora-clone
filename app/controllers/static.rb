@@ -71,4 +71,18 @@ post "/questions" do
 	end
 end
 
+post "/answers" do
+	answer = Answer.new(params[:answer])
+	answer.user_id = current_user.id
+	if answer.save
+		p answer
+		erb :"static/index"
+	end
+end
+
+get "/questions/:id" do
+	@question = Question.find(params[:id])
+	erb :"questions/question"
+end
+
 

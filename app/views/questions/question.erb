@@ -1,0 +1,18 @@
+<h1> <%= @question.text %> </h1>
+
+<p> Asked by: <%= User.find(@question.user_id).first_name %> <%= User.find(@question.user_id).last_name %> <p>
+
+</br>
+
+<% @question.answers.order(created_at: :desc).each do |a| %>
+	<div>
+		<p> "<%= a.text %>" </br> 
+		<%= User.find(a.user_id).first_name %> <%= User.find(a.user_id).last_name %>,
+		<%= a.created_at %> </p>
+	</div>
+	</br> </br>
+<% end %>	
+
+<form action="/" method="get">
+<input type="submit" value="Homepage">
+</form>

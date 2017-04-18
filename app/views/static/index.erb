@@ -18,11 +18,13 @@
 
 <% Question.all.each do |q| %>
 	<div>
-		<h2> <%= q.text %> </h2>
-		<p> Asked by: <%= User.find(q.user_id).first_name %> </p>
+		<h2> <a href="/questions/<%= q.id %>"> <%= q.text %> </a> </h2>
+		<p> Asked by: <%= User.find(q.user_id).first_name %> <%= User.find(q.user_id).last_name %></p>
 		<form action="/answers" method="post">
+			<input type="hidden" name="answer[question_id]" value="<%= q.id %>">
 			<input type="text" name="answer[text]" placeholder="Do you have an answer?" required pattern=".+">
 			<input type="submit" value="Submit answer">
 		</form>
 	</div>
+	</br> </br>
 <% end %>
