@@ -51,6 +51,7 @@ post '/logout' do
 
 end
 
+
 #get /transactions/1/payments/new
 #params[:user_id] = 1
 #params[:transaction_id] = 1
@@ -61,10 +62,10 @@ end
 # http verb          resource/path              restful action
 # get			/books/1/authors/1		              show
 # get			/books/1/authors/new			      new
-# post		/books/1/authors			         create
+# post		/books/1/authors			             create
 # get			/books			                      index
 # get			/magazines/1/authors/1/edit		       edit
-# put/patch	/books/1/authors/1			          update
+# put/patch	/books/1/authors/1			              update
 # delete		/books/1/authors/1	                 destroy
 
 
