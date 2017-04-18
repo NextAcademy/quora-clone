@@ -3,6 +3,21 @@
 		<title>Sinatra Framework</title>
 	</head>
 	<body>
+		<div id="error">
+		<%= flash[:img] %>
+		</div>
+		<a href="/">Homepage</a>
+		<p>
+		<% if logged_in? %>
+			<%= current_user.fullname %>
+			<form action="/logout" method="post">
+			<button type="submit">Log out</button>
+			</form>
+			<% else %>
+			<form action="/login" method="get">
+			<button type="submit">Log In</button>
+			</form>
+		<%end%>
 		<%= yield %>
 	</body>
 </html>

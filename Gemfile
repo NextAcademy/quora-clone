@@ -2,10 +2,11 @@ source 'https://rubygems.org'
 
 # Ruby Version
 # ruby "2.2.1"
-
+gem 'byebug'
 # Adding Sinatra Drivers
 gem 'sinatra'
 gem 'sinatra-contrib'
+gem 'sinatra-flash'
 
 # Adding thin gem as advised
 gem 'thin'
@@ -23,6 +24,9 @@ gem 'rake'
 
 # Adding rspec for running unit testing
 gem 'rspec'
+
+# Adding bcrypt
+gem 'bcrypt'
 
 group :development, :test do
 	# Adding shotgun for local web hosting
