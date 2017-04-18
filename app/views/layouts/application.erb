@@ -1,8 +1,23 @@
 <html>
 	<head>
-		<title>Sinatra Framework</title>
+		<title>Quora</title>
+		<link rel="stylesheet" type="text/css" href="css/application.css">
 	</head>
 	<body>
-		<%= yield %>
+
+		<div class="nav">
+			<%= flash[:msg] %>
+			<% if logged_in? %>
+			<form method="post" action="/logout">
+			    <input type=submit value="LOGOUT">
+			</form>
+			<% else %>
+			<form method="post" action="/login">
+					<input type=submit value="LOGIN">
+			</form>
+			<% end %>
+		</div>
+			<%= yield %>
+
 	</body>
 </html>
