@@ -6,6 +6,7 @@ gem 'bcrypt', '~> 3.1.7'
 # ruby "2.2.1"
 
 # Adding Sinatra Drivers
+gem 'sinatra-flash'
 gem 'sinatra'
 gem 'sinatra-contrib'
 

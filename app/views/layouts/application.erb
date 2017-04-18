@@ -1,8 +1,11 @@
 <html>
 	<head>
-		<title>Sinatra Framework</title>
+		<title>Q N A</title>
 	</head>
 	<body>
+	<div id="error">
+		<%= flash[:msg] %>
+	</div>
 		<%= yield %>
 	</body>
 </html>
