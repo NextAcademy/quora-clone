@@ -9,6 +9,7 @@
 			<%= flash[:msg] %>
 			<% if logged_in? %>
 			<form method="post" action="/logout">
+					<%= current_user.fullname %>
 			    <input type=submit value="LOGOUT">
 			</form>
 			<% else %>
