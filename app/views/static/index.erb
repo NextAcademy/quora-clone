@@ -1,11 +1,12 @@
 <h2>Homepage - show feed and stuff</h2>
 
 <% if logged_in? %>
-	<form action="/logout" method="post">
+	<form action="/sessions/:id" method="post">
+	<input id="hidden" type="hidden" name="_method" value="delete">
 	<input type="submit" value="Logout">
 	</form>
 <% else %>
-	<form action="/sign_in_page" method="post">
-	<input type="submit" value="Login/Sign up">
+	<form action="/sessions/new" method="get">
+	<input type="submit" value="Login">
 	</form>
 <% end %>

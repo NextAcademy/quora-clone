@@ -4,20 +4,24 @@ get '/' do
   erb :"static/index"
 end
 
-post '/sign_in_page' do
+get '/sessions/new' do
 	erb :"static/login"
 end
 
-post '/logout' do
-	session[:user_id] = nil
+get '/users/new' do
+	erb :"static/signup"
+end
+
+delete '/sessions/:id' do
+	session[:id] = nil
 	erb :"static/index"
 end
 
 
-post '/signup' do
+post '/users' do
   user = User.new(params[:user])
 	if user.save
-		session[:user_id] = user.id
+		session[:id] = user.id
 		redirect "user_profile/#{user.id}"
 	else
 		@errors = user.errors.full_messages
@@ -26,25 +30,30 @@ post '/signup' do
 	end
 end
 
-post '/login' do
-	if User.find_by(email: params[:user][:email]).try(:authenticate, params[:user][:password])
-		session[:user_id] = user.id
-		p current_user
-		redirect "user_profile/#{user.id}"
-	else
-		@errors = ["Invalid email/password"]
+post '/sessions' do
+	user = User.find_by(email: params[:user][:email])
+	if user.nil?
+		@errors = ["Sorry, we don't have an account with the email address '#{params[:user][:email]}'."]
 		erb :'static/login'
-		#Display errors on page
+	else
+		if user.authenticate(params[:user][:password])   
+			session[:id] = user.id
+			p current_user
+			redirect "users/#{user.id}"
+		else
+			@errors = ["Hi #{user.first_name}, unfortunately the password that you entered is incorrect."]
+			erb :'static/login'
+		end
 	end
 end
 
 
-get "/user_profile/:id" do
+get "/users/:id" do
 	if current_user && current_user.id == params[:id].to_i
 		id = params[:id]
 		@user = User.find(id)
 		erb :"users/profile"
 	else
-		redirect "/"
+		redirect "/login"
 	end
 end

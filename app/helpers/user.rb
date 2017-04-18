@@ -2,8 +2,8 @@ helpers do
   # This will return the current user, if they exist
   # Replace with code that works with your application
   def current_user
-    if session[:user_id]
-      @current_user ||= User.find(session[:user_id])
+    if session[:id]
+      @current_user ||= User.find(session[:id])
     end
   end
 

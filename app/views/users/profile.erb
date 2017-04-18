@@ -1,5 +1,6 @@
 <h1> Logged in as <%= @user.email %> <h1>
 </br>
-<form action="/logout" method="post">
+<form action="/sessions/:id" method="post">
+<input id="hidden" type="hidden" name="_method" value="delete">
 <input type="submit" value="Logout">
 </form>

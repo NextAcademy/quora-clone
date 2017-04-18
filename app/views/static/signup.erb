@@ -1,0 +1,27 @@
+
+
+<h2> Create an account</h2>
+
+<% if @errors != nil %>
+	</br>
+  <ul>
+  <% @errors.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+  </br>
+<% end %>
+
+</br>
+
+<form action="/users" method="post">
+	<input type="text" name="user[first_name]" placeholder="First name"> </br>
+	<input type="text" name="user[last_name]" placeholder="Last name"> </br>
+	<input type="date" name="user[dob]" placeholder="Date of Birth"> </br>
+	<input type="text" name="user[email]" placeholder="Email"> </br>
+	<input type="password" name="user[password]" placeholder="Password"> </br>
+	<input type="password" name="user[password_confirmation]" placeholder="Confirm Password"> </br>
+	<input type="submit" value="Sign up!">
+</form>
+
+<h4> Already registered? <a href="/sessions/new">Login here </a> </h4>
