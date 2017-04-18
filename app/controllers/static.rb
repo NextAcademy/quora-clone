@@ -85,4 +85,9 @@ get "/questions/:id" do
 	erb :"questions/question"
 end
 
+get "/user/:id/questions" do
+	@user = User.find(params[:id])
+	erb :"users/questions"
+end
+
 
