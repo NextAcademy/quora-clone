@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
 	validates :password, presence: true, length: { in: 8..20, wrong_length: "Only 8-20 characters is allowed"  }
 	has_secure_password
 
+	has_many :questions
+	has_many :answers
+
 	def self.password_correct?(email, password)
 		user = User.find_by(email: email) 
 		if user == nil

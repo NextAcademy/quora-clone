@@ -32,7 +32,7 @@ end
 get '/login' do
 	puts "[LOG] Getting /login"
   puts "[LOG] Params: #{params.inspect}"
-  erb :"static/login"
+  erb :"session/new"
 end
 
 post '/login' do
@@ -54,7 +54,7 @@ post '/logout' do
 	session[:id] = nil
 	# redirect "/"
 	# byebug
-	erb :"static/login"
+	erb :"session/new"
   # kill a session when a user chooses to logout, for example, assign nil to a session
   # redirect to the appropriate page
 end
