@@ -2,11 +2,25 @@
 
 <% if logged_in? %> 
  <!-- true if current user exist, false otherwise -->
-  <form method="post" action="/logout">
-     <input type=submit value="Log out">
+  <form method= "post" action= "/logout">
+     <input type= submit value= "Log out">
   </form>
+
+   <form method="post" action="/login">
+       <input type="text" placeholder="title" name="user[question][title]"><br>
+       <input type="text" placeholder="description" name="user[question][description]"></br>
+       <input type=submit value="Submit">
+   </form>
+
+  <h2><%= @question.title %></h2>
+  <h4>Asked by <%= "#{User.find(@question.user_id).full_name}" %></h4>
+  <p><%= @question.description %></p>
+
+
+
+
 <% else %>
-   <a href='/login'>Log in</a> 
-   <a href='/signup'>Sign up</a> 
+   <a id= "login" href= '/login'>Log in</a> 
+   <a id= "signup" href='/signup'>Sign up</a> 
 <% end %>
 

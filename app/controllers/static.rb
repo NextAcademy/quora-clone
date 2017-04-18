@@ -8,7 +8,7 @@ get '/signup' do
   erb :"static/signup"
 end
 
-post '/signup' do
+post '/signup/create' do
    user = User.new(params[:user])
 
   if user.save

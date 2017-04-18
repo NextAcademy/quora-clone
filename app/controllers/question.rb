@@ -9,22 +9,22 @@ post '/question/create' do
   if question.save
     redirect "/"
   else
-    "ERROR"
+    flash[:msg] = "ERROR"
   end
 end
 
-get "/question/:id" do
+get '/question/:id' do
   @question = Question.find(params[:id])
-  erb :"static/question"
+  erb :"static/index"
 end
 
-post "/question/:id/answer" do
+post '/question/:id/answer' do
   @question = Question.find(params[:id])
   answer = Answer.new(params[:answer])
   answer.question_id = @question.id
   answer.user_id = current_user.id
   if answer.save
-    redirect to("/question/#{params[:id]}")
+    redirect '/question/#{params[:id]}'
   else
     "ERROR"
   end
