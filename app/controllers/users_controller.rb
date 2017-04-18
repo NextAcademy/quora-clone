@@ -5,7 +5,7 @@ enable :sessions
 get '/register' do
 	puts "[LOG] Getting /register"
   puts "[LOG] Params: #{params.inspect}"
-  erb :"static/register"
+  erb :"user/new"
 end
 
 
@@ -22,7 +22,7 @@ post '/signup' do
     # what should happen if the user keyed in invalid date?
     @err = user.errors.full_messages
     flash[:msg] = @err
-    erb :"static/register"
+    erb :"user/new"
     # require 'byebug'
     # byebug
   end
@@ -70,7 +70,7 @@ get '/users/:id' do
   if @user.nil?
   	redirect '/' 
   else
-  	erb :"static/profile"
+  	erb :"user/show"
   end
 end
 
