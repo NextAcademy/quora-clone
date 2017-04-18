@@ -3,4 +3,7 @@ class User < ActiveRecord::Base
 
   def fullname
   end
+
+  def age
+  end
 end
