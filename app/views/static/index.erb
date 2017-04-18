@@ -1,22 +1,22 @@
 <h1>Quora</h1>
 
+
 <% if logged_in? %> 
  <!-- true if current user exist, false otherwise -->
+ <a href="/users/<%= current_user.id %>"><p>Profile</p></a>
   <form method= "post" action= "/logout">
      <input type= submit value= "Log out">
   </form>
 
-   <form method="post" action="/login">
-       <input type="text" placeholder="title" name="user[question][title]"><br>
-       <input type="text" placeholder="description" name="user[question][description]"></br>
-       <input type=submit value="Submit">
+ <!-- #if asked question then display existing post -->
+  
+
+<!-- #else just display create new post -->
+   <form method="post" action="/question">
+       <input type="text" placeholder="title" name="question[title]"><br>
+       <input type="text" placeholder="description" name="question[description]"></br>
+       <input type=submit value="ASK">
    </form>
-
-  <h2><%= @question.title %></h2>
-  <h4>Asked by <%= "#{User.find(@question.user_id).full_name}" %></h4>
-  <p><%= @question.description %></p>
-
-
 
 
 <% else %>
