@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   before_create :password_validator, :email_validator
   has_secure_password
   has_many :questions
+  has_many :answers
 
   def password_validator
       unless self.password.length < 6

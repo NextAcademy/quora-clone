@@ -11,7 +11,6 @@ post '/question' do
 end
 
 get '/users/:id/questions' do
-  # some code here
   @user = User.find_by_id(params[:id])
   # erb :"static/question"
   erb :"questions/index"
