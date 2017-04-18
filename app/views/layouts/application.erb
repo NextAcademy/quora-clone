@@ -5,6 +5,10 @@
 		<link rel="stylesheet" type="text/css"  href="/css/application.css">
 	</head>
 	<body>
+		<% if logged_in? %>
+			<p>Welcome <%= current_user.email %></p>
+			<a href="/logout">log out</a>
+		<% end %>
 		<%= yield %>
 	</body>
 </html>
