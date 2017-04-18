@@ -1,0 +1,15 @@
+<h1><%= @user.name %></h1>
+
+<!-- <p>Your email is <%= @user.email %></p> -->
+
+<div id="Feed">
+    <h3>Feed</h3>
+  <div class='panel'>
+      <p><a href="/users/my_answer">My Answers</a></p>
+      <p><a href="/users/my_question">My Questions</a></p>
+</div>
+</div>
+
+<form method=post action=/logout>
+    <input type=submit value="Log out">
+</form>
