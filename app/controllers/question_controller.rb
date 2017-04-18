@@ -1,12 +1,5 @@
 enable :sessions
 
-get '/users/:id/questions' do
-  # some code here
-  @user = User.find_by_id(params[:id])
-  # erb :"static/question"
-  erb :"questions/index"
-end
-
 post '/question' do
   question = Question.new(params[:question])
   question.user_id = current_user.id
@@ -15,6 +8,13 @@ post '/question' do
   else
     flash[:msg] = "ERROR"
   end
+end
+
+get '/users/:id/questions' do
+  # some code here
+  @user = User.find_by_id(params[:id])
+  # erb :"static/question"
+  erb :"questions/index"
 end
 
 get '/users/:id/question/:id' do
