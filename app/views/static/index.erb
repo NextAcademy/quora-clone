@@ -26,13 +26,17 @@
 
 <% Question.order(created_at: :desc).each do |q| %>
 	<div>
-		<h2> <a href="/questions/<%= q.id %>"> <%= q.text %> </a> </h2>
+		<h2> <%= q.text %></h2>
 		<p> Asked by: <%= User.find(q.user_id).first_name %> <%= User.find(q.user_id).last_name %></p>
 		<form action="/answers" method="post">
 			<input type="hidden" name="answer[question_id]" value="<%= q.id %>">
 			<input type="text" name="answer[text]" placeholder="Do you have an answer?" required pattern=".+">
 			<input type="submit" value="Submit answer">
 		</form>
+		<% answers_count = Answer.where(question_id: q.id).size %>
+		<%if answers_count > 0 %>
+			<p> <a href="/questions/<%= q.id %>"> Read <%= answers_count %> answer(s)</a> </p>
+		<% end %>
 		<% @vote = QuestionVote.find_by(user_id: current_user.id, question_id: q.id) %>
 		<% @upvotes = QuestionVote.where(vote: "up", question_id: q.id) %>
 		<% if @vote.nil? %>

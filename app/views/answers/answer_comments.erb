@@ -1,0 +1,13 @@
+<form action="/answer_comments" method="post">
+	<input type="hidden" name="answer_comment[answer_id]" value="<%= @answer.id %>">
+	<input type="text" name="answer_comment[comment]" placeholder="Add a comment..." required pattern=".+">
+	<input type="submit" value="Comment">
+</form>
+
+<% @answer.answer_comments.order(created_at: :desc).each do |c| %>
+	<div>
+		<p> "<%= c.comment %>" </p> 
+		<h6> <%= User.find(c.user_id).first_name %> <%= User.find(c.user_id).last_name %>,
+		<%= c.created_at %> </h6>
+	</div>
+<% end %>	

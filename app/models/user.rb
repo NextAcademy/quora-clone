@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
   has_many :questions, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :question_votes
+  has_many :answer_comments
 end

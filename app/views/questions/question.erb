@@ -2,8 +2,6 @@
 
 <p> Asked by: <%= User.find(@question.user_id).first_name %> <%= User.find(@question.user_id).last_name %> <p>
 
-</br>
-
 <% @vote = QuestionVote.find_by(user_id: current_user.id, question_id: @question.id) %>
 <% @upvotes = QuestionVote.where(vote: "up", question_id: @question.id) %>
 <% if @vote.nil? %>
@@ -29,12 +27,17 @@
 	</form>
 <% end %>
 
+</br>
 
 <% @question.answers.order(created_at: :desc).each do |a| %>
 	<div>
 		<p> "<%= a.text %>" </br> 
 		<%= User.find(a.user_id).first_name %> <%= User.find(a.user_id).last_name %>,
 		<%= a.created_at %> </p>
+		<% @comments = AnswerComment.where(answer_id: a.id).size %>
+		<a href="/answer/<%=a.id%>/answer_comments" >
+		<%if @comments > 0 %> Comments <%=@comments%> <% else %> Comment <% end %> </a>
+
 		<% @vote = AnswerVote.find_by(user_id: current_user.id, answer_id: a.id) %>
 		<% @upvotes = AnswerVote.where(vote: "up", answer_id: a.id) %>
 		<% if @vote.nil? %>
@@ -66,6 +69,5 @@
 <form action="/" method="get">
 <input type="submit" value="Homepage">
 </form>
-
 
 

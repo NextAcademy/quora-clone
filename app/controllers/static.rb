@@ -121,5 +121,19 @@ delete '/answer_votes/:id' do
 	#redirect "/questions/#{Answer.find(answer_vote.answer_id).question_id}"
 end
 
+get "/answer/:id/answer_comments" do
+	@answer = Answer.find(params[:id])
+	erb :"answers/answer_comments"
+end
+
+post "/answer_comments" do
+	answer_comment = AnswerComment.new(params[:answer_comment])
+	answer_comment.user_id = current_user.id
+	if answer_comment.save
+		redirect request.env["HTTP_REFERER"]
+	end
+end
+
+
 
 
