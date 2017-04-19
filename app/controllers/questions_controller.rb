@@ -24,7 +24,7 @@ get '/questions/new' do
 end
 
 post '/questions/new' do
-	byebug
+	# byebug
 	question = Question.new(text: params[:question][:text])
 	question.user_id = current_user.id  # use HELPER method
 
@@ -39,10 +39,12 @@ end
 
 ######################
 
-get '/questions/:id'
-
-	id = params[:question][:id]
+get '/questions/:id' do
+	# byebug
+	# params ===> {"splat"=>[], "captures"=>["1"], "id"=>"1"}
+	id = params[:id]
 	@question = Question.find(id)
+	# @answers = @question.answers
 
 	if @question.nil?
 		flash[:msg] = "What you are looking for doesn't exist. Create one now!"

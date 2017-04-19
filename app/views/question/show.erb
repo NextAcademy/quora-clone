@@ -1,11 +1,25 @@
+<a href="/">Back to homepage</a>
+
 <h2>Now you are at question <%= @question.id %></h2>
 
-<p>This is brought to you by user <%= @question.user.full_name %><p>
+<p>This is brought to you by user: <%= @question.user.full_name %><p>
 
-<p>This is the question<p>
+<p>This is the question :<p>
 <p><%= @question.text %><p>
 
-<form action="#" method="post">
+<form action="/questions/<%= @question.id %>/answers" method="post">
 	<input type="text" placeholder="Type your answers here" name="answer[text]">
 	<input type="submit" value="Submit my answers!">
 </form>
+
+<h2>Answers by people!</h2>
+<table>
+	<tbody>
+		<% @question.answers.order('created_at DESC').each do |a| %>
+			<tr>
+				<td><%= a.user.full_name %></td>
+				<td><%= a.text %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

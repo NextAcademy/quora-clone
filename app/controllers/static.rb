@@ -8,6 +8,6 @@ get '/' do
   if !logged_in? 
 		redirect "/login"
 	else
-	erb :"static/index"
+		erb :"static/index"
 	end
 end

@@ -1,8 +1,10 @@
+<!-- THIS IS NOT BEING USEDDDDD!!!! -->
+
 <h2>CHECK OUT THE QUESTIONS!</h2>
 
 <table>
 	<tbody>
-		<% Question.last(10).each do |q| %>
+		<% Question.last(10).order('created_at DESC').each do |q| %>
 			<tr>
 				<td><%= q.user_id %></td>
 				<td><%= q.text %></td>
@@ -10,3 +12,4 @@
 		<% end %>
 	</tbody>
 </table>
+

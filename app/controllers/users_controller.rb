@@ -18,6 +18,7 @@ post '/register' do
   if user.save
     # what should happen if the user is saved?
     flash[:msg] = "Success!"
+    session[:id] = user.id
     redirect '/'
   else  
     flash[:msg] = user.errors.full_messages

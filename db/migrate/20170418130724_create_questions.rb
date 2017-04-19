@@ -3,7 +3,7 @@ class CreateQuestions < ActiveRecord::Migration
 		create_table :questions do |t|
 			t.string :text
 			t.integer :user_id
-			t.timestamp
+			t.timestamps
 		end
 	end
 end
