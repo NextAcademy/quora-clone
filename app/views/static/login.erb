@@ -1,0 +1,24 @@
+<h2> Login </h2>
+
+<% if @errors != nil %>
+    <ul>
+    <% @errors.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+<% end %>
+
+<form action="/sessions" method="post">
+	<input type="text" name="user[email]" required placeholder="	Email"></br>
+	<input type="password" name="user[password]" required placeholder="Password"> </br>
+	<input type="submit" value="Log in">
+</form>
+
+
+<h4> Don't have an account yet? </br>
+<a href="/users/new">Sign up</a> and unlock a world of knowledge... </h4>
+
+
+
+
+

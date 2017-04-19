@@ -1,0 +1,15 @@
+<h1> <%= @user.first_name %> <%= @user.last_name %> </h1>
+</br>
+
+<h4> <a href="/">Homepage</a>
+</br> <a href="/user/<%=@user.id%>/questions" >My questions</a>
+</br> <a href="/user/<%=@user.id%>/answers" >My answers</a>
+</h4>
+
+
+<form action="/sessions/:id" method="post">
+<input id="hidden" type="hidden" name="_method" value="delete">
+<input type="submit" value="Logout">
+</form>
+
+

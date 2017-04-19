@@ -1,0 +1,10 @@
+<a href="/users/<%= @user.id %>"> Back to your profile </a>
+
+<% @user.answers.order(created_at: :desc).each do |a| %>
+	<div>
+		<p> You: "<%= a.text %>" </p>
+		<h6>  Question: <a href="/questions/<%= a.question_id %>"> <%= Question.find(a.question_id).text %> </a> 
+		</br> Answered on: <%= a.created_at %> </h6>
+	</div>
+	</br> </br>
+<% end %>

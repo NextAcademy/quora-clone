@@ -21,6 +21,9 @@ require "sinatra/reloader" if development?
 require 'erb'
 require 'uri'
 ######################################################################
+require 'bcrypt'
+######################################################################
+require 'byebug'
 
 
 # System Setup
