@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 # Ruby Version
 # ruby "2.2.1"
 
+# Adding byebug
+gem 'byebug'
+
 # Adding Sinatra Drivers
 gem 'sinatra'
 gem 'sinatra-contrib'
@@ -23,6 +26,10 @@ gem 'rake'
 
 # Adding rspec for running unit testing
 gem 'rspec'
+
+#Adding gem for has_secure_password
+gem 'bcrypt', '~> 3.1.7'
+
 
 group :development, :test do
 	# Adding shotgun for local web hosting
