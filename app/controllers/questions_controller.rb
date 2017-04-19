@@ -43,3 +43,12 @@ end
 delete '/questions/:id' do
 
 end
+
+#*********************************questions&answers controller***************************************
+#
+# #display a list of questions by a users
+# get '/users/:id/questions' do
+#   # @user = User.all
+#   @user = User.find_by_id(params[:id])
+#   erb :'users/index'
+# end

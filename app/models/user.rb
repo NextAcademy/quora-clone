@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   validates :fullname, presence: true
 
   has_many :questions
+  has_many :answers
 
   # users.password_hash in the database is a :string
   include BCrypt
