@@ -10,6 +10,9 @@
 		<% @questions.each {|question| %>
 	 		<tr>
 	 			<td><a href="/questions/<%= question.id %>"><%= question.title %></a></td>
+	 			<td><button type="submit" value="up" onclick='location.href="/questions/<%= question.id %>/votes"'>Upvote | <%= question.question_votes.count %></button></td>
+	 			<td><button type="submit" value="down" onclick='location.href="/questions/<%= question.id %>/votes"'>Downvote</button></td>
+
 	 		</tr>
 		<% } %>
 		</table>
