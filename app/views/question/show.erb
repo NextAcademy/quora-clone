@@ -1,0 +1,18 @@
+<h1>specific question page</h1>
+
+<h3>Question</h3>
+<p><%= @question.title %> by <%= @question.user.first_name %> </p>
+
+<h3>Answers</h3>
+
+<% @question.answers.each {|answer| %>
+
+	<p><%= answer.content %> by <%= answer.user.first_name %></p>
+
+<% } %>
+
+<form method="post" action="/questions/<%= @question.id %>/answers">
+    <input type=text name="content">
+    <input type=submit value="Answer">
+</form>
+

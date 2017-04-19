@@ -1,2 +1,20 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<div>
+	<h2>Top Stories For You</h2>
+	<p>What is your question?</p>
+	<form method="post" action="/questions">
+    <input type=text name="question">
+    <input type=submit value="Ask Question">
+    </form>
+	<% if @questions != nil %>
+	  <table border="1">
+		<% @questions.each {|question| %>
+	 		<tr>
+	 			<td><a href="/questions/<%= question.id %>"><%= question.title %></a></td>
+	 			<td><button type="submit" value="up" onclick='location.href="/questions/<%= question.id %>/votes"'>Upvote | <%= question.question_votes.count %></button></td>
+	 			<td><button type="submit" value="down" onclick='location.href="/questions/<%= question.id %>/votes"'>Downvote</button></td>
+
+	 		</tr>
+		<% } %>
+		</table>
+	<% end %>
+</div>

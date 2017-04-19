@@ -1,8 +1,20 @@
 <html>
 	<head>
 		<title>Sinatra Framework</title>
+		<script type="text/javascript" src="/js/application.js"></script>
+		<link rel="stylesheet" type="text/css"  href="/css/application.css">
 	</head>
 	<body>
+		<% if logged_in? %>
+			<p>Welcome <%= current_user.first_name %>
+			<div style="border:1px">
+				<p>Menu:
+					<a href="/questions">home page</a>
+					<a href="/users/<%= current_user.id %>/questions">profile</a>
+					<a href="/logout">log out</a>
+				</p>
+			</div>
+		<% end %>
 		<%= yield %>
 	</body>
 </html>

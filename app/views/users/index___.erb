@@ -1,0 +1,15 @@
+<h1>users/index</h1>
+
+<div>
+	<img src="/img/default_user.png">
+	<h2>Top Stories For You</h2>
+	<% if @questions != nil %>
+	  <table border="1">
+		<% @questions.each {|question| %>
+	 		<tr>
+	 			<td><a href="/questions/<%= question.id %>"><%= question.title %></a></td>
+	 		</tr>
+		<% } %>
+		</table>
+	<% end %>
+</div>

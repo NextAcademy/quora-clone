@@ -1,0 +1,16 @@
+<div>
+	<img src="/img/default_user.png">
+	<h2>Your answers</h2>
+	<% if @answers != nil %>
+	  <table border="1">
+		<% @answers.each {|answer| %>
+	 		<tr>
+	 			<td><%= answer.question.title %> by <%= answer.question.user.first_name %></td>
+	 			<td><%= answer.content %></td>
+	 		</tr>
+		<% } %>
+		</table>
+	<% end %>
+	<br>
+	<a href="/users/<%= current_user.id %>/questions">your questions</a>
+</div>
