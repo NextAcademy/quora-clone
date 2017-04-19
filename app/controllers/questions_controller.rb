@@ -1,4 +1,6 @@
 
+
+
 #returns a new HTML question form
 get '/questions/new' do
   erb :'questions/new'
@@ -47,8 +49,12 @@ end
 #*********************************questions&answers controller***************************************
 #
 # #display a list of questions by a users
-# get '/users/:id/questions' do
-#   # @user = User.all
-#   @user = User.find_by_id(params[:id])
-#   erb :'users/index'
-# end
+get '/users/:id/questions' do
+  if current_user
+    @user = User.find_by (session[:id])
+    erb :'users/index'
+  else
+    flash[:msg] = "Please log in to ask a question"
+    redirect '/login'
+  end
+end

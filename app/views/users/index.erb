@@ -2,7 +2,7 @@
 <h1> User's Questions </h1>
 
 
-<% @user.all.questions.each do |p| %>
+<% @user.questions.each do |p| %>
 <p>TITLE : <%= p.title %></p>
 <p>DESCRIPTION : <%= p.description %></p>
 <p>USER ID : <%= p.user_id %></p>
