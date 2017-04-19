@@ -8,11 +8,11 @@ post '/signup' do
 	user = User.new(params[:user])
 
 	if user.save	
-		puts "saved"
+		puts "signin saved"
 		session[:user_id] = user.id
 		redirect "/questions"
 	else
-		puts "error"
+		puts "signin error"
 	end
 end
 
@@ -59,7 +59,7 @@ end
 
 get '/questions/:question_id' do
 	@question = Question.find_by_id(params[:question_id])
-	erb :"questions/show"
+	erb :"question/show"
 end
 
 post '/questions/:question_id/answers' do
@@ -76,7 +76,7 @@ end
 
 get '/users/:user_id/questions' do
 	@questions = Question.where(user_id: params[:user_id])
-	erb :"questions/index"
+	erb :"question/index"
 end
 
 get '/users/:user_id/answers' do
