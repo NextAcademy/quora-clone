@@ -5,6 +5,6 @@ class CreateQuestions < ActiveRecord::Migration
 			t.string :description
 			t.integer :user_id, null: false
 		end
-		add_foreign_key :questions, :users
+			add_foreign_key :questions, :users
 	end
 end

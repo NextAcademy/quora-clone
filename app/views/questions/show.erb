@@ -1,3 +1,17 @@
+ <h1>Question</h1>
+
 <h2><%= @question.title %></h2>
 <h4>Asked by <%= @question.user.full_name %></h4>
 <p><%= @question.description %></p>
+
+<p>Answer</p>
+
+<form method= "post" action= "/question/<%= @question.id %>/answer">
+     <input type="text" placeholder="answer here" name="answer[answer]"><br>
+     <input type= submit value= "Answer">
+ </form>
+ 
+ <% @question.answers.each do |a| %>
+	 <p> <%= a.answer %> </p>
+	
+ <% end %>

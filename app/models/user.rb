@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 	# This is Sinatra! Remember to create a migration!
   validates :email, uniqueness: true, presence: true
   validates :full_name, presence: true
-  #validate :password_validator, :email_validator
+  validate :password_validator, :email_validator
   before_create :password_validator, :email_validator
   has_secure_password
   has_many :questions

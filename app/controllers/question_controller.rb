@@ -10,26 +10,20 @@ post '/question' do
   end
 end
 
+get '/question/:id' do
+    @question = Question.find(params[:id])
+    erb :"/questions/show"
+end
+
 get '/users/:id/questions' do
   @user = User.find_by_id(params[:id])
   # erb :"static/question"
   erb :"questions/index"
 end
 
-get '/users/:id/question/:id' do
-  @question = Question.find(params[:id])
-  # erb :"static/question"
-  erb :"questions/show"
-end
-
-# post '/question/:id/answer' do
+# get '/users/:id/question/:id' do
 #   @question = Question.find(params[:id])
-#   answer = Answer.new(params[:answer])
-#   answer.question_id = @question.id
-#   answer.user_id = current_user.id
-#   if answer.save
-#     redirect '/question/#{params[:id]}'
-#   else
-#     "ERROR"
-#   end
+#   erb :"questions/show"
 # end
+
+

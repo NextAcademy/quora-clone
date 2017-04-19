@@ -3,17 +3,18 @@ class Answer < ActiveRecord::Base
   validates :answer, presence: true
   validates :user_id, presence: true
   validates :question_id, presence: true
-  validate :one_answer_one_question
-  before_create :one_answer_per_question
+  # validate :one_answer_one_question
+  # before_create :one_answer_one_question
   belongs_to :question
+  belongs_to :user
 
-  def one_answer_one_question
-    self.question.answers.each do |x|
-      if x.user_id == self.user_id
-        errors.add(:answer, "already answerd this question")
-        return false
-      end
-    end
-  end
+  # def one_answer_one_question
+  #   self.question.answers.each do |x|
+  #     if x.user_id == self.user_id
+  #       errors.add(:answer, "already answerd this question")
+  #       return false
+  #     end
+  #   end
+  # end
 
 end
