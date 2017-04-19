@@ -3,9 +3,16 @@ source 'https://rubygems.org'
 # Ruby Version
 # ruby "2.2.1"
 
+#adding bcrypt
+gem 'bcrypt'
+
+#adding byebug
+gem 'byebug'
+
 # Adding Sinatra Drivers
 gem 'sinatra'
 gem 'sinatra-contrib'
+gem 'sinatra-flash'
 
 # Adding thin gem as advised
 gem 'thin'

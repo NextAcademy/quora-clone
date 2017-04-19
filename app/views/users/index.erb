@@ -1,0 +1,10 @@
+
+<h1> User's Questions </h1>
+
+
+<% @user.questions.each do |p| %>
+<p>TITLE : <%= p.title %></p>
+<p>DESCRIPTION : <%= p.description %></p>
+<p>USER ID : <%= p.user_id %></p>
+<p>QUESTION ASKED AT : <%= p.created_at %></p><br>
+<% end %>
