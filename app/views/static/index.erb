@@ -16,7 +16,15 @@
 <input type="submit" value="Ask!">
 </form>
 
-<% Question.all.each do |q| %>
+<% if @errors != nil %>
+	<ul>
+  	<% @errors.each do |msg| %>
+    	<li><%= msg %></li>
+  	<% end %>
+  </ul>
+<% end %>
+
+<% Question.order(created_at: :desc).each do |q| %>
 	<div>
 		<h2> <a href="/questions/<%= q.id %>"> <%= q.text %> </a> </h2>
 		<p> Asked by: <%= User.find(q.user_id).first_name %> <%= User.find(q.user_id).last_name %></p>
@@ -25,6 +33,18 @@
 			<input type="text" name="answer[text]" placeholder="Do you have an answer?" required pattern=".+">
 			<input type="submit" value="Submit answer">
 		</form>
+		<form action="/question_votes" method="post">
+			<input type="hidden" name="question_vote[question_id]" value="<%= q.id %>" >
+			<input type="hidden" name="question_vote[vote]" value="up" >
+			<input type="submit" value="Upvote" >
+		</form>
+		<form action="/question_votes" method="post">
+			<input type="hidden" name="question_vote[question_id]" value="<%= q.id %>" >
+			<input type="hidden" name="question_vote[vote]" value="down" >
+			<input type="submit" value="Downvote" >
+		</form>
 	</div>
 	</br> </br>
 <% end %>
+
+

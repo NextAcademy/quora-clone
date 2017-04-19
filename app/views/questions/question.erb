@@ -4,11 +4,42 @@
 
 </br>
 
+<% if @errors != nil %>
+	<ul>
+  	<% @errors.each do |msg| %>
+    	<li><%= msg %></li>
+  	<% end %>
+  </ul>
+<% end %>
+
 <% @question.answers.order(created_at: :desc).each do |a| %>
 	<div>
 		<p> "<%= a.text %>" </br> 
 		<%= User.find(a.user_id).first_name %> <%= User.find(a.user_id).last_name %>,
 		<%= a.created_at %> </p>
+		<% @vote = AnswerVote.find_by(user_id: current_user.id, answer_id: a.id) %>
+		<% if @vote.nil? %>
+			<form action="/answer_votes" method="post">
+				<input type="hidden" name="answer_vote[answer_id]" value="<%= a.id %>" >
+				<input type="hidden" name="answer_vote[vote]" value="up" >
+				<input type="submit" value="Upvote" >
+			</form>
+			<form action="/answer_votes" method="post">
+				<input type="hidden" name="answer_vote[answer_id]" value="<%= a.id %>" >
+				<input type="hidden" name="answer_vote[vote]" value="down" >
+				<input type="submit" value="Downvote" >
+			</form>
+		<% elsif @vote.vote == "up" %>
+			<form action="/answer_votes/<%=@vote.id%>" method="post">
+				<input id="hidden" type="hidden" name="_method" value="delete">
+				<input type="submit" value="Upvoted">
+			</form>
+		<% elsif @vote.vote == "down" %>
+			<form action="/answer_votes/<%=@vote.id%>" method="post">
+				<input id="hidden" type="hidden" name="_method" value="delete">
+				<input type="submit" value="Downvoted">
+			</form>
+		<% end %>
 	</div>
 	</br> </br>
 <% end %>	
@@ -16,3 +47,6 @@
 <form action="/" method="get">
 <input type="submit" value="Homepage">
 </form>
+
+
+

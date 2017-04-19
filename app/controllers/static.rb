@@ -66,7 +66,6 @@ post "/questions" do
 	question = Question.new(params[:question])
 	question.user_id = current_user.id
 	if question.save
-		p question
 		erb :"static/index"
 	end
 end
@@ -75,7 +74,6 @@ post "/answers" do
 	answer = Answer.new(params[:answer])
 	answer.user_id = current_user.id
 	if answer.save
-		p answer
 		erb :"static/index"
 	end
 end
@@ -93,6 +91,31 @@ end
 get "/user/:id/answers" do
 	@user = User.find(params[:id])
 	erb :"users/answers"
+end
+
+post "/question_votes" do
+	question_vote = QuestionVote.new(params[:question_vote])
+	question_vote.user_id = current_user.id
+	if question_vote.save
+		erb :"static/index"
+	else
+		@errors = question_vote.errors.full_messages
+		erb :'static/index'
+	end
+end
+
+post "/answer_votes" do
+	answer_vote = AnswerVote.new(params[:answer_vote])
+	answer_vote.user_id = current_user.id
+	@question = Question.find(Answer.find(answer_vote.answer_id).question_id)
+	erb :"questions/question"
+	if answer_vote.save
+		p answer_vote
+		erb :"questions/question"
+	else
+		@errors = answer_vote.errors.full_messages
+		erb :"questions/question"
+	end
 end
 
 

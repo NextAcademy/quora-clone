@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
   message: "invalid email address" }, uniqueness: { case_sensitive: false, message: "we already have an account for that email"}
   has_many :questions, dependent: :destroy
   has_many :answers, dependent: :destroy
+  has_many :question_votes
 end
