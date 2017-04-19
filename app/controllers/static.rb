@@ -27,7 +27,6 @@ post '/users' do
 	if user.save
 		session[:id] = user.id
 		erb :"static/index"
-		#redirect "user_profile/#{user.id}"
 	else
 		@errors = user.errors.full_messages
 		erb :'static/login'
@@ -43,7 +42,6 @@ post '/sessions' do
 		if user.authenticate(params[:user][:password])   
 			session[:id] = user.id
 			erb :"static/index"
-			#redirect "users/#{user.id}"
 		else
 			@errors = ["Hi #{user.first_name}, unfortunately the password that you entered is incorrect."]
 			erb :'static/login'
@@ -97,25 +95,32 @@ post "/question_votes" do
 	question_vote = QuestionVote.new(params[:question_vote])
 	question_vote.user_id = current_user.id
 	if question_vote.save
-		erb :"static/index"
+		redirect "/"
 	else
 		@errors = question_vote.errors.full_messages
-		erb :'static/index'
+		redirect "/"
 	end
+end
+
+delete '/question_votes/:id' do
+	question_vote = QuestionVote.find(params[:id])
+	question_vote.destroy
+	redirect "/"
 end
 
 post "/answer_votes" do
 	answer_vote = AnswerVote.new(params[:answer_vote])
 	answer_vote.user_id = current_user.id
-	@question = Question.find(Answer.find(answer_vote.answer_id).question_id)
-	erb :"questions/question"
 	if answer_vote.save
-		p answer_vote
-		erb :"questions/question"
-	else
-		@errors = answer_vote.errors.full_messages
-		erb :"questions/question"
+		redirect "/questions/#{Answer.find(answer_vote.answer_id).question_id}"
 	end
 end
+
+delete '/answer_votes/:id' do
+	answer_vote = AnswerVote.find(params[:id])
+	answer_vote.destroy
+	redirect "/questions/#{Answer.find(answer_vote.answer_id).question_id}"
+end
+
 
 

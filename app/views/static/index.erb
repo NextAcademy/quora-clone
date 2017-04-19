@@ -33,16 +33,30 @@
 			<input type="text" name="answer[text]" placeholder="Do you have an answer?" required pattern=".+">
 			<input type="submit" value="Submit answer">
 		</form>
-		<form action="/question_votes" method="post">
-			<input type="hidden" name="question_vote[question_id]" value="<%= q.id %>" >
-			<input type="hidden" name="question_vote[vote]" value="up" >
-			<input type="submit" value="Upvote" >
-		</form>
-		<form action="/question_votes" method="post">
-			<input type="hidden" name="question_vote[question_id]" value="<%= q.id %>" >
-			<input type="hidden" name="question_vote[vote]" value="down" >
-			<input type="submit" value="Downvote" >
-		</form>
+		<% @vote = QuestionVote.find_by(user_id: current_user.id, question_id: q.id) %>
+		<% @upvotes = QuestionVote.where(vote: "up", question_id: q.id) %>
+		<% if @vote.nil? %>
+			<form action="/question_votes" method="post">
+				<input type="hidden" name="question_vote[question_id]" value="<%= q.id %>" >
+				<input type="hidden" name="question_vote[vote]" value="up" >
+				<input type="submit" value="Upvote" >
+			</form>
+			<form action="/question_votes" method="post">
+				<input type="hidden" name="question_vote[question_id]" value="<%= q.id %>" >
+				<input type="hidden" name="question_vote[vote]" value="down" >
+				<input type="submit" value="Downvote" >
+			</form>
+		<% elsif @vote.vote == "up" %>
+			<form action="/question_votes/<%=@vote.id%>" method="post">
+				<input id="hidden" type="hidden" name="_method" value="delete">
+				<input type="submit" value="Upvoted | <%=@upvotes.size%>">
+			</form>
+		<% elsif @vote.vote == "down" %>
+			<form action="/question_votes/<%=@vote.id%>" method="post">
+				<input id="hidden" type="hidden" name="_method" value="delete">
+				<input type="submit" value="Downvoted">
+			</form>
+		<% end %>
 	</div>
 	</br> </br>
 <% end %>
