@@ -21,9 +21,4 @@ get '/users/:id/questions' do
   erb :"questions/index"
 end
 
-# get '/users/:id/question/:id' do
-#   @question = Question.find(params[:id])
-#   erb :"questions/show"
-# end
-
 
