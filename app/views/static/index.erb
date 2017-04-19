@@ -3,3 +3,20 @@
 <!-- <form action="/logout" method="post">
 	<input type="submit" value="logout">
 </form> -->
+
+<h2>CHECK OUT THE QUESTIONS!</h2>
+
+<a href="/questions/new">Ask a question</a>
+
+<h3>Some questions here</h3>
+<table>
+	<tbody>
+		<% Question.order('created_at DESC').limit(10).each do |q| %>
+			<tr>
+				<td><%= q.user.full_name %></td>
+				<td><a href="/questions/<%= q.id %>"><%= q.text %></a></td>
+				<td><%= q.answers.order('updated_at DESC').limit(1)[0].text if !q.answers.order('updated_at DESC').limit(1).empty?%></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

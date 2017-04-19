@@ -5,34 +5,50 @@ enable :sessions
 get '/register' do
 	puts "[LOG] Getting /register"
   puts "[LOG] Params: #{params.inspect}"
-  erb :"static/register"
+  erb :"user/new"
 end
 
 
 # In users_controller.rb
-post '/signup' do
-	# p params
-	#params was automatically created into a hash
-  user = User.new(params[:user])
-  # p user
-  if user.save
-    # what should happen if the user is saved?
-    flash[:msg] = "Success!"
+post '/register' do
+
+  if logged_in?
+    redirect '/'
   else
-    # what should happen if the user keyed in invalid date?
-    @err = user.errors.full_messages
-    flash[:msg] = @err
-    erb :"static/register"
-    # require 'byebug'
-    # byebug
+  	#params was automatically created into a hash
+    user = User.new(params[:user])
+    if user.save
+      # what should happen if the user is saved?
+      flash[:msg] = "Success!"
+      session[:id] = user.id
+      redirect '/'
+    else  
+      flash[:msg] = user.errors.full_messages
+      redirect '/register'
+    end
   end
+
+=begin
+In a POST method, put "redirect", not erb.
+
+Why?
+
+Because if you've done an action, and HTML is rendered, the link is still the same.
+
+If people refresh, you resubmit in the action again (though it looks different). BAD! Imagine this is a payment page!
+
+=end
 end  
 ##########################
 
 get '/login' do
-	puts "[LOG] Getting /login"
-  puts "[LOG] Params: #{params.inspect}"
-  erb :"static/login"
+  # puts "[LOG] Getting /login"
+  # puts "[LOG] Params: #{params.inspect}"
+  if logged_in?
+    redirect '/'
+  else
+    erb :"session/new"
+  end
 end
 
 post '/login' do
@@ -54,7 +70,7 @@ post '/logout' do
 	session[:id] = nil
 	# redirect "/"
 	# byebug
-	erb :"static/login"
+	erb :"session/new"
   # kill a session when a user chooses to logout, for example, assign nil to a session
   # redirect to the appropriate page
 end
@@ -64,13 +80,13 @@ end
 
 get '/users/:id' do
   # some code here
-  id = params[:user][:id]
-  @user = User.find_by(id)
+  id = params[:id]   # string!
+  @user = User.find(id.to_i)
 
   if @user.nil?
   	redirect '/' 
   else
-  	erb :"static/profile"
+  	erb :"user/show"
   end
 end
 

@@ -1,0 +1,25 @@
+<h2>Submit a question!</h2>
+<form action="/questions/new" method="post">
+	<input type="text" placeholder="Put your question here" name="question[text]">
+	<input type="submit" value="Submit my question!">
+</form>
+
+
+
+<!-- 
+WHY WE DON'T HAVE USER ID HERE
+==============================
+
+you must be tempted to put it here:
+
+<input type="number" name="<%# current_user.id %>">
+
+But why shouldn't you?
+
+1. It's a part of HTML, means it is visible. 
+2. Even if the type is "HIDDEN", you can inspect element and change the values in there!
+
+Solution?
+- Put it in your CONTROLLER file
+
+-->
