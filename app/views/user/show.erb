@@ -1,3 +1,43 @@
-<h2>Welcome to your profile <%= @user.full_name %><h2>
+<h2>Welcome to <%= @user.full_name %>'s profile<h2>
 
 <p><%= @user.full_name %><p>
+
+<hr>
+
+<h3>Questions by <%= @user.full_name %></h3>
+
+<table>
+	<tbody>
+		<% questions = Question.where(user_id: @user.id) %>
+		<% if questions.nil? %>
+			<p>No questions asked yet!</p>
+		<% else %>
+			<% questions.order('created_at DESC').limit(10).each do |q| %>
+				<tr>
+					<td><a href="/questions/<%= q.id %>"><%= q.text %></a></td>
+					<td><%= q.answers.order('updated_at DESC').limit(1)[0].text if !q.answers.order('updated_at DESC').limit(1).empty?%></td>
+				</tr>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>
+
+<hr>
+
+<h3>Answers by <%= @user.full_name %></h3>
+
+<table>
+	<tbody>
+		<% answers = Answer.where(user_id: @user.id) %>
+		<% if answers.nil? %>
+			<p>No questions asked yet!</p>
+		<% else %>
+			<% answers.order('updated_at DESC').limit(10).each do |a| %>
+				<tr>
+					<td><a href="/questions/<%= a.question.id %>"><%= a.question.text %></a></td>
+					<td><%= a.text %></td>
+				</tr>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>

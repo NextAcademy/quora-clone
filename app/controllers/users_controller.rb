@@ -11,18 +11,21 @@ end
 
 # In users_controller.rb
 post '/register' do
-	# p params
-	#params was automatically created into a hash
-  user = User.new(params[:user])
-  # p user
-  if user.save
-    # what should happen if the user is saved?
-    flash[:msg] = "Success!"
-    session[:id] = user.id
+
+  if logged_in?
     redirect '/'
-  else  
-    flash[:msg] = user.errors.full_messages
-    redirect '/register'
+  else
+  	#params was automatically created into a hash
+    user = User.new(params[:user])
+    if user.save
+      # what should happen if the user is saved?
+      flash[:msg] = "Success!"
+      session[:id] = user.id
+      redirect '/'
+    else  
+      flash[:msg] = user.errors.full_messages
+      redirect '/register'
+    end
   end
 
 =begin
@@ -39,9 +42,13 @@ end
 ##########################
 
 get '/login' do
-	puts "[LOG] Getting /login"
-  puts "[LOG] Params: #{params.inspect}"
-  erb :"session/new"
+  # puts "[LOG] Getting /login"
+  # puts "[LOG] Params: #{params.inspect}"
+  if logged_in?
+    redirect '/'
+  else
+    erb :"session/new"
+  end
 end
 
 post '/login' do
@@ -73,8 +80,8 @@ end
 
 get '/users/:id' do
   # some code here
-  id = params[:user][:id]
-  @user = User.find_by(id)
+  id = params[:id]   # string!
+  @user = User.find(id.to_i)
 
   if @user.nil?
   	redirect '/' 
