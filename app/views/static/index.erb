@@ -22,7 +22,21 @@
 					</form>
 				</td>
 
-				<td><%= q.answers.order('updated_at DESC').limit(1)[0].text if !q.answers.order('updated_at DESC').limit(1).empty?%></td>
+				<td><% if !q.answers.order('updated_at DESC').limit(1).empty? %>
+						<% ans_obj = q.answers.order('updated_at DESC').limit(1)[0] %>
+						<%= ans_obj.text %>
+					<% end %>
+				</td>
+
+				<td>
+					<% if !ans_obj.text.empty? %>
+						<form action="/questions/<%= q.id %>/answers/<%= ans_obj.id %>/votes" method="post">
+							<input type="submit" value="Upvote" name="answer_vote[vote_type]">
+							<input type="submit" value="Downvote" name="answer_vote[vote_type]">
+						</form>
+					<% end %>
+				</td>
+				
 			</tr>
 		<% end %>
 	</tbody>

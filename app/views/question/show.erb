@@ -28,6 +28,13 @@
 			<tr>
 				<td><%= a.user.full_name %></td>
 				<td><%= a.text %></td>
+				<td>
+					<form action="/questions/<%= @question.id %>/answers/<%= a.id %>/votes" method="post">
+						<input type="submit" value="Upvote" name="question_vote[vote_type]">
+						<input type="submit" value="Downvote" name="question_vote[vote_type]">
+					</form>
+				</td>
+		
 			</tr>
 		<% end %>
 	</tbody>
