@@ -3,7 +3,8 @@ class AnswerVote < ActiveRecord::Base
 	validates :answer_id, presence: true
 	validates :user_id, presence: true
 	#validate :upvote_count, :downvote_count
-	validates_uniqueness_of :user_id, scope: :answer_id
+	validates :user, uniqueness: { scope: :answer }
+	#validates_uniqueness_of :user_id, scope: :answer_id
 	belongs_to :user
 	belongs_to :answer
 

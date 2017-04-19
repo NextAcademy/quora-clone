@@ -1,27 +1,21 @@
 enable :sessions
 
 post "/question/:id/upvote" do
-  @vote = QuestionVote.new
-  if current_user.vote("upvote", "question", params[:id])
+  # @question = Question.find(params[:id])
+  # current_vote = QuestionVote.where(user_id: current_user.id, question_id: params[:id]).first
+  current_vote = current_user.question_votes.find_by(question_id: params[:id])
+  if current_vote.nil?
+    @vote = current_user.question_votes.new(question_id: params[:id], vote_type: true)
+    @vote.save
     redirect "/"
   else
-    "ERROR"
-  end
-end
-
-post "/question/:id/downvote" do
-  if current_user.vote("downvote", "question", params[:id])
-    redirect "/"
-  else
-    "ERROR"
-  end
-end
-
-post "/question/:id/remove-vote" do
-  if current_user.remove_vote("question", params[:id])
-    redirect "/"
-  else
-    "ERROR"
+    current_vote.destroy
+    # if current_vote.vote_type
+    #   current_vote.update_attribute(:vote_type, false) #==> update_attribute will not stop by callbacks
+    # elsif !current_vote.vote_type
+    #   current_vote.update_attribute(:vote_type, true)
+    # end
+    redirect '/'
   end
 end
 

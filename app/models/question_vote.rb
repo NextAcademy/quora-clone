@@ -5,7 +5,7 @@ class QuestionVote < ActiveRecord::Base
 	validates :vote_type, presence: true
 	#validate :upvote_count, :downvote_count
 	#before_create :upvote_count, :downvote_count
-	#validates_uniqueness_of :user_id, scope: :question_id
+	validates_uniqueness_of :user_id, scope: :question_id
 	belongs_to :user
 	belongs_to :question
 

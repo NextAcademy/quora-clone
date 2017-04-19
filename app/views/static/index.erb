@@ -24,6 +24,21 @@
 
      <form method= "get" action="/question/<%=q.id%>">
             <input type= submit value= "Answer">
+     </form>
+
+      <form method= "post" action="/question/<%=q.id%>/upvote">
+          
+          <% button_text = "Cancel Upvote" %>
+          <% current_vote = current_user.question_votes.where(question_id: q.id, vote_type: true) %>
+          <% if current_vote.empty? %>
+            <% button_text = "Upvote" %>
+          <% end %>
+
+          <input type= submit value= "<%= button_text %> | <%= QuestionVote.where(vote_type: true, question_id: q.id).count %>">
+      </form>
+
+      <form method= "post" action="/question/<%=q.id%>/remove-vote">
+             <input type= submit value= "Downvote">
       </form>
 
 
