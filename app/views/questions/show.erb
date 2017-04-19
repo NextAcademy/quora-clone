@@ -1,10 +1,10 @@
  <h1>Question</h1>
 
-<h2><%= @question.title %></h2>
+<h3><%= @question.title %></h3>
 <h4>Asked by <%= @question.user.full_name %></h4>
 <p><%= @question.description %></p>
 
-<p>Answer</p>
+<h1>Answer</h1>
 
 <form method= "post" action= "/question/<%= @question.id %>/answer">
      <input type="text" placeholder="answer here" name="answer[answer]"><br>
@@ -13,5 +13,4 @@
  
  <% @question.answers.each do |a| %>
 	 <p> <%= a.answer %> </p>
-	
  <% end %>

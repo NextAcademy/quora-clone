@@ -14,13 +14,17 @@
        <input type="text" placeholder="description" name="question[description]"></br>
        <input type=submit value="Ask">
    </form>
-   
+
  <!-- #else asked question then display existing post -->
    <h2>Top stories</h2>
    <% Question.all.each do |q| %>
 
-     <p><a href='/question/<%=q.id%>'><%= q.title %></a></p>
+     <p><a href="/question/<%=q.id%>"><%= q.title %></a></p>
      <p><%= q.description %></p>
+
+     <form method= "get" action="/question/<%=q.id%>">
+            <input type= submit value= "Answer">
+      </form>
      
    <% end %>
 
