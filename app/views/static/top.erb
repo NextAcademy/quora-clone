@@ -1,3 +1,26 @@
+<h1>Quora clone</h1>
 
-<h1>top page</h1>
-<p>hello <%= @user_name %> </p>
+<div id="signup">
+	<h2>Sign up</h2>
+	<form method="post" action="/signup">
+	    FIRST NAME<input type=text name="user[first_name]"><br>
+	    LAST NAME<input type=text name="user[last_name]"><br>
+	    EMAIL<input type=text name="user[email]"><br>
+	    PASSWORD<input type=password name="user[password]"></br>
+	    <input type=submit value="Sign Up">	    
+	</form>
+</div>
+
+<p>------------------------</p>
+
+<div id="login">
+	<h2>LOGIN</h2>
+	<form method="post" action="/login">
+	    <input type=text placeholder="Email" name="user[email]"><br>
+	    <input type=password placeholder="Password" name="user[password]"></br>
+	    <input type=submit value="Login">
+	    <p id ="login_msg"></p>
+	</form>
+</div>
+
+

@@ -1,10 +1,8 @@
+<h1>users/index</h1>
+
 <div>
+	<img src="/img/default_user.png">
 	<h2>Top Stories For You</h2>
-	<p>What is your question?</p>
-	<form method="post" action="/questions">
-    <input type=text name="question">
-    <input type=submit value="Ask Question">
-    </form>
 	<% if @questions != nil %>
 	  <table border="1">
 		<% @questions.each {|question| %>

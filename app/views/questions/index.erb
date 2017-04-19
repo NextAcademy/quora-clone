@@ -1,10 +1,6 @@
 <div>
-	<h2>Top Stories For You</h2>
-	<p>What is your question?</p>
-	<form method="post" action="/questions">
-    <input type=text name="question">
-    <input type=submit value="Ask Question">
-    </form>
+	<img src="/img/default_user.png">
+	<h2>Your Questions</h2>
 	<% if @questions != nil %>
 	  <table border="1">
 		<% @questions.each {|question| %>
@@ -14,4 +10,6 @@
 		<% } %>
 		</table>
 	<% end %>
+	<br>
+	<a href="/users/<%= current_user.id %>/answers">your answers</a>
 </div>

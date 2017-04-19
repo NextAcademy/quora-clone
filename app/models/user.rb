@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :questions
+  has_many :answers
+
  	include BCrypt
 
   	def password
