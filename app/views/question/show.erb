@@ -7,10 +7,19 @@
 <p>This is the question :<p>
 <p><%= @question.text %><p>
 
+<!-- VOTING -->
+<form action="/questions/<%= @question.id %>/votes" method="post">
+	<input type="submit" value="Upvote" name="question_vote[vote_type]">
+	<input type="submit" value="Downvote" name="question_vote[vote_type]">
+</form>
+
+<!-- SUBMIT ANSWER FORM -->
 <form action="/questions/<%= @question.id %>/answers" method="post">
 	<input type="text" placeholder="Type your answers here" name="answer[text]">
 	<input type="submit" value="Submit my answers!">
 </form>
+
+<hr>
 
 <h2>Answers by people!</h2>
 <table>

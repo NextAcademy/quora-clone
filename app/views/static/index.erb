@@ -15,6 +15,13 @@
 			<tr>
 				<td><%= q.user.full_name %></td>
 				<td><a href="/questions/<%= q.id %>"><%= q.text %></a></td>
+
+				<td><form action="/questions/<%= q.id %>/votes" method="post">
+						<input type="submit" value="Upvote" name="question_vote[vote_type]">
+						<input type="submit" value="Downvote" name="question_vote[vote_type]">
+					</form>
+				</td>
+
 				<td><%= q.answers.order('updated_at DESC').limit(1)[0].text if !q.answers.order('updated_at DESC').limit(1).empty?%></td>
 			</tr>
 		<% end %>
