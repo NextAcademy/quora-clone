@@ -10,7 +10,10 @@
 
 <h3>Some questions here</h3>
 
-<% Question.order('created_at DESC').limit(10).each do |q| %>
+<!-- TO USE PAGINATE -->
+ <!-- <%# Question.order('created_at DESC').limit(10).each do |q| %> -->
+<% @questions.each do |q| %>
+
 	<div>
 		<h4><%= q.user.full_name %></h4>
 		<h5><a href="/questions/<%= q.id %>"><%= q.text %></a></h5>
@@ -39,3 +42,7 @@
 	</div>
 
 <% end %>
+
+<!-- THIS SHOWS THE PAGINATION BAR -->
+<%= will_paginate @questions %>
+

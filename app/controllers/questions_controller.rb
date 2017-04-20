@@ -40,11 +40,10 @@ end
 ######################
 
 get '/questions/:id' do
-	# byebug
 	# params ===> {"splat"=>[], "captures"=>["1"], "id"=>"1"}
 	id = params[:id]
 	@question = Question.find(id)
-	# @answers = @question.answers
+	@answers = @question.answers.paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
 
 	if @question.nil?
 		flash[:msg] = "What you are looking for doesn't exist. Create one now!"
@@ -53,4 +52,8 @@ get '/questions/:id' do
 		erb :"question/show"
 	end
 end
+
+######################
+
+
 
