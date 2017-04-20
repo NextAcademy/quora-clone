@@ -9,11 +9,11 @@
 
 <!-- VOTING -->
 <div>
-	<form action="/questions/<%= @question.id %>/upvotes" method="post">
+	<form class="q-upvote-form" action="/questions/<%= @question.id %>/upvotes" method="post" data-qid="<%= @question.id %>">
 		<input type="submit" value="Upvote | <%= QuestionVote.where(question_id: @question.id, vote_type: "Upvote").count %> " name="question_vote[vote_type]">
 	</form>
-	<form action="/questions/<%= @question.id %>/downvotes" method="post">
-		<input type="submit" value="Downvote | <%= QuestionVote.where(question_id: @question.id, vote_type: "Downvote").count %>  " name="question_vote[vote_type]">
+	<form class="q-downvote-form" action="/questions/<%= @question.id %>/downvotes" method="post" data-qid="<%= @question.id %>">
+		<input type="submit" value="Downvote | <%= QuestionVote.where(question_id: @question.id, vote_type: "Downvote").count %> " name="question_vote[vote_type]">
 	</form>
 </div>
 
@@ -42,14 +42,15 @@
 		<div>
 			<h4><%= a.user.full_name %></h4>
 			<p><%= a.text %></p>
-				<form action="/questions/<%= @question.id %>/answers/<%= a.id %>/upvotes" method="post">
+			<div>
+				<form class="a-upvote-form" action="/questions/<%= @question.id %>/answers/<%= a.id %>/upvotes" method="post" data-qid="<%= @question.id %>" data-aid = "<%= a.id %>">
 					<input type="submit" value="Upvote | <%= AnswerVote.where(answer_id: a.id, vote_type: "Upvote").count %> " name="answer_vote[vote_type]">
 				</form>
-				<form action="/questions/<%= @question.id %>/answers/<%= a.id %>/downvotes" method="post">
+				<form class="a-downvote-form" action="/questions/<%= @question.id %>/answers/<%= a.id %>/downvotes" method="post" data-qid="<%= @question.id %>" data-aid = "<%= a.id %>">
 					<input type="submit" value="Downvote | <%= AnswerVote.where(answer_id: a.id, vote_type: "Downvote").count %>  " name="answer_vote[vote_type]">
 				</form>
+			</div>
 		</div>
-
 	<% end %>
 <% end %>
 

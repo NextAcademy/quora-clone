@@ -24,16 +24,18 @@ post '/questions/:id/upvotes' do
 	if q_vote.save
 		flash[:msg] = "Thanks for your vote!"
 	# update
-	elsif existed_vote.vote_type != "Upvote"
+	elsif existed_vote.vote_type == "Downvote"
 		existed_vote.update(vote_type: "Upvote")
 		flash[:msg] = "Updated your vote!"
 	# delete
 	elsif existed_vote.vote_type == "Upvote"
-		q_id = QuestionVote.where(question_id: params[:id], user_id: current_user.id)[0].id
-		QuestionVote.delete(q_id)
+		QuestionVote.delete(existed_vote.id)
 		flash[:msg] = "Removed your vote!"
 	end
-	redirect '/'
+	upvote = QuestionVote.where(question_id: params[:id], vote_type: "Upvote").count
+	downvote = QuestionVote.where(question_id: params[:id], vote_type: "Downvote").count
+	return {"upvote": upvote, "downvote": downvote }.to_json
+	# redirect '/'  <--- with AJAX, this is not needed
 end
 
 post '/questions/:id/downvotes' do
@@ -47,64 +49,18 @@ post '/questions/:id/downvotes' do
 	if q_vote.save
 		flash[:msg] = "Thanks for your vote!"
 	# update
-	elsif existed_vote.vote_type != "Downvote"
-		existed_vote.update(vote_type: "Downvote")
-		flash[:msg] = "Updated your vote!"
-	# delete
-	elsif existed_vote.vote_type == "Downvote"
-		q_id = QuestionVote.where(question_id: params[:id], user_id: current_user.id)[0].id
-		QuestionVote.delete(q_id)
-		flash[:msg] = "Removed your vote!"
-	end
-	redirect '/'
-end
-
-################################################
-
-post '/questions/:id/answers/:aid/upvotes' do
-	q_vote = AnswerVote.new(vote_type: "Upvote")
-	q_vote.user_id = current_user.id
-	q_vote.answer_id = params[:aid]
-
-	existed_vote = AnswerVote.where(answer_id: params[:aid], user_id: current_user.id)[0]
-
-	# new
-	if q_vote.save
-		flash[:msg] = "Thanks for your vote!"
-	# update
-	elsif existed_vote.vote_type != "Upvote"
-		existed_vote.update(vote_type: "Upvote")
-		flash[:msg] = "Updated your vote!"
-	# delete
 	elsif existed_vote.vote_type == "Upvote"
-		q_id = AnswerVote.where(answer_id: params[:aid], user_id: current_user.id)[0].id
-		AnswerVote.delete(q_id)
-		flash[:msg] = "Removed your vote!"
-	end
-	redirect '/'
-end
-
-post '/questions/:id/answers/:aid/downvotes' do
-	q_vote = AnswerVote.new(vote_type: "Downvote")
-	q_vote.user_id = current_user.id
-	q_vote.answer_id = params[:aid]
-
-	existed_vote = AnswerVote.where(answer_id: params[:aid], user_id: current_user.id)[0]
-	
-	# new
-	if q_vote.save
-		flash[:msg] = "Thanks for your vote!"
-	# update
-	elsif existed_vote.vote_type != "Downvote"
 		existed_vote.update(vote_type: "Downvote")
 		flash[:msg] = "Updated your vote!"
 	# delete
 	elsif existed_vote.vote_type == "Downvote"
-		q_id = AnswerVote.where(answer_id: params[:aid], user_id: current_user.id)[0].id
-		AnswerVote.delete(q_id)
+		QuestionVote.delete(existed_vote.id)
 		flash[:msg] = "Removed your vote!"
 	end
-	redirect '/'
+	upvote = QuestionVote.where(question_id: params[:id], vote_type: "Upvote").count
+	downvote = QuestionVote.where(question_id: params[:id], vote_type: "Downvote").count
+	return {"upvote": upvote, "downvote": downvote }.to_json
+	# redirect '/'
 end
 
 ################################################

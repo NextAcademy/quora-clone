@@ -18,24 +18,28 @@
 		<h4><%= q.user.full_name %></h4>
 		<h5><a href="/questions/<%= q.id %>"><%= q.text %></a></h5>
 
-		<form action="/questions/<%= q.id %>/upvotes" method="post">
-			<input type="submit" value="Upvote | <%= QuestionVote.where(question_id: q.id, vote_type: "Upvote").count %> " name="question_vote[vote_type]">
-		</form>
-		<form action="/questions/<%= q.id %>/downvotes" method="post">
-			<input type="submit" value="Downvote | <%= QuestionVote.where(question_id: q.id, vote_type: "Downvote").count %>  " name="question_vote[vote_type]">
-		</form>
+		<div>
+			<form class="q-upvote-form" action="/questions/<%= q.id %>/upvotes" method="post" data-qid="<%= q.id %>">
+				<input type="submit" value="Upvote | <%= QuestionVote.where(question_id: q.id, vote_type: "Upvote").count %> " name="question_vote[vote_type]">
+			</form>
+			<form class="q-downvote-form" action="/questions/<%= q.id %>/downvotes" method="post" data-qid="<%= q.id %>">
+				<input type="submit" value="Downvote | <%= QuestionVote.where(question_id: q.id, vote_type: "Downvote").count %>  " name="question_vote[vote_type]">
+			</form>
+		</div>
 
 		<% if !q.answers.order('updated_at DESC').limit(1).empty? %>
 			<% ans_obj = q.answers.order('updated_at DESC').limit(1)[0] %>
 			<h4><%= ans_obj.user.full_name %></h4>
 			<p><%= ans_obj.text %><p>
 
-			<form action="/questions/<%= q.id %>/answers/<%= ans_obj.id %>/upvotes" method="post">
+		<div>
+			<form class="a-upvote-form" action="/questions/<%= q.id %>/answers/<%= ans_obj.id %>/upvotes" method="post" data-qid="<%= q.id %>" data-aid = "<%= ans_obj.id %>">
 				<input type="submit" value="Upvote | <%= AnswerVote.where(answer_id: ans_obj.id, vote_type: "Upvote").count %> " name="answer_vote[vote_type]">
 			</form>
-			<form action="/questions/<%= q.id %>/answers/<%= ans_obj.id %>/downvotes" method="post">
+			<form class="a-downvote-form" action="/questions/<%= q.id %>/answers/<%= ans_obj.id %>/downvotes" method="post" data-qid="<%= q.id %>" data-aid = "<%= ans_obj.id %>">
 				<input type="submit" value="Downvote | <%= AnswerVote.where(answer_id: ans_obj.id, vote_type: "Downvote").count %>  " name="answer_vote[vote_type]">
 			</form>
+		</div>
 		<% end %>
 		
 		<hr>
