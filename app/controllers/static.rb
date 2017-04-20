@@ -8,6 +8,7 @@ get '/' do
   if !logged_in? 
 		redirect "/login"
 	else
+		@questions = Question.paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
 		erb :"static/index"
 	end
 end

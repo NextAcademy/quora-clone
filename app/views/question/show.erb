@@ -37,9 +37,8 @@
 <% if @question.answers.empty? %>
 	<p>There is no answers for now. Do you want to contribute?</p>
 <% else %>
-
-	<% @question.answers.order('created_at DESC').each do |a| %>
-
+<!-- 	<%# @question.answers.order('created_at DESC').each do |a| %> -->
+	<% @answers.each do |a| %>
 		<div>
 			<h4><%= a.user.full_name %></h4>
 			<p><%= a.text %></p>
@@ -54,6 +53,8 @@
 	<% end %>
 <% end %>
 
+<!-- THIS SHOWS THE PAGINATION BAR -->
+<%= will_paginate @answers %>
 
 <!-- THIS IS WRONG. IF U WANT TO HV 2 SUBMIT BUTTON THAT HAS 2 POST REQUEST: https://www.w3schools.com/tags/att_button_formaction.asp -->
 
