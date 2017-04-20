@@ -6,6 +6,7 @@ source 'https://rubygems.org'
 # Adding Sinatra Drivers
 gem 'sinatra'
 gem 'sinatra-contrib'
+gem 'sinatra-flash'
 
 # Adding thin gem as advised
 gem 'thin'
@@ -17,6 +18,7 @@ gem 'sinatra-activerecord'
 
 # Adding Database elements
 gem 'pg'
+gem 'faker'
 
 # Adding rake for management
 gem 'rake'
@@ -27,6 +29,7 @@ gem 'rspec'
 group :development, :test do
 	# Adding shotgun for local web hosting
 	gem 'shotgun'
+	gem 'byebug'
 end
 
 group :production do
@@ -35,3 +38,9 @@ group :production do
 	gem 'rails_12factor' # Heroku Gem Supports
 	gem 'puma' # Using puma for
 end
+
+# Secure Password
+gem 'bcrypt'
+
+# Pagination
+gem 'will_paginate'

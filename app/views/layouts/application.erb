@@ -1,8 +1,27 @@
 <html>
 	<head>
 		<title>Sinatra Framework</title>
+
+		<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+  		<script src="/js/application.js"></script>
+
 	</head>
 	<body>
+		<div id="error">
+			<%= flash[:msg] %>
+		</div>
+
+		<%= logged_in? %>
+		<% if logged_in? %>
+			<form method="post" action="/logout" class="button_to">
+      	<input value="logout" type="submit" />
+	   	</form>
+		<% end %>
+
 		<%= yield %>
 	</body>
 </html>
