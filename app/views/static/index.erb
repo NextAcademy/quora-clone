@@ -37,8 +37,8 @@
           <input type= submit value= "<%= button_text %> | <%= QuestionVote.where(vote_type: true, question_id: q.id).count %>">
       </form>
 
-      <form method= "post" action="/question/<%=q.id%>/remove-vote">
-             <input type= submit value= "Downvote">
+      <form method= "post" action="/question/<%=q.id%>/downvote">
+             <input type= submit value= "Downvote | <%= QuestionVote.where(vote_type: false, question_id: q.id).count %> ">
       </form>
 
 
