@@ -36,7 +36,7 @@ $(document).ready(function(){
 				//debugger
 				// button_id = "button" + question_id
 				 $(event.target).find('input').attr('value', 'Upvote | ' + data);
-	
+				//
 				// debugger
 			},
 
@@ -76,8 +76,9 @@ $(document).ready(function(){
 				console.log(data);
 				//debugger
 				// button_id = "button" + question_id
-				 $(event.target).find('input').attr('value', 'Downvote | ' + data);
-	
+				$(event.target).find('input').attr('value', 'Downvote | ' + data);
+				//$(e.target).find('input').attr('value', 'Downvote | ' + data.downvote)
+	            //$(e.target).siblings().find('input').attr('value', 'Upvote | ' + data.upvote)
 				// debugger
 			},
 

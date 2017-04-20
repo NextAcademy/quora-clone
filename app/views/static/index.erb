@@ -9,8 +9,8 @@
   </form>
 
 <!-- #if just display create new post -->
-   <form method="post" action="/question">
-       <input type="text" placeholder="title" name="question[title]"><br>
+   <form method="post" action="/question" id="main-question-form-input">
+       <input type="text" placeholder="question" name="question[title]"><br>
        <input type="text" placeholder="description" name="question[description]"></br>
        <input type=submit value="Ask">
    </form>
@@ -26,6 +26,7 @@
             <input type= submit value= "Answer">
      </form>
 
+  <div>
       <form class="question_upvote" data-qid="<%=q.id%>" method= "post" action="/question/<%=q.id%>/upvote">
 
           <% button_upvote = "Cancel Upvote" %>
@@ -47,6 +48,7 @@
 
              <input type= submit value= "<%= button_downvote %> | <%= QuestionVote.where(vote_type: false, question_id: q.id).count %>">
       </form>
+  </div>
 
    <% end %>
 
