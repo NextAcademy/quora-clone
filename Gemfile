@@ -18,6 +18,7 @@ gem 'sinatra-activerecord'
 
 # Adding Database elements
 gem 'pg'
+gem 'faker'
 
 # Adding rake for management
 gem 'rake'
@@ -40,3 +41,6 @@ end
 
 # Secure Password
 gem 'bcrypt'
+
+# Pagination
+gem 'will_paginate'

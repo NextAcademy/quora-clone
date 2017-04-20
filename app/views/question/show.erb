@@ -8,34 +8,59 @@
 <p><%= @question.text %><p>
 
 <!-- VOTING -->
-<form action="/questions/<%= @question.id %>/votes" method="post">
+<div>
+	<form action="/questions/<%= @question.id %>/upvotes" method="post">
+		<input type="submit" value="Upvote | <%= QuestionVote.where(question_id: @question.id, vote_type: "Upvote").count %> " name="question_vote[vote_type]">
+	</form>
+	<form action="/questions/<%= @question.id %>/downvotes" method="post">
+		<input type="submit" value="Downvote | <%= QuestionVote.where(question_id: @question.id, vote_type: "Downvote").count %>  " name="question_vote[vote_type]">
+	</form>
+</div>
+
+<!-- <form action="/questions/<%# @question.id %>/votes" method="post">
 	<input type="submit" value="Upvote" name="question_vote[vote_type]">
 	<input type="submit" value="Downvote" name="question_vote[vote_type]">
-</form>
+</form> -->
 
 <!-- SUBMIT ANSWER FORM -->
-<form action="/questions/<%= @question.id %>/answers" method="post">
-	<input type="text" placeholder="Type your answers here" name="answer[text]">
-	<input type="submit" value="Submit my answers!">
-</form>
+<div>
+	<form action="/questions/<%= @question.id %>/answers" method="post">
+		<input type="text" placeholder="Type your answers here" name="answer[text]">
+		<input type="submit" value="Submit my answers!">
+	</form>
+</div>
 
 <hr>
 
 <h2>Answers by people!</h2>
-<table>
-	<tbody>
-		<% @question.answers.order('created_at DESC').each do |a| %>
-			<tr>
-				<td><%= a.user.full_name %></td>
-				<td><%= a.text %></td>
-				<td>
-					<form action="/questions/<%= @question.id %>/answers/<%= a.id %>/votes" method="post">
-						<input type="submit" value="Upvote" name="question_vote[vote_type]">
-						<input type="submit" value="Downvote" name="question_vote[vote_type]">
-					</form>
-				</td>
-		
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+
+<% if @question.answers.empty? %>
+	<p>There is no answers for now. Do you want to contribute?</p>
+<% else %>
+
+	<% @question.answers.order('created_at DESC').each do |a| %>
+
+		<div>
+			<h4><%= a.user.full_name %></h4>
+			<p><%= a.text %></p>
+				<form action="/questions/<%= @question.id %>/answers/<%= a.id %>/upvotes" method="post">
+					<input type="submit" value="Upvote | <%= AnswerVote.where(answer_id: a.id, vote_type: "Upvote").count %> " name="answer_vote[vote_type]">
+				</form>
+				<form action="/questions/<%= @question.id %>/answers/<%= a.id %>/downvotes" method="post">
+					<input type="submit" value="Downvote | <%= AnswerVote.where(answer_id: a.id, vote_type: "Downvote").count %>  " name="answer_vote[vote_type]">
+				</form>
+		</div>
+
+	<% end %>
+<% end %>
+
+
+<!-- THIS IS WRONG. IF U WANT TO HV 2 SUBMIT BUTTON THAT HAS 2 POST REQUEST: https://www.w3schools.com/tags/att_button_formaction.asp -->
+
+<!-- 
+<form action="/questions/<%# @question.id %>/answers/<%# a.id %>/votes" method="post">
+	<input type="submit" value="Upvote" name="answer_vote[vote_type]">
+	<input type="submit" value="Downvote" name="answer_vote[vote_type]">
+</form> 
+-->
+
