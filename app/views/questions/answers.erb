@@ -1,16 +1,42 @@
 
 <table style="width: 100px">
   <% @user.questions.each do |q| %>
+
   <tr>
     <th>Question</th>
     <th>Description</th>
     <th>Answer</th>
   </tr>
+
   <tr>
     <td><a href="/question/<%=q.id%>"><%= q.title %></a></td>
     <td><%= q.description %></td>
-    <% q.answers.each do |a| %>
-    <td><%= a.answer %></td>  
+
+      <% q.answers.each do |a| %>
+      <td><%= a.answer %></td>  
+
+        <form method= "post" action="/question/<%=q.id%>/answer/<%=a.id%>/upvote">
+            
+            <% button_upvote = "Cancel Upvote" %>
+            <% current_vote = current_user.answer_votes.where(answer_id: a.id, vote_type: true) %>
+            <% if current_vote.empty? %>
+              <% button_upvote = "Upvote" %>
+            <% end %>
+
+            <input type= submit value= "<%= button_upvote %> | <%= AnswerVote.where(vote_type: true, answer_id: a.id).count %>">
+        </form>
+
+        <form method= "post" action="/question/<%=q.id%>/answer/<%=q.id%>/downvote">
+
+            <% button_downvote = "Cancel Downvote" %>
+            <% current_vote = current_user.answer_votes.where(answer_id: a.id, vote_type: false) %>
+            <% if current_vote.empty? %>
+              <% button_downvote = "Downvote" %>
+            <% end %>
+
+               <input type= submit value= "<%= button_downvote %> | <%= AnswerVote.where(vote_type: false, question_id: a.id).count %>">
+        </form>
+
     <% end %>
   </tr>
   
