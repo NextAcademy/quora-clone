@@ -14,6 +14,7 @@ require 'active_record'
 require 'logger'
 require 'bcrypt'
 require 'byebug'
+require 'will_paginate'
 
 	# sinatra
 require 'sinatra'

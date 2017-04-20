@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'bcrypt', '~> 3.1.7'
+gem 'will_paginate', '~> 3.1.0'
 gem 'byebug'
 #bcrypt (~> 3.1.7) 
 # Ruby Version
