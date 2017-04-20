@@ -22,7 +22,8 @@ require 'erb'
 require 'uri'
 ######################################################################
 
-
+require 'bcrypt'
+require 'sinatra/flash'
 # System Setup
 ######################################################################
 # Setup app root folder and name
