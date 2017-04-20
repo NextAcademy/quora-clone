@@ -1,5 +1,9 @@
-User.create(
-	full_name: "Michelle",
-	email: "mlhy9778@hotmail.com",
-	password_digest: 'password'
-	)
+50.times do |
+	user['fullname'] = Faker::Pokemon.name
+	user['email'] = Faker::Internet.email
+	User.create(user)
+	
+end
+
+#all valid user id
+#uids = User.all.pluck(:id)

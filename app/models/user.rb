@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   validate :password_validator, :email_validator
   before_create :password_validator, :email_validator
   has_secure_password
-  has_many :questions
+  has_many :questions, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :question_votes
   has_many :answer_votes
@@ -21,5 +21,6 @@ class User < ActiveRecord::Base
        errors.add(:email, "is not valid")
      end
   end
+
 
 end

@@ -6,8 +6,16 @@ post "/question/:id/upvote" do
   current_upvote = current_user.question_votes.find_by(question_id: params[:id])
   if current_upvote.nil?
     @vote = current_user.question_votes.new(question_id: params[:id], vote_type: true)
-    @vote.save
-    redirect "/"
+    
+    if @vote.save
+      return QuestionVote.where(question_id: params[:id], vote_type: true).count.to_json
+      #@vote = QuestionVote.where("question_id = ? and upvote = ?", params)
+      # redirect "/"
+    else
+     # status 400
+     return @vote.errors.full_messages.first
+    end 
+
   else
     current_upvote.destroy
     # if current_vote.vote_type
@@ -15,7 +23,8 @@ post "/question/:id/upvote" do
     # elsif !current_vote.vote_type
     #   current_vote.update_attribute(:vote_type, true)
     # end
-    redirect '/'
+    return QuestionVote.where(question_id: params[:id], vote_type: true).count.to_json
+    # redirect '/'
   end
 end
 
@@ -26,9 +35,16 @@ post "/question/:id/downvote" do
   current_downvote = current_user.question_votes.find_by(question_id: params[:id])
   if current_downvote.nil?
     @vote = current_user.question_votes.new(question_id: params[:id], vote_type: false)
-    byebug
-    @vote.save
-    redirect "/"
+
+    if @vote.save
+      return QuestionVote.where(question_id: params[:id], vote_type: false).count.to_json
+      #@vote = QuestionVote.where("question_id = ? and upvote = ?", params)
+      #redirect "/"
+    else
+     #status 400
+     return @vote.errors.full_messages.first
+    end 
+
   else
     current_downvote.destroy
     # if current_vote.vote_type
@@ -37,7 +53,9 @@ post "/question/:id/downvote" do
     #   current_vote.update_attribute(:vote_type, true)
     # end
     #flash[:msg] = "ACCESS DENIED"
-    redirect '/'
+    # return @vote.errors.full_messages.first
+    return QuestionVote.where(question_id: params[:id], vote_type: false).count.to_json
+    #redirect '/'
   end
 end
 

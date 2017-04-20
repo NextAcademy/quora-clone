@@ -1,3 +1,4 @@
+helpers WillPaginate::Sinatra::Helpers
 helpers do
   # This will return the current user, if they exist
   # Replace with code that works with your application
@@ -11,4 +12,10 @@ helpers do
   def logged_in?
     !current_user.nil?
   end
+
+  def page
+      [params[:page].to_i - 1, 0].max
+  end
+
 end
+

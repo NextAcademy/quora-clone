@@ -11,13 +11,15 @@ post '/question' do
 end
 
 get '/question/:id' do
-    @question = Question.find(params[:id])
-    erb :"/questions/show"
+  @question = Question.find(params[:id])
+  #@questions = Question.paginate(:page => params[:page]).order('id DESC') 
+  erb :"/questions/show"
 end
 
 get '/users/:id/questions' do
   @user = User.find_by_id(params[:id])
-  # erb :"static/question"
+  #@users = Post.paginate(:page => params[:page])
+  
   erb :"questions/index"
 end
 

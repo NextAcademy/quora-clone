@@ -1,6 +1,8 @@
 enable :sessions
 
+
 get '/' do
+  @questions = Question.all.paginate(:page => params[:page], :per_page => 2)
   erb :"static/index"
 end
 

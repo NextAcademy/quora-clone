@@ -13,4 +13,12 @@
  
  <% @question.answers.each do |a| %>
 	 <p> <%= a.answer %> </p>
+chj 
+		<form class="answer_upvote" data-qid="<%= @question.id %>" data-aid="<%=a.id%>" method= "post" action="/question/<%=@question.id%>/answer/<%=a.id%>/upvote">
+		    <input type= submit value= "Upvote | <%= AnswerVote.where(vote_type: true, answer_id: a.id).count %>">
+		</form>
  <% end %>
+
+ 
+
+

@@ -17,7 +17,7 @@
 
  <!-- #else asked question then display existing post -->
    <h2>Top stories</h2>
-   <% Question.all.each do |q| %>
+   <% @questions.each do |q| %>
 
      <p><a href="/question/<%=q.id%>"><%= q.title %></a></p>
      <p><%= q.description %></p>
@@ -26,18 +26,18 @@
             <input type= submit value= "Answer">
      </form>
 
-      <form method= "post" action="/question/<%=q.id%>/upvote">
-          
+      <form class="question_upvote" data-qid="<%=q.id%>" method= "post" action="/question/<%=q.id%>/upvote">
+
           <% button_upvote = "Cancel Upvote" %>
           <% current_upvote = current_user.question_votes.where(question_id: q.id, vote_type: true) %>
           <% if current_upvote.empty? %>
             <% button_upvote = "Upvote" %>
           <% end %>
 
-          <input type= submit value= "<%= button_upvote %> | <%= QuestionVote.where(vote_type: true, question_id: q.id).count %>">
+          <input type="submit" value= "<%= button_upvote %> | <%= QuestionVote.where(vote_type: true, question_id: q.id).count %>">
       </form>
 
-      <form method= "post" action="/question/<%=q.id%>/downvote">
+      <form class="question_downvote" data-qid="<%=q.id%>" method= "post" action="/question/<%=q.id%>/downvote">
 
           <% button_downvote = "Cancel Downvote" %>
           <% current_downvote = current_user.question_votes.where(question_id: q.id, vote_type: false) %>
@@ -48,12 +48,22 @@
              <input type= submit value= "<%= button_downvote %> | <%= QuestionVote.where(vote_type: false, question_id: q.id).count %>">
       </form>
 
-
    <% end %>
 
 <% else %>
-   <a id= "login" href= '/login'>Log in</a> 
-   <a id= "signup" href='/signup'>Sign up</a> 
+
+   <h2>Log in</h2>
+     <form method="post" action="/login">
+         <input type="text" placeholder="Email" name="user[email]"><br>
+         <input type="password" placeholder="Password" name="user[password]"></br>
+         <input type=submit value="Sign in">
+     </form>
+
+   <p>No account? Please <a id= "signup" href='/signup'>sign up</a> </p>
+  
 <% end %>
+
+<%= will_paginate @questions %>
+
 
 
