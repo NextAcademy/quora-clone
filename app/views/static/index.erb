@@ -65,7 +65,7 @@
   
 <% end %>
 
-<%= will_paginate @questions %>
+<%= will_paginate @questions, previous_label: "Back", next_label: "More", inner_window: 1, outer_window: 0 %>
 
 
 
