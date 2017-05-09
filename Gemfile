@@ -1,9 +1,16 @@
 source 'https://rubygems.org'
 
+gem 'bcrypt', '~> 3.1.7'
+gem 'will_paginate', '~> 3.1.0'
+gem 'acts-as-taggable-on', '~> 4.0'
+#https://github.com/mbleigh/acts-as-taggable-on
+gem 'byebug'
+#bcrypt (~> 3.1.7) 
 # Ruby Version
 # ruby "2.2.1"
 
 # Adding Sinatra Drivers
+gem 'sinatra-flash'
 gem 'sinatra'
 gem 'sinatra-contrib'
 

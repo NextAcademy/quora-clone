@@ -1,0 +1,24 @@
+ <h1>Question</h1>
+
+<h3><%= @question.title %></h3>
+<h4>Asked by <%= @question.user.full_name %></h4>
+<p><%= @question.description %></p>
+
+<h1>Answer</h1>
+
+<form method= "post" action= "/question/<%= @question.id %>/answer">
+     <input type="text" placeholder="answer here" name="answer[answer]"><br>
+     <input type= submit value= "Answer">
+ </form>
+ 
+ <% @question.answers.each do |a| %>
+	 <p> <%= a.answer %> </p>
+
+		<form class="answer_upvote" data-qid="<%= @question.id %>" data-aid="<%=a.id%>" method= "post" action="/question/<%=@question.id%>/answer/<%=a.id%>/upvote">
+		    <input type= submit value= "Upvote | <%= AnswerVote.where(vote_type: true, answer_id: a.id).count %>">
+		</form>
+ <% end %>
+
+ 
+
+

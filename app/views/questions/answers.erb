@@ -1,0 +1,22 @@
+
+<table style="width: 100px">
+  <% @user.questions.each do |q| %>
+
+  <tr>
+    <th>Question</th>
+    <th>Description</th>
+    <th>Answer</th>
+  </tr>
+
+  <tr>
+    <td><a href="/question/<%=q.id%>"><%= q.title %></a></td>
+    <td><%= q.description %></td>
+
+      <% q.answers.each do |a| %>
+      <td><%= a.answer %></td>  
+
+    <% end %>
+  </tr>
+  
+  <% end %>
+</table>
