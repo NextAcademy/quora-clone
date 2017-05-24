@@ -1,0 +1,37 @@
+<body>
+    <!-- <div class="top-content">
+      <div class="container">
+        <h1> A QUORA CLONE </h1>
+        <h4> Unsure of something? Post them up here and get your questions answered! </h4>
+      </div>
+    </div> -->
+    <br><br>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 r-form-1-box wow fadeInUp">
+        <div class="r-form-1-top">
+            <h1>Top Questions For You</h1>
+        </div>
+        <div class="r-form-1-bottom">
+          <table class="question table-hover table-responsive" id="question_table">
+            <tbody>
+              <tr>
+                <% @question.each do |a| %>
+                <td><a href="/question/<%=a.id%>"><%= a.content %></a><br><br><br><a href="/question/<%=a.id%>"
+                  type="button" class="btn" id="answer_button">Answer</a>
+                  <a href="/likes/<%=a.id%>" type="button" class="btn" id="like_button">Upvote</a>
+                      <%= QuestionVote.where(question_id: a.id, value: 'up').count - QuestionVote.where(question_id: a.id, value: 'down').count %>
+                    <a href="/dislikes/<%=a.id%>" type="button" class="btn" id="like_button">Downvote</a><br><br></td>
+              </tr>
+                <% end %>
+              </tbody>
+            </table>
+          <!-- <div class="container" id="question">
+        </div> -->
+
+        </div>
+        <br>
+      </div>
+    </div>
+    <br><br><br>
+
+  </body>

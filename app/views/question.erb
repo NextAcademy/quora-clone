@@ -1,0 +1,31 @@
+<body>
+  <br>
+  <div class = "container">
+  <h1 id="profile"><%= @question.content %></h1>
+  <br>
+  <form role="form" action="/answer" method="post">
+    <div class="form-group">
+      <label class="sr-only" for="r-form-1-first-name">Answer</label>
+      <input type="text" name="answer" placeholder="Answer..." class="r-form-1-answer form-control" id="r-form-1-answer">
+      <input type="hidden" name="question_id" value="<%= @question.id %>">
+      <br>
+    <button type="submit" class="btn" id="submit_answer">Submit Answer</button>
+  </div>
+  </form>
+<br>
+<div class="r-form-1-bottom">
+  <br>
+  <table class="question table-hover table-responsive" id="question_table">
+    <tbody>
+      <tr>
+        <% @question.answers.each do |a| %>
+        <td><%= a.answer %><br><br><a href="/likes/<%=a.id%>" type="button" class="btn" id="like_button">Upvote</a>
+          <%= QuestionVote.where(question_id: a.id, value: 'up').count - QuestionVote.where(question_id: a.id, value: 'down').count %>
+          <a href="/dislikes/<%=a.id%>" type="button" class="btn" id="like_button">Downvote</a><br><br></td>
+      </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+</div>
+</body>
