@@ -1,0 +1,39 @@
+<body>
+    <!-- Top content -->
+    <div class="top-content">
+      <div class="container">
+        <h1 id="signup"> A QUORA CLONE </h1>
+        <h4 id="signup"> Unsure of something? Post them up here and get your questions answered! </h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-4 r-form-1-box wow fadeInUp">
+        <div class="r-form-1-top">
+          <div class="r-form-1-top-left">
+            <h1>LOGIN</h1>
+          </div>
+          <div class="r-form-1-top-right">
+            <i class="fa fa-pencil"></i>
+          </div>
+        </div>
+        <div class="r-form-1-bottom">
+          <form role="form" action="/login" method="post" id="login_form">
+            <div class="form-group">
+              <label class="sr-only" for="r-form-1-email">Email</label>
+              <input type="text" name="email" placeholder="Email..." class="r-form-1-email form-control" id="r-form-2-email">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="r-form-1-password">Password</label>
+              <input type="password" name="password" placeholder="Password..." class="r-form-1-password" id="r-form-2-password">
+            </div>
+            <br>
+            <p id="error">Invalid username or password!<p> 
+            <button type="submit" class="btn">Login</button><br><br>
+            <a href="/forgot_password">Forgot Password?</a><br>
+            <a href="/signup">Click here to sign up if you do not have an account!</a>
+          </form>
+        </div>
+      </div>
+    </div>
+    <br><br><br>
+  </body>

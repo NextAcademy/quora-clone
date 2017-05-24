@@ -1,0 +1,107 @@
+<br>
+<div class="container">
+  <h1 id="profile"> Welcome <%= @user.email %>!</h1>
+  <br>
+
+<script>
+
+function openTab(evt, cityName) {
+    var i, tabcontent, tablinks;
+
+    tabcontent = document.getElementsByClassName("tabcontent");
+
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    };
+
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+$(document).ready(function(){
+
+  openTab(event, 'Questions');
+
+})
+</script>
+
+
+  <div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'Questions');">Questions</button>
+    <button class="tablinks" onclick="openTab(event, 'Answers');">Answers</button>
+  </div>
+
+  <div class="r-form-1-bottom tabcontent" id="Questions">
+    <table class="question table-hover table-responsive" id="question_table">
+      <br>
+      <tbody>
+          <% @user.questions.each do |a| %>
+          <tr>
+          <td>
+            <a href='/question/<%=a.id%>'>
+              <%= a.content %>
+            </a>
+            <br><br>
+            <a href='/question/<%=a.id%>' type="button" class="btn" id="answer_button">
+              Answer
+            </a>
+            <!-- <a href="#" type="button" class="btn" id="like_button">
+              Upvote
+            </a>
+            <a href="#" type="button" class="btn" id="like_button">
+              Downvote
+            </a> -->
+            <a href="/question/<%=a.id%>/edit" type="button" class="btn" id="like_button">
+              Edit
+            </a>
+            <form role="form" class="delete" action="/question/<%=a.id%>" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <button type="submit" class="btn" id="like_button">Delete</button>
+            </form>
+            <br><br>
+          </td>
+        </tr>
+          <% end %>
+      </tbody>
+    </table>
+    <br>
+  </div>
+
+  <div class="r-form-1-bottom tabcontent" id="Answers">
+    <table class="question table-hover table-responsive" id="question_table">
+      <br>
+      <tbody>
+          <% @user.answers.each do |a| %>
+          <tr>
+          <td>
+            <a href='#'>
+              <%= a.answer %>
+            </a>
+            <br><br>
+            <!-- <a href="#" type="button" class="btn" id="like_button">
+              Upvote
+            </a>
+            <a href="#" type="button" class="btn" id="like_button">
+              Downvote
+            </a> -->
+            <a href="/answer/<%=a.id%>/edit" type="button" class="btn" id="like_button">
+              Edit
+            </a>
+            <form role="form" class="delete" action="/answer/<%=a.id%>" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <button type="submit" class="btn" id="like_button">Delete</button>
+            </form>
+            <br><br>
+              <% end %>
+          </td>
+          </tr>
+      </tbody>
+    </table>
+    <br>
+  </div>
+</div>

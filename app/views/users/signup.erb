@@ -1,0 +1,49 @@
+<body>
+    <!-- Top content -->
+    <div class="top-content">
+      <div class="container">
+        <h1 id="signup"> A QUORA CLONE </h1>
+        <h4 id="signup"> Unsure of something? Post them up here and get your questions answered! </h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 r-form-1-box wow fadeInUp">
+        <div class="r-form-1-top">
+          <div class="r-form-1-top-left">
+            <h3 id="signup2">Sign up now</h3>
+            <p id="signup2">Fill in the form below to get instant access:</p>
+          </div>
+          <div class="r-form-1-top-right">
+            <i class="fa fa-pencil"></i>
+          </div>
+        </div>
+        <div class="r-form-1-bottom">
+          <%= @errors %>
+          <form role="form" action="/signup" method="post" id="signup_form">
+            <div class="form-group">
+              <label class="sr-only" for="r-form-1-first-name">First name</label>
+              <input type="text" name="first_name" placeholder="First name..." class="r-form-1-first-name form-control" id="r-form-1-first-name">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="r-form-1-last-name">Last name</label>
+              <input type="text" name="last_name" placeholder="Last name..." class="r-form-1-last-name form-control" id="r-form-1-last-name">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="r-form-1-email">Email</label>
+              <input type="text" name="email" placeholder="Email..." class="r-form-1-email form-control" id="r-form-1-email">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="r-form-1-password">Password</label>
+              <input type="password" name="password" placeholder="Password..." class="r-form-1-password" id="r-form-1-password">
+              <label class="sr-only" for="r-form-1-confirm-password">Confirm Password</label>
+              <input type="password" name="confirm-password" placeholder="Confirm Password..." class="r-form-1-confirm-password" id="r-form-1-confirm-password">
+            </div>
+            <br>
+            <button type="submit" class="btn">Sign me up!</button>
+            <a href="/login">Already have an account? Click here to Login!</a>
+          </form>
+        </div>
+      </div>
+    </div>
+    <br><br><br>
+  </body>

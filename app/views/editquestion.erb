@@ -1,0 +1,20 @@
+<body>
+  <br><br>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 r-form-1-box wow fadeInUp">
+      <div class="r-form-1-top">
+        <h3>Edit Your Question</h3>
+        <br>
+      <form role="form" action="/question/<%= @question.id%>" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <div class="form-group">
+          <label class="sr-only" for="r-form-1-first-name">Question</label>
+          <input type="text" name="content" placeholder="Question..." class="r-form-1-question form-control" id="r-form-1-question" value="<%= @question.content %>">
+        <button type="submit" class="btn">Confirm</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<br><br>
+</body>
