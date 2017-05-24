@@ -1,4 +1,4 @@
-class DropAndCreateTables < ActiveRecord::Migration[5.0]
+class DropAndCreateTables < ActiveRecord::Migration
 	def change
     drop_table :question_votes
     drop_table :answer_votes
