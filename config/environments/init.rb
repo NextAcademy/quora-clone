@@ -3,21 +3,23 @@ ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile', __FILE__)
 
 # Perform requiring gem that we need
 ######################################################################
-	# basic
+# basic
 require 'rubygems'
 require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
 require 'pathname'
+require 'byebug'
 
-	# database
+# database
 require 'pg'
 require 'active_record'
 require 'logger'
 
-	# sinatra
+# sinatra
 require 'sinatra'
+require 'sinatra/flash'
 require "sinatra/reloader" if development?
 
-	# embedded ruby
+# embedded ruby
 require 'erb'
 require 'uri'
 ######################################################################
@@ -31,10 +33,10 @@ APP_NAME = APP_ROOT.basename.to_s
 
 # Setup sessions, logging and dump_errors
 use Rack::Session::Cookie, expire_after: ENV['SESSION_EXPIRE'] || 2592000, # seconds
-                           secret: ENV['SESSION_SECRET'] || 'this is a secret shhhhh',
-                           logging: true,
-                           dump_errors: false,
-                           app_file: __FILE__
+  secret: ENV['SESSION_SECRET'] || 'this is a secret shhhhh',
+  logging: true,
+  dump_errors: false,
+  app_file: __FILE__
 
 # Setup assets folder
 set :public_folder, 'public'

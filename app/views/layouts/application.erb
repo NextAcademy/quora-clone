@@ -1,8 +1,29 @@
 <html>
 	<head>
-		<title>Sinatra Framework</title>
+		<title>My Quora</title>
+    <script href="js/application.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/application.css">
 	</head>
 	<body>
-		<%= yield %>
+    
+        <% flash.keys.each do |type| %>
+          <div data-alert class="flash <%= type %> alert-box radius">
+          <%= flash[type] %>
+          <a href="#" class="close">&times;</a>
+          </div>
+        <% end %>
+
+        <header>
+        <h1>Quora</h1>
+        <% if current_user %>
+          <!-- <a href="/questions/new">Ask new question&nbsp; |</a>
+          <a href="/users/<%= current_user.id %>/questions">My Questions&nbsp; |</a>
+          <a href="/users/<%= current_user.id %>/answers"> My Answers&nbsp; |</a> -->
+          <a href='/users/<%= current_user.id %>'> My Profile&nbsp; |</a>
+          <a href="/"> Log out&nbsp; |</a>
+        <% end %>
+    </header>
+
+        <%= yield %>
 	</body>
 </html>
