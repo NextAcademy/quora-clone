@@ -1,6 +1,7 @@
 enable :sessions
 set :session_secret, "My session secret"
 
+# get form for new user
 get '/' do
   session[:user_id] = nil
   if logged_in?
@@ -10,15 +11,49 @@ get '/' do
   end
 end
 
-get '/login' do
+# create user
+post '/user' do
+  user = User.new(params[:user])
+  if user.save
+    flash[:msg] = "Account created successfully"
+    redirect '/'
+  else
+    flash[:msg] = user.errors.full_messages.join('. ')
+    redirect '/'
+  end
+end
+
+# get form for user to log in
+get '/session/new' do
   session[:user_id] = nil
   erb :"static/login"
 end
 
+# log the user in
+post '/session' do
+  user = User.find_by(email: params[:user][:email])
+  if user != nil
+    if !user.authenticate(params[:user][:password])
+      flash[:error] = "Invalid password"
+      redirect '/session/new'
+    else
+      # if log in successfully, store in session
+      flash[:msg] = "Login Successfully"
+      session[:user_id] = user.id
+      redirect '/users/' + user.id.to_s
+    end
+  else
+    flash[:error] = "Invalid email"
+    redirect '/'
+  end
+end
+
+# particular user's profile from get '/users/:id'
 get '/profile' do
   erb :"static/profile"
 end
 
+# show particular user
 get '/users/:id' do
   # some code here
   @user = User.find_by_id(params[:id])
@@ -35,43 +70,10 @@ get '/users/:id' do
   end
 end
 
-post '/signup' do
-  user = User.new(params[:user])
-  if user.save
-    flash[:msg] = "Account created successfully"
-    redirect '/'
-  else
-    flash[:msg] = user.errors.full_messages.join('. ')
-    redirect '/'
-  end
-end
-
-post '/login' do
-  user = User.find_by(email: params[:user][:email])
-  if user != nil
-    if !user.authenticate(params[:user][:password])
-      flash[:error] = "Invalid password"
-      redirect '/login'
-    else
-      # if log in successfully, store in session
-      flash[:msg] = "Login Successfully"
-      session[:user_id] = user.id
-      redirect '/users/' + user.id.to_s
-    end
-  else
-    flash[:error] = "Invalid email"
-    redirect '/'
-  end
-end
-
-get '/logout' do
+# log the user out
+delete '/session/:id' do
   # kill session
   session[:user_id] = nil
-  redirect '/'
-end
-
-post '/logout' do
-  # kill session
-  session[:user_id] = nil
+  flash[:msg] = "Logout successfully"
   redirect '/'
 end
