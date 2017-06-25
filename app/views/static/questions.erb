@@ -1,0 +1,22 @@
+<h2>THESE ARE ALL YOUR QUESTIONS</h2>
+
+<!-- <h1>ASK ANY QUESTION</h1> -->
+
+<form id='ask_question' action="/questions" method="post">
+  <input style="background-color: #dcdcdc" class="btn-block" type="text" name="question[subject]" placeholder="What is your question?" required>
+  <textarea style="background-color: #f5f5f5"class="btn-block" name='question[description]' form='ask_question' rows="5" placeholder="Type your description here" required></textarea>
+  <input type="submit" value="Ask">
+</form>
+
+<% @questions.each do |q| %>
+  <div class="panel panel-default">
+    <div class="panel-heading"><b><%= q.subject %></b></div>
+    <div class="panel-body"><%= q.description %></div>
+    <table><tr><td>
+    <button id="voteBtn" class="btn btn-info"><i class="fa fa-thumbs-up">&ensp;<%= q.votes %></i></button></td><td>
+     <form style="margin-bottom: -3px" action='/questions/<%= q.id %>' method='post'>
+     <input id='hidden' type="hidden" name="_method" value="delete">
+    <button type="submit" id="deleteBtn" class="btn btn-danger"><i class="fa fa-trash"></i></button></form></td></tr></table>
+  </div>
+<% end %>
+

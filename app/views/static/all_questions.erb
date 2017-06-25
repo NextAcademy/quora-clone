@@ -1,0 +1,13 @@
+<h2>QUESTIONS FROM ALL USERS</h2>
+
+<% @questions.each do |q| %>
+  <% u = User.find(q.user_id) %>
+  <div class="panel panel-default">
+    <div class="panel-heading"><b><%= q.subject %></b>
+    <div style="text-align: right; font-size: 10px">created on&nbsp;<%= q.created_at.strftime('%Y-%m-%d')
+ %>&nbsp;by&nbsp;<%= u.first_name %></div></div>
+    <div class="panel-body"><%= q.description %></div>
+    <button id="voteBtn" class="btn btn-info"><i class="fa fa-thumbs-up">&ensp;<%= q.votes %></i></button>
+  </div>
+<% end %>
+
