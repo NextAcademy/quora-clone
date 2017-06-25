@@ -1,0 +1,11 @@
+<h1>ASK ANY QUESTION</h1>
+
+<form id='ask_question' action="/questions" method="post">
+  Subject:<br>
+  <input type="text" name="question[subject]" required><br>
+  Description<br>
+  <textarea name='question[description]' form='ask_question' rows="5" required></textarea><br>
+  <input type="submit" value="Ask">
+</form>
+
+<p id="show"></p>

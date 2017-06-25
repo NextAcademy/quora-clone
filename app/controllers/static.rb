@@ -3,10 +3,10 @@ set :session_secret, "My session secret"
 
 # get form for new user
 get '/' do
-  session[:user_id] = nil
   if logged_in?
-    redirect '/profile'
+    redirect '/questions/'+ current_user.id.to_s
   else
+    session[:user_id] = nil
     erb :"static/index"
   end
 end
@@ -18,7 +18,7 @@ post '/user' do
     flash[:msg] = "Account created successfully"
     redirect '/'
   else
-    flash[:msg] = user.errors.full_messages.join('. ')
+    flash[:error] = user.errors.full_messages.join('. ')
     redirect '/'
   end
 end
@@ -59,7 +59,7 @@ get '/users/:id' do
   @user = User.find_by_id(params[:id])
   if @user != nil
     if logged_in? && current_user.id == params[:id].to_i
-      erb :"static/profile"
+      redirect '/questions/'+ current_user.id.to_s
     elsif logged_in?
       redirect '/users/' + current_user.id.to_s
     else
@@ -69,6 +69,8 @@ get '/users/:id' do
     redirect '/'
   end
 end
+
+# get a form to edit user
 
 # log the user out
 delete '/session/:id' do

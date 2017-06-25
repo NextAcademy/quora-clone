@@ -1,6 +1,23 @@
-<h1>WELCOME TO YOUR PROFILE <%= @user.first_name.upcase %></h1>
+<h1>WELCOME TO YOUR PROFILE</h1>
 
-<form action="/session/:id" method="post">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input type="submit" value="Log Out">
-</form>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-10">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img  src="https://s-media-cache-ak0.pinimg.com/originals/3e/08/28/3e082861160deaffee67ce2834856be1.jpg" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4><%= current_user.first_name.upcase %>&nbsp;<%= current_user.last_name.upcase %>
+                        <a href="#"><i class="w3-small fa fa-pencil-square-o" aria-hidden="true"></i></a></h4>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>&nbsp;<%= current_user.email %>
+                            <a href="#"><i class="w3-small fa fa-pencil-square-o" aria-hidden="true"></i></a><br />
+                            <i class="glyphicon glyphicon-gift"></i>&nbsp;member since&nbsp;<%= current_user.created_at.strftime('%B %d, %Y') %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

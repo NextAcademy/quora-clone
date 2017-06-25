@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   # This is Sinatra! Remember to create a migration!
-  # has_many :questions
+  has_many :questions
   # has_many :answers
   has_secure_password
 

@@ -1,10 +1,14 @@
 <html>
 	<head>
-		<title>My Quora</title>
-    <script href="js/application.js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="css/application.css">
+		<title>My eRa</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="  crossorigin="anonymous"></script>
+    <script src="/js/application.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/application.css">
 	</head>
-	<body>
+	<body class="container">
     
         <% flash.keys.each do |type| %>
           <div data-alert class="flash <%= type %> alert-box radius">
@@ -14,16 +18,28 @@
         <% end %>
 
         <header>
-        <h1>Quora</h1>
+        <h1>eRa</h1>
         <% if current_user %>
-          <!-- <a href="/questions/new">Ask new question&nbsp; |</a>
-          <a href="/users/<%= current_user.id %>/questions">My Questions&nbsp; |</a>
-          <a href="/users/<%= current_user.id %>/answers"> My Answers&nbsp; |</a> -->
-          <a href='/users/<%= current_user.id %>'> My Profile&nbsp; |</a>
-          <a href="/"> Log out&nbsp; |</a>
+        <% @q = Question.where(user_id: current_user.id).length %>
+          <a href='/profile'> My Profile&nbsp; |</a>
+          <!-- <a href='/questions/new'>Ask Question&nbsp; |</a> -->
+          <a href='/questions/<%= current_user.id %>'>My Questions&nbsp;<span class="badge"><%= @q %></span> |</a>
+          <a href='/questions'>All Questions&nbsp;<span class="badge"><%= Question.all.length %></span></a>
+          <!-- <a href="/users/<%= current_user.id %>/answers"> My Answers&nbsp; |</a> -->
+          <!-- <a href="/"> Log out&nbsp; |</a> -->
         <% end %>
     </header>
 
-        <%= yield %>
+    <%= yield %>
+
+    <footer>
+      <% if current_user %>
+        <form action="/session/<%= current_user.id %>" method="post">
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <input class="logoutbtn" type="submit" value="Log Out">
+        </form>
+      <% end %>
+    </footer>
+
 	</body>
 </html>
