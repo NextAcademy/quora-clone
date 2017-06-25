@@ -7,6 +7,7 @@ source 'https://rubygems.org'
 gem 'sinatra'
 gem 'sinatra-contrib'
 
+
 # Adding thin gem as advised
 gem 'thin'
 
@@ -23,6 +24,9 @@ gem 'rake'
 
 # Adding rspec for running unit testing
 gem 'rspec'
+
+#Additional gem
+gem 'bcrypt', '~> 3.1', '>= 3.1.11'
 
 group :development, :test do
 	# Adding shotgun for local web hosting
