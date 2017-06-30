@@ -1,0 +1,54 @@
+<h1><%=@v.question%></h1>
+
+
+<form method="post" action="/createanswer">
+Answer:<br>
+<input type="text" name="blood" value=""><br>
+<input type="hidden" <%= @v %>
+<input type="hidden" name="darren" value="<%= @v.id %>">
+<input type="submit" value="submit">
+</form>
+
+<table>
+	<tr>
+		
+		<th>Created_at</th>
+		<th>Name</th>
+		<th>Vote</th>
+		<th></th>
+		<th></th>
+		<th>Comment</th>	
+	</tr>
+
+<% @ans.each do |l| %></h1>	
+	<tr>
+		
+		<td><%= l.created_at %></td>
+		<td><%= User.find_by(id: l.user_id).name %></td>
+
+				<% 		if Voteanswer.find_by(answer_id: l.id) == nil %>
+				<% 			Voteanswer.create(answer_id: l.id) %>
+				<% 		else %>
+				<% 			x = Voteanswer.find_by(answer_id: l.id).user_id %>
+				<% 			if x.nil? == true %>
+		<td><%= 			p "0" %></td>
+				<% 			else %>
+		<td><%= 			[x].count %></td>
+				<% 			end %>
+		<td><form method="post" action="/upvote">
+				<input type="hidden" <% l %>>
+				<input type="hidden" name="something" value="<%= l.id %>">
+				<input type="hidden" <% @v %>>
+				<input type="hidden" name="chicken" value="<%= @v.id %>">
+				<input type="submit" value="up">
+				</form>
+		<td><button>Down</button></td>
+				<% 		end %>
+
+		<td><%= l.answer %></td>
+	</tr>
+	
+		<% end %>
+</table>
+	
+	

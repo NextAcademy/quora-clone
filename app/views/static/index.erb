@@ -1,2 +1,23 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<!DOCTYPE html>
+<html>
+<body>
+
+<form action="/login" method='post'>
+  Name:<br>
+  <input type="text" name="user[name]" value="">
+  <br>
+  Password:<br>
+  <input type="text" name="user[password]" value="">
+  <br>
+  <input type="submit" value="LogIn">
+</form> 
+
+<form action="/signup">
+<input type="submit" value="Register">
+</form>
+
+
+<p></p>
+
+</body>
+</html>
