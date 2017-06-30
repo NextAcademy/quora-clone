@@ -8,6 +8,7 @@ require 'rubygems'
 require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
 require 'pathname'
 require 'bcrypt'
+require 'byebug'
 
 	# database
 require 'pg'

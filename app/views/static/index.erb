@@ -2,18 +2,18 @@
 <html>
 <body>
 
-<form action="/login">
-  Log In Name:<br>
-  <input type="text" name="name1" value="">
+<form action="/login" method='post'>
+  Name:<br>
+  <input type="text" name="user[name]" value="">
   <br>
   Password:<br>
-  <input type="text" name="password" value="">
+  <input type="text" name="user[password]" value="">
   <br>
   <input type="submit" value="LogIn">
 </form> 
 
 <form action="/signup">
-<input type="submit" value="SignUp">
+<input type="submit" value="Register">
 </form>
 
 
