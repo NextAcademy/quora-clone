@@ -63,7 +63,7 @@ namespace :generate do
 		puts "Creating #{model_path}"
 		File.open(model_path, 'w+') do |f|
 			f.write(<<-EOF.strip_heredoc)
-				class #{model_name} < ActiveRecord::Base
+				class #{model_name} < ActiveRecord::Base[5.0]
 					# This is Sinatra! Remember to create a migration!
 				end
 			EOF
@@ -132,7 +132,7 @@ end
 
 desc 'Initiate IRB console with environment loaded'
 task "console" do
-	exec "irb -r./config/environments/init"
+	exec "irb -r ./config/environments/init"
 end
 
 
