@@ -1,9 +1,10 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
 <% if logged_in? %>
-	<button><a href='/user'>Profile</button>
+	<p>Welcome <%= current_user.full_name %> </p>
+	<p>Email: <%= current_user.email %> </p>
 	<button><a href='/user/signout'>Sign Out</a></button>
 <% else %>
+	<p>You are not logged in</p>
+	<button><a href='/'>Home</a></button>
 	<button><a href='/user/signin'>Sign In</a></button>
 	<button><a href='/user/new'>Sign Up</a></button>
 <% end %>
