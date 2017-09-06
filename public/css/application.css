@@ -1,0 +1,32 @@
+#header {
+    display: block;
+    line-height: 24px;
+    width: 100%;
+}
+
+.navigation ul {
+    list-style: none;
+    clear: right;
+    padding: 0px;
+    margin: 0px 0px 0px 15px;
+    font-size: 16px;
+}
+
+#logo {
+    float:left;
+    line-height: 24px;
+    margin: 0px;
+    font-size: 16px;
+}
+
+.navigation {
+    float: left;
+}
+
+.header-container {
+    height: 37px;
+}
+
+.navigation a, #logo-url {
+    text-decoration: none;
+}

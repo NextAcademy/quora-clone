@@ -20,6 +20,7 @@ gem 'pg'
 
 # Adding rake for management
 gem 'rake'
+gem 'rack-test'
 
 # Adding rspec for running unit testing
 gem 'rspec'
