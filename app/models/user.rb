@@ -1,4 +1,5 @@
 require 'uri'
+require 'byebug'
 
 class User < ActiveRecord::Base
 	validates :name, :email, presence: true
@@ -6,7 +7,12 @@ class User < ActiveRecord::Base
 	validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "Invalid email format!" }
 	has_secure_password # also validates presence
 	validates :password, length: { minimum: 6 }
+	
+	def self.authenticate(user_params)
+		User.find_by(email: user_params[:email]).try(:authenticate, user_params[:password])
+	end
 end
+
 
 # Reference
 # ==> Email validation

@@ -10,7 +10,7 @@ post '/signup' do
 	# when the form input name is in the format of name="user[attr]"
 	# we can use User.new(params[:user])
 	# form value is automatically transformed into a hash
-	user = User.new(params[:user])
+	@user = User.new(params[:user])
 	if user.save
 		redirect "/"
 	else
@@ -24,7 +24,12 @@ post '/login' do
 	# {"user"=>{"email"=>"leesiewching22@gmail.com", "password"=>"password"}, "captures"=>[]}
 
 	# apply authentication method
-	@user = User.find_by(email: params[:user][:email]).try(:authenticate, params[:user][:password])
+	# @user = User.find_by(email: params[:user][:email]).try(:authenticate, params[:user][:password])
+
+	# Extend your MODEL
+	# Best practice - authentication login should live in MODEL
+	@user = User.authenticate(params[:user])
+	
 	if @user
 		# assign current user id to a session
 		session[:id] = @user.id
