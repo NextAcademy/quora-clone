@@ -1,34 +1,59 @@
 <html>
-	<head>
-		<!--define library source-->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<head>
 
-		<link rel="stylesheet" href="css/application.css">
-		<script type="text/javascript" charset="utf-8" src="./js/application.js">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
-		</script>
-		<title>Quora</title>
-	</head>
-	<body>
+    <link rel="stylesheet" href="/css/application.css">
+    <script type="text/javascript" charset="utf-8" src="/js/application.js"></script>
 
-		<header id="header">
 
-			<div class="header-container">
+    <title>Quora</title>
+</head>
+    <body>
 
-				<h1 id="logo">
-					<a href="#" id="logo-url">QUORA</a>
-				</h1>
+        <nav class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded">
+            <button class="navbar-toggler navbar-toggler-right" type="button"
+                    data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="/">Quora</a>
 
-				<nav class="navigation">
-					<ul>
-						<li><a href="#">Home</a></li>
-					</ul>
-				</nav>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
 
-			</div>
+                <% if logged_in? %>
+                    <form action="/users/<%= session[:user_id] %>" class="form-inline my-2 my-lg-0" method='post'>
+                        <button action="/users/<%= session[:user_id] %>" id="profile-btn"
+                                class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                            <%= User.find_by(id: session[:user_id])[:user_id] %>
+                        </button>
+                    </form>
 
-		</header>
+                    <form action="/users/logout" class="form-inline my-2 my-lg-0">
+                        <button id="logout-btn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+                    </form>
+                <% else %>
 
-		<%= yield %>
-	</body>
+                <% end %>
+
+
+            </div>
+        </nav>
+
+
+
+        <%= yield %>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="/js/bootstrap.min.js"></script>
+    </body>
+
 </html>

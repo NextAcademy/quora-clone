@@ -1,0 +1,84 @@
+<!--display the sign up form-->
+<div class="container float-left signup">
+
+    <div class="row">
+        <h2>Sign up for an account!</h2>
+    </div>
+
+    <div class="row">
+        <form id="signup-form" action="/users/signup" method="post">
+            <div class="form-group">
+                <label>Email address</label>
+                <input name="email" type="email" class="form-control" id="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input name="password" type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <button id="signup-btn" type="submit" class="btn btn-default">Sign Up</button>
+        </form>
+
+    </div>
+
+    <div class="row">
+        <button id="modal-login-btn" type="button" class="btn btn-default" data-toggle="modal" data-target="#login-modal">
+            Already an user?
+        </button>
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="login-modal-title">Login</h4>
+            </div>
+
+            <form id="login-form" action="/users/login" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Email address</label>
+                        <input name="email" type="email" class="form-control" id="login-email" placeholder="Email">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input name="password" type="password" class="form-control" id="login-password" placeholder="Password">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button id="login-btn" type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<!--display error messages-->
+<% if !@messages.nil? %>
+    <div id="error-message" class="container float-left">
+        <div class="col-xm-4">
+            <div class="row">
+                <p>Errors:</p>
+            </div>
+
+            <% @messages.each do |key, val| %>
+                <div class="row">
+                    <p>
+                        <%= "#{key}: #{val[0]}" %>
+                    </p>
+                </div>
+            <% end %>
+        </div>
+    </div>
+
+<% end %>

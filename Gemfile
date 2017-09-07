@@ -20,13 +20,15 @@ gem 'pg'
 
 # Adding rake for management
 gem 'rake'
-gem 'rack-test'
 
 # Adding rspec for running unit testing
 gem 'rspec'
 
 # Adding bcrypt for password security
 gem 'bcrypt', '~> 3.1.7'
+
+# Adding debug for debugging
+gem 'byebug'
 
 group :development, :test do
 	# Adding shotgun for local web hosting
