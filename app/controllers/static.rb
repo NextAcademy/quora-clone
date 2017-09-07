@@ -34,9 +34,14 @@ post '/login' do
 		@errors = {}
 		erb :"static/index"
 	end
+
+	# References
+	# https://learn.co/lessons/sinatra-user-auth
 end
 
 post '/logout' do
 	# kill a session
+	session.clear
 	# redirect to login page
+	redirect "/"
 end
