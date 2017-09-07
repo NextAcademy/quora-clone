@@ -11,10 +11,12 @@ post '/signup' do
 	end
 end
 
-enable :sessions
-
 get '/login' do
-	erb :"static/login"
+	if logged_in?
+		redirect '/'
+	else
+		erb :"static/login"
+	end
 end
 
 post '/login' do
@@ -22,7 +24,7 @@ post '/login' do
   # if a user has successfully been authenticated, you can assign the current user id to a session
   @user = User.find_by(email: params[:user][:email]).try(:authenticate, params[:user][:password])
   if @user
-  	session[:id] = SecureRandom.hex(64)
+  	session[:user_id] = @user.id
   	@notice = "You have successfully logged in"
   	redirect '/'
   else
@@ -36,4 +38,14 @@ get '/logout' do
   session.clear
   @notice = "You have successfully logged out"
   redirect '/'
+end
+
+get '/users/:id' do
+	puts 'parms:'
+	puts params[:id]
+  if (current_user.id == (params[:id]).to_i)
+  	erb :"static/user_index"
+  else
+  	redirect '/'
+  end
 end

@@ -35,6 +35,7 @@ use Rack::Session::Cookie, expire_after: ENV['SESSION_EXPIRE'] || 2592000, # sec
                            logging: true,
                            dump_errors: false,
                            app_file: __FILE__
+set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
 
 # Setup assets folder
 set :public_folder, 'public'
