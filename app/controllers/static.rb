@@ -1,7 +1,7 @@
 get '/' do
 	if logged_in?
-  		erb :"static/index"
+  		erb :"static/user_index"
   	else
-  		redirect '/login'
+  		erb :"static/index"
   	end
 end

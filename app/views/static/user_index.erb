@@ -1,2 +1,9 @@
-<h1>Trending Questions Today</h1>
-<p>See Me in views/static/user_index.html.erb</p>
+<h1>User Homepage</h1>
+<h2>Question Trending Today</h2>
+<form method=get action ="/users/<%=current_user.id%>">
+	<input type=submit value= "your profile">
+</form>
+<form action="/session" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="log out">
+</form>
