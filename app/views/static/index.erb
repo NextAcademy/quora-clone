@@ -1,2 +1,20 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<main>
+  <div class='signup-bg'>
+    <div class='form-container'>
+      <h2>Sign up for an account!</h2>
+      <form method="post" action="/signup">
+          <input type="text" placeholder="First Name" name="user[first_name]"><br>
+          <input type="text" placeholder="Last Name" name="user[last_name]"><br>
+          <input type="text" placeholder="Email" name="user[email]"><br>
+          <input type="password" placeholder="Password" name="user[password]"></br>
+          <input type="password" placeholder="Confirm password" name="user[password_confirmation]"></br>
+          <input type="submit" value="Sign up">
+      </form>
+    </div>
+
+    <div class="error-msg">
+      <%= @errors if @errors %>
+    </div>
+
+  </div>
+</main>
