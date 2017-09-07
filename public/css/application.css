@@ -1,32 +1,35 @@
-#header {
-    display: block;
-    line-height: 24px;
-    width: 100%;
+body {
+    padding-top: 70px;
 }
 
-.navigation ul {
-    list-style: none;
-    clear: right;
-    padding: 0px;
-    margin: 0px 0px 0px 15px;
-    font-size: 16px;
+#error-message {
+    border: solid;
+    border-color: grey;
+    border-radius: 5px;
+    border-width: 1px;
+    width: 30%;
+    margin-left: 20px;
 }
 
-#logo {
-    float:left;
-    line-height: 24px;
-    margin: 0px;
-    font-size: 16px;
+#error-message p {
+    padding-left:3px;
 }
 
-.navigation {
-    float: left;
+div.signup {
+   margin-left: 20px;
 }
 
-.header-container {
-    height: 37px;
+#signup-btn {
+    cursor: pointer;
+    background-color: #0275d8;
+    color: white;
 }
 
-.navigation a, #logo-url {
-    text-decoration: none;
+#modal-login-btn {
+    cursor: pointer;
+    text-decoration: underline;
+    color: blue;
+    background-color: transparent;
+
+
 }

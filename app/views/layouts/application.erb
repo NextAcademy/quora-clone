@@ -1,34 +1,44 @@
 <html>
-	<head>
-		<!--define library source-->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<head>
+    <!--define library source-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
 
-		<link rel="stylesheet" href="css/application.css">
-		<script type="text/javascript" charset="utf-8" src="./js/application.js">
+    <link rel="stylesheet" href="css/application.css">
+    <script type="text/javascript" charset="utf-8" src="./js/application.js">
 
-		</script>
-		<title>Quora</title>
-	</head>
-	<body>
+    </script>
+    <title>Quora</title>
+</head>
+<body>
 
-		<header id="header">
+<nav class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded">
+    <button class="navbar-toggler navbar-toggler-right" type="button"
+            data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">Quora</a>
 
-			<div class="header-container">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <form action="/logout" class="form-inline my-2 my-lg-0">
+            <button id="logout-btn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+        </form>
+    </div>
+</nav>
 
-				<h1 id="logo">
-					<a href="#" id="logo-url">QUORA</a>
-				</h1>
 
-				<nav class="navigation">
-					<ul>
-						<li><a href="#">Home</a></li>
-					</ul>
-				</nav>
 
-			</div>
+<%= yield %>
 
-		</header>
+<script type="text/javascript" src="/js/bootstrap.min.js">
 
-		<%= yield %>
-	</body>
+</script>
+</body>
 </html>

@@ -10,4 +10,5 @@ $(document).ready(function(){
         $('#signup-form').attr('action', '/login');
         $('#signup-form').submit();
     })
+
 });

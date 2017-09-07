@@ -1,7 +1,11 @@
 enable :sessions
 
 get '/' do
-  erb :"static/index"
+  if logged_in?
+    erb :"static/index"
+  else
+    erb :"static/landing"
+  end
 end
 
 post '/signup' do
@@ -9,12 +13,11 @@ post '/signup' do
 
   if @user.save
     session[:user_id] = @user[:id]
-    # direct the user to its profile page
-    erb :'user_profile'
+    redirect '/'
   else
     # return the error message
     @messages = @user.errors.messages
-    erb :"static/index"
+    erb :"static/landing"
 
   end
 end
@@ -23,16 +26,16 @@ post '/login' do
   @user = User.find_by(email: params[:email]).try(:authenticate, params[:password])
   if @user
     session[:user_id] = @user[:id]
-    # direct to user profile page
-    erb :'static/profile'
+    redirect '/'
   else
     @messages = {login_error: ['wrong email or password']}
-    erb :"static/index"
+    erb :"static/landing"
   end
 end
 
-post '/logout' do
+get '/logout' do
   session = nil
 
   redirect '/'
 end
+
