@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Ruby Version
-# ruby "2.2.1"
+ruby "2.4.1"
 
 # Adding Sinatra Drivers
 gem 'sinatra'
@@ -35,3 +35,6 @@ group :production do
 	gem 'rails_12factor' # Heroku Gem Supports
 	gem 'puma' # Using puma for
 end
+
+# Adding bcrypt for SecurePassword
+gem 'bcrypt'
