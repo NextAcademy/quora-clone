@@ -20,11 +20,19 @@ post '/signup' do
 end
 
 post '/login' do
+	# puts params
+	# {"user"=>{"email"=>"leesiewching22@gmail.com", "password"=>"password"}, "captures"=>[]}
+
 	# apply authentication method
-	if # success
+	@user = User.find_by(email: params[:user][:email]).try(:authenticate, params[:user][:password])
+	if @user
 		# assign current user id to a session
+		session[:id] = @user.id
+		erb :"sessions/dashboard"
 	else
 		# error message
+		@errors = {}
+		erb :"static/index"
 	end
 end
 
