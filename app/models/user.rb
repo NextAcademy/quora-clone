@@ -1,11 +1,11 @@
 require 'uri'
 
 class User < ActiveRecord::Base
-	validates :name, :email, :password, presence: true
+	validates :name, :email, presence: true
 	validates :email, uniqueness: true
 	validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "Invalid email format!" }
+	has_secure_password # also validates presence
 	validates :password, length: { minimum: 6 }
-	has_secure_password
 end
 
 # Reference

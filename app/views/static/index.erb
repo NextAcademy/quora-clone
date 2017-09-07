@@ -6,3 +6,12 @@
 	<input type="password" name="confirmPassword" placeholder="Confirm Password"><br>
 	<input type="submit" value="Sign Up">
 </form>
+
+<% if @errors %>
+  <p class="error">Invalid input! Please check your input.</p>
+  <ul>
+	<% @errors.each do |error| %>
+		<li class="error"><%= error[0].to_s %>: <%= error[1].join(",") %></li>
+	<% end %>
+  </ul>
+<% end %>

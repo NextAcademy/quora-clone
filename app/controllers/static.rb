@@ -4,6 +4,7 @@ get '/' do
   erb :"static/index"
 end
 
+# create
 post '/signup' do
 	# feature specific to Rails/Sinatra
 	# when the form input name is in the format of name="user[attr]"
@@ -11,8 +12,9 @@ post '/signup' do
 	# form value is automatically transformed into a hash
 	user = User.new(params[:user])
 	if user.save
-		# codes
+		redirect "/"
 	else
-		# codes
+		@errors = user.errors.messages
+		erb :"static/index"
 	end
 end
