@@ -18,3 +18,17 @@ post '/signup' do
 		erb :"static/index"
 	end
 end
+
+post '/login' do
+	# apply authentication method
+	if # success
+		# assign current user id to a session
+	else
+		# error message
+	end
+end
+
+post '/logout' do
+	# kill a session
+	# redirect to login page
+end
