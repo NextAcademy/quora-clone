@@ -1,20 +1,78 @@
 <main>
-  <div class='signup-bg'>
-    <div class='form-container'>
-      <h2>Sign up for an account!</h2>
-      <form method="post" action="/signup">
-          <input type="text" placeholder="First Name" name="user[first_name]"><br>
-          <input type="text" placeholder="Last Name" name="user[last_name]"><br>
-          <input type="text" placeholder="Email" name="user[email]"><br>
-          <input type="password" placeholder="Password" name="user[password]"></br>
-          <input type="password" placeholder="Confirm password" name="user[password_confirmation]"></br>
-          <input type="submit" value="Sign up">
-      </form>
-    </div>
+  <div class='login-signup-bg'>
+    <div class='container'>
+      <div class="row justify-content-center align-items-center">
+        <div class='col-8'>
+          <section class='login-signup-container'>
 
-    <div class="error-msg">
-      <%= @errors if @errors %>
-    </div>
+            <div class='logo-login-signup px-2 pb-5'>
+              <img src="/img/quora_logo.png" alt="Quora Logo">
+              <h2>A place to share knowledge and better understand the world</h2>
+            </div>
+
+          <div class='row'>
+            <div class='col-6'>
+              <div class='signup px-2'>
+                <h3 class="my-3">Sign up for an account!</h3>
+                <form method="post" action="/signup">
+                  <div class='form-group row'>
+                    <div class='col-6 my-2'>
+                      <label>First Name</label>
+                      <input class="form-control-sm" type="text" placeholder="First Name" name="user[first_name]">
+                    </div>
+                    <div class='col-6 my-2'>
+                      <label>Last Name</label>
+                      <input class="form-control-sm" type="text" placeholder="Last Name" name="user[last_name]">
+                    </div>
+                    <div class='col-12 my-2'>
+                      <label>Email</label>
+                      <input class="form-control-sm" type="text" placeholder="Email" name="user[email]">
+                    </div>
+                      <div class='col-12 my-2'>
+                        <label>Password</label>
+                        <input class="form-control-sm" type="password" placeholder="Password" name="user[password]">
+                      </div>
+                      <div class='col-12 my-2'>
+                        <label>Confirm Password</label>
+                        <input class="form-control-sm" type="password" placeholder="Confirm password" name="user[password_confirmation]">
+                      </div>
+                      <div class='col-12 text-right my-2'>
+                        <button type="submit" class="btn btn-primary">Sign up</button>
+                      </div>
+                    </div> <!-- Form row end-->
+                  </div><!-- Signup end-->
+              </form>
+            </div>
+
+
+            <div class='col-6'>
+            <div class='login px-2'>
+              <h3 class='my-3'>Login</h3>
+              <form method="post" action="/login">
+                <div class="form-group row">
+                  <div class='col-12 my-2'>
+                    <label>Email</label>
+                    <input class="form-control-sm" type="text" placeholder="Email" name="user[email]">
+                  </div>
+                  <div class='col-12 my-2'>
+                    <label>Password</label>
+                    <input class="form-control-sm" type="password" placeholder="Password" name="user[password]">
+                  </div>
+                  <div class='col-12 text-right my-2'>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          </div>
+        </section><!-- Login-Signup container end-->
+      </div>
 
   </div>
+
+  <div class="error-msg">
+    <%= @errors if @errors %>
+  </div>
+
 </main>

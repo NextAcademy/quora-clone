@@ -1,0 +1,60 @@
+/*General*/
+body {
+  font-family: 'Roboto',sans-serif;
+  font-size: 12px!important;
+  color: #333;
+}
+h1,h2 {
+  font-family: 'Roboto Slab',serif;
+}
+/*Login*/
+.login-signup-bg {
+  background: url(/img/login_bg);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-signup-container {
+  background-color: #fff;
+  color: #999;
+  border: 1px solid #e2e2e2;
+  box-shadow: 0 0 5px #888;
+  border-radius: 4px;
+  padding: 10px;
+}
+.logo-login-signup img {
+  width: 220px;
+}
+.logo-login-signup {
+  text-align: center;
+}
+.logo-login-signup h2 {
+  font-size: 1.7em;
+  font-family: serif;
+}
+.login-signup-container h3 {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.5em;
+  color: #333;
+}
+.login-signup-container label {
+  text-transform: uppercase;
+}
+.login-signup-container input {
+  background-color: #f6f6f6;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
+  width: 100%;
+}
+.signup::after{
+  content: "";
+  width: 1px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-color: #e2e2e2;
+  right:0;
+}
