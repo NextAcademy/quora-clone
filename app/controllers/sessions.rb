@@ -14,3 +14,4 @@ delete '/session' do
   session.clear
   redirect '/'
 end
+
