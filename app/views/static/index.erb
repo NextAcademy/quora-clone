@@ -3,7 +3,7 @@
     <div class='container'>
       <div class="row justify-content-center align-items-center">
         <div class='col-8'>
-          <section class='login-signup-container'>
+          <section class='login-signup-container px-4'>
 
             <div class='logo-login-signup px-2 pb-5'>
               <img src="/img/quora_logo.png" alt="Quora Logo">
@@ -69,10 +69,14 @@
         </section><!-- Login-Signup container end-->
       </div>
 
-  </div>
+      </div> <!-- Row end -->
 
-  <div class="error-msg">
-    <%= @errors if @errors %>
-  </div>
+      <div class="row justify-content-center">
+        <div class='col-8'>
+          <div class="error-msg p-5 mt-3">
+            <%= @errors if @errors %>
+          </div>
+        </div>
+      </div>
 
 </main>
