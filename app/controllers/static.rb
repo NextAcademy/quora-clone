@@ -10,7 +10,7 @@ post '/signup' do
 	# when the form input name is in the format of name="user[attr]"
 	# we can use User.new(params[:user])
 	# form value is automatically transformed into a hash
-	@user = User.new(params[:user])
+	user = User.new(params[:user])
 	if user.save
 		redirect "/"
 	else
@@ -28,11 +28,11 @@ post '/login' do
 
 	# Extend your MODEL
 	# Best practice - authentication login should live in MODEL
-	@user = User.authenticate(params[:user])
+	user = User.authenticate(params[:user])
 	
-	if @user
+	if user
 		# assign current user id to a session
-		session[:id] = @user.id
+		session[:id] = user.id
 		erb :"sessions/dashboard"
 	else
 		# error message
@@ -49,4 +49,8 @@ post '/logout' do
 	session.clear
 	# redirect to login page
 	redirect "/"
+end
+
+get '/users/:id' do
+	# some code here
 end
