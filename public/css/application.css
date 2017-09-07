@@ -1,0 +1,36 @@
+.main{
+	background-image: url("/img/quora.png");
+}
+
+.logreg {
+	position :absolute;
+	text-align: center ; 
+	background-color: white;
+	height: 200px;
+	top: 35%;
+	width: 20%;
+	left: 40%;
+	border: 2px solid;
+	border-radius: 25px;
+}
+
+.logreg>.reg{
+	position: absolute;
+	text-align: center;
+	top: 40%;
+	left: 25%;
+
+}
+
+.logreg>.log{
+	position: absolute;
+	text-align: center;
+	top: 40%;
+	right: 25%;
+
+}
+
+.confirmation {
+	text-align: center;
+}
+
