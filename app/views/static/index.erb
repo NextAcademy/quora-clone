@@ -1,2 +1,89 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<html>
+<head> 
+<title>Quora</title>
+		<link rel="stylesheet" href="/css/application.css">
+</head>
+
+<body>
+<div class ='main'>
+	<div class = 'logreg'>
+		<!-- Button trigger modal -->
+		<div class = 'reg'>
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+			  Register
+			</button>
+
+			<!-- Modal -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        <form action="/create_user" method="post">
+			          Name:<br>
+			          <input type="text" name="name">
+			          <br>
+			          Email:<br>
+			          <input type="text" name="email">
+			          <br>
+			          Password:<br>
+			          <input type="password" name="password">
+			          <br><br>
+			          Confirm password:<br>
+			          <input type="password" name="confirmation_password">
+			          <br><br>
+			          <input class="btn btn-primary" type="submit" value="Resgister"> 
+			      	</form>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</div>
+
+		<div class = 'log' > 
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
+			  Login
+			</button>
+
+			<!-- Modal -->
+			<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        <form action="/login" method="post">
+			          Email:<br>
+			          <input type="text" name="email">
+			          <br>
+			          Password:<br>
+			          <input type="password" name="password">
+			          <br><br>
+			          <input class="btn btn-primary" type="submit" value="Log In">
+			        </form> 
+			      </div>
+
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+				      <% if @error %>
+				      	<h2 class ='confirmation'>Please try again</h2>
+				      <% elsif @error1 %>
+				      	<h2 class ='confirmation'>Wrong Login </h2>
+				      <% end %>
+</body>
+
+</html>
