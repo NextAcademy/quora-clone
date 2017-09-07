@@ -7,4 +7,3 @@ get '/index' do
   erb :"static/index"
 end
 
-
