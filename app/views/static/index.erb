@@ -1,2 +1,15 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<h2>Login</h2>
+<form method=post action=/session>
+    <input type=text placeholder="Email" name="user[email]"><br>
+    <input type=password placeholder="Password" name="user[password]"></br>
+    <input type=submit value="Login">
+</form>
+
+<h2>Sign up for an account!</h2>
+<form method="post" action="/users">
+	<input type=text placeholder="Name" name="user[name]"><br>
+    <input type=text placeholder="Email" name="user[email]"><br>
+    <input type=password placeholder="Password" name="user[password]"></br>
+    <input type=password placeholder="Confirm your password again" name="user[password_confirmation]"></br>
+    <input type=submit value="Sign up">
+</form>
