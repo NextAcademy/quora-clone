@@ -52,6 +52,15 @@ input.link {
 	width: 50%;
 }
 
+.feed-title a {
+	text-decoration: none;
+	color: #000;
+}
+
+.feed-title a:hover {
+	text-decoration: underline;
+}
+
 footer {
 	position: relative;
 	margin-top: -30px;
@@ -64,4 +73,8 @@ footer {
 	min-height: 100%;
 	overflow: auto;
 	padding-bottom: 30px;
+}
+
+.question-title {
+	margin-left: 30px;
 }

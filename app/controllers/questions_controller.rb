@@ -9,3 +9,11 @@ post '/questions' do
 		erb :"static/index"
 	end
 end
+
+get '/questions/:id' do
+	# puts params
+	# {"captures"=>[], "id"=>"3"}
+	@question = Question.find_by_id(params[:id])
+	@title = @question.title + " - Quora Clone"
+	erb :"static/question"
+end

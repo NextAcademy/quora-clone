@@ -50,7 +50,7 @@
 		<% @questions.each do |question| %>
 			<div class="feed-item">
 					<div class="feed-title">
-						<%= question.title %>
+						<a href="/questions/<%= question.id %>"><%= question.title %></a>
 					</div>
 					<div class="feed-answer">
 						
