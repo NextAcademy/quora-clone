@@ -1,2 +1,40 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<div id="main-wrapper">
+<% unless logged_in? %>
+	<!-- Display sign up form -->
+	<div id="sign-up-container">
+		<h2>Sign up for an account!</h2>
+		<form id="sign-up-form" action="/signup" method="post">
+			<input type="text" name="user[name]" placeholder="Name"><br>
+			<input type="email" name="user[email]" placeholder="Email"><br>
+			<input type="password" name="user[password]" placeholder="Password"><br>
+			<input type="password" name="confirmPassword" placeholder="Confirm Password"><br>
+			<input type="submit" value="Sign Up">
+		</form>
+	</div>
+
+	<!-- Display login form -->
+	<div id="login-container">
+		<h2>Login</h2>
+		<form id="login-form" action="/login" method="post">
+			<input type="text" name="user[email]" placeholder="Email"><br>
+			<input type="password" name="user[password]" placeholder="Password"><br>
+			<input type="submit" value="Login">
+		</form>
+	</div>
+
+	<!-- Display error messages -->
+	<% if @errors %>
+	  <p class="error">Invalid input! Please check your input.</p>
+	  <ul>
+		<% @errors.each do |error| %>
+			<li class="error"><%= error[0].to_s %>: <%= error[1].join(",") %></li>
+		<% end %>
+	  </ul>
+	<% end %>
+<% else %>
+	<!-- Display homepage / user dashboard -->
+	<h2>Login successful</h2>
+<% end %>
+</div>
+
+<footer>&copy; 2017 Coded by <a href="https://www.linkedin.com/in/siew-ching-lee-81683156/" target="_blank">SC Lee</a></footer>

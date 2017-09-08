@@ -1,0 +1,32 @@
+/*Order alphabetically*/
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+input.link {
+	background: none;
+	border: none;
+	font: inherit;
+	margin: 0;
+	padding: 0;
+	color: blue;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+footer {
+	position: relative;
+	margin-top: -30px;
+	height: 30px;
+	clear: both;
+	text-align: center;
+}
+
+#main-wrapper {
+	min-height: 100%;
+	overflow: auto;
+	padding-bottom: 30px;
+}
+

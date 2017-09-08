@@ -1,0 +1,10 @@
+<nav id="menu-container">
+	<ul>
+		<li><a href="/users/<%= current_user.id %>">Profile</a></li>
+		<li>
+			<form id="logout-form" action="/logout" method="post">
+				<input class="link" type="submit" value="Logout">
+			</form>
+		</li>
+	</ul>
+</nav>
