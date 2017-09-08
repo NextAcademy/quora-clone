@@ -1,5 +1,10 @@
 require 'byebug'
 
+before do
+	# set default title
+	@title = "Quora Clone"
+end
+
 get '/' do
   erb :"static/index"
 end
@@ -53,6 +58,7 @@ end
 
 get '/users/:id' do
 	# show user profile page
+	@title = current_user.name + " - Quora Clone"
 	erb :"static/profile"
 end
 
