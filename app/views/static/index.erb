@@ -33,6 +33,9 @@
                         <label>Password</label>
                         <input class="form-control-sm" type="password" placeholder="Password" name="user[password]">
                       </div>
+                      <!-- When you use name="user[password]", then it will help you do
+                       User.new(password: params[:user][:password]) automatically when you do
+                      User.new(params[:password])-->
                       <div class='col-12 my-2'>
                         <label>Confirm Password</label>
                         <input class="form-control-sm" type="password" placeholder="Confirm password" name="user[password_confirmation]">

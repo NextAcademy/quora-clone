@@ -126,3 +126,11 @@ form.form-inline.logout {
 .btn-ask:hover {
   background-color: #94211e
 }
+
+/*Questions*/
+.question-container {
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    margin: 20px;
+}
