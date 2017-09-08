@@ -1,0 +1,42 @@
+body {
+    padding-top: 70px;
+}
+
+#question-form-container {
+    padding:0;
+}
+
+#error-message {
+    border: solid;
+    border-color: grey;
+    border-radius: 5px;
+    border-width: 1px;
+    width: 30%;
+    margin-left: 20px;
+}
+
+#error-message p {
+    padding-left:3px;
+}
+
+div.signup {
+   margin-left: 20px;
+}
+
+#signup-btn {
+    cursor: pointer;
+    background-color: #0275d8;
+    color: white;
+}
+
+#modal-login-btn {
+    cursor: pointer;
+    text-decoration: underline;
+    color: blue;
+    background-color: transparent;
+}
+
+.ques-detail {
+    color: #B4B4B4 !important;
+
+}
