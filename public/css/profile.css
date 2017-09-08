@@ -1,0 +1,52 @@
+div#header {
+  margin:0;
+  padding:0;
+  height:40px;
+  border-bottom:1px solid #E2E2E2;
+  box-shadow:0 1px 0 #EEEEEE;
+  display:block;
+  text-align:center;
+}
+
+div#header h1{
+  display:inline-block;
+  margin:0;
+  float:left;
+  padding-left:200px;
+}
+
+div#header div#form {
+  float:right;
+  width:100px;
+  margin: 5px 200px 0 0;
+}
+
+div#header div#form form{
+  margin:0;
+  padding:0;
+}
+
+div#content {
+  margin: 50px auto;
+  width:70%;
+}
+
+div#nav {
+  text-align:center;
+}
+
+div#profile {
+  padding-left:30px;
+  height:120px;
+  border-bottom:2px solid #E2E2E2;
+}
+
+div#feeds {
+  margin-top:10px;
+  border-bottom:1px solid #E2E2E2;
+}
+
+div#answer {
+  margin-top:10px;
+  border-bottom:1px solid #E2E2E2;
+}

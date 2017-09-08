@@ -1,0 +1,107 @@
+<div id="header">
+  <h1>Quora</h1>
+  <div id="form">
+    <form action="/logout" method="post">
+      <input type="submit" value="LOG OUT">
+    </form>
+  </div>
+</div>
+
+
+<div class="row" id="content">
+
+  <div class="col-md-9">
+
+    <div id="profile">
+      <p>Hello <%= current_user.first_name%></p>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3" id="feeds">
+        <p>Feeds</p>
+      </div>
+
+      <div class="col-md-8 col-md-offset-1" id="answer">
+        <p>Content</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <ul>
+          <li>
+            <button>Add question</button>
+            <div id="question_form" >
+              <form action="/question" method="post">
+                <input type="text" name="question[title]" placeholder="Title">
+                <input type="text" name="question[content]" placeholder="content">
+                <input type="hidden" name="question[user_id]" value="<%= current_user.id%>">
+                <input type="submit" value="Add question">
+              </form>
+            </div>
+          </li>
+          <li>
+            <form action="/user/<%= current_user.id%>/question" method="get">
+              <input type="submit" value="My Questions">
+            </form>
+          </li>
+          <li>
+            <form action="/question" method="get">
+              <input type="submit" value="All Questions">
+            </form>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-md-8 col-md-offset-1">
+        <div id="all_user_questions">
+          <% if @all_user_questions %>
+            <% @all_user_questions.each do |question| %>
+              <%= "<p>#{question.title}</p>" %>
+              <form action="/user/<%= current_user.id %>/question/<%= question.id %>" method="get">
+                <input type="submit" value="Open Question">
+              </form>
+              <button>Add answer</button>
+              <form action="/answer" method="post">
+                <input type="text" name="answer[content]">
+                <input type="hidden" name="answer[user_id]" value="<%= current_user.id %>">
+                <input type="hidden" name="answer[question_id]" value="<%= question.id %>">
+                <input type="submit" value="Add answer">
+              </form>
+            <% end %>
+          <% end %>
+        </div>
+        <div id="all_questions">
+          <% if @all_questions %>
+            <% @all_questions.each do |question| %>
+              <%= "<p>#{question.title}</p>" %>
+            <% end %>
+          <% end %>
+        </div>
+        <div id="question">
+          <% if @question %>
+            <%= "<p>Title: #{@question.title}</p>" %>
+            <%= "<p>Content: #{@question.content}</p>" %>
+            <% if @answers %>
+              <% @answers.each do |answer| %>
+                <%= "<p>Answer: #{answer.content}</p>" %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-3" id="nav">
+    <p>nav bar</p>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+
+</div>
