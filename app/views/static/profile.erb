@@ -82,6 +82,18 @@
           <% if @question %>
             <%= "<p>Title: #{@question.title}</p>" %>
             <%= "<p>Content: #{@question.content}</p>" %>
+            <form id='upvote' action="/upvote" method="post">
+              <input type="hidden" name="upvote[user_id]" value="<%= current_user.id %>">
+              <input type="hidden" name="upvote[question_id]" value="<%= @question.id %>">
+              <input type="hidden" name="upvote[action]" value="upvote">
+              <input type="submit" value="Upvote">
+            </form>
+            <form id='downvote' action="/downvote" method="post">
+              <input type="hidden" name="downvote[user_id]" value="<%= current_user.id %>">
+              <input type="hidden" name="downvote[question_id]" value="<%= @question.id %>">
+              <input type="hidden" name="downvote[action]" value="downvote">
+              <input type="submit" value="Downvote">
+            </form>
             <% if @answers %>
               <% @answers.each do |answer| %>
                 <%= "<p>Answer: #{answer.content}</p>" %>

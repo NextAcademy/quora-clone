@@ -65,3 +65,20 @@ post '/answer' do
     p "errors"
   end
 end
+
+post '/upvote' do
+  byebug
+  upvote = QuestionVote.new(params[:upvote])
+  if upvote.save
+    upvote.question.upvote_question
+    erb :"static/profile"
+  end
+end
+
+post '/downvote' do
+  downvote = QuestionVote.new(params[:downvote])
+  if downvote.save
+    downvote.question.downvote_question
+    erb :"static/profile"
+  end
+end
