@@ -48,10 +48,20 @@ end
 
 get '/user/:user_id/question/:question_id' do
   @question = Question.find(params[:question_id])
+  @answers = @question.answers
   erb :"static/profile"
 end
 
 get '/question' do
   @all_questions = Question.all
   erb :"static/profile"
+end
+
+post '/answer' do
+  answer = Answer.new(params[:answer])
+  if answer.save
+    erb :"static/profile"
+  else
+    p "errors"
+  end
 end
