@@ -32,8 +32,8 @@ post '/login' do
 	
 	if user
 		# assign current user id to a session
-		session[:id] = user.id
-		erb :"sessions/dashboard"
+		session[:user_id] = user.id
+		redirect "/"
 	else
 		# error message
 		@errors = {}

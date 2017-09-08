@@ -1,31 +1,42 @@
-<!-- Display sign up form -->
-<div id="sign-up-container">
-	<h2>Sign up for an account!</h2>
-	<form id="sign-up-form" action="/signup" method="post">
-		<input type="text" name="user[name]" placeholder="Name"><br>
-		<input type="email" name="user[email]" placeholder="Email"><br>
-		<input type="password" name="user[password]" placeholder="Password"><br>
-		<input type="password" name="confirmPassword" placeholder="Confirm Password"><br>
-		<input type="submit" value="Sign Up">
-	</form>
-</div>
+<% unless logged_in? %>
+	<!-- Display sign up form -->
+	<div id="sign-up-container">
+		<h2>Sign up for an account!</h2>
+		<form id="sign-up-form" action="/signup" method="post">
+			<input type="text" name="user[name]" placeholder="Name"><br>
+			<input type="email" name="user[email]" placeholder="Email"><br>
+			<input type="password" name="user[password]" placeholder="Password"><br>
+			<input type="password" name="confirmPassword" placeholder="Confirm Password"><br>
+			<input type="submit" value="Sign Up">
+		</form>
+	</div>
 
-<!-- Display login form -->
-<div id="login-container">
-	<h2>Login</h2>
-	<form id="login-form" action="/login" method="post">
-		<input type="text" name="user[email]" placeholder="Email"><br>
-		<input type="password" name="user[password]" placeholder="Password"><br>
-		<input type="submit" value="Login">
-	</form>
-</div>
+	<!-- Display login form -->
+	<div id="login-container">
+		<h2>Login</h2>
+		<form id="login-form" action="/login" method="post">
+			<input type="text" name="user[email]" placeholder="Email"><br>
+			<input type="password" name="user[password]" placeholder="Password"><br>
+			<input type="submit" value="Login">
+		</form>
+	</div>
 
-<!-- Display error messages -->
-<% if @errors %>
-  <p class="error">Invalid input! Please check your input.</p>
-  <ul>
-	<% @errors.each do |error| %>
-		<li class="error"><%= error[0].to_s %>: <%= error[1].join(",") %></li>
+	<!-- Display error messages -->
+	<% if @errors %>
+	  <p class="error">Invalid input! Please check your input.</p>
+	  <ul>
+		<% @errors.each do |error| %>
+			<li class="error"><%= error[0].to_s %>: <%= error[1].join(",") %></li>
+		<% end %>
+	  </ul>
 	<% end %>
-  </ul>
+
+<% else %>
+	<!-- Display homepage / user dashboard -->
+	<h2>Login successful</h2>
+	<div id="logout-container">
+		<form id="logout-form" action="/logout" method="post">
+			<input type="submit" value="Logout">
+		</form>
+	</div>
 <% end %>
