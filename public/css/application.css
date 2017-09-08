@@ -1,7 +1,6 @@
 /*General*/
-body {
+html body {
   font-family: 'Roboto',sans-serif;
-  font-size: 12px!important;
   color: #333;
   background: #fafafa;
 }
@@ -11,6 +10,31 @@ h1,h2 {
 /*Header*/
 .navbar {
   box-shadow: 0 3px 2px -2px rgba(200,200,200,0.2);
+  background: #fff;
+}
+.navbar .navbar-brand {
+  margin-right: 2.5rem;
+}
+.navbar .navbar-nav .nav-link {
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+.navbar-nav {
+  margin-right: auto;
+}
+.nav-link {
+  color: #b92b27;
+}
+li.nav-item {
+  position: relative;
+}
+li.nav-item.active::after {
+    content: '';
+    background: #b92b27;
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    bottom: -20px;
 }
 /*Login*/
 .login-signup-bg {
@@ -35,17 +59,18 @@ h1,h2 {
   text-align: center;
 }
 .logo-login-signup h2 {
-  font-size: 1.7em;
+  font-size: 1.5em;
   font-family: serif;
 }
 .login-signup-container h3 {
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 1.5em;
+  font-size: 1.3em;
   color: #333;
 }
 .login-signup-container label {
   text-transform: uppercase;
+  font-size: 12px;
 }
 .login-signup-container input {
   background-color: #f6f6f6;

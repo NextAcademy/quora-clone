@@ -5,22 +5,22 @@
         <a class="navbar-brand" href="#">
           <img src="/img/quora_logo.png" width="80" alt="Quora Logo">
         </a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
+        <div class='navbar-nav' id="navbarNav">
+          <ul class="nav">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="#"><i class='fa-newspaper-o fa fa-fw'></i> Home </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
+              <a class="nav-link" href="#"><i class='fa-pencil-square-o fa fa-fw'></i>Answer</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
+              <a class="nav-link" href="#"><i class='fa-bell fa fa-fw'></i>Notifications</a>
             </li>
           </ul>
-      </div>
+        </div>
+        <form class="form-inline" method="post" action="/logout">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+        </form>
     </div>
   </nav>
   </header>

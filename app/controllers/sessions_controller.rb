@@ -1,6 +1,9 @@
 post '/login' do
-  user = User.find_by(email:params[:user][:email])
-  if user && user.authenticate(params[:user][:password])
+  # Earlier we were authenticating here, now we have moved this to the model
+  # user = User.find_by(email:params[:user][:email])
+  # if user && user.authenticate(params[:user][:password])
+  user = User.authenticate(params)
+  if user
     session[:user_id] = user.id
     erb :"static/home"
   else
