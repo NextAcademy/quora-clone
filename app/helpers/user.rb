@@ -10,4 +10,8 @@ helpers do
     !current_user.nil?
   end
 
+  def list_all_questions
+    Question.all.order(:id).reverse_order
+  end
+
 end

@@ -1,0 +1,18 @@
+<div class="container question-container">
+
+    <row class="class">
+        <h4>
+            <%= @question[:header] %>
+        </h4>
+
+        <p>
+            <%= @question[:detail] %>
+        </p>
+
+        <a href="/users/<%= @question[:user_id] %>">
+            <%= @question.user[:user_id] %>
+        </a>
+    </row>
+
+    <hr>
+</div>

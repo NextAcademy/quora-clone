@@ -15,7 +15,7 @@ post '/users/login' do
   @user = User.find_by(user_id: params[:email]).try(:authenticate, params[:password])
   if @user
     session[:user_id] = @user[:id]
-    redirect "/users/#{session[:user_id]}"
+    redirect "/questions/index"
   else
     @messages = {Invalid_login: ['Wrong username or password']}
     erb :"static/landing"
