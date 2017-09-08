@@ -1,3 +1,4 @@
+<div id="main-wrapper">
 <% unless logged_in? %>
 	<!-- Display sign up form -->
 	<div id="sign-up-container">
@@ -30,13 +31,10 @@
 		<% end %>
 	  </ul>
 	<% end %>
-
 <% else %>
 	<!-- Display homepage / user dashboard -->
 	<h2>Login successful</h2>
-	<div id="logout-container">
-		<form id="logout-form" action="/logout" method="post">
-			<input type="submit" value="Logout">
-		</form>
-	</div>
 <% end %>
+</div>
+
+<footer>&copy; 2017 Coded by <a href="https://www.linkedin.com/in/siew-ching-lee-81683156/" target="_blank">SC Lee</a></footer>

@@ -52,5 +52,6 @@ post '/logout' do
 end
 
 get '/users/:id' do
-	# some code here
+	# show user profile page
+	erb :"static/profile"
 end
