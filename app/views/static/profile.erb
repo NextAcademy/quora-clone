@@ -22,7 +22,7 @@
       </div>
 
       <div class="col-md-8 col-md-offset-1" id="answer">
-        <p>Answers</p>
+        <p>Content</p>
       </div>
     </div>
 
@@ -61,6 +61,13 @@
               <form action="/user/<%= current_user.id %>/question/<%= question.id %>" method="get">
                 <input type="submit" value="Open Question">
               </form>
+              <button>Add answer</button>
+              <form action="/answer" method="post">
+                <input type="text" name="answer[content]">
+                <input type="hidden" name="answer[user_id]" value="<%= current_user.id %>">
+                <input type="hidden" name="answer[question_id]" value="<%= question.id %>">
+                <input type="submit" value="Add answer">
+              </form>
             <% end %>
           <% end %>
         </div>
@@ -73,8 +80,13 @@
         </div>
         <div id="question">
           <% if @question %>
-            <%= "<p>#{@question.title}</p>" %>
-            <%= "<p>#{@question.content}</p>" %>
+            <%= "<p>Title: #{@question.title}</p>" %>
+            <%= "<p>Content: #{@question.content}</p>" %>
+            <% if @answers %>
+              <% @answers.each do |answer| %>
+                <%= "<p>Answer: #{answer.content}</p>" %>
+              <% end %>
+            <% end %>
           <% end %>
         </div>
       </div>
