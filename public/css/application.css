@@ -1,4 +1,8 @@
 /*Order alphabetically*/
+.answer-editor-header {
+	padding: 10px 8px;
+}
+
 .ask-question-container {
 	border: 1px solid #efefef;
 	background-color: #fff;
@@ -40,6 +44,24 @@ input.link {
 	padding: 0;
 	color: #00f;
 	cursor: pointer;
+	text-decoration: underline;
+}
+
+.feed-action {
+	padding-top: 8px;
+}
+
+.feed-action textarea {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.feed-action .user {
+	color: #000;
+	text-decoration: none;
+}
+
+.feed-action .user:hover {
 	text-decoration: underline;
 }
 
