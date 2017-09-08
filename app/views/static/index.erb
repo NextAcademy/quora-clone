@@ -39,9 +39,9 @@
 	<div class="ask-question-container">
 		<a class="user" href="/users/<%= current_user.id %>"><%= current_user.name %></a>
 		<form id="ask-question-form" action="/questions" method="post">
-			<textarea name="question[title]" id="ask-question-form" cols="30" rows="10" placeholder="What is your question?"></textarea><br>
+			<textarea name="question[title]" id="ask-question-form" placeholder="What is your question?"></textarea><br>
 			<input type="hidden" name="question[user_id]" value="<% current_user.id %>"><br>
-			<input type="submit" value="Ask Question"><br>
+			<input class="ask-button" type="submit" value="Ask Question">
 		</form>
 	</div>
 

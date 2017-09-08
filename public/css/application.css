@@ -8,6 +8,15 @@
 	width: 50%;
 }
 
+.ask-question-container .ask-button {
+	float: right;
+}
+
+.ask-question-container textarea {
+	width: 100%;
+	box-sizing: border-box;
+}
+
 .ask-question-container .user {
 	color: #000;
 	text-decoration: none;
