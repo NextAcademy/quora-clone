@@ -2,6 +2,10 @@ body {
     padding-top: 70px;
 }
 
+#question-form-container {
+    padding:0;
+}
+
 #error-message {
     border: solid;
     border-color: grey;
@@ -30,9 +34,8 @@ div.signup {
     text-decoration: underline;
     color: blue;
     background-color: transparent;
-<<<<<<< HEAD
-=======
+}
 
-
->>>>>>> refs/remotes/origin/master
+.ques-detail {
+    color: #B4B4B4 !important;
 }

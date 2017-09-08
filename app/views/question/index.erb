@@ -1,0 +1,44 @@
+<div class="container float-left ml-sm-5" id="question-form-container">
+    <form action="/questions/create" method="post" id="question-form" class="">
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label for="inputQuestionHeader">Question</label>
+                <input name="questionHeader" type="text" class="form-control" id="inputQuestionHeader" placeholder="Ask a question">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label for="inputQuestionDetail">Detail</label>
+                <textarea name="questionDetail"
+                          class="form-control" rows="5" id="inputQuestionDetail" placeholder="Details of question...">
+                </textarea>
+            </div>
+        </div>
+
+        <button id="question-submit-btn" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<!--list out all the question-->
+<div class="container qeustions-container float-left ml-sm-5">
+    <% if !@questions.nil? %>
+        <% @questions.each do |ques| %>
+            <div class="row mb-sm-1">
+                <!--<div class="col-md-12">-->
+                    <div class="card float-left col-md-12" style="width: 80%;">
+                        <div class="card-body p-sm-3">
+                            <a href="/questions/<%= ques[:id] %>">
+                                <h4 class="card-title"><%= ques[:header] %></h4>
+                            </a>
+                            <a href="/users/<%= ques[:user_id] %>">
+                                <h6 class="card-subtitle mb-2 text-muted"><%= User.find_by_id(ques[:user_id])[:user_id] %></h6>
+                            </a>
+                            <p class="card-text ques-detail"><%= ques[:detail] %></p>
+                        </div>
+                    </div>
+                <!--</div>-->
+            </div>
+        <% end %>
+    <% end %>
+</div>
