@@ -1,0 +1,136 @@
+/*General*/
+html body {
+  font-family: 'Roboto',sans-serif;
+  color: #333;
+  background: #fafafa;
+}
+h1,h2 {
+  font-family: 'Roboto Slab',serif;
+}
+.highlight {
+  color: #639BCF;
+}
+.btn {
+  cursor: pointer;
+}
+/*Header*/
+header .navbar {
+  box-shadow: 0 3px 2px -2px rgba(200,200,200,0.2);
+  background: #fff;
+  padding: 0;
+}
+.navbar .navbar-brand {
+  margin-right: 2.5rem;
+  padding: 0
+}
+.navbar .navbar-nav .nav-link {
+  color: #b92b27;
+  padding: 1.2rem;
+}
+.navbar-nav {
+  margin-right: auto;
+}
+.nav-link:hover {
+  background-color: #f6f6f6;
+}
+li.nav-item {
+  position: relative;
+}
+li.nav-item.active::after {
+    content: '';
+    background: #b92b27;
+    height: 3px;
+    width: 100%;
+    position: absolute;
+}
+form.form-inline.logout {
+    margin-bottom: 0;
+}
+/*Login*/
+.login-signup-bg {
+  background: url(/img/login_bg);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-signup-container {
+  background-color: #fff;
+  color: #999;
+  border: 1px solid #e2e2e2;
+  box-shadow: 0 0 5px #888;
+  border-radius: 4px;
+  padding: 10px;
+}
+.logo-login-signup img {
+  width: 220px;
+}
+.logo-login-signup {
+  text-align: center;
+}
+.logo-login-signup h2 {
+  font-size: 1.5em;
+  font-family: serif;
+}
+.login-signup-container h3 {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.3em;
+  color: #333;
+}
+.login-signup-container label {
+  text-transform: uppercase;
+  font-size: 12px;
+}
+.login-signup-container input {
+  background-color: #f6f6f6;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
+  width: 100%;
+}
+.signup::after{
+  content: "";
+  width: 1px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-color: #e2e2e2;
+  right:0;
+}
+.error-msg {
+  background: #fff;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
+  opacity: 0;
+}
+
+/*Home*/
+/*Ask*/
+.ask-form input {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #e3e3e3;
+    width: 70%;
+    margin: auto auto 2rem;
+    display: block;
+    padding: 1rem 0 .5rem;
+    outline: none;
+}
+.btn-ask {
+  padding: .5rem 1.5rem;
+  color: #fff;
+  background-color: #b92b27;
+}
+.btn-ask:hover {
+  background-color: #94211e
+}
+
+/*Questions*/
+.question-container {
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    margin: 20px;
+}
