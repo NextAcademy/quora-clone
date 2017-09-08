@@ -65,3 +65,25 @@ post '/answer' do
     p "errors"
   end
 end
+
+post '/upvote' do
+  upvote = QuestionVote.find_or_initialize_by(params[:upvote])
+  if upvote.id
+    upvote.question.downvote_question
+    upvote.destroy
+    redirect '/profile'
+  elsif upvote.save
+    upvote.question.upvote_question
+    erb :"static/profile"
+  else
+    redirect '/profile'
+  end
+end
+
+post '/downvote' do
+  downvote = QuestionVote.new(params[:downvote])
+  if downvote.save
+    downvote.question.downvote_question
+    erb :"static/profile"
+  end
+end
