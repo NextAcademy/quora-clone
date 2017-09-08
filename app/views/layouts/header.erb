@@ -21,7 +21,8 @@
 
         </ul>
       </div>
-      <form class="form-inline" method="post" action="/logout">
+      <form class="form-inline" method="post" action="/sessions">
+        <input type="hidden" name="_method" value="delete">
         <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
       </form>
   </div>

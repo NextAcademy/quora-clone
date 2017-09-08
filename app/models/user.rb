@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  # Associations
+  has_many :questions
+  # Validations
   has_secure_password
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   validates :first_name,:last_name, :email, presence: true

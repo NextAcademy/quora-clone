@@ -1,4 +1,4 @@
-post '/login' do
+post '/sessions' do
   # Earlier we were authenticating here, now we have moved this to the model
   # user = User.find_by(email:params[:user][:email])
   # if user && user.authenticate(params[:user][:password])
@@ -11,7 +11,7 @@ post '/login' do
   end
 end
 
-post '/logout' do
+delete '/sessions' do
   session[:user_id] = nil
   redirect "/"
 end
