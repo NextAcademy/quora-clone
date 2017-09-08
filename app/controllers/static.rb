@@ -66,7 +66,7 @@ post '/answer' do
   end
 end
 
-post '/upvote' do
+post '/question_upvote' do
   upvote = QuestionVote.find_or_initialize_by(params[:upvote])
   if upvote.id
     upvote.question.downvote_question
@@ -80,10 +80,44 @@ post '/upvote' do
   end
 end
 
-post '/downvote' do
-  downvote = QuestionVote.new(params[:downvote])
-  if downvote.save
-    downvote.question.downvote_question
+post '/question_downvote' do
+  downvote = QuestionVote.find_or_initialize_by(params[:downvote])
+  if downvote.id
+    upvote.question.upvote_question
+    upvote.destroy
+    redirect '/profile'
+  elsif upvote.save
+    upvote.question.downvote_question
     erb :"static/profile"
+  else
+    redirect '/profile'
+  end
+end
+
+post '/answer_upvote' do
+  upvote = QuestionVote.find_or_initialize_by(params[:upvote])
+  if upvote.id
+    upvote.answer.downvote_answer
+    upvote.destroy
+    redirect '/profile'
+  elsif upvote.save
+    upvote.answer.upvote_answer
+    erb :"static/profile"
+  else
+    redirect '/profile'
+  end
+end
+
+post '/answer_downvote' do
+  downvote = QuestionVote.find_or_initialize_by(params[:downvote])
+  if downvote.id
+    downvote.answer.upvote_answer
+    downvote.destroy
+    redirect '/profile'
+  elsif downvote.save
+    downvote.answer.downvote_answer
+    erb :"static/profile"
+  else
+    redirect '/profile'
   end
 end
