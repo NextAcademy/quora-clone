@@ -58,6 +58,9 @@
           <% if @all_user_questions %>
             <% @all_user_questions.each do |question| %>
               <%= "<p>#{question.title}</p>" %>
+              <form action="/user/<%= current_user.id %>/question/<%= question.id %>" method="get">
+                <input type="submit" value="Open Question">
+              </form>
             <% end %>
           <% end %>
         </div>
@@ -66,6 +69,12 @@
             <% @all_questions.each do |question| %>
               <%= "<p>#{question.title}</p>" %>
             <% end %>
+          <% end %>
+        </div>
+        <div id="question">
+          <% if @question %>
+            <%= "<p>#{@question.title}</p>" %>
+            <%= "<p>#{@question.content}</p>" %>
           <% end %>
         </div>
       </div>
