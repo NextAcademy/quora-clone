@@ -1,5 +1,4 @@
-
-
 $( document ).ready(function() {
-    $("body").css("padding-top", $(".navbar").height()/2);
+    // Adding padding to body to offset the fixed navbar
+    $("body").css("padding-top", $(".navbar").height()/2.8);
 });

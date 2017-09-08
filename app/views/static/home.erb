@@ -1,3 +1,18 @@
 <main>
- You are home
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+
+        <div class="ask-container my-5">
+          <h2 class='text-center'>Hi <span class='highlight'><%= current_user.first_name %>!</span> Have a question?</h2>
+          <form class="ask-form" action="/questions" method="post">
+            <label class="sr-only" for="inlineFormInputName2">Question</label>
+            <input type="text" name="question" placeholder="Ask away matey">
+            <div class='text-center'><button type="submit" class="btn btn-ask">Ask!</button></div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </main>
