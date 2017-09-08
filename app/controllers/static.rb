@@ -55,3 +55,4 @@ get '/users/:id' do
 	# show user profile page
 	erb :"static/profile"
 end
+

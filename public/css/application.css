@@ -1,13 +1,19 @@
+/*Order alphabetically*/
 body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
 }
 
-#main-wrapper {
-	min-height: 100%;
-	overflow: auto;
-	padding-bottom: 30px;
+input.link {
+	background: none;
+	border: none;
+	font: inherit;
+	margin: 0;
+	padding: 0;
+	color: blue;
+	cursor: pointer;
+	text-decoration: underline;
 }
 
 footer {
@@ -17,3 +23,10 @@ footer {
 	clear: both;
 	text-align: center;
 }
+
+#main-wrapper {
+	min-height: 100%;
+	overflow: auto;
+	padding-bottom: 30px;
+}
+
