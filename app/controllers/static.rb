@@ -6,3 +6,7 @@ get '/' do
     erb :"static/index"
   end
 end
+
+get '/users/:id' do
+  erb :"static/user_profile"
+end

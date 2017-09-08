@@ -1,0 +1,29 @@
+<header>
+  <nav class="navbar fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="/img/quora_logo.png" width="80" alt="Quora Logo">
+      </a>
+      <div class='navbar-nav' id="navbarNav">
+        <ul class="nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/"><i class='fa-newspaper-o fa fa-fw'></i> Home </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#>"><i class='fa-pencil-square-o fa fa-fw'></i>Answer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class='fa-bell fa fa-fw'></i>Notifications</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/<%= current_user.id %>"><i class='fa-user fa fa-fw'></i>User Profile</a>
+          </li>
+
+        </ul>
+      </div>
+      <form class="form-inline" method="post" action="/logout">
+        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
+      </form>
+  </div>
+</nav>
+</header>
