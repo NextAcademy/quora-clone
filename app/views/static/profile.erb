@@ -67,18 +67,19 @@
         <div id="all_questions">
           <% if @all_questions %>
             <% @all_questions.each do |question| %>
-              <%= "<p>#{question.title}</p>" %>
+              <%= "<p>Title: #{question.title}</p>" %>
+              <%= "<p>Content: #{question.content}</p>" %>
               <form action="/user/<%= current_user.id %>/question/<%= question.id %>" method="get">
                 <input type="submit" value="Open Question">
               </form>
               <% if question.user_id != current_user.id %>
-                <form id='upvote' action="/upvote" method="post">
+                <form id='question_upvote' action="/question_upvote" method="post">
                   <input type="hidden" name="upvote[user_id]" value="<%= current_user.id %>">
                   <input type="hidden" name="upvote[question_id]" value="<%= question.id %>">
                   <input type="hidden" name="upvote[action]" value="upvote">
                   <input type="submit" value="Upvote">
                 </form>
-                <form id='downvote' action="/downvote" method="post">
+                <form id='question_downvote' action="/question_downvote" method="post">
                   <input type="hidden" name="downvote[user_id]" value="<%= current_user.id %>">
                   <input type="hidden" name="downvote[question_id]" value="<%= question.id %>">
                   <input type="hidden" name="downvote[action]" value="downvote">
@@ -93,13 +94,13 @@
             <%= "<p>Title: #{@question.title}</p>" %>
             <%= "<p>Content: #{@question.content}</p>" %>
             <% if @question.user_id != current_user.id %>
-              <form id='upvote' action="/upvote" method="post">
+              <form id='upvote' action="/question_upvote" method="post">
                 <input type="hidden" name="upvote[user_id]" value="<%= current_user.id %>">
                 <input type="hidden" name="upvote[question_id]" value="<%= @question.id %>">
                 <input type="hidden" name="upvote[action]" value="upvote">
                 <input type="submit" value="Upvote">
               </form>
-              <form id='downvote' action="/downvote" method="post">
+              <form id='downvote' action="/question_downvote" method="post">
                 <input type="hidden" name="downvote[user_id]" value="<%= current_user.id %>">
                 <input type="hidden" name="downvote[question_id]" value="<%= @question.id %>">
                 <input type="hidden" name="downvote[action]" value="downvote">
@@ -110,15 +111,15 @@
               <% @answers.each do |answer| %>
                 <%= "<p>Answer: #{answer.content}</p>" %>
                 <% if answer.user_id != current_user.id %>
-                  <form id='upvote' action="" method="post">
+                  <form id='upvote' action="/answer_upvote" method="post">
                     <input type="hidden" name="upvote[user_id]" value="<%= current_user.id %>">
-                    <input type="hidden" name="upvote[question_id]" value="<%= @question.id %>">
+                    <input type="hidden" name="upvote[answer_id]" value="<%= answer.id %>">
                     <input type="hidden" name="upvote[action]" value="upvote">
                     <input type="submit" value="Upvote">
                   </form>
-                  <form id='downvote' action="" method="post">
+                  <form id='downvote' action="/answer_downvote" method="post">
                     <input type="hidden" name="downvote[user_id]" value="<%= current_user.id %>">
-                    <input type="hidden" name="downvote[question_id]" value="<%= @question.id %>">
+                    <input type="hidden" name="downvote[answer_id]" value="<%= answer.id %>">
                     <input type="hidden" name="downvote[action]" value="downvote">
                     <input type="submit" value="Downvote">
                   </form>
@@ -126,12 +127,12 @@
               <% end %>
             <% end %>
             <button>Add answer</button>
-              <form action="/answer" method="post">
-                <input type="text" name="answer[content]">
-                <input type="hidden" name="answer[user_id]" value="<%= current_user.id %>">
-                <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
-                <input type="submit" value="Add answer">
-              </form>
+            <form action="/answer" method="post">
+              <input type="text" name="answer[content]">
+              <input type="hidden" name="answer[user_id]" value="<%= current_user.id %>">
+              <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
+              <input type="submit" value="Add answer">
+            </form>
           <% end %>
         </div>
       </div>
