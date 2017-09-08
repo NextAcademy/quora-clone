@@ -1,4 +1,22 @@
 /*Order alphabetically*/
+.ask-question-container {
+	border: 1px solid #efefef;
+	background-color: #fff;
+	border-radius: 4px;
+	margin: 8px auto;
+	padding: 16px 18px 16px 18px;
+	width: 50%;
+}
+
+.ask-question-container .user {
+	color: #000;
+	text-decoration: none;
+}
+
+.ask-question-container .user:hover {
+	text-decoration: underline;
+}
+
 body {
 	height: 100%;
 	margin: 0;
@@ -11,9 +29,18 @@ input.link {
 	font: inherit;
 	margin: 0;
 	padding: 0;
-	color: blue;
+	color: #00f;
 	cursor: pointer;
 	text-decoration: underline;
+}
+
+.feed-item {
+	border: 1px solid #efefef;
+	background-color: #fff;
+	border-radius: 4px;
+	margin: 8px auto;
+	padding: 16px 18px 16px 18px;
+	width: 50%;
 }
 
 footer {
@@ -29,4 +56,3 @@ footer {
 	overflow: auto;
 	padding-bottom: 30px;
 }
-

@@ -33,7 +33,31 @@
 	<% end %>
 <% else %>
 	<!-- Display homepage / user dashboard -->
-	<h2>Login successful</h2>
+	<% @title = "Home - Quora" %>
+
+	<!-- Display 'Ask Question' -->
+	<div class="ask-question-container">
+		<a class="user" href="/users/<%= current_user.id %>"><%= current_user.name %></a>
+		<form id="ask-question-form" action="/questions" method="post">
+			<textarea name="question[title]" id="ask-question-form" cols="30" rows="10" placeholder="What is your question?"></textarea><br>
+			<input type="hidden" name="question[user_id]" value="<% current_user.id %>"><br>
+			<input type="submit" value="Ask Question"><br>
+		</form>
+	</div>
+
+	<!-- Display all questions -->
+	<div class="feed-story">
+		<% @questions.each do |question| %>
+			<div class="feed-item">
+					<div class="feed-title">
+						<%= question.title %>
+					</div>
+					<div class="feed-answer">
+						
+					</div>
+			</div>
+		<% end %>
+	</div>
 <% end %>
 </div>
 

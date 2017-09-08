@@ -6,6 +6,7 @@ before do
 end
 
 get '/' do
+	@questions = Question.all
   erb :"static/index"
 end
 
@@ -56,9 +57,8 @@ post '/logout' do
 	redirect "/"
 end
 
+# show user profile page
 get '/users/:id' do
-	# show user profile page
 	@title = current_user.name + " - Quora Clone"
 	erb :"static/profile"
 end
-
