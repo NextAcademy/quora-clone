@@ -2,6 +2,22 @@
 	<div class="question-title">
 		<h1><%= @question.title%></h1>
 	</div>
+	<div class="answer-action">
+		<button>Answer</button>
+		<div>
+			<div class="answer-editor-header">
+				<a class="user" href="/users/<%= current_user.id %>"><%= current_user.name %></a>
+			</div>
+			<div>
+				<form id="answer-form" action="/answers" method="post">
+					<textarea name="answer[content]" id="answer-form" placeholder="Write your answer"></textarea><br>
+					<input type="hidden" name="answer[user_id]" value="<%= current_user.id %>">
+					<input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
+					<br><input class="answer-button" type="submit" value="Submit">
+				</form>
+			</div>
+		</div>
+	</div>
 	<div class="answer-count"><%= @answers.count %> Answer<%= 's' if @answers.count > 1 %></div>
 	<div class="answer-list">
 		<% @answers.each do |answer| %>

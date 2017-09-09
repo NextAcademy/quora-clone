@@ -51,7 +51,7 @@
 					<div class="feed-title">
 						<a href="/questions/<%= question.id %>"><%= question.title %></a>
 					</div>
-					<% answer = @answers.find_by_id(question.id) %>
+					<% answer = @answers.find_by(question_id: question.id) %>
 					<% if answer %>
 						<div class="feed-answer">
 							<div class="feed-answer-author">
@@ -63,7 +63,7 @@
 							</div>
 						</div>
 					<% else %>
-						<div class="feed-action">
+						<div class="answer-action">
 							<button>Answer</button>
 							<div>
 								<div class="answer-editor-header">
@@ -72,9 +72,9 @@
 								<div>
 									<form id="answer-form" action="/answers" method="post">
 										<textarea name="answer[content]" id="answer-form" placeholder="Write your answer"></textarea><br>
-										<input type="hidden" name="answer[user_id]" value="<%= current_user.id %>"><br>
-										<input type="hidden" name="answer[question_id]" value="<%= question.id %>"><br>
-										<input class="answer-button" type="submit" value="Submit">
+										<input type="hidden" name="answer[user_id]" value="<%= current_user.id %>">
+										<input type="hidden" name="answer[question_id]" value="<%= question.id %>">
+										<br><input class="answer-button" type="submit" value="Submit">
 									</form>
 								</div>
 							</div>

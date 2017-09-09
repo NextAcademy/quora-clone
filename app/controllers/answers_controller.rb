@@ -4,7 +4,7 @@ post '/answers' do
 
 	answer = Answer.new(params[:answer])
 	if answer.save
-		redirect "/"
+		redirect back
 	else
 		@answer_errors = answer.errors.messages
 		erb :"static/index"
