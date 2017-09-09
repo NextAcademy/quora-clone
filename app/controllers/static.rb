@@ -61,6 +61,7 @@ end
 
 # show user profile page
 get '/users/:id' do
-	@title = current_user.name + " - Quora Clone"
+	@user = User.find_by_id(params[:id])
+	@title = @user.name + " - Quora Clone"
 	erb :"static/profile"
 end
