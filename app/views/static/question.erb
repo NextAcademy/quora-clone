@@ -6,7 +6,13 @@
 	<div class="answer-list">
 		<% @answers.each do |answer| %>
 			<div class="answer-item">
-				<%= answer.content %>
+				<div class="answer-head">
+					<% author =  @user.find_by_id(answer.user_id) %>
+					<a class="user" href="/users/<%= author.id %>"><%= author.name %></a>
+				</div>
+				<div class="answer-body">
+					<%= answer.content %>
+				</div>
 			</div>
 		<%  end %>
 	</div>

@@ -1,4 +1,3 @@
-<div id="main-wrapper">
 <% unless logged_in? %>
 	<!-- Display sign up form -->
 	<div id="sign-up-container">
@@ -55,7 +54,13 @@
 					<% answer = @answers.find_by_id(question.id) %>
 					<% if answer %>
 						<div class="feed-answer">
-							<%= answer.content %>
+							<div class="feed-answer-author">
+								<% author =  @user.find_by_id(answer.user_id) %>
+								<a class="user" href="/users/<%= author.id %>"><%= author.name %></a>
+							</div>
+							<div class="feed-answer-content">
+								<%= answer.content %>
+							</div>
 						</div>
 					<% else %>
 						<div class="feed-action">
@@ -79,4 +84,4 @@
 		<% end %>
 	</div>
 <% end %>
-</div>
+

@@ -16,5 +16,6 @@ get '/questions/:id' do
 	@question = Question.find_by_id(params[:id])
 	@title = @question.title + " - Quora Clone"
 	@answers = Answer.where(question_id: @question.id).order(created_at: :desc)
+	@user = User.all
 	erb :"static/question"
 end

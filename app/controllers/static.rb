@@ -6,6 +6,7 @@ before do
 end
 
 get '/' do
+	@user = User.all
 	@questions = Question.all
 	@answers = Answer.all
   erb :"static/index"
