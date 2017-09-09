@@ -1,6 +1,7 @@
 class Question < ActiveRecord::Base
 	has_many :answers, dependent: :destroy
-	validates :title, presence: true
+	has_many :question_votes, dependent: :destroy
+	validates :user_id, :title, presence: true
 end
 
 

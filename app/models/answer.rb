@@ -1,3 +1,3 @@
 class Answer < ActiveRecord::Base
-	validates :content, presence: true
+	validates :user_id, :question_id, :content, presence: true
 end

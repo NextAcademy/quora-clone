@@ -3,6 +3,7 @@ require 'byebug'
 
 class User < ActiveRecord::Base
 	has_many :questions, dependent: :destroy
+	has_many :question_votes, dependent: :destroy
 	validates :name, :email, presence: true
 	validates :email, uniqueness: true
 	validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "Invalid email format!" }
