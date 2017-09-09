@@ -83,11 +83,11 @@ end
 post '/question_downvote' do
   downvote = QuestionVote.find_or_initialize_by(params[:downvote])
   if downvote.id
-    upvote.question.upvote_question
-    upvote.destroy
+    downvote.question.upvote_question
+    downvote.destroy
     redirect '/profile'
-  elsif upvote.save
-    upvote.question.downvote_question
+  elsif downvote.save
+    downvote.question.downvote_question
     erb :"static/profile"
   else
     redirect '/profile'
@@ -95,7 +95,7 @@ post '/question_downvote' do
 end
 
 post '/answer_upvote' do
-  upvote = QuestionVote.find_or_initialize_by(params[:upvote])
+  upvote = AnswerVote.find_or_initialize_by(params[:upvote])
   if upvote.id
     upvote.answer.downvote_answer
     upvote.destroy
@@ -109,7 +109,7 @@ post '/answer_upvote' do
 end
 
 post '/answer_downvote' do
-  downvote = QuestionVote.find_or_initialize_by(params[:downvote])
+  downvote = AnswerVote.find_or_initialize_by(params[:downvote])
   if downvote.id
     downvote.answer.upvote_answer
     downvote.destroy
