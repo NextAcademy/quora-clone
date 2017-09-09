@@ -7,6 +7,7 @@ end
 
 get '/' do
 	@questions = Question.all
+	@answers = Answer.all
   erb :"static/index"
 end
 
