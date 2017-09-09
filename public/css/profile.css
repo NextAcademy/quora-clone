@@ -1,38 +1,75 @@
+body {
+  background-color:#FFFAFA !important;
+}
+
+div#all_user_questions {
+  display:block;
+  margin:0;
+  padding:0;
+  text-align:center;
+  padding-bottom:40px;
+}
+
+div#all_user_questions div#question {
+  margin-top:40px ;
+  padding:20px 10px 10px 40px;
+  display:inline-block;
+  width:100%;
+  background-color:white;
+  border-radius:20px;
+  text-align:left;
+  border:1px solid #EFEFEF;
+  box-shadow:2px 2px 0 #EFEFEF;
+}
+
+div#all_user_questions div#question div#title {
+  margin:0;
+  padding:0;
+  font-size:30px;
+}
+
 div#header {
   margin:0;
   padding:0;
-  height:40px;
+  height:60px;
   border-bottom:1px solid #E2E2E2;
   box-shadow:0 1px 0 #EEEEEE;
   display:block;
   text-align:center;
 }
 
-div#header h1{
+div#header {
+  height:60px;
+}
+
+div#header p{
+  line-height:60px;
   display:inline-block;
-  margin:0;
   float:left;
-  padding-left:200px;
+  font-size:40px;
+  margin-right:50px;
+}
+
+div#header div#header_content {
+  display:inline-block;
+  width:75%;
 }
 
 div#header div#form {
+  display:flex;
   float:right;
   width:100px;
-  margin: 5px 200px 0 0;
+  height:60px;
 }
 
 div#header div#form form{
-  margin:0;
-  padding:0;
+  margin:auto;
+  display:inline-block;
 }
 
 div#content {
   margin: 50px auto;
   width:70%;
-}
-
-div#nav {
-  text-align:center;
 }
 
 div#profile {
@@ -49,4 +86,74 @@ div#feeds {
 div#answer {
   margin-top:10px;
   border-bottom:1px solid #E2E2E2;
+}
+
+div.row div.col-md-8 div#question_form {
+  display:none;
+  margin-top:20px;
+  height:320px;
+  border:1px solid #EEEEEE;
+  border-radius:5px;
+  box-shadow:2px 2px 0 #EEEEEE;
+  background-color:white;
+}
+
+div.row div.col-md-8 div#question_form form {
+  height:320px;
+}
+
+div.row div.col-md-8 div#question_form form input {
+  display:block;
+}
+
+div.row div.col-md-8 div#question_form form input#title {
+  margin:25px 0 10px 30px;
+  background-color:white;
+  width:300px;
+  border-radius:5px;
+}
+
+div.row div.col-md-8 div#question_form form input#content {
+  background-color:white;
+  margin:0 0 10px 30px;
+  width:500px;
+  height:200px;
+  border-radius:5px;
+}
+
+div.row div.col-md-8 div#question_form form input#submit {
+  margin:0 0 10px 30px;
+}
+
+div#nav_menue ul {
+  margin:0;
+  padding:0;
+}
+
+div#nav_menue ul form {
+  margin:0;
+  padding:0;
+}
+
+div#nav_menue ul form input,
+div#nav_menue ul form input:focus,
+div#nav_menue ul form input:active {
+  background:transparent;
+  width:100px;
+  border-color:white;
+}
+
+div#nav_menue ul button,
+div#nav_menue ul button:focus,
+div#nav_menue ul button:active {
+  background:transparent;
+  width:100px;
+  border-color:white;
+  border-style:outset;
+}
+
+div#nav_menue ul li{
+  margin:20px 0 20px 20px;
+  padding:0;
+  list-style:none;
 }

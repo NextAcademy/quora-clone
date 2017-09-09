@@ -1,11 +1,31 @@
 get '/' do
-  erb :"static/index"
+  if logged_in?
+    erb :"static/profile"
+  else
+    erb :"static/index"
+  end
 end
 
 get '/profile' do
   if logged_in?
     erb :"static/profile"
   end
+end
+
+get '/question' do
+  @all_questions = Question.all
+  erb :"static/questions"
+end
+
+get '/user/:id/question' do
+  @all_user_questions = Question.where(user_id: params[:id])
+  erb :"static/profile"
+end
+
+get '/user/:user_id/question/:question_id' do
+  @question = Question.find(params[:question_id])
+  @answers = @question.answers
+  erb :"static/profile"
 end
 
 post '/user' do
@@ -39,22 +59,6 @@ post '/question' do
   else
     p "hello you not input the title of question"
   end
-end
-
-get '/user/:id/question' do
-  @all_user_questions = Question.where(user_id: params[:id])
-  erb :"static/profile"
-end
-
-get '/user/:user_id/question/:question_id' do
-  @question = Question.find(params[:question_id])
-  @answers = @question.answers
-  erb :"static/profile"
-end
-
-get '/question' do
-  @all_questions = Question.all
-  erb :"static/profile"
 end
 
 post '/answer' do
