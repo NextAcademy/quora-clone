@@ -2,5 +2,40 @@
 	<div class="header">
 		<h1><%= @user.name %></h1>
 	</div>
-	<div class=""></div>
+	<div class="profile-feed-navigation">
+		<h3>Feeds</h3>
+		<nav>
+			<ul>
+				<li><a href="#profile-feed-answers-<%= @user.id %>">Answers</a></li>
+				<li><a href="#profile-feed-questions-<%= @user.id %>">Questions</a></li>
+			</ul>
+		</nav>	
+	</div>
+	<div class="profile-feed-container">
+		<div id="profile-feed-answers-<%= @user.id %>" >
+			<!-- Display count of answers submission -->
+			<div class="answer-count"><%= @answers_user.count %> Answer<%= 's' if @answers_user.count > 1 %></div>
+
+		  <!-- Display all answers of this user -->
+		  <div>
+		  	<% @answers_user.each do |answer| %>
+		  	  <% question = @questions.find_by(id: answer.question_id) %>
+					<div class="answer-question-item">
+						<div class="answer-question-title">
+							<a href="/questions/<%= question.id %>"><%= question.title %></a>
+						</div>
+						<div class="answer-question-content">
+							<%= answer.content %>
+						</div>
+					</div>
+		  	<% end %>
+		  </div>
+		</div>
+
+		<div id="profile-feed-questions-<%= @user.id %>" >
+			<!-- Display count of questions submission -->
+			<div class="question-count"><%= @questions_user.count %> Question<%= 's' if @questions_user.count > 1 %></div>
+		  <div></div>
+		</div>
+	</div>
 </div>
