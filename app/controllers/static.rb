@@ -1,6 +1,14 @@
 require 'byebug'
 
+before do
+	# set default title
+	@title = "Quora Clone"
+end
+
 get '/' do
+	@user = User.all
+	@questions = Question.all
+	@answers = Answer.all
   erb :"static/index"
 end
 
@@ -51,8 +59,12 @@ post '/logout' do
 	redirect "/"
 end
 
+# show user profile page
 get '/users/:id' do
-	# show user profile page
+	@user = User.find_by_id(params[:id])
+	@title = @user.name + " - Quora Clone"
+	@answers_user = Answer.where(user_id: @user.id).order(created_at: :desc)
+	@questions_user = Question.where(user_id: @user.id).order(created_at: :desc)
+	@questions = Question.all
 	erb :"static/profile"
 end
-

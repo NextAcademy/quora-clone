@@ -1,15 +1,18 @@
 <html>
 	<head>
-		<title>Sinatra Framework</title>
+		<title><%= @title %></title>
 		<link rel="stylesheet" 
 					href="/css/application.css">
 		<script src="/js/application.js"></script>
 	</head>
 	<body>
-		<!-- Display header -->
-		<% if logged_in? %>
-			<%= erb :"layouts/header", layout: false %>
-		<% end %>
-		<%= yield %>
+		<div id="main-wrapper">
+			<!-- Display header -->
+			<% if logged_in? %>
+				<%= erb :"layouts/header", layout: false %>
+			<% end %>
+			<%= yield %>
+		</div>
+		<footer>&copy; 2017 Coded by <a href="https://www.linkedin.com/in/siew-ching-lee-81683156/" target="_blank">SC Lee</a></footer>
 	</body>
 </html>

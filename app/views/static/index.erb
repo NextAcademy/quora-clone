@@ -1,4 +1,3 @@
-<div id="main-wrapper">
 <% unless logged_in? %>
 	<!-- Display sign up form -->
 	<div id="sign-up-container">
@@ -33,8 +32,63 @@
 	<% end %>
 <% else %>
 	<!-- Display homepage / user dashboard -->
-	<h2>Login successful</h2>
-<% end %>
-</div>
+	<% @title = "Home - Quora" %>
 
-<footer>&copy; 2017 Coded by <a href="https://www.linkedin.com/in/siew-ching-lee-81683156/" target="_blank">SC Lee</a></footer>
+	<!-- Display 'Ask Question' -->
+	<div class="ask-question-container">
+		<a class="user" href="/users/<%= current_user.id %>"><%= current_user.name %></a>
+		<form id="ask-question-form" action="/questions" method="post">
+			<textarea name="question[title]" id="ask-question-form" placeholder="What is your question?"></textarea><br>
+			<input type="hidden" name="question[user_id]" value="<% current_user.id %>"><br>
+			<input class="ask-button" type="submit" value="Ask Question">
+		</form>
+	</div>
+
+	<!-- Display all questions -->
+	<div class="feed-story">
+		<% @questions.each do |question| %>
+			<div class="feed-item">
+					<div class="feed-title">
+						<a href="/questions/<%= question.id %>"><%= question.title %></a>
+					</div>
+
+					<!-- Display answer to the question -->
+					<% answer = @answers.find_by(question_id: question.id) %>
+					<% if answer %>
+						<div class="feed-answer">
+						
+							<!-- Display the author of the answer -->
+							<div class="feed-answer-author">
+								<% author =  @user.find_by(id: answer.user_id) %>
+								<a class="user" href="/users/<%= author.id %>"><%= author.name %></a>
+							</div>
+
+							<!-- Display the content of the answer -->
+							<div class="feed-answer-content">
+								<%= answer.content %>
+							</div>
+						</div>
+					<% else %>
+						<!-- Display the answer form -->
+						<div class="answer-action">
+							<button>Answer</button>
+							<div>
+								<div class="answer-editor-header">
+									<a class="user" href="/users/<%= current_user.id %>"><%= current_user.name %></a>
+								</div>
+								<div>
+									<form id="answer-form" action="/answers" method="post">
+										<textarea name="answer[content]" id="answer-form" placeholder="Write your answer"></textarea><br>
+										<input type="hidden" name="answer[user_id]" value="<%= current_user.id %>">
+										<input type="hidden" name="answer[question_id]" value="<%= question.id %>">
+										<br><input class="answer-button" type="submit" value="Submit">
+									</form>
+								</div>
+							</div>
+						</div>
+					<% end %>
+			</div>
+		<% end %>
+	</div>
+<% end %>
+
