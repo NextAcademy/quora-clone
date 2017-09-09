@@ -65,7 +65,6 @@ get '/users/:id' do
 	@title = @user.name + " - Quora Clone"
 	@answers_user = Answer.where(user_id: @user.id).order(created_at: :desc)
 	@questions_user = Question.where(user_id: @user.id).order(created_at: :desc)
-	@answers = Answer.all
 	@questions = Question.all
 	erb :"static/profile"
 end

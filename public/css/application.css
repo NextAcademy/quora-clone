@@ -36,7 +36,7 @@
 	border-bottom: 1px solid #e2e2e2
 }
 
-.answer-question-item {
+.answer-question-item, .question-item {
 	padding: 16px 0;
 	border-bottom: 1px solid #e2e2e2
 }
@@ -68,11 +68,11 @@
 	text-decoration: underline;
 }
 
-.answer-question-title {
+.answer-question-title, .question-item-title {
 	margin-bottom: 4px;
 }
 
-.answer-question-title a {
+.answer-question-title a, .question-item-title a {
 	text-decoration: none;
 	color: #000;
 	line-height: 1.3;
@@ -80,7 +80,7 @@
 	font-size: 18px;
 }
 
-.answer-question-title a:hover {
+.answer-question-title a:hover, .question-item-title a:hover {
 	text-decoration: underline;
 }
 

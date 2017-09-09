@@ -35,7 +35,15 @@
 		<div id="profile-feed-questions-<%= @user.id %>" >
 			<!-- Display count of questions submission -->
 			<div class="question-count"><%= @questions_user.count %> Question<%= 's' if @questions_user.count > 1 %></div>
-		  <div></div>
+
+			<!-- Display all questions of this user -->
+			<% @questions_user.each do |question| %>
+				<div class="question-item">
+					<div class="question-item-title">
+						<a href="/questions/<%= question.id %>"><%= question.title %></a>
+					</div>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>
