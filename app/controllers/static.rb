@@ -25,7 +25,7 @@ end
 get '/user/:user_id/question/:question_id' do
   @question = Question.find(params[:question_id])
   @answers = @question.answers
-  erb :"static/profile"
+  erb :"static/question_answers"
 end
 
 post '/user' do
