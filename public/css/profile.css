@@ -1,7 +1,3 @@
-body {
-  background-color:#FFFAFA !important;
-}
-
 div#all_user_questions {
   display:block;
   margin:0;
@@ -38,9 +34,11 @@ div#header {
   text-align:center;
 }
 
-div#header {
-  height:60px;
+div#header input{
+  border-radius:5px;
 }
+
+
 
 div#header p{
   line-height:60px;
@@ -75,26 +73,35 @@ div#content {
 div#profile {
   padding-left:30px;
   height:120px;
-  border-bottom:2px solid #E2E2E2;
 }
 
-div#feeds {
+div#feeds,
+div#answer_content {
   margin-top:10px;
-  border-bottom:1px solid #E2E2E2;
+  border-radius:5px;
+  background-color:white;
+  height:40px;
+  border:1px solid #EEEEEE;
+  border-radius:5px;
+  box-shadow:2px 2px 0 #EEEEEE, inset 1px 1px 0 #EEEEEE;
+  text-align:center;
 }
 
-div#answer {
-  margin-top:10px;
-  border-bottom:1px solid #E2E2E2;
+div#feeds p,
+div#answer_content p {
+  line-height:40px;
+  margin:auto;
+  font-size:20px;
 }
 
 div.row div.col-md-8 div#question_form {
-  display:none;
+  /*display:none;*/
   margin-top:20px;
+  margin-left:25px;
   height:320px;
   border:1px solid #EEEEEE;
   border-radius:5px;
-  box-shadow:2px 2px 0 #EEEEEE;
+  box-shadow:2px 2px 0 #EEEEEE, inset 1px 1px 0 #EEEEEE;
   background-color:white;
 }
 
@@ -104,6 +111,7 @@ div.row div.col-md-8 div#question_form form {
 
 div.row div.col-md-8 div#question_form form input {
   display:block;
+  border-radius:5px;
 }
 
 div.row div.col-md-8 div#question_form form input#title {
@@ -113,16 +121,27 @@ div.row div.col-md-8 div#question_form form input#title {
   border-radius:5px;
 }
 
-div.row div.col-md-8 div#question_form form input#content {
+div.row div.col-md-8 div#question_form form textarea#content {
   background-color:white;
   margin:0 0 10px 30px;
   width:500px;
   height:200px;
   border-radius:5px;
+  border-style:inset;
+  box-shadow:1px 1px 0 #EEEEEE, inset 1px 1px 0 #999999;
 }
 
 div.row div.col-md-8 div#question_form form input#submit {
   margin:0 0 10px 30px;
+}
+
+div#nav_menue {
+  margin:20px 0 0 12px;
+  width:230px;
+  background-color:white;
+  border:1px solid #EEEEEE;
+  border-radius:5px;
+  box-shadow:1px 1px 0 #EEEEEE, inset 1px 1px 0 #EEEEEE;
 }
 
 div#nav_menue ul {
@@ -138,23 +157,29 @@ div#nav_menue ul form {
 div#nav_menue ul form input,
 div#nav_menue ul form input:focus,
 div#nav_menue ul form input:active {
-  background:transparent;
-  width:100px;
+  background-color:#EEEEEE;
+  width:150px;
   border-color:white;
+  border-radius:5px;
+  box-shadow:1px 1px #6C6C6C;
 }
 
 div#nav_menue ul button,
 div#nav_menue ul button:focus,
 div#nav_menue ul button:active {
-  background:transparent;
-  width:100px;
+  background-color:#EEEEEE;
+  width:150px;
   border-color:white;
   border-style:outset;
+  border-radius:5px;
+  box-shadow:1px 1px #6C6C6C;
 }
 
 div#nav_menue ul li{
-  margin:20px 0 20px 20px;
+  margin:20px 0;
   padding:0;
   list-style:none;
 }
+
+
 
