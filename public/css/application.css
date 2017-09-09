@@ -1,6 +1,21 @@
 /*Order alphabetically*/
+.answer-count {
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 1.4;
+}
+
 .answer-editor-header {
 	padding: 10px 8px;
+}
+
+.answer-item {
+	padding: 16px 0;
+	border-top: 1px solid #e2e2e2
+}
+
+.answer-item:last-child {
+	border-bottom: 1px solid #e2e2e2
 }
 
 .ask-question-container {
@@ -74,7 +89,7 @@ input.link {
 	width: 50%;
 }
 
-.feed-answer p {
+.feed-answer {
 	line-height: 1.6;
 	font-size: 15px;
 	word-wrap: break-word;
@@ -107,6 +122,13 @@ footer {
 	padding-bottom: 30px;
 }
 
-.question-title {
+.question-body {
 	margin-left: 30px;
+	width: 66.67%;
+	min-width: 300px;
+}
+
+.question-title {
+	font-weight: bold;
+	line-height: 1.3;
 }

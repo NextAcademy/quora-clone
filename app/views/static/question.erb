@@ -1,8 +1,13 @@
 <div class="question-body">
 	<div class="question-title">
-		<h2><%= @question.title%></h2>
+		<h1><%= @question.title%></h1>
 	</div>
-	<div class="question-answer">
-		<!-- loop -->
+	<div class="answer-count"><%= @answers.count %> Answer<%= 's' if @answers.count > 1 %></div>
+	<div class="answer-list">
+		<% @answers.each do |answer| %>
+			<div class="answer-item">
+				<%= answer.content %>
+			</div>
+		<%  end %>
 	</div>
 </div>

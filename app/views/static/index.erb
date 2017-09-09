@@ -55,7 +55,7 @@
 					<% answer = @answers.find_by_id(question.id) %>
 					<% if answer %>
 						<div class="feed-answer">
-							<p><%= answer.content %></p>
+							<%= answer.content %>
 						</div>
 					<% else %>
 						<div class="feed-action">
@@ -80,5 +80,3 @@
 	</div>
 <% end %>
 </div>
-
-<footer>&copy; 2017 Coded by <a href="https://www.linkedin.com/in/siew-ching-lee-81683156/" target="_blank">SC Lee</a></footer>

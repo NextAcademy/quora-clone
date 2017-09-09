@@ -15,5 +15,6 @@ get '/questions/:id' do
 	# {"captures"=>[], "id"=>"3"}
 	@question = Question.find_by_id(params[:id])
 	@title = @question.title + " - Quora Clone"
+	@answers = Answer.where(question_id: @question.id).order(created_at: :desc)
 	erb :"static/question"
 end
