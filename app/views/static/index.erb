@@ -21,8 +21,8 @@
 		</form>
 	</div>
 
-	<!-- Display error messages -->
 	<% if @errors %>
+		<!-- Display error messages -->
 	  <p class="error">Invalid input! Please check your input.</p>
 	  <ul>
 		<% @errors.each do |error| %>
@@ -38,19 +38,50 @@
 	<div class="ask-question-container">
 		<a class="user" href="/users/<%= current_user.id %>"><%= current_user.name %></a>
 		<form id="ask-question-form" action="/questions" method="post">
-			<textarea name="question[title]" id="ask-question-form" placeholder="What is your question?"></textarea><br>
-			<input type="hidden" name="question[user_id]" value="<% current_user.id %>"><br>
+			<textarea name="question[title]" id="ask-question-form" placeholder="What is your question?" required></textarea><br>
+			<input type="hidden" name="question[user_id]" value="<%= current_user.id %>"><br>
 			<input class="ask-button" type="submit" value="Ask Question">
 		</form>
 	</div>
 
+	<% if @question_errors %>
+		<!-- Display error messages -->
+		<p class="error">Invalid input! Please check your input.</p>
+	  <ul>
+		<% @question_errors.each do |error| %>
+			<li class="error"><%= error[0].to_s %>: <%= error[1].join(",") %></li>
+		<% end %>
+	  </ul>
+	<% else %>	
+	
 	<!-- Display all questions -->
 	<div class="feed-story">
 		<% @questions.each do |question| %>
 			<div class="feed-item">
+					<!-- Display title of the question -->
 					<div class="feed-title">
 						<a href="/questions/<%= question.id %>"><%= question.title %></a>
 					</div>
+
+					<!-- Display upvote / downvote button for the question -->
+					<form action="/question_votes" method="post">
+						<button type="submit" name=question_vote[vote] value=1>Upvote</button>
+						<span><%= @question_votes.where(question_id: question.id).sum(:vote) %></span>
+						<button type="submit" name=question_vote[vote] value=-1>Downvote</button>
+						<input type="hidden" name="question_vote[user_id]" value="<%= current_user.id%>">
+						<input type="hidden" name="question_vote[question_id]" value="<%= question.id%>">
+					</form>
+
+					<!-- Display error message - user can only vote once -->
+					<% if @question_votes_errors && @question_id == question.id %>
+						<!-- Display error messages -->
+						<p class="error">Invalid input! Please check your input.</p>
+					  <ul>
+						<% @question_votes_errors.each do |error| %>
+							<li class="error"><%= error[0].to_s %>: <%= error[1].join(",") %></li>
+						<% end %>
+					  </ul>
+					<% end %>
 
 					<!-- Display answer to the question -->
 					<% answer = @answers.find_by(question_id: question.id) %>
@@ -90,5 +121,6 @@
 			</div>
 		<% end %>
 	</div>
+	<% end %>
 <% end %>
 

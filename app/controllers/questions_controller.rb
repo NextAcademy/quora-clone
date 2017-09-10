@@ -17,5 +17,6 @@ get '/questions/:id' do
 	@title = @question.title + " - Quora Clone"
 	@answers = Answer.where(question_id: @question.id).order(created_at: :desc)
 	@user = User.all
+	@question_votes = QuestionVote.where(question_id: @question.id).sum(:vote)
 	erb :"static/question"
 end

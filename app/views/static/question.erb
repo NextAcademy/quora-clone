@@ -1,7 +1,32 @@
+<!-- Question page -->
 <div class="question-body">
+
+	<!-- Display question title -->
 	<div class="question-title">
 		<h1><%= @question.title%></h1>
 	</div>
+
+	<!-- Display upvote / downvote button for the question -->
+	<form action="/question_votes" method="post">
+		<button type="submit" name=question_vote[vote] value=1>Upvote</button>
+		<span><%= @question_votes %></span>
+		<button type="submit" name=question_vote[vote] value=-1>Downvote</button>
+		<input type="hidden" name="question_vote[user_id]" value="<%= current_user.id%>">
+		<input type="hidden" name="question_vote[question_id]" value="<%= @question.id%>">
+	</form>
+
+	<!-- Display error message - user can only vote once -->
+	<% if @question_votes_errors && @question_id == @question.id %>
+		<!-- Display error messages -->
+		<p class="error">Invalid input! Please check your input.</p>
+	  <ul>
+		<% @question_votes_errors.each do |error| %>
+			<li class="error"><%= error[0].to_s %>: <%= error[1].join(",") %></li>
+		<% end %>
+	  </ul>
+	<% end %>
+
+	<!-- Display answer form -->
 	<div class="answer-action">
 		<button>Answer</button>
 		<div>
@@ -18,7 +43,11 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Display total count of answers to this question -->
 	<div class="answer-count"><%= @answers.count %> Answer<%= 's' if @answers.count > 1 %></div>
+
+	<!-- Display all answers to this question -->
 	<div class="answer-list">
 		<% @answers.each do |answer| %>
 			<div class="answer-item">

@@ -104,6 +104,10 @@ div[id^="profile-feed-questions"] .question-count {
 	line-height: 1.4;
 }
 
+.error {
+	color: #f00;
+}
+
 input.link {
 	background: none;
 	border: none;
