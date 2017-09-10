@@ -72,6 +72,16 @@
 						<input type="hidden" name="question_vote[question_id]" value="<%= question.id%>">
 					</form>
 
+					<% if @question_votes_errors && @question_id == question.id %>
+						<!-- Display error messages -->
+						<p class="error">Invalid input! Please check your input.</p>
+					  <ul>
+						<% @question_votes_errors.each do |error| %>
+							<li class="error"><%= error[0].to_s %>: <%= error[1].join(",") %></li>
+						<% end %>
+					  </ul>
+					<% end %>
+
 					<!-- Display answer to the question -->
 					<% answer = @answers.find_by(question_id: question.id) %>
 					<% if answer %>
