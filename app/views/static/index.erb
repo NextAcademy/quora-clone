@@ -1,2 +1,39 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<html>
+
+	<head>	
+	</head>
+
+		<body>
+
+		<div class="background"></div>
+
+		<div id="signup_container" align="center">
+			<h2>Sign up</h2>
+				
+				<form method ="post" action="/signup" align="center">
+					
+					<input type="text" placeholder="First Name" name="user[first_name]"><br>
+					<input type="text" placeholder="Last Name" name="user[last_name]"></br>
+					<input type="text" placeholder="Email" name="user[email_address]"><br>
+					<input type="password" placeholder="Password" name="user[password]"></br>
+					<input type="submit" value="Sign Up">
+
+				</form>
+		</div>
+
+
+		<div id="login_container">
+				<h2>Login</h2>
+
+					<form method="post" action="/login">
+					    
+					    <input type="text" placeholder="Email" name="user[email_address]"><br>
+					    <input type="password" placeholder="Password" name="user[password]"></br>
+					    <input type="submit" value="Login">
+
+					</form>
+		</div>
+
+		</body>
+
+</html>
