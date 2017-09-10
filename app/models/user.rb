@@ -1,3 +1,7 @@
-class User < ActiveRecord::Base[5.0]
-	# This is Sinatra! Remember to create a migration!
+class User < ActiveRecord::Base
+  has_secure_password
+
+  validates :username, presence: true
+  validates :email, presence: true, uniqueness: true
+
 end
