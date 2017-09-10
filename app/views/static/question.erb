@@ -1,7 +1,20 @@
+<!-- Question page -->
 <div class="question-body">
+
+	<!-- Display question title -->
 	<div class="question-title">
 		<h1><%= @question.title%></h1>
 	</div>
+
+	<!-- Display upvote / downvote button for the question -->
+	<form action="/question_votes" method="post">
+		<button type="submit" name=question_vote[vote] value=1>Upvote</button>
+		<button type="submit" name=question_vote[vote] value=-1>Downvote</button>
+		<input type="hidden" name="question_vote[user_id]" value="<%= current_user.id%>">
+		<input type="hidden" name="question_vote[question_id]" value="<%= @question.id%>">
+	</form>
+
+	<!-- Display answer form -->
 	<div class="answer-action">
 		<button>Answer</button>
 		<div>
@@ -18,7 +31,11 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Display total count of answers to this question -->
 	<div class="answer-count"><%= @answers.count %> Answer<%= 's' if @answers.count > 1 %></div>
+
+	<!-- Display all answers to this question -->
 	<div class="answer-list">
 		<% @answers.each do |answer| %>
 			<div class="answer-item">
