@@ -4,6 +4,12 @@ get '/session' do
 
 end
 
+get '/session/ask_question' do
+  
+  erb :"static/question"
+
+end
+
 delete '/session/logout' do
 
 	session[:user_id] = nil
