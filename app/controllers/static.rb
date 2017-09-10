@@ -103,10 +103,10 @@ post '/answer_upvote' do
   if upvote.id
     upvote.answer.downvote_answer
     upvote.destroy
-    redirect '/profile'
+    redirect "/user/#{params[:upvote][:user_id]}/question/#{Answer.find(upvote.answer_id).question_id}"
   elsif upvote.save
     upvote.answer.upvote_answer
-    erb :"static/profile"
+    redirect "/user/#{params[:upvote][:user_id]}/question/#{Answer.find(upvote.answer_id).question_id}"
   else
     redirect '/profile'
   end
@@ -117,10 +117,10 @@ post '/answer_downvote' do
   if downvote.id
     downvote.answer.upvote_answer
     downvote.destroy
-    redirect '/profile'
+    redirect "/user/#{params[:downvote][:user_id]}/question/#{Answer.find(downvote.answer_id).question_id}"
   elsif downvote.save
     downvote.answer.downvote_answer
-    erb :"static/profile"
+    redirect "/user/#{params[:downvote][:user_id]}/question/#{Answer.find(downvote.answer_id).question_id}"
   else
     redirect '/profile'
   end
