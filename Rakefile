@@ -1,5 +1,6 @@
 require 'rake'
 require 'rspec/core/rake_task'
+require 'sinatra/base'
 
 # Include environment settings
 require ::File.expand_path('../config/environments/init', __FILE__)

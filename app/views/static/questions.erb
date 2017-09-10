@@ -1,0 +1,67 @@
+<div id="header">
+  <div id="header_content">
+    <div id="title">
+      <p><a href="/question">Quora</a></p>
+      <div id="header_nav">
+        <p><a href="/">My Profile</a></p>
+      </div>
+    </div>
+
+    <div id="form">
+      <form action="/logout" method="post">
+        <input type="submit" value="LOG OUT">
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div id="all_questions">
+  <% if @all_questions %>
+    <% @all_questions.each do |question| %>
+      <div id="question">
+
+        <div id='title'>
+          <%= "<p>#{question.title}</p>" %>
+        </div>
+
+        <div id='content'>
+          <div class="row">
+            <div class="col-md-10">
+              <%= "<p>#{question.content}</p>" %>
+            </div>
+            <div class="col-md-2">
+              <% if question.user_id != current_user.id %>
+                <form id='question_upvote' action="/question_upvote" method="post">
+                  <input type="hidden" name="upvote[user_id]" value="<%= current_user.id %>">
+                  <input type="hidden" name="upvote[question_id]" value="<%= question.id %>">
+                  <input type="hidden" name="upvote[action]" value="upvote">
+                  <button class="submit_button" type="submit"><img src="/img/upvote.png"/></button>
+                </form>
+                <form id='question_downvote' action="/question_downvote" method="post">
+                  <input type="hidden" name="downvote[user_id]" value="<%= current_user.id %>">
+                  <input type="hidden" name="downvote[question_id]" value="<%= question.id %>">
+                  <input type="hidden" name="downvote[action]" value="downvote">
+                  <button class="submit_button" type="submit"><img src="/img/downvote.png"/></button>
+                </form>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div id="footer_question">
+          <div id="footer_question_form">
+            <form action="/user/<%= current_user.id %>/question/<%= question.id %>" method="get">
+              <input type="submit" value="Open Question" id='open'>
+            </form>
+          </div>
+          <div id="question_votes">
+            <p id="question_count_votes"> <%= question.votes_count %></p>
+            <p>votes</p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

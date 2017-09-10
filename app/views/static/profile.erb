@@ -1,0 +1,97 @@
+<div id="header">
+  <div id="header_content">
+    <div id="title">
+      <p><a href="/question">Quora</a></p>
+      <div id="header_nav">
+        <p><a href="/">My Profile</a></p>
+      </div>
+    </div>
+    <div id="form">
+      <form action="/logout" method="post">
+        <input type="submit" value="LOG OUT">
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div id="content">
+
+  <div id="profile">
+    <h2>Hello <%= current_user.first_name%></h2>
+  </div>
+
+  <div class="row" id="feeds_content">
+    <div class="col-md-3" id="feeds">
+      <p>Feeds</p>
+    </div>
+
+    <div class='col-md-1' id="offset"></div>
+
+    <div class="col-md-8" id="answer_content">
+      <p>Content</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3" id='nav_menue'>
+      <ul>
+        <li>
+          <form action="/user/<%= current_user.id%>/question" method="get">
+            <input type="submit" value="My Questions">
+          </form>
+        </li>
+        <li>
+          <button>Edit question</button>
+        </li>
+        <li>
+          <button>Delete question</button>
+        </li>
+        <li>
+          <button>My answers</button>
+        </li>
+        <li>
+          <button>Edit answer</button>
+        </li>
+        <li>
+          <button>Delete answer</button>
+        </li>
+        <li>
+          <form action="/question" method="get">
+            <input type="submit" value="All Questions">
+          </form>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-8 col-md-offset-1">
+      <div id="question_form" >
+        <form action="/question" method="post">
+          <input id="title" type="text" name="question[title]" placeholder="Title">
+          <textarea id="content" name="question[content]" placeholder="content"></textarea>
+          <input type="hidden" name="question[user_id]" value="<%= current_user.id%>">
+          <input id="submit" type="submit" value="Add question">
+        </form>
+      </div>
+      <div id="all_user_questions">
+        <% if @all_user_questions %>
+          <% @all_user_questions.each do |question| %>
+            <div id="question">
+              <div id='title'>
+                <%= "<p>#{question.title} </p>" %>
+              </div>
+
+              <form action="/user/<%= current_user.id %>/question/<%= question.id %>" method="get" id='open'>
+                <input type="submit" value="Open Question">
+              </form>
+
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,95 @@
+<div id="header">
+  <div id="header_content">
+    <div id="title">
+      <p><a href="/question">Quora</a></p>
+      <div id="header_nav">
+        <p><a href="/">My Profile</a></p>
+      </div>
+    </div>
+    <div id="form">
+      <form action="/logout" method="post">
+        <input type="submit" value="LOG OUT">
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div id="all_questions">
+  <% if @question %>
+    <div id="question">
+
+      <div id='title'>
+        <%= "<p>#{@question.title} </p>" %>
+      </div>
+
+      <div class="row">
+        <div class="col-md-10">
+          <%= "<p>#{@question.content}</p>" %>
+        </div>
+        <div class="col-md-2">
+          <% if @question.user_id != current_user.id %>
+            <form id='question_upvote' action="/question_upvote" method="post">
+              <input type="hidden" name="upvote[user_id]" value="<%= current_user.id %>">
+              <input type="hidden" name="upvote[question_id]" value="<%= @question.id %>">
+              <input type="hidden" name="upvote[action]" value="upvote">
+              <button class="submit_button" type="submit"><img src="/img/upvote.png"/></button>
+            </form>
+            <form id='question_downvote' action="/question_downvote" method="post">
+              <input type="hidden" name="downvote[user_id]" value="<%= current_user.id %>">
+              <input type="hidden" name="downvote[question_id]" value="<%= @question.id %>">
+              <input type="hidden" name="downvote[action]" value="downvote">
+              <button class="submit_button" type="submit"><img src="/img/downvote.png"/></button>
+            </form>
+          <% end %>
+        </div>
+      </div>
+
+      <div id="all_answers">
+        <% if @answers %>
+          <% @answers.each do |answer| %>
+            <div id="answer">
+              <%= "<h4>#{answer.user.first_name}'s answer:</h4>" %>
+              <%= "<p>#{answer.content}</p>" %>
+              <% if answer.user_id != current_user.id %>
+                <div id="footer_answer">
+                  <form id='upvote' action="/answer_upvote" method="post">
+                    <input type="hidden" name="upvote[user_id]" value="<%= current_user.id %>">
+                    <input type="hidden" name="upvote[answer_id]" value="<%= answer.id %>">
+                    <input type="hidden" name="upvote[action]" value="upvote">
+                    <button class="submit_button" type="submit"><img src="/img/upvote.png"/></button>
+                  </form>
+                  <form id='downvote' action="/answer_downvote" method="post">
+                    <input type="hidden" name="downvote[user_id]" value="<%= current_user.id %>">
+                    <input type="hidden" name="downvote[answer_id]" value="<%= answer.id %>">
+                    <input type="hidden" name="downvote[action]" value="downvote">
+                    <button class="submit_button" type="submit"><img src="/img/downvote.png"/></button>
+                  </form>
+                  <div id="answer_votes">
+                    <p id="count_votes"> <%= answer.votes_count %></p>
+                    <p>votes</p>
+                  </div>
+                </div>
+              <% else %>
+                <div id="footer_answer">
+                  <div id="answer_votes">
+                    <p id="count_votes"> <%= answer.votes_count %></p>
+                    <p>votes</p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <form action="/answer" method="post" id="question_answer_add_answer">
+        <textarea name="answer[content]"></textarea>
+        <input type="hidden" name="answer[user_id]" value="<%= current_user.id %>">
+        <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
+        <br>
+        <input type="submit" value="Add answer">
+      </form>
+    </div>
+  <% end %>
+</div>
