@@ -9,6 +9,7 @@ get '/' do
 	@user = User.all
 	@questions = Question.all
 	@answers = Answer.all
+	@question_votes = QuestionVote.all
   erb :"static/index"
 end
 
@@ -66,5 +67,6 @@ get '/users/:id' do
 	@answers_user = Answer.where(user_id: @user.id).order(created_at: :desc)
 	@questions_user = Question.where(user_id: @user.id).order(created_at: :desc)
 	@questions = Question.all
+	@question_votes = QuestionVote.all
 	erb :"static/profile"
 end

@@ -66,6 +66,7 @@
 					<!-- Display upvote / downvote button for the question -->
 					<form action="/question_votes" method="post">
 						<button type="submit" name=question_vote[vote] value=1>Upvote</button>
+						<span><%= @question_votes.where(question_id: question.id).sum(:vote) %></span>
 						<button type="submit" name=question_vote[vote] value=-1>Downvote</button>
 						<input type="hidden" name="question_vote[user_id]" value="<%= current_user.id%>">
 						<input type="hidden" name="question_vote[question_id]" value="<%= question.id%>">
