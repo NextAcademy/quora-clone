@@ -10,6 +10,7 @@ get '/' do
 	@questions = Question.all
 	@answers = Answer.all
 	@question_votes = QuestionVote.all
+	@answer_votes = AnswerVote.all
   erb :"static/index"
 end
 

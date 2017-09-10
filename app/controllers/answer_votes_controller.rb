@@ -1,32 +1,32 @@
 require 'byebug'
 
-post '/question_votes' do
+post '/answer_votes' do
 	# puts params
-	# {"question_vote"=>{"vote"=>"1", "user_id"=>"1", "question_id"=>"2"}, "captures"=>[]}
-	# {"question_vote"=>{"vote"=>"-1", "user_id"=>"1", "question_id"=>"2"}, "captures"=>[]}
 
-	@user_id = params[:question_vote][:user_id].to_i
-	@question_id = params[:question_vote][:question_id].to_i
-	user_voted = QuestionVote.find_by(user_id: @user_id, question_id: @question_id)
+	@user_id = params[:answer_vote][:user_id].to_i
+	@answer_id = params[:answer_vote][:answer_id].to_i
+	@question_id = Answer.find_by(id: @answer_id).question_id
+	user_voted = AnswerVote.find_by(user_id: @user_id, answer_id: @answer_id)
 
 	unless user_voted
-		question_votes = QuestionVote.new(params[:question_vote])
+		answer_votes = AnswerVote.new(params[:answer_vote])
 	else
-		question_votes = user_voted
-		param_vote = params[:question_vote][:vote].to_i
-		unless question_votes.vote == param_vote
-			question_votes.vote += param_vote
+		answer_votes = user_voted
+		param_vote = params[:answer_vote][:vote].to_i
+		unless answer_votes.vote == param_vote
+			answer_votes.vote += param_vote
 		end
 	end
 
-	if question_votes.save
+	if answer_votes.save
 		redirect back
 	else
-		@question_votes_errors = question_votes.errors.messages
+		@answer_votes_errors = answer_votes.errors.messages
 		# @user = User.all
 		# @questions = Question.all
 		# @answers = Answer.all
 		# @question_votes = QuestionVote.all
+		# @answer_votes = AnswerVote.all
 		# erb :"static/index"
 
 		@question = Question.find_by_id(@question_id)
@@ -43,6 +43,7 @@ post '/question_votes' do
 		# @questions_user = Question.where(user_id: @user.id).order(created_at: :desc)
 		# @questions = Question.all
 		# @question_votes = QuestionVote.all
+		# @answer_votes = AnswerVote.all
 		# erb :"static/profile"
 	end
 end
