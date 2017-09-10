@@ -50,11 +50,17 @@
             </div>
           </div>
         </div>
-
-        <form action="/user/<%= current_user.id %>/question/<%= question.id %>" method="get">
-          <input type="submit" value="Open Question" id='open'>
-        </form>
-
+        <div id="footer_question">
+          <div id="footer_question_form">
+            <form action="/user/<%= current_user.id %>/question/<%= question.id %>" method="get">
+              <input type="submit" value="Open Question" id='open'>
+            </form>
+          </div>
+          <div id="question_votes">
+            <p id="question_count_votes"> <%= question.votes_count %></p>
+            <p>votes</p>
+          </div>
+        </div>
       </div>
     <% end %>
   <% end %>

@@ -75,12 +75,12 @@ post '/question_upvote' do
   if upvote.id
     upvote.question.downvote_question
     upvote.destroy
-    redirect '/profile'
+    redirect '/question'
   elsif upvote.save
     upvote.question.upvote_question
-    erb :"static/profile"
+    redirect '/question'
   else
-    redirect '/profile'
+    redirect '/question'
   end
 end
 
@@ -89,12 +89,12 @@ post '/question_downvote' do
   if downvote.id
     downvote.question.upvote_question
     downvote.destroy
-    redirect '/profile'
+    redirect '/question'
   elsif downvote.save
     downvote.question.downvote_question
-    erb :"static/profile"
+    redirect '/question'
   else
-    redirect '/profile'
+    redirect '/question'
   end
 end
 
