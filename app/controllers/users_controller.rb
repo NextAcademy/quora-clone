@@ -1,4 +1,4 @@
-enable :sessions
+# enable :sessions
 
 get '/signup' do
   erb :'/users/new'
@@ -20,9 +20,9 @@ get '/login' do
 end
 
 post '/login' do
-  user = User.find_by_email(params[:email])
-
-  if user.password == params[:password]
+  user = User.find_by_email(params[:user][:email])
+  #byebug
+  if user.authenticate(params[:user][:password])
     session[:user_id] = user.id
     redirect '/dashboard'
   else

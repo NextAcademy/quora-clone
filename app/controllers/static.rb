@@ -13,3 +13,7 @@ end
 get '/dashboard' do
   erb :"dashboard/index"
 end
+
+# get 'users/:id' do
+#   erb :""
+# end
