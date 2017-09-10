@@ -1,7 +1,11 @@
 <div class="profile-container">
+
+	<!-- Display profile header -->
 	<div class="header">
 		<h1><%= @user.name %></h1>
 	</div>
+
+	<!-- Display feed navigation -->
 	<div class="profile-feed-navigation">
 		<h3>Feeds</h3>
 		<nav>
@@ -11,7 +15,11 @@
 			</ul>
 		</nav>	
 	</div>
+
+	<!-- Display feed eg. Answers, Questions, etc -->
 	<div class="profile-feed-container">
+
+		<!-- Display answer feeds -->
 		<div id="profile-feed-answers-<%= @user.id %>" >
 			<!-- Display count of answers submission -->
 			<div class="answer-count"><%= @answers_user.count %> Answer<%= 's' if @answers_user.count > 1 %></div>
@@ -32,6 +40,7 @@
 		  </div>
 		</div>
 
+		<!-- Display question feeds -->
 		<div id="profile-feed-questions-<%= @user.id %>" >
 			<!-- Display count of questions submission -->
 			<div class="question-count"><%= @questions_user.count %> Question<%= 's' if @questions_user.count > 1 %></div>
@@ -39,11 +48,25 @@
 			<!-- Display all questions of this user -->
 			<% @questions_user.each do |question| %>
 				<div class="question-item">
+					<!-- Display question title -->
 					<div class="question-item-title">
 						<a href="/questions/<%= question.id %>"><%= question.title %></a>
 					</div>
+
+					<!-- Display upvote / downvote button for the question -->
+					<form action="/question_votes" method="post">
+						<button type="submit" name=question_vote[vote] value=1>Upvote</button>
+						<button type="submit" name=question_vote[vote] value=-1>Downvote</button>
+						<input type="hidden" name="question_vote[user_id]" value="<%= current_user.id%>">
+						<input type="hidden" name="question_vote[question_id]" value="<%= question.id%>">
+					</form>
 				</div>
 			<% end %>
 		</div>
+
+		<!-- Display XXX feeds -->
+		<div></div>
 	</div>
+	<!-- End of display feed -->
+
 </div>
