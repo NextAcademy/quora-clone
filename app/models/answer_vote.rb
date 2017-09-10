@@ -1,9 +1,7 @@
-require 'byebug'
-
-class QuestionVote < ActiveRecord::Base
+class AnswerVote < ActiveRecord::Base
 	belongs_to :user
-	belongs_to :question
-	validates :user_id, :question_id, presence: true
+	belongs_to :answer
+	validates :user_id, :answer_id, presence: true
 	validates :vote, inclusion: { in: [-1, 0, 1] }
 	validate :vote_only_once, if: :user_voted
 
@@ -28,8 +26,3 @@ class QuestionVote < ActiveRecord::Base
 		user.vote == -1
 	end
 end
-
-
-
-
-# vote = QuestionVote.new(user_id: 2, vote: 1)
