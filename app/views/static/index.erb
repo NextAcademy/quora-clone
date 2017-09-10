@@ -65,8 +65,8 @@
 
 					<!-- Display upvote / downvote button for the question -->
 					<form action="/question_votes" method="post">
-						<input type="submit" value="Upvote">
-						<input type="submit" value="Downvote">
+						<button type="submit" name=question_vote[vote] value=1>Upvote</button>
+						<button type="submit" name=question_vote[vote] value=-1>Downvote</button>
 						<input type="hidden" name="question_vote[user_id]" value="<%= current_user.id%>">
 						<input type="hidden" name="question_vote[question_id]" value="<%= question.id%>">
 					</form>
