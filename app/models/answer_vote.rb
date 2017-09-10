@@ -15,7 +15,7 @@ class AnswerVote < ActiveRecord::Base
 	end
 
 	def user_voted
-	  QuestionVote.find_by(user_id: self.user_id, question_id: self.question_id)
+	  AnswerVote.find_by(user_id: self.user_id, answer_id: self.answer_id)
 	end
 
 	def upvoted?(user)

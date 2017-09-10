@@ -5,6 +5,7 @@ post '/answer_votes' do
 
 	@user_id = params[:answer_vote][:user_id].to_i
 	@answer_id = params[:answer_vote][:answer_id].to_i
+	@question_id = Answer.find_by(id: @answer_id).question_id
 	user_voted = AnswerVote.find_by(user_id: @user_id, answer_id: @answer_id)
 
 	unless user_voted
@@ -32,8 +33,8 @@ post '/answer_votes' do
 		@title = @question.title + " - Quora Clone"
 		@answers = Answer.where(question_id: @question.id).order(created_at: :desc)
 		@user = User.all
-		@question_votes = QuestionVote.where(question_id: @question.id).sum(:vote)
-		@answer_votes = AnswerVote.where(answer_id: @answer.id).sum(:vote)
+		@question_votes = QuestionVote.all
+		@answer_votes = AnswerVote.all
 		erb :"static/question"	
 
 		# @user = User.find_by_id(@user_id)
