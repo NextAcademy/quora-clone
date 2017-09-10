@@ -61,6 +61,17 @@
 						<input type="hidden" name="question_vote[user_id]" value="<%= current_user.id%>">
 						<input type="hidden" name="question_vote[question_id]" value="<%= question.id%>">
 					</form>
+
+					<!-- Display error message - user can only vote once -->
+					<% if @question_votes_errors && @question_id == question.id %>
+						<!-- Display error messages -->
+						<p class="error">Invalid input! Please check your input.</p>
+					  <ul>
+						<% @question_votes_errors.each do |error| %>
+							<li class="error"><%= error[0].to_s %>: <%= error[1].join(",") %></li>
+						<% end %>
+					  </ul>
+					<% end %>
 				</div>
 			<% end %>
 		</div>

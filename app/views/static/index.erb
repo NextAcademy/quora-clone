@@ -72,6 +72,7 @@
 						<input type="hidden" name="question_vote[question_id]" value="<%= question.id%>">
 					</form>
 
+					<!-- Display error message - user can only vote once -->
 					<% if @question_votes_errors && @question_id == question.id %>
 						<!-- Display error messages -->
 						<p class="error">Invalid input! Please check your input.</p>

@@ -35,5 +35,13 @@ post '/question_votes' do
 		@user = User.all
 		@question_votes = QuestionVote.where(question_id: @question.id).sum(:vote)
 		erb :"static/question"	
+
+		# @user = User.find_by_id(@user_id)
+		# @title = @user.name + " - Quora Clone"
+		# @answers_user = Answer.where(user_id: @user.id).order(created_at: :desc)
+		# @questions_user = Question.where(user_id: @user.id).order(created_at: :desc)
+		# @questions = Question.all
+		# @question_votes = QuestionVote.all
+		# erb :"static/profile"
 	end
 end
