@@ -14,15 +14,23 @@ GEM
       tzinfo (~> 1.1)
     arel (8.0.0)
     backports (3.8.0)
+    bcrypt (3.1.11)
+    byebug (9.1.0)
+    coderay (1.1.1)
     concurrent-ruby (1.0.5)
     daemons (1.2.4)
     diff-lcs (1.3)
     eventmachine (1.2.3)
     i18n (0.8.6)
+    method_source (0.8.2)
     minitest (5.10.3)
     multi_json (1.12.1)
     mustermann (1.0.0)
     pg (0.21.0)
+    pry (0.10.4)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     puma (3.9.1)
     rack (2.0.3)
     rack-protection (2.0.0)
@@ -63,6 +71,7 @@ GEM
       rack-protection (= 2.0.0)
       sinatra (= 2.0.0)
       tilt (>= 1.3, < 3)
+    slop (3.6.0)
     thin (1.7.2)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -78,7 +87,10 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   activesupport
+  bcrypt
+  byebug
   pg
+  pry
   puma
   rails_12factor
   rake
@@ -90,4 +102,4 @@ DEPENDENCIES
   thin
 
 BUNDLED WITH
-   1.15.3
+   1.15.4
