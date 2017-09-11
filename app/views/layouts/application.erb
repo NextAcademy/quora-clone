@@ -1,8 +1,8 @@
 <html>
 <head>
 
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="/css/application.css">
     <script type="text/javascript" charset="utf-8" src="/js/application.js"></script>
@@ -29,12 +29,7 @@
                 </ul>
 
                 <% if logged_in? %>
-                    <form action="/users/<%= session[:user_id] %>" class="form-inline my-2 my-lg-0" method='post'>
-                        <button action="/users/<%= session[:user_id] %>" id="profile-btn"
-                                class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                            <%= User.find_by(id: session[:user_id])[:user_id] %>
-                        </button>
-                    </form>
+                    <a href="/users/<%= session[:user_id] %>" class="badge badge-pill badge-primary mr-sm-1 align-middle" id="profile-badge"><%= User.find_by(id: session[:user_id])[:user_id] %></a>
 
                     <form action="/users/logout" class="form-inline my-2 my-lg-0">
                         <button id="logout-btn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
@@ -47,9 +42,28 @@
             </div>
         </nav>
 
-
-
         <%= yield %>
+
+        <!--error modal to display ajax error messages-->
+
+        <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="answer-modal-title">Error</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                    </div>
+
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

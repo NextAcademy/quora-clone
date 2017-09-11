@@ -1,17 +1,57 @@
-<div class="profile-header">
-  <h1 id="welcome-message">
+<div class="container profile-header float-left">
+  <h1 id="welcome-message" user-id=<%= @user[:id] %>>
     <%= "Welcome #{@user[:email]}" %>
   </h1>
 </div>
 
-<p>
-  <%= "You have asked # of question(s)" %>
-</p>
+
+<div class="container msg-container float-left">
+    <row>
+        <p class="mb-sm-1" ques-count=<%= @user.questions.size %>>
+          <%= "Number of question(s) asked: #{@user.questions.size}" %>
+        </p>
+
+        <a href="#" class="btn btn-primary btn-sm mb-sm-2" role="button" onclick="ajaxShowUserQuestions()">Show</a>
+
+    </row>
+    <row>
+        <p class="mb-sm-1" ans-count=<%= @user.answers.size %>>
+          <%= "Number of questions(s) answered: #{@user.answers.size}" %>
+        </p>
+
+        <a href="#" class="btn btn-primary btn-sm mb-sm-2" role="button" onclick="ajaxShowUserAnswers()">Show</a>
 
 
+    </row>
 
-<p>
-  <%= "You have contributed # of answer(s)" %>
-</p>
+    <hr>
+</div>
+
+<div class="container user-questions-container float-left">
+    <!--<% @user.questions.order(:id).reverse_order.each do |question| %>-->
+        <!--<h4 class="question-header">-->
+            <!--<%= question[:header] %>-->
+        <!--</h4>-->
+        <!--<p class="question-detail">-->
+            <!--<%= question[:detail] %>-->
+        <!--</p>-->
+        <!--<hr>-->
+    <!--<% end %>-->
+
+</div>
+
+<div class="container user-answers-container">
+    <!--<% @user.answers.order(:id).reverse_order.each do |answer| %>-->
+        <!--<h4 class="question-header">-->
+            <!--<%= answer.question[:header] %>-->
+        <!--</h4>-->
+        <!--<p class="answer-detail">-->
+            <!--<%= answer[:detail] %>-->
+        <!--</p>-->
+        <!--<hr>-->
+    <!--<% end %>-->
+
+</div>
+
 
 

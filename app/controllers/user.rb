@@ -31,6 +31,43 @@ get '/users/:id' do
   if logged_in?
     @user = User.find_by_id(params[:id])
     erb :"user/profile"
+  else
+    erb :"static/landing"
   end
+end
 
+get '/users/:id/questions' do
+  if logged_in?
+    user = User.find_by_id(params[:id])
+    questions = user.questions.order(:id).reverse_order
+
+    if !questions.nil?
+      response = Array.new
+      questions.each do |ques|
+        response << ques.attributes
+      end
+      return response.to_json
+    end
+
+  else
+    erb :"static/landing"
+  end
+end
+
+get '/users/:id/answers' do
+  if logged_in?
+    user = User.find_by_id(params[:id])
+    answers = user.answers.order(:id).reverse_order
+
+    if !answers.nil?
+      response = Array.new
+      answers.each do |ans|
+        response << ans.attributes
+      end
+      return response.to_json
+    end
+
+  else
+    erb :"static/landing"
+  end
 end

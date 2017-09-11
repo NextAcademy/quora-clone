@@ -1,6 +1,6 @@
 <div class="container question-container">
 
-    <row class="class">
+    <row quesid="<%= @question[:id] %>">
         <h4>
             <%= @question[:header] %>
         </h4>
@@ -12,7 +12,46 @@
         <a href="/users/<%= @question[:user_id] %>">
             <%= @question.user[:user_id] %>
         </a>
+        <br>
+        <button id="answer-btn" class="btn btn-primary"
+                type="button" data-toggle="modal" data-target="#answer-modal">Answer</button>
     </row>
 
     <hr>
+</div>
+
+<div class="modal fade" id="answer-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="answer-modal-title">Answer</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+            </div>
+
+            <form id="answer-form" action="/questions/<%= @question[:id] %>/answers/create" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <textarea name="answer" class="form-control input-lg" id="answer-input" placeholder="Your answer here" row="10" maxlength="1000"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="answer-submit-btn" type="submit" class="btn btn-primary">OK</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="container answer-container">
+    <% if @answers.length != 0 %>
+        <% @answers.each do |ans| %>
+            <row>
+                <p class="mb-sm-1"><%= ans[:detail] %></p>
+                <a href="/users/<%= ans[:user_id] %>"><%= ans.user[:user_id] %></a>
+            </row>
+            <hr>
+        <% end %>
+    <% end %>
 </div>
