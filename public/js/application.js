@@ -46,10 +46,6 @@ function ajaxAnswerVote() {
 				var voteCountSelector = ".answer-vote-count-" + json.answer_id;
 				var voteFormSelector = ".answer-vote-form-" + json.answer_id;
 
-				console.log(json)
-				console.log($(voteCountSelector).text())
-				console.log(json.vote)
-
 				if ($.isNumeric(json.vote)) {
 					previousVoteCount = $(voteCountSelector).text();
 					$(voteCountSelector).text(parseInt(previousVoteCount) + json.vote);
