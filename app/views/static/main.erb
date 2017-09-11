@@ -1,0 +1,40 @@
+<div id="login-container">
+	<h2>Please Click Here For Existing User</h2>
+	<button id="login-button"> Login</button>
+	<div id="sign-in-container">
+		<h2 class="h2-align">Sign In</h2>
+		<form action="/login" method="post">
+  			<input type="text" name="email" placeholder="Email" size="30">
+  			<br>
+ 			<br>
+			<input type="password" name="password" placeholder="Password" maxlength="8" size="30">
+			<br>
+			<br>
+			<input type="submit" value="Sign In">
+		</form> 
+		<button id="login-back">&crarr;</button>
+		<a href="#">Forget Password?</a>
+	</div>
+</div>
+
+<div id="register-container">
+	<h2>Please Click Here For New Member</h2>
+	<button id="register-button"> Register</button>
+	<div id="sign-up-container">
+		<h2 class="h2-align">Sign Up</h2>
+		<form action="/signup" method="post">
+		  <p class="sign-up-text">First Name:</p>
+		  <input class="capital" type="text" name="user[first_name]" size="30">
+		  <p class="sign-up-text">Last Name:</p>
+		  <input class="capital" type="text" name="user[last_name]" size="30">
+		  <p id="sign-up-email">Email:</p>
+		  <input type="text" name="user[email]" size="30">
+		  <p class="sign-up-text">Password:</p>
+		  <input type="password" name="user[password]" size="30">
+		  <br>
+		  <br>
+		  <input type="submit" value="Sign Up">
+		</form> 
+		<button id="register-back">&crarr;</button>
+	</div>
+</div>
