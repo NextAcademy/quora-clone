@@ -1,0 +1,126 @@
+<!-- Question page -->
+<div class="question-body">
+
+	<!-- Display question title -->
+	<div class="question-title">
+		<h1><%= @question.title%></h1>
+	</div>
+
+	<!-- TODO -->
+	<%#= erb :"static/question_form", layout: false %>
+
+	<!-- Display upvote / downvote button for the question -->
+	<div class="question-vote-form-<%= @question.id %>">
+	<form class="question-upvote-form vote-form" action="/question_votes" method="post">
+		<!-- <button type="submit" name="question_vote[vote]" value=1>Upvote</button> -->
+		<input type="submit" value="Upvote">
+		<input type="hidden" name="question_vote[vote]" value="1">
+		<input type="hidden" name="question_vote[user_id]" value="<%= current_user.id%>">
+		<input type="hidden" name="question_vote[question_id]" value="<%= @question.id%>">
+	</form>
+
+	<span>
+		<% if @question_votes%>	
+			<span class="question-vote-count-<%= @question.id %>">
+				<%= @question_votes.where(question_id: @question.id).sum(:vote) %>
+			</span>
+		<% else %>
+			0
+		<% end %>
+	</span>
+
+	<form class="question-downvote-form vote-form" action="/question_votes" method="post">
+		<!-- <button type="submit" name="question_vote[vote]" value=-1>Downvote</button> -->
+		<input type="submit" value="Downvote">
+		<input type="hidden" name="question_vote[vote]" value="-1">
+		<input type="hidden" name="question_vote[user_id]" value="<%= current_user.id%>">
+		<input type="hidden" name="question_vote[question_id]" value="<%= @question.id%>">
+	</form>
+	</div>
+
+	<!-- Display error message - user can only vote once -->
+	<% if @question_votes_errors && @question_id == @question.id %>
+		<!-- Display error messages -->
+		<p class="error">Invalid input! Please check your input.</p>
+	  <ul>
+		<% @question_votes_errors.each do |error| %>
+			<li class="error"><%= error[0].to_s %>: <%= error[1].join(",") %></li>
+		<% end %>
+	  </ul>
+	<% end %>
+
+	<!-- Display answer form -->
+	<div class="answer-action">
+		<button>Answer</button>
+		<div>
+			<div class="answer-editor-header">
+				<a class="user" href="/users/<%= current_user.id %>"><%= current_user.name %></a>
+			</div>
+			<div>
+				<form id="answer-form" action="/answers" method="post">
+					<textarea name="answer[content]" id="answer-form" placeholder="Write your answer" required></textarea><br>
+					<input type="hidden" name="answer[user_id]" value="<%= current_user.id %>">
+					<input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
+					<br><input class="answer-button" type="submit" value="Submit">
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Display total count of answers to this question -->
+	<div class="answer-count"><%= @answers.count %> Answer<%= 's' if @answers.count > 1 %></div>
+
+	<!-- Display all answers to this question -->
+	<div class="answer-list">
+		<% @answers.each do |answer| %>
+			<div class="answer-item">
+				<div class="answer-head">
+					<% author =  @user.find_by_id(answer.user_id) %>
+					<a class="user" href="/users/<%= author.id %>"><%= author.name %></a>
+				</div>
+				<div class="answer-body">
+					<%= answer.content %>
+				</div>
+				<!-- Display upvote / downvote button for the answer -->
+				<div class="answer-vote-form-<%= answer.id %>">
+				<form class="answer-upvote-form vote-form" action="/answer_votes" method="post">
+					<!-- <button type="submit" name=answer_vote[vote] value=1>Upvote</button> -->
+					<input type="submit" value="Upvote">
+					<input type="hidden" name="answer_vote[vote]" value="1">
+					<input type="hidden" name="answer_vote[user_id]" value="<%= current_user.id%>">
+					<input type="hidden" name="answer_vote[answer_id]" value="<%= answer.id%>">
+				</form>
+
+				<span>
+					<% if @answer_votes%>	
+						<span class="answer-vote-count-<%= answer.id %>">
+							<%= @answer_votes.where(answer_id: answer.id).sum(:vote) %>
+						</span>
+					<% else %>
+						0
+					<% end %>
+				</span>
+
+				<form class="answer-downvote-form vote-form" action="/answer_votes" method="post">
+					<!-- <button type="submit" name=answer_vote[vote] value=-1>Downvote</button> -->
+					<input type="submit" value="Downvote">
+					<input type="hidden" name="answer_vote[vote]" value="-1">
+					<input type="hidden" name="answer_vote[user_id]" value="<%= current_user.id%>">
+					<input type="hidden" name="answer_vote[answer_id]" value="<%= answer.id%>">
+				</form>
+				</div>
+
+				<!-- Display error message - user can only vote once -->
+				<% if @answer_votes_errors && @answer_id == answer.id %>
+					<!-- Display error messages -->
+					<p class="error">Invalid input! Please check your input.</p>
+				  <ul>
+					<% @answer_votes_errors.each do |error| %>
+						<li class="error"><%= error[0].to_s %>: <%= error[1].join(",") %></li>
+					<% end %>
+				  </ul>
+				<% end %>	
+			</div>
+		<%  end %>
+	</div>
+</div>
