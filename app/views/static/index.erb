@@ -1,2 +1,12 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<p id="welcome-msg">
+	Welcome, 
+	<% if logged_in? %> <%= current_user.first_name %>
+	<% end %>
+</p> 
+<img  id="setting-button" src="/img/setting.png">
+
+<div id="sidebar">
+  <form action='/logout' method='post'> <input id="logout-button" type="submit" value="LogOut">
+			</form>
+  <a id="myprofile-icon" href="/users/<%= current_user.id %>">My Profile</a>
+</div>
