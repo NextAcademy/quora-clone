@@ -41,7 +41,7 @@
 			</div>
 			<div>
 				<form id="answer-form" action="/answers" method="post">
-					<textarea name="answer[content]" id="answer-form" placeholder="Write your answer"></textarea><br>
+					<textarea name="answer[content]" id="answer-form" placeholder="Write your answer" required></textarea><br>
 					<input type="hidden" name="answer[user_id]" value="<%= current_user.id %>">
 					<input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
 					<br><input class="answer-button" type="submit" value="Submit">

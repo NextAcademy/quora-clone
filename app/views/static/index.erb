@@ -3,10 +3,10 @@
 	<div id="sign-up-container">
 		<h2>Sign up for an account!</h2>
 		<form id="sign-up-form" action="/signup" method="post">
-			<input type="text" name="user[name]" placeholder="Name"><br>
-			<input type="email" name="user[email]" placeholder="Email"><br>
-			<input type="password" name="user[password]" placeholder="Password"><br>
-			<input type="password" name="confirmPassword" placeholder="Confirm Password"><br>
+			<input type="text" name="user[name]" placeholder="Name" required><br>
+			<input type="email" name="user[email]" placeholder="Email" required><br>
+			<input type="password" name="user[password]" placeholder="Password" required><br>
+			<input type="password" name="confirmPassword" placeholder="Confirm Password" required><br>
 			<input type="submit" value="Sign Up">
 		</form>
 	</div>
@@ -15,8 +15,8 @@
 	<div id="login-container">
 		<h2>Login</h2>
 		<form id="login-form" action="/login" method="post">
-			<input type="text" name="user[email]" placeholder="Email"><br>
-			<input type="password" name="user[password]" placeholder="Password"><br>
+			<input type="text" name="user[email]" placeholder="Email" required><br>
+			<input type="password" name="user[password]" placeholder="Password" required><br>
 			<input type="submit" value="Login">
 		</form>
 	</div>
@@ -141,7 +141,7 @@
 								</div>
 								<div>
 									<form id="answer-form" action="/answers" method="post">
-										<textarea name="answer[content]" id="answer-form" placeholder="Write your answer"></textarea><br>
+										<textarea name="answer[content]" id="answer-form" placeholder="Write your answer" required></textarea><br>
 										<input type="hidden" name="answer[user_id]" value="<%= current_user.id %>">
 										<input type="hidden" name="answer[question_id]" value="<%= question.id %>">
 										<br><input class="answer-button" type="submit" value="Submit">
