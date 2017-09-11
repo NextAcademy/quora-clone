@@ -69,5 +69,6 @@ get '/users/:id' do
 	@questions_user = Question.where(user_id: @user.id).order(created_at: :desc)
 	@questions = Question.all
 	@question_votes = QuestionVote.all
+	@answer_votes = AnswerVote.all
 	erb :"static/profile"
 end

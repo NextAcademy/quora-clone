@@ -8,7 +8,8 @@ post '/question_votes' do
 	@user_id = params[:question_vote][:user_id].to_i
 	@question_id = params[:question_vote][:question_id].to_i
 	user_voted = QuestionVote.find_by(user_id: @user_id, question_id: @question_id)
-  
+  user_vote = params[:question_vote][:vote].to_i
+
 	unless user_voted
 		question_votes = QuestionVote.new(params[:question_vote])
 	else
@@ -21,7 +22,7 @@ post '/question_votes' do
 
 	if question_votes.save
 		# redirect back # to be commented out for json
-		question_votes.to_json
+		{ success: true, question_id: @question_id, vote: user_vote }.to_json
 	else
 		@question_votes_errors = question_votes.errors.messages
 		# @user = User.all

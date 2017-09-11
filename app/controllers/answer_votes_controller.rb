@@ -7,6 +7,7 @@ post '/answer_votes' do
 	@answer_id = params[:answer_vote][:answer_id].to_i
 	@question_id = Answer.find_by(id: @answer_id).question_id
 	user_voted = AnswerVote.find_by(user_id: @user_id, answer_id: @answer_id)
+	user_vote = params[:answer_vote][:vote].to_i
 
 	unless user_voted
 		answer_votes = AnswerVote.new(params[:answer_vote])
@@ -19,7 +20,8 @@ post '/answer_votes' do
 	end
 
 	if answer_votes.save
-		redirect back
+		# redirect back # to be commented out for json
+		{ success: true, answer_id: @answer_id, vote: user_vote}.to_json
 	else
 		@answer_votes_errors = answer_votes.errors.messages
 		# @user = User.all
@@ -35,7 +37,8 @@ post '/answer_votes' do
 		@user = User.all
 		@question_votes = QuestionVote.all
 		@answer_votes = AnswerVote.all
-		erb :"static/question"	
+		# erb :"static/question" # to be commented out for json	
+		{ answer_id: @answer_id, message: @answer_votes_errors }.to_json
 
 		# @user = User.find_by_id(@user_id)
 		# @title = @user.name + " - Quora Clone"

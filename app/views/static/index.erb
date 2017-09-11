@@ -120,19 +120,33 @@
 							</div>
 
 							<!-- Display upvote / downvote button for the answer -->
-							<form action="/answer_votes" method="post">
-								<button type="submit" name=answer_vote[vote] value=1>Upvote</button>
-								<span>
-									<% if @answer_votes%>	
-										<%= @answer_votes.where(answer_id: answer.id).sum(:vote) %>
-									<% else %>
-										0
-									<% end %>
-								</span>
-								<button type="submit" name=answer_vote[vote] value=-1>Downvote</button>
+							<div class="answer-vote-form-<%= answer.id %>">
+							<form class="answer-upvote-form vote-form" action="/answer_votes" method="post">
+								<!-- <button type="submit" name=answer_vote[vote] value=1>Upvote</button> -->
+								<input type="submit" value="Upvote">
+								<input type="hidden" name="answer_vote[vote]" value="1">
 								<input type="hidden" name="answer_vote[user_id]" value="<%= current_user.id%>">
 								<input type="hidden" name="answer_vote[answer_id]" value="<%= answer.id%>">
 							</form>
+
+							<span>
+								<% if @answer_votes%>	
+									<span class="answer-vote-count-<%= answer.id %>">
+										<%= @answer_votes.where(answer_id: answer.id).sum(:vote) %>
+									</span>
+								<% else %>
+									0
+								<% end %>
+							</span>
+
+							<form class="answer-downvote-form vote-form" action="/answer_votes" method="post">
+								<!-- <button type="submit" name=answer_vote[vote] value=-1>Downvote</button> -->
+								<input type="submit" value="Downvote">
+								<input type="hidden" name="answer_vote[vote]" value="-1">
+								<input type="hidden" name="answer_vote[user_id]" value="<%= current_user.id%>">
+								<input type="hidden" name="answer_vote[answer_id]" value="<%= answer.id%>">
+							</form>
+							</div>
 
 							<!-- Display error message - user can only vote once -->
 							<% if @answer_votes_errors && @answer_id == answer.id %>
