@@ -226,3 +226,7 @@ footer {
 .user:hover {
 	text-decoration: underline;
 }
+
+.vote-form {
+	display: inline;
+}

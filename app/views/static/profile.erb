@@ -81,16 +81,24 @@
 					</div>
 
 					<!-- Display upvote / downvote button for the question -->
-					<form action="/question_votes" method="post">
-						<button type="submit" name=question_vote[vote] value=1>Upvote</button>
-						<span>
-							<% if @question_votes %>
+					<form class="question-upvote-form vote-form" action="/question_votes" method="post">
+						<button type="submit" name="question_vote[vote]" value=1>Upvote</button>
+						<input type="hidden" name="question_vote[user_id]" value="<%= current_user.id%>">
+						<input type="hidden" name="question_vote[question_id]" value="<%= question.id%>">
+					</form>
+
+					<span>
+						<% if @question_votes%>	
+							<span class="question-vote-count-<%= question.id %>">
 								<%= @question_votes.where(question_id: question.id).sum(:vote) %>
-							<% else %>
-								0
-							<% end %>
-						</span>
-						<button type="submit" name=question_vote[vote] value=-1>Downvote</button>
+							</span>
+						<% else %>
+							0
+						<% end %>
+					</span>
+
+					<form class="question-downvote-form vote-form" action="/question_votes" method="post">
+						<button type="submit" name="question_vote[vote]" value=-1>Downvote</button>
 						<input type="hidden" name="question_vote[user_id]" value="<%= current_user.id%>">
 						<input type="hidden" name="question_vote[question_id]" value="<%= question.id%>">
 					</form>
