@@ -37,7 +37,8 @@ post '/question_votes' do
 		@question_votes = QuestionVote.all
 		@answer_votes = AnswerVote.all
 		# erb :"static/question" # to be commented out for json
-		@question_votes_errors.to_json
+		# @question_votes_errors.to_json
+		{ question_id: @question.id, message: @question_votes_errors }.to_json
 
 		# @user = User.find_by_id(@user_id)
 		# @title = @user.name + " - Quora Clone"

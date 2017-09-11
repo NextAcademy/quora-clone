@@ -10,7 +10,7 @@
 	<%#= erb :"static/question_form", layout: false %>
 
 	<!-- Display upvote / downvote button for the question -->
-	<div class="question-vote-form">
+	<div class="question-vote-form-<%= @question.id %>">
 	<form class="question-upvote-form vote-form" action="/question_votes" method="post">
 		<!-- <button type="submit" name="question_vote[vote]" value=1>Upvote</button> -->
 		<input type="submit" value="Upvote">
