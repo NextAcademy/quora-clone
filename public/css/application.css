@@ -1,0 +1,24 @@
+.title {
+	display: block;
+	margin: auto;
+
+}
+
+.description {
+	font-size: 20px;
+	text-align: center;
+}
+/*
+#signup {
+	text-align: center;
+}
+
+#login {
+	margin: none;
+	padding: none;
+}*/
+
+.enter {
+	text-align: center;
+
+}
