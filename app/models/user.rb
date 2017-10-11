@@ -6,4 +6,7 @@ class User < ActiveRecord::Base[5.0]
 
   validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
 
+  def for_fun
+    puts "github test for fun"
+  end
 end
