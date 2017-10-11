@@ -1,0 +1,135 @@
+/* global*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	padding: 0;
+	margin: 0;
+	font: 15px/1.5 Arial, Helvetica, sans-serif;
+}
+
+html, body{
+	margin: 0;
+	height: 100%;
+	width: 100%;
+}
+
+/*standard format creation*/
+.background {
+	background-image: url(/img/windmill.png);
+	width: 100%;
+	height: 100%;
+	background-size: 150% 100%;
+	background-repeat: no-repeat;
+	/*background-position: 100px 0px;*/
+}
+
+.container{
+	width: 50%;
+	height: 70%;
+	position: relative;
+	top: 15%;
+	margin: 0 auto;
+	background-color: #ffffff;
+	border-radius: 5px;
+}
+
+.logo a{
+	font-size: 80px;
+	font-family: blackrose;
+	font-weight: bold;
+	color: #B22222;
+	padding-bottom: 0;
+	margin: 0;
+	text-decoration: none;
+}
+
+.logo{
+		text-align: center;
+}
+
+.slogan{
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	/*margin-top: -75px;*/
+	color: #D3D3D3;
+}
+
+/* content*/
+.sub-container-1{
+	margin-top: 20px;
+	float: right;
+	width: 45%;
+	height: 50%;
+	padding: 10px;
+	text-align: center;
+	border-left: medium solid #d3d3d3;
+	display: block;
+}
+
+.sub-container-2{
+	margin-top: 20px;
+	float: left;
+	width: 45%;
+	height: 50%;
+	padding: 10px;
+	text-align: center;
+	display: inline-block;
+}
+
+#logintext{
+	text-align: right;
+}
+
+.textbox {
+	border-radius: 5px;
+	float: right;
+}
+
+.signup_link{
+
+}
+
+
+/*bottom-links*/
+.bottom-link {
+	background-color: #d3d3d3;
+	opacity: 0.6;
+	border-top: medium solid #d3d3d3;
+	position: absolute;
+	bottom:0;
+	width: 100%;
+	text-align: center;
+	padding-bottom: 5px;
+
+}
+
+.bottom-link li {
+	list-style-type: none;
+	display: inline;
+
+}
+.bottom-link a {
+	text-decoration: none;
+	text-align: center;
+	float: right;
+	display: inline;
+	padding: 0 20px 10px 20px;
+	font-size: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
