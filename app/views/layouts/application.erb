@@ -1,8 +1,16 @@
 <html>
 	<head>
 		<title>Sinatra Framework</title>
+		<link rel="stylesheet" type="text/css" href="/css/application.css">
 	</head>
 	<body>
+		<% if logged_in? %>
+				<form action="/logout" 		method="post">
+  			<button type="submit">Log out</button> 
+				</form>
+			<% else %>
+			<p>log in</p>
+		<% end %>
 		<%= yield %>
 	</body>
 </html>
