@@ -1,0 +1,32 @@
+/*background*/
+body{
+	background-image: "/img/bg.jpg"
+}	
+
+
+/*signup box*/
+.signupbox{
+	width: 500px;
+	background-color: white;
+	border: 1px solid #e2e2e2;
+	box-shadow: 0 0 5px #888;
+	border-radius: 4px;
+	padding-top: 25px;
+	margin: 200px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+form{
+	text-align: center;
+}
+
+#icon{
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#tagline{
+	text-align: center;
+}
