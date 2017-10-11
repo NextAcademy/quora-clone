@@ -1,0 +1,16 @@
+<p>Howdy, <%= @user.first_name %></p>
+<br>
+
+<!-- Logout is using button, will customize look like a LINK in css -->
+<form method="post" action="/logout" class="inline">
+  <input type="hidden" name="extra_submit_param" value="extra_submit_value">
+  <button type="submit" name="submit_param" value="submit_value" class="link-button">
+    Logout
+  </button>
+</form>
+<br>
+<br>
+<input type="text" name="question" size="100" placeholder="Type your question here"><br>
+<a href="#">Cancel</a>
+<input type="submit" value="Ask Question">
+
