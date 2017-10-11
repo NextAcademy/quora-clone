@@ -1,6 +1,13 @@
+for bcrypt gem to work
+
+1) gemfile, gem bcrypt, you  need to run $bundle installl
+2) db/migrate, you need password_digest
+3) app/models/user.rb, you need "has_secure_password"
+
+
 #Sinatra Web Server
 ## Repo details
-| Details   |  | 
+| Details   |  |
 | :--------------- | -------: |
 | Re-created by: | Holloway, Chew Kean Ho |
 | Version:    | 0.0.9   |
@@ -48,7 +55,7 @@ $ mv sinatra-web-server <your-desired-app-name>
 3) Enter into the skeleton and perform bundle install
 ```
 $ cd <your-desired-app-name>
-$ bundle install  
+$ bundle install
 # Open issue in this github repo if any issue
 ```
 4) Perform a short test by launching the server
@@ -107,7 +114,7 @@ require 'uri'
 	# Additional Gem includes after this comments
 #######################################################
 ```
-4) Done. You're ready. 
+4) Done. You're ready.
 <br><br>
 
 ### To Create Controller
@@ -185,7 +192,7 @@ helpers do
 	def calculate_square(param)
 		param * param
 	end
-	
+
 	# More repetitive functions
 	...
 end
@@ -220,7 +227,7 @@ Database migration file creation is supported by Rakefile. To create, execute:
 ```
 $ rake generate:migration NAME=<filename>
 ```
->**REMEMBER**: 
+>**REMEMBER**:
 >------be careful with ActiveRecord **naming convention** especially singular/plural!
 
 <br><br>
