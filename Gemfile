@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 
 # Adding bcrypt gem for my user authenticatetion (login, logout, signup)
 gem 'bcrypt', '~> 3.1.7'
-
+gem 'byebug'
 
 # Adding Sinatra Drivers
 gem 'sinatra'
