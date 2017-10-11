@@ -11,6 +11,12 @@ body{
 	font: 15px/1.5 Arial, Helvetica, sans-serif;
 }
 
+html, body{
+	margin: 0;
+	height: 100%;
+	width: 100%;
+}
+
 /*standard format creation*/
 .background {
 	background-image: url(/img/windmill.png);

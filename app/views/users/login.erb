@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-</head>
-<body>
-		<div class="sub-container-1">
-			<h4 id = 'logintext'>login</h4>
-			<form action="/login" method="post">
-				<input class="textbox" type="text" name="user[email]" placeholder="email address" style="font-size: 20px">
-				<input class="textbox" type="password" name="user[password]" placeholder="password" style="font-size: 20px">
-				<input class="submit_button" type="submit" value="submit">
-			</form>	
-			<p><%= @error %></p>
-		</div>
-		<div class="sub-container-2">
-		<a href="/signup" class="signup_link">Sign up here!</a>
-		</div>
-</body>
-</html>
+
+
+
+<div class="sub-container-1">
+	<h4 id = 'logintext'>login</h4>
+	<form action="/login" method="post">
+		<input class="textbox" type="text" name="user[email]" placeholder="email address" style="font-size: 20px">
+		<input class="textbox" type="password" name="user[password]" placeholder="password" style="font-size: 20px">
+		<input class="submit_button" type="submit" value="submit">
+	</form>	
+	<p><%= @error %></p>
+</div>
+<div class="sub-container-2">
+<a href="/signup" class="signup_link">Sign up here!</a>
+</div>
+

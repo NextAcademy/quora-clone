@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+	<head>
+		<title>Sinatra Framework</title>
+		<meta charset="UTF-8">
+		<title>UserInterface</title>
+		<link rel="stylesheet" href="/css/user.css">
+		<script type="text/javascript" src="/js/jquery.js"></script>
+	</head>
+	<body>
+		<header>
+			<nav>
+				<ul>
+					<li><a href="#"></a>home</li>
+					<li><a href="#"></a>answer</li>
+					<li><a href="#"></a>notification</li>
+					<li><a href="#"></a>profile</li>
+					<li><a href="#"></a>addquestion</li>
+					<form action="/logout" method="post">
+						<input class="submit_button" type="submit" value="logout">
+					</form>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<%= yield %>
+		</main>
+
+	</body>
+</html>
+</html>

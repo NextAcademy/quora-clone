@@ -28,15 +28,17 @@ post '/login' do
  		redirect "/user/#{user.id}"
  	else
  		@error = "invalid username/password"
- 		 erb :"users/login", layout: "abc"
+ 		 erb :"users/login"
  	end
 end
 
 post '/logout' do 
-	session[]
-	redirect = '/'
+	session[:user_id] = nil
+	redirect '/'
 end
 
 get '/user/:id' do
-	erb :"users/show"
+	if 
+		erb :"users/show", { layout: :"layouts/userpage" }
+	end
 end
