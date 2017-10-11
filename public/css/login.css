@@ -61,18 +61,21 @@ html, body{
 
 /* content*/
 .sub-container-1{
+	margin-top: 20px;
 	float: right;
 	width: 45%;
-	height: 60%;
+	height: 50%;
 	padding: 10px;
 	text-align: center;
 	border-left: medium solid #d3d3d3;
+	display: block;
 }
 
 .sub-container-2{
+	margin-top: 20px;
 	float: left;
 	width: 45%;
-	height: 60%;
+	height: 50%;
 	padding: 10px;
 	text-align: center;
 	display: inline-block;
@@ -90,6 +93,35 @@ html, body{
 .signup_link{
 
 }
+
+
+/*bottom-links*/
+.bottom-link {
+	background-color: #d3d3d3;
+	opacity: 0.6;
+	border-top: medium solid #d3d3d3;
+	position: absolute;
+	bottom:0;
+	width: 100%;
+	text-align: center;
+	padding-bottom: 5px;
+
+}
+
+.bottom-link li {
+	list-style-type: none;
+	display: inline;
+
+}
+.bottom-link a {
+	text-decoration: none;
+	text-align: center;
+	float: right;
+	display: inline;
+	padding: 0 20px 10px 20px;
+	font-size: 12px;
+}
+
 
 
 

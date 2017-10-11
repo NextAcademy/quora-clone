@@ -38,7 +38,9 @@ post '/logout' do
 end
 
 get '/user/:id' do
-	if 
+	if params[:id] = session[:user_id]
 		erb :"users/show", { layout: :"layouts/userpage" }
+	else
+		redirect '/'
 	end
 end
