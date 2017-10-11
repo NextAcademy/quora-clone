@@ -1,18 +1,38 @@
-<h1>quora</h1>
 <div id="main">
+<h1>quora</h1>
+<p>asdasdasda</p>
+<div id="user">
 <section class="signup">
+<!-- sign up -->
+<p>Sign up</p>
  <form action= '/signup' method="post">
-	<p><input type="text" name="user[first_name]" class="first_name"
+	<p><input type="text" name="user[first_name]" class="form"
 	placeholder="first_name"></p>
-	<p><input type="text" name="user[last_name]" class="last_name" 
+	<p><input type="text" name="user[last_name]" class="form"
 	placeholder="last_name"></p>
-	<p><input type="text" name="user[email]" class="email" 
+	<p><input type="text" name="user[email]" class="form"
 	placeholder="email"></p>
-	<p><input type="text" name="user[password]" class="password" 
+	<p><input type="text" name="user[password]" class="form"
 	placeholder="password"></p>
-	<p><input type="submit" value="signup"></p>
+	<p class = "bottun"><input type="submit" value="signup"></p>
 </form>
+</section>
+<!-- log in -->
+<section class="login">
+<p>Log in</p>
+<form action= '/login' method="post">
+	<p><input type="text" name="user[email]" class="form"
+	placeholder="email"></p>
+	<p><input type="text" name="user[password]" class="form"
+	placeholder="password"></p>
+	<p class = "bottun"><input type="submit" value="login"></p>
 
+</section>
+</div>
+
+<!-- if sign up is faild, display the messages
+ -->
+<p class="message">
 <%if @user  %>
 <!-- <section class="message"><%= @messages if @messages%></section>
  -->
@@ -20,3 +40,6 @@
 
 
 <% end %>
+</p>
+</div>
+
