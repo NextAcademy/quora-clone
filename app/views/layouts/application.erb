@@ -1,8 +1,11 @@
 <html>
 	<head>
 		<title>Sinatra Framework</title>
+		<link rel="stylesheet" type="text/css" href="/css/application.css">
+		<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 	</head>
 	<body>
+	<%= @message if @message %>
 		<%= yield %>
 	</body>
 </html>

@@ -1,0 +1,27 @@
+html { 
+  background: url(city.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body {
+	margin: 0;
+}
+
+.navbar {
+	background-color: rgba(0, 0, 24, 0.9);
+}
+
+.signup{
+	color: white;
+	font-size: 25px;
+	text-decoration: none;
+	margin-left: 1000px;
+}
+
+.logo{
+	color:white;
+	margin-left: 20px;
+}
