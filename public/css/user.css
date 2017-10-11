@@ -1,0 +1,170 @@
+body{
+	margin: 0;
+	padding: 0;
+	font: 15px/1.5 Arial, Helvetica, sans-serif;
+	background-color: #f3f3f3;
+	color: darkgrey;
+}
+
+/*global*/
+.container{
+	width: 80%;
+	margin: auto;
+	overflow: hidden;
+}
+
+button{
+	margin-top: -15px;
+	height: 50px;
+	background-color: #e8491d;
+	border: none;
+	padding-right: 20px;
+	padding-left: 20px;
+	color: #ffffff;
+	text-transform: uppercase;
+	font-style: bold;
+	font-size: 16px;
+	font: Arial;
+}
+/*header*/
+
+header{
+	background-color: #ffffff;
+	color: #;
+	padding-top: 30px;
+	min-height: 70px;
+	border-bottom: #999999 1px solid;
+}
+
+header a{
+	color: #ffffff;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 16px;
+}
+
+header a:hover{
+	border-top: #ffffff 3px solid;
+}
+
+header ul{
+	margin:0;
+	padding:0;
+}
+
+header li{
+	float: left;
+	display: inline;
+	padding: 0 20px 0 20px;
+}
+
+header .logo{
+	float: left;
+}
+
+header nav{
+	float:right;
+	margin-top: 10px;
+}
+
+/*showcase*/
+#showcase{
+	min-height: 400px;
+	background-image: url(/img/laptop.jpg);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	text-align: center;
+	color: #ffffff;
+}
+
+#showcase .container h1{
+	margin-top: 100px;
+	font-size: 55px;
+	margin-bottom: 20px;
+}
+
+#showcase .container h3{
+	font-family: Times New Roman;
+	font-style: normal;
+	font-size: 30px;
+}
+
+#showcase .long_link{
+	margin-top: 10px;
+	width: 600px;
+	height: 50px;
+	font-size: 10px;
+	padding-bottom: 0;
+	margin-bottom: 0;
+	padding-right: 0;
+	border: 3px solid #e8491d;
+	border-radius: 10px;
+	position: relative;
+	bottom: -3px;
+
+}
+
+#showcase .submit_button{
+	height: 50px;
+	background-color: #e8491d;
+	border: none;
+	padding-right: 20px;
+	padding-left: 20px;
+	color: #ffffff;
+	text-align: center;
+	text-transform: uppercase;
+	font-style: bold;
+	font-size: 16px;
+	font: Arial;
+}
+
+#showcase form{
+	margin-bottom: 0;
+}
+
+.panel, .submit-button{
+	height: 100px;
+	width: 600px;
+	border: 3px solid #ffffff;
+	background-color: #ffffff;
+	border-radius: 10px;
+	position: relative;
+	left: -50px;
+}
+
+.panel{
+	display: none;
+	color: black;
+	margin: 0 auto;
+	text-align: left;
+	vertical-align: middle;
+}
+
+/*table*/
+.table{
+	text-align: center;
+	border: all 1px solid;
+	padding: 0 15px 0 15px;
+}
+
+
+/*box*/
+#boxes{
+	margin-top: 20px;
+}
+
+#boxes .box{
+	float: left;
+	width: 30%;
+	padding: 10px;
+	text-align: center;
+}
+
+#boxes .box img{
+	width: 120px;
+	height: 90px;
+	background-color: #ffffff;
+}
+
+
+
