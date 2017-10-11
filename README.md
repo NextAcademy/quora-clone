@@ -1,4 +1,4 @@
-for bcrypt gem to work
+for bcrypt gem to work:
 
 1) gemfile, gem bcrypt, you  need to run $bundle installl
 2) db/migrate, you need password_digest
