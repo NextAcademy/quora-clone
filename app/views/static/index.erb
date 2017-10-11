@@ -1,2 +1,22 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<h1>quora</h1>
+<div id="main">
+<section class="signup">
+ <form action= '/signup' method="post">
+	<p><input type="text" name="user[first_name]" class="first_name"
+	placeholder="first_name"></p>
+	<p><input type="text" name="user[last_name]" class="last_name" 
+	placeholder="last_name"></p>
+	<p><input type="text" name="user[email]" class="email" 
+	placeholder="email"></p>
+	<p><input type="text" name="user[password]" class="password" 
+	placeholder="password"></p>
+	<p><input type="submit" value="signup"></p>
+</form>
+
+<%if @user  %>
+<!-- <section class="message"><%= @messages if @messages%></section>
+ -->
+<section class="message"><%= @messages if @messages%></section>
+
+
+<% end %>
