@@ -9,7 +9,7 @@ end
 
 post '/new' do 
 	newuser = User.new(params[:user])
-	newuser.save
+
 	if newuser.save
 		
 		@error = "you may now log in"
@@ -21,9 +21,11 @@ post '/new' do
 end
 
 post '/login' do
- 	user = User.find_by(params[:user])
- 	if params[:user][:password_digest] = user.password_digest
- 		redirect '/user/#{user.id}'
+ 	user = User.find_by(email: params[:user][:email])
+ 	# if params[:user][:password_digest] = user.password_digest
+ 	if user && user.authenticate(params[:user][:password])
+ 		session[:user_id] = user.id
+ 		redirect "/user/#{user.id}"
  	else
  		@error = "invalid username/password"
  		redirect '/'
@@ -31,9 +33,10 @@ post '/login' do
 end
 
 post '/logout' do 
+	session[]
 	redirect = '/'
 end
 
 get '/user/:id' do
-	redirect = '/'
+	erb :"users/show"
 end
