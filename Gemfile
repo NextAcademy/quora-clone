@@ -35,3 +35,6 @@ group :production do
 	gem 'rails_12factor' # Heroku Gem Supports
 	gem 'puma' # Using puma for
 end
+
+#Adds methods to set and authenticate against a BCrypt password.
+gem 'bcrypt', '~>3.1.7'
