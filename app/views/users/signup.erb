@@ -1,30 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="css/login.css">
-		<script type="text/javascript" src="/js/jquery.js"></script>
 	<!-- 	<script type="text/javascript" src="/js/login.js"></script> -->
 </head>
 <body>
-	<div class= "background">
-		<div class= "container">
-			<div class="logo">
-				<a href="/">Quora</a>
-			</div>
-			<p class="slogan">A place to share knowledge and understand the world</p>
-			<div class="sub-container">
-				<h4>login</h4>
-				<form action="new" method="post">
-					<input class="textbox" type="text" name="user[email]" placeholder="email address" style="font-size: 20px">
-					<input class="textbox" type="text" name="user[password]" placeholder="password" style="font-size: 20px">
-					<input class="textbox" type="text" name="user[full_name]" placeholder="full name" style="font-size: 20px">
-					<input class="submit_button" type="submit" value="submit">
-				</form>	
-				<p><%= @error %></p>
-			</div>
-		</div>
+	<div class="sub-container">
+		<h4>login</h4>
+		<form action="new" method="post">
+			<input class="textbox" type="text" name="user[email]" placeholder="email address" style="font-size: 20px">
+			<input class="textbox" type="password" name="user[password]" placeholder="password" style="font-size: 20px">
+			<input class="textbox" type="text" name="user[full_name]" placeholder="full name" style="font-size: 20px">
+			<input class="submit_button" type="submit" value="submit">
+		</form>	
+		<p><%= @error %></p>
 	</div>
 </body>
 </html>

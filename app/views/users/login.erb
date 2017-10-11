@@ -1,32 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="css/login.css">
-		<script type="text/javascript" src="/js/jquery.js"></script>
-		<script type="text/javascript" src="/js/login.js"></script>
 </head>
 <body>
-	<div class= "background">
-		<div class= "container">
-			<div class="logo">
-				<a href="/">Quora</a>
-			</div>
-			<p class="slogan">A place to share knowledge and understand the world</p>
-			<div class="sub-container-1">
-				<h4 id = 'logintext'>login</h4>
-				<form action="/login" method="post">
-					<input class="textbox" type="text" name="user[email]" placeholder="email address" style="font-size: 20px">
-					<input class="textbox" type="text" name="user[password]" placeholder="password" style="font-size: 20px">
-					<input class="submit_button" type="submit" value="submit">
-				</form>	
-				<p><%= @error %></p>
-			</div>
-			<div class="sub-container-2">
-			<a href="/signup" class="signup_link">Sign up here!</a>
-			</div>
+		<div class="sub-container-1">
+			<h4 id = 'logintext'>login</h4>
+			<form action="/login" method="post">
+				<input class="textbox" type="text" name="user[email]" placeholder="email address" style="font-size: 20px">
+				<input class="textbox" type="password" name="user[password]" placeholder="password" style="font-size: 20px">
+				<input class="submit_button" type="submit" value="submit">
+			</form>	
+			<p><%= @error %></p>
 		</div>
-	</div>
+		<div class="sub-container-2">
+		<a href="/signup" class="signup_link">Sign up here!</a>
+		</div>
 </body>
 </html>

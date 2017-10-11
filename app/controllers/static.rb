@@ -13,7 +13,7 @@ post '/new' do
 	if newuser.save
 		
 		@error = "you may now log in"
-		redirect '/'
+		 erb :"users/login"
 	else
 		@error = "please try again"
 		redirect "/signup"
@@ -28,7 +28,7 @@ post '/login' do
  		redirect "/user/#{user.id}"
  	else
  		@error = "invalid username/password"
- 		redirect '/'
+ 		 erb :"users/login", layout: "abc"
  	end
 end
 
