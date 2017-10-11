@@ -14,13 +14,17 @@
 				<a href="/">Quora</a>
 			</div>
 			<p class="slogan">A place to share knowledge and understand the world</p>
-			<div class="sub-container">
-				<form action="urls" method="post">
-					<input class="email" type="text" name="user[email]" placeholder="email address" style="font-size: 20px">
-					<input class="password" type="text" name="password" placeholder="password" style="font-size: 20px">
+			<div class="sub-container-1">
+				<h4 id = 'logintext'>login</h4>
+				<form action="/login" method="post">
+					<input class="textbox" type="text" name="user[email]" placeholder="email address" style="font-size: 20px">
+					<input class="textbox" type="text" name="user[password_digest]" placeholder="password" style="font-size: 20px">
 					<input class="submit_button" type="submit" value="submit">
 				</form>	
-				<a href="/signup" class="signup_link">Sign up here!</a>
+				<p><%= @error %></p>
+			</div>
+			<div class="sub-container-2">
+			<a href="/signup" class="signup_link">Sign up here!</a>
 			</div>
 		</div>
 	</div>
