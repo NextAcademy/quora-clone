@@ -1,2 +1,15 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<form action="/sendto_signup" method="post"> <button>Sign Up</button> </form>
+
+<form action="/sendto_login" method="post"> <button>Log In</button> </form>
+
+<table class="table">
+ <% User.all.each do |p| %>
+    <tr>
+	  <td><h5><%= p.username %></h5></td>
+
+	  <td><h5><%= p.email %></h4></td>
+
+	  <td><h5><%= p.password_digest %></h4></td>
+ 	</tr>
+ <% end %>
+</table>
