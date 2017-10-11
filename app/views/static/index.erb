@@ -1,2 +1,27 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<div class="first">
+	<h1>Quora</h1>
+	<p>Ask. Answer. Discover. Repeat.</p>
+
+<!-- <h1>Login now</h1>
+<a href="/login"><button>Login</button></a> -->
+<h2>Login</h2>
+<form action="/login" method="post" >
+    <input type=text placeholder="Email" name="user[email]"><br>
+    <input type=password placeholder="Password" name="user[password]"></br>
+    <input type=submit value="Login">
+</form>
+<p> or </p>
+
+<div class="first">
+	<h2> Sign up for an account now</h2>
+<form action="/signup" method="post">
+	<input type=text placeholder="First Name" name="user[first_name]">
+	<input type=text placeholder="Last Name" name="user[last_name]"><br>
+	<input type=text placeholder="Email" name="user[email]"><br>
+	<input type=password placeholder="Password" name="user[password]"></br>
+	<input type=submit value="Sign up">
+</form>
+</div>
+<%= "User not found" if @user.nil? %>
+<%= @message if @message%>
+</div>
