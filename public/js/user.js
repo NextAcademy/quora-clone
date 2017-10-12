@@ -19,6 +19,21 @@
       }
   
       $button.click(function (ev) {
+        // fetch('/askquestion', {
+        //   method: 'POST',
+        //   body: { content: $content.val() },
+        //   headers: new Headers({
+        //     'Content-Type': 'application/json'
+        //   })
+        // }).then(function (response) {
+        //   console.log(response);
+        //   return response.text();
+        // }).then(function (text) {
+        //   console.log('next', text);
+        //   removeAskBox();
+        // }).catch(function (err) {
+        //   console.log('error: ', err);
+        // });
         $.ajax({ // Submit message
           url: '/askquestion',
           method: 'POST',
