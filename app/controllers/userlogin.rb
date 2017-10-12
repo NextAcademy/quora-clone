@@ -1,5 +1,9 @@
 get '/' do
-  erb :"users/login"
+	if session[:user_id] == nil
+  		erb :"users/login"
+  	else
+  		erb :"users/show", { layout: :"layouts/userpage" }
+  	end
 end
 
 
@@ -42,9 +46,9 @@ post '/logout' do
 end
 
 get '/user/:id' do
-	if params[:id] = session[:user_id]
-		erb :"users/show", { layout: :"layouts/userpage" }
-	else
-		redirect '/'
-	end
+	redirect '/'
+end
+
+get '/test' do
+	erb :"users/function"
 end
