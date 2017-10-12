@@ -7,33 +7,31 @@
  * main
  */
  article {
-  margin-left: 100px;
-  margin-right: 300px;
-}
+   box-sizing: border-box;
+   width: 100%;
+   position: absolute;
+   padding-left: 200px; /* make the same as .left margin */
+   padding-right: 300px; /* make the same as .right margin */
+ }
 
 /**
  * other panes
  */
-.left-pane {
-}
 .left-pane div {
   background-color: blue;
   position: fixed;
-  width: 100px;
+  width: 200px; /* make the same as article margin */
   height: 100%;
-}
-
-.right-pane {
-  float:right;
-  width: 300px;
-  height: 100%;
+  z-index: 5;
 }
 
 .right-pane div {
   background-color: orange;
   position: fixed;
-  width: 100%;
+  right: 0;
+  width: 300px; /* make the same as article margin */
   height: 100%;
+  z-index: 5;
 }
 
 /**
