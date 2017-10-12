@@ -1,3 +1,5 @@
+Hellooo checking
+
 for bcrypt gem to work:
 
 1) gemfile, gem bcrypt, you  need to run $bundle installl
