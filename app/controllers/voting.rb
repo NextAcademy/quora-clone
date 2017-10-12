@@ -32,7 +32,7 @@ post '/downvote_question' do
 		vote.destroy
 	end
 
-	cumulated_votes = QuestionVote.where(question_id: "#{vote.question_id}")
+	cumulated_votes = QuestionVote.where(question_id: vote.question_id)
 	cumulated_votes.each do |t|
 		@votes += 1
 	end
@@ -52,7 +52,7 @@ post '/upvote_answer' do
 		vote.destroy
 	end
 
-	cumulated_votes = AnswerVote.where(answer_id: "#{vote.answer_id}")
+	cumulated_votes = AnswerVote.where(answer_id: vote.answer_id)
 	cumulated_votes.each do |t|
 		@votes_answer += 1
 	end
@@ -71,7 +71,7 @@ post '/downvote_answer' do
 		vote.destroy
 	end
 
-	cumulated_votes = AnswerVote.where(answer_id: "#{vote.answer_id}")
+	cumulated_votes = AnswerVote.where(answer_id: vote.answer_id)
 	cumulated_votes.each do |t|
 		@votes_answer+= 1
 	end
