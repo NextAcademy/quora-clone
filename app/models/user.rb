@@ -5,8 +5,10 @@ class User < ActiveRecord::Base
     validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
 
 
-	# This is Sinatra! Remember to create a migration!
 
+
+
+	# This is Sinatra! Remember to create a migration!
 
 
 end
