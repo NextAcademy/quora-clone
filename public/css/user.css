@@ -126,5 +126,51 @@ button{
 	background-color: #ffffff;
 }
 
+/*
+ * Cover
+ */
+.cover {
+	width: 100%;
+	height: 100%;
+	opacity: 0.5;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: black;
+}
 
+.ask {
+	position: fixed;
+	margin: auto;
+	width: 600px;
+	height: 300px;
+	top: 0;
+	left: 0;
+	opacity: 1.0;
+	z-index: 100;
+	overflow: auto;
+	background-color: white;
+}
 
+.ask .container {
+	margin: 0px auto;
+	overflow: visible;
+}
+
+.ask textarea {
+	width: 400px;
+	height: 200px;
+}
+
+/**
+ * Question/Answer Display
+ */
+article {
+	background-color: lightgrey;
+}
+
+article .entry {
+	background-color: white;
+	color: black;
+	margin: 10px;
+}
