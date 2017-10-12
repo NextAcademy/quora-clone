@@ -46,5 +46,9 @@ post '/logout' do
 end
 
 get '/user/:id' do
-		redirect '/'
+	redirect '/'
+end
+
+get '/test' do
+	erb :"users/function"
 end
