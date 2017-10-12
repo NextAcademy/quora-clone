@@ -1,9 +1,13 @@
+# Not actually necessary, just if someone is poking at the javascript
+# and they see that we're sending stuff to '/askquestion' this will
+# redirect them to the main page
 get '/askquesiton' do
   redirect '/'
 end
 
 post '/askquestion' do
-  #current_user
+  # Should add validation
+
   if logged_in?
     test = Question.new(user_id: session[:user_id], content: params[:content])
     if test.save
@@ -22,6 +26,5 @@ HITS_PER_PAGE = 10
 
 # remove this route as main page will link here
 get '/main' do
-  erb :'users/main', layout: :'layouts/userpage'
-
+  erb :'users/show', layout: :'layouts/userpage'
 end
