@@ -1,0 +1,15 @@
+<form action="/signup" method="post">
+  <h3>Signup</h3>
+
+
+  <input class="text_box" type="text" name="user[first_name]" placeholder="First name" required>
+  <br><br>
+  <input class="text_box" type="text" name="user[last_name]" placeholder="Last name" required>
+  <br><br>
+  <input class="text_box" type="text" name="user[email]" placeholder="Email" required>
+  <br><font color="red"><%= @email_message if @email_message %></font>
+  <br>
+  <input class="text_box" type="password" name="user[password]" placeholder="Password" required>
+  <br><br>
+  <input type="submit" value="Signup">
+</form>
