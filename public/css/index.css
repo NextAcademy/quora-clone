@@ -1,0 +1,61 @@
+html {
+  background: url(/img/bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: black;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
+}
+
+
+#login_holder {
+  /*width: 700px;
+  height: 500px;*/
+  background-color: rgba(255,255,255,0.7);
+  /*margin: 0;*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+  border-radius: 25px;
+  padding: 40px;
+}
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /*margin-top: 20px;*/
+  width: 35%;
+}
+
+#form {
+  display: block;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.signup {
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  padding-right: 32px;
+  display: block;
+}
+
+.login {
+  /*box-sizing: border-box;*/
+  /*width: 50%;*/
+  float: left;
+  padding-left: 50px;
+  /*display: block;*/
+}
+
+.text_box {
+  width: 250px;
+  height: 30px;
+  border: 2px solid #404040;
+  background: rgba(255,255,255,0.5);
+}
