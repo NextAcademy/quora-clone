@@ -1,9 +1,9 @@
 post '/upvote_question' do
-	vote = QuestionVote.find_by(user_id: session[:user_id], question_id: 4)
-	@votes = 0
+	vote = QuestionVote.find_by(user_id: session[:user_id], question_id: params[:question_id])
+	votes = 0
 	if vote ==  nil
-		a = QuestionVote.new(user_id: session[:user_id], question_id: 4, counter: 1)
-		a.save
+		vote = QuestionVote.new(user_id: session[:user_id], question_id: params[:question_id], counter: 1)
+		vote.save
 	elsif vote.counter == -1
 		vote.counter = 1
 		vote.save
@@ -13,18 +13,18 @@ post '/upvote_question' do
 
 	cumulated_votes = QuestionVote.where(question_id: vote.question_id)
 	cumulated_votes.each do |t|
-		@votes += 1
+		votes += t.counter
 	end
 
-	erb :"users/function"
+	return "#{votes}"
 end
 
 post '/downvote_question' do
-	vote = QuestionVote.find_by(user_id: session[:user_id], question_id: nil)
-	@votes = 0
+	vote = QuestionVote.find_by(user_id: session[:user_id], question_id: params[:question_id])
+	votes = 0
 	if vote ==  nil
-		a = QuestionVote.new(user_id: session[:user_id], question_id: nil, counter: -1)
-		a.save
+		vote = QuestionVote.new(user_id: session[:user_id], question_id: params[:question_id], counter: -1)
+		vote.save
 	elsif vote.counter == 1
 		vote.counter = -1
 		vote.save
@@ -34,9 +34,10 @@ post '/downvote_question' do
 
 	cumulated_votes = QuestionVote.where(question_id: vote.question_id)
 	cumulated_votes.each do |t|
-		@votes += 1
+		votes += t.counter
 	end
-	erb :"users/function"
+
+	return "#{votes}"
 end
 
 post '/upvote_answer' do
