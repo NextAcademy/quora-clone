@@ -1,43 +1,51 @@
-post '/upvote_question' do
-	vote = QuestionVote.find_by(user_id: session[:user_id], question_id: params[:question_id])
-	votes = 0
-	if vote ==  nil
-		vote = QuestionVote.new(user_id: session[:user_id], question_id: params[:question_id], counter: 1)
-		vote.save
-	elsif vote.counter == -1
-		vote.counter = 1
-		vote.save
-	elsif vote.counter == 1
-		vote.destroy
-	end
+post '/upvote_question' do	
+	if session[:user_id] == nil
+		return "error"		
+	else
+		vote = QuestionVote.find_by(user_id: session[:user_id], question_id: params[:question_id])
+		if vote ==  nil
+			vote = QuestionVote.new(user_id: session[:user_id], question_id: params[:question_id], counter: 1)
+			vote.save
+		elsif vote.counter == -1
+			vote.counter = 1
+			vote.save
+		elsif vote.counter == 1
+			vote.destroy
+		end
 
-	cumulated_votes = QuestionVote.where(question_id: vote.question_id)
-	cumulated_votes.each do |t|
-		votes += t.counter
-	end
+		votes = 0
+		cumulated_votes = QuestionVote.where(question_id: params[:question_id])
+		cumulated_votes.each do |t|
+			votes += t.counter
+		end
 
-	return "#{votes}"
+		return "#{votes}"
+	end
 end
 
 post '/downvote_question' do
-	vote = QuestionVote.find_by(user_id: session[:user_id], question_id: params[:question_id])
-	votes = 0
-	if vote ==  nil
-		vote = QuestionVote.new(user_id: session[:user_id], question_id: params[:question_id], counter: -1)
-		vote.save
-	elsif vote.counter == 1
-		vote.counter = -1
-		vote.save
-	elsif vote.counter == -1
-		vote.destroy
-	end
+	if session[:user_id] == nil
+		return "error"		
+	else
+		vote = QuestionVote.find_by(user_id: session[:user_id], question_id: params[:question_id])
+		votes = 0
+		if vote ==  nil
+			vote = QuestionVote.new(user_id: session[:user_id], question_id: params[:question_id], counter: -1)
+			vote.save
+		elsif vote.counter == 1
+			vote.counter = -1
+			vote.save
+		elsif vote.counter == -1
+			vote.destroy
+		end
 
-	cumulated_votes = QuestionVote.where(question_id: vote.question_id)
-	cumulated_votes.each do |t|
-		votes += t.counter
-	end
+		cumulated_votes = QuestionVote.where(question_id: vote.question_id)
+		cumulated_votes.each do |t|
+			votes += t.counter
+		end
 
-	return "#{votes}"
+		return "#{votes}"
+	end
 end
 
 post '/upvote_answer' do

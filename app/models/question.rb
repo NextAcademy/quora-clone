@@ -1,6 +1,6 @@
 class Question <ActiveRecord::Base
-	has many :answers
-	has many :question_tags
-	has many :tags,  through: :question_tags
-	has many :question_votes
+	has_many :answers
+	has_many :question_tags
+	has_many :tags,  through: :question_tags
+	has_many :question_votes
 end
