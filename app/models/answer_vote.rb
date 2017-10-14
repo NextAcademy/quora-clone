@@ -1,5 +1,5 @@
 class AnswerVote <ActiveRecord::Base
-	belong_to :user
-	belong_to :answer
+	belongs_to :user
+	belongs_to :answer
 
 end
