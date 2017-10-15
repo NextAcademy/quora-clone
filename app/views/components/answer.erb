@@ -1,7 +1,10 @@
-<div class="entry answer">
-  <div><textarea id="">asdf</textarea></div>
-  <div class="asdf">
-    <input type="hidden" value="<%= @questionId %>">
-    <input class="answerbutton" type="submit" value="Answer">
-  </div>  
-</div>
+<% answer = Answer.find(@answerId)
+p '', '', 'yo', answer %>
+<div><%= answer.user.full_name %></div>
+<div><%= answer.content %></div>
+<% if session[:user_id] == answer.user.id %>
+  <div>
+    <input type="hidden" value="<%= "#{answer.id},answer" %>">
+    <input class="deletebutton" type="submit" value="Delete">
+  </div>
+<% end %>

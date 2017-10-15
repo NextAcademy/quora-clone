@@ -31,7 +31,30 @@ get('/question/:id') do
   end
 end
 
-
+post('/delete') do
+  id, type = params[:args].split(',')
+  begin
+    raise('You must be logged in to delete') if !logged_in? 
+    case (type)
+    when 'answer'
+      # begin
+      answer = Answer.find(id)
+      if session[:user_id] == answer.user.id
+        answer.delete
+        answer.save
+      else
+        raise('You cannot delete posts by another user.')
+      end
+      'Success'
+    when 'question'
+    else
+      raise('Invalid type')
+    end
+  rescue Exception => err
+    status(400)
+    body("Error: #{err.message}")
+  end
+end
 
 post('/answer') do
   begin
@@ -43,9 +66,9 @@ post('/answer') do
     update = answer.save
     raise('Malformed post') if !update
     'Success'
-  rescue Exception => e
+  rescue Exception => err
     status(400)
-    p "Error: #{e.message}"
+    body("Error: #{err.message}")
   end
 end
 
