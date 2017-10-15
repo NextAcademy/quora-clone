@@ -1,6 +1,25 @@
-<h2>My questions</h2>
-<h2>My answers</h2>
 
+<%= @errors if @errors %>
+
+<div class="navbar">
+      <ul class="pagelinks">
+        <li class="button" id="my_questions"><a href='/questions' style="color: black">MY QUESTIONS</a></li>
+        <li class="button" id="my_answers"><a href='/' style="color: black">MY ANSWERS</a></li>
+      </ul>
+  </div>
+<h2>Your Profile</h2>
+
+
+<h2>Post a Question</h2>
+
+<p class="question-submit">
+	<form id="question-form" action="/questions" method="post">
+
+	<textarea name="question[description]" placeholder="Type out your question here"></textarea>
+    <input id="submit_button" type="submit" value="Ask!">
+	
+	</form>
+</p>
 
 
 <form id="logout" method="post" action="/logout" >
@@ -9,4 +28,3 @@
 	</button>
 </form>
 
-<h2>My Profile</h2>

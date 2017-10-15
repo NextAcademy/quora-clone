@@ -1,4 +1,8 @@
 get '/' do
-  erb :"static/index"
+	# if logged_in?
+
+ #  else
+  	erb :"static/index"
+  # end
 end
 
