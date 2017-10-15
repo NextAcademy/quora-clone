@@ -3,12 +3,13 @@ class User < ActiveRecord::Base
 	has_secure_password
 
 	validates :email, presence: true
-	validates :email, uniqueness: { case_sensitive: false, message: "This email has already been registered with Quora." }
+	validates :email, uniqueness: { case_sensitive: false, message: " has already been registered with Quora." }
 	validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
-	validates :password, :presence => true,
-                       :confirmation => true,
-                       :length => {:within => 8..12},
-                       :on => :create
+	validates :password, presence: true,
+                       confirmation: true,
+                       length: { in: 8..12, message: " must be between 8 to 12 characters in length." },
+                       on: create
+
 
 
    def self.authenticate(params)
@@ -18,4 +19,5 @@ class User < ActiveRecord::Base
 			return nil
 		
 		end
+
 end

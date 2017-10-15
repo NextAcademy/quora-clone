@@ -32,6 +32,7 @@
   font-size: 1em;
   font-family: serif;*/
 }
+
 .logout-button:focus {
   outline: none;
 }
