@@ -60,7 +60,8 @@
       '.deletebutton': serverAPI('/delete'),
       '.answerbutton': serverAPI('/answer'),
     };
-
+    addClickers(); // Add the handlers initially
+    
     function addClickers() {
       Object.keys(eventHandlers).forEach(function (key) {
         var $button = $(key);
@@ -69,8 +70,6 @@
       });
     }
 
-    addClickers();
-    
 
     // Returns an event handler that makes a serverAPI request passing arguments
     // Sometimes not all the arguments are necessary
@@ -83,7 +82,7 @@
           args: hidden,
           content: textarea,
         }, function (data) {
-          $('#refresh').html(data);
+          $('#refresh').html(data); // Refresh the page
           addClickers(); // Newly added elements won't have the click handler
         }).fail(function (err) {
           console.error(err);
