@@ -23,7 +23,7 @@ end
 get('/question/:id') do
   @question = Question.find(params[:id])
   if @question
-    erb :'users/q_and_a', layout: :'layouts/userpage'
+    erb(:'users/q_and_a', layout: :'layouts/userpage')
   else
     @error = 'reeee'
   end
@@ -70,10 +70,5 @@ post('/answer') do
   end
 end
 
-
+# Need to put this in show.erb
 HITS_PER_PAGE = 10
-
-# remove this route as main page will link here
-get '/main' do
-  erb :'users/show', layout: :'layouts/userpage'
-end
