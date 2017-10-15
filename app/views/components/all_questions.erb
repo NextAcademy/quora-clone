@@ -1,0 +1,9 @@
+<% questions.each do |row| %>
+	<%= displayQuestion(row) %>
+
+	<div class="entry">
+		<%= if row.answers.count > 0
+			displayAnswer(row.answers.first().id)
+		end %>
+	</div>
+<% end %>

@@ -72,5 +72,22 @@ post('/answer') do
   end
 end
 
+
+post('/lastestquestions') do
+  begin
+    raise('Not logged in') if (!logged_in?)
+    # Question.find raises an exception if invalidId
+    question = Question.find(params[:args])
+    answer = Answer.new(user_id: session[:user_id], question_id: question.id,
+      content: params[:content])
+    update = answer.save
+    raise('Malformed post') if !update
+    displayAllAnswers(Question.find(params[:args]))    
+  rescue Exception => err
+    status(400)
+    body("Error: #{err.message}")
+  end
+end
+
 # Need to put this in show.erb
 HITS_PER_PAGE = 10
