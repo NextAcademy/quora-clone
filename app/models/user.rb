@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 	validates :password, presence: true,
                        confirmation: true,
                        length: { in: 8..12, message: " must be between 8 to 12 characters in length." },
-                       on: create
+                       on: :create
 
 
 
