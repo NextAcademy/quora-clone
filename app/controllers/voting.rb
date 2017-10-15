@@ -63,8 +63,8 @@ post '/upvote_answer' do
 		vote = AnswerVote.find_by(user_id: session[:user_id], answer_id: params[:question_answer_id])
 		votes_answer = 0
 		if vote ==  nil
-			a = AnswerVote.new(user_id: session[:user_id], answer_id: params[:question_answer_id], counter: 1)
-			a.save
+			vote = AnswerVote.new(user_id: session[:user_id], answer_id: params[:question_answer_id], counter: 1)
+			vote.save
 		elsif vote.counter == -1
 			vote.counter = 1
 			vote.save
@@ -85,7 +85,7 @@ post '/vote_status_answer' do
 	if AnswerVote.find_by(user_id: session[:user_id], answer_id: params[:question_answer_id]) == nil
 		return "#{'0'}"
 	else
-		return "#{AnswerVote.find_by(user_id: session[:user_id], question_id: params[:question_answer_id]).counter}"
+		return "#{AnswerVote.find_by(user_id: session[:user_id], answer_id: params[:question_answer_id]).counter}"
 	end
 end
 
@@ -96,8 +96,8 @@ post '/downvote_answer' do
 		vote = AnswerVote.find_by(user_id: session[:user_id], answer_id: params[:question_answer_id])
 		votes_answer = 0
 		if vote ==  nil
-			a = AnswerVote.new(user_id: session[:user_id], answer_id: params[:question_answer_id], counter: -1)
-			a.save
+			vote = AnswerVote.new(user_id: session[:user_id], answer_id: params[:question_answer_id], counter: -1)
+			vote.save
 		elsif vote.counter == 1
 			vote.counter = -1
 			vote.save
@@ -107,7 +107,7 @@ post '/downvote_answer' do
 
 		cumulated_votes = AnswerVote.where(answer_id: vote.answer_id)
 		cumulated_votes.each do |t|
-			@votes_answer+= 1
+			votes_answer+= 1
 		end
 
 		return "#{votes_answer}"
