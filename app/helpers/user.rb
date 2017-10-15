@@ -12,13 +12,16 @@ helpers do
   end
 
   def displayReply(id)
-    @questionId = id.to_s
-    erb(:'/components/reply', layout: false)
+    erb(:'/components/reply', :locals => {:questionId => id}, layout: false)
   end
   
   def displayAnswer(id)
     @answerId = id
     erb(:'components/answer', layout: false)
+  end
+
+  def displayAllAnswers(question)
+    erb(:'components/all_answers', :locals => {:question => question}, layout: false)
   end
 
   def displayQuestion(id)

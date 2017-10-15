@@ -1,3 +1,22 @@
+// // button.click back up as a fetch version
+//
+// fetch('/askquestion', {
+//   method: 'POST',
+//   body: { content: $content.val() },
+//   headers: new Headers({
+//     'Content-Type': 'application/json'
+//   })
+// }).then(function (response) {
+//   console.log(response);
+//   return response.text();
+// }).then(function (text) {
+//   console.log('next', text);
+//   removeAskBox();
+// }).catch(function (err) {
+//   console.log('error: ', err);
+// });
+
+
 (function () {
   'use strict';
 
@@ -19,21 +38,6 @@
       }
   
       $button.click(function (ev) {
-        // fetch('/askquestion', {
-        //   method: 'POST',
-        //   body: { content: $content.val() },
-        //   headers: new Headers({
-        //     'Content-Type': 'application/json'
-        //   })
-        // }).then(function (response) {
-        //   console.log(response);
-        //   return response.text();
-        // }).then(function (text) {
-        //   console.log('next', text);
-        //   removeAskBox();
-        // }).catch(function (err) {
-        //   console.log('error: ', err);
-        // });
         $.ajax({ // Submit message
           url: '/askquestion',
           method: 'POST',
@@ -50,40 +54,40 @@
       $body.append($cover);
       $body.append($askComponent);
     });
-    
-    // For answering questions
-    $('.answerbutton').click(function (ev) {
-      var $button = $(ev.currentTarget);
-      var content = $($button.parent().parent().find('textarea')).val()
-      var questionId = $button.parent().find('input[type="hidden"]').val();
-      $.post('/answer', {
-        question_id: questionId,
-        content: content,
-      }, function (data) {
-        console.log(data);
-      }).fail(function (err) {
-        console.error(err);
-      });
-    });
 
     // For deleting answers/questions
-    $('.deletebutton').click(triggerServer('/delete', 'answer'));
+    var eventHandlers = {
+      '.deletebutton': serverAPI('/delete'),
+      '.answerbutton': serverAPI('/answer'),
+    };
 
-    function triggerServer(link, type) {
+    function addClickers() {
+      Object.keys(eventHandlers).forEach(function (key) {
+        var $button = $(key);
+        $button.off('click'); // remove old clickers
+        $button.click(eventHandlers[key]) // and readd
+      });
+    }
+
+    addClickers();
+    
+
+    // Returns an event handler that makes a serverAPI request passing arguments
+    // Sometimes not all the arguments are necessary
+    function serverAPI(link) {
       return(function (ev) {
         var $button = $(ev.currentTarget);
         var textarea = $($button.parent().parent().find('textarea')).val()
         var hidden = $button.parent().find('input[type="hidden"]').val();
-        $.post(link, {
+        return($.post(link, {
           args: hidden,
           content: textarea,
         }, function (data) {
-          console.log(data);
+          $('#refresh').html(data);
+          addClickers(); // Newly added elements won't have the click handler
         }).fail(function (err) {
           console.error(err);
-        });
-
-        
+        }));
       });
     }
   });

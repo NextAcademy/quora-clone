@@ -1,0 +1,8 @@
+
+<% # question defined in local from helpers
+question.answers.each do |answer|
+%>
+  <div class="entry">
+    <%= displayAnswer(answer.id) %>
+  </div>
+<% end %>

@@ -3,14 +3,20 @@
     color: black;
   }
 </style>
+
 <div class="entry">
-  <div><%= @question.user_id.nil? ? '&lt;nil&gt;' : @question.user.full_name %></div>
+  <div><%= @question.user.full_name %></div>
   <div><%= @question.content %></div>
 </div>
+
+
+
+<!-- Reply box -->
 <%= displayReply(@question.id) %>
 
-<% @question.answers.each do |answer| %>
-  <div class="entry">
-    <%= displayAnswer(answer.id) %>
-  </div>
-<% end %>
+
+
+<!-- Answers -->
+<div id="refresh">
+  <%= displayAllAnswers(@question) %>
+</div>
