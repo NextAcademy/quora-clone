@@ -1,0 +1,10 @@
+<form action="/login" method="post">
+  <p><strong>Login</strong></p>
+  <input class="text_box" type="text" name="user[email]" placeholder="Email">
+  <br><font color="red"><%= @login_email_message if @login_email_message %></font>
+  <br>
+  <input class="text_box" type=password name="user[password]" placeholder="Password">
+  <br><font color="red"><%= @password_message if @password_message %></font>
+  <br>
+  <input type="submit" value="Login">
+</form>
