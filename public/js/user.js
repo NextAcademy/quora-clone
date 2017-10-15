@@ -50,5 +50,20 @@
       $body.append($cover);
       $body.append($askComponent);
     });
+    
+    $('.answerbutton').click(function (ev) {
+      var $button = $(ev.currentTarget);
+      var content = $($button.parent().parent().find('textarea')).val()
+      var questionId = $button.parent().find('input[type="hidden"]').val();
+      $.post('/answer', {
+        question_id: questionId,
+        content: content,
+      }, function (data) {
+        console.log(data);
+      }).fail(function (err) {
+        console.error(err);
+      });
+      console.log(content);
+    });
   });
 })();

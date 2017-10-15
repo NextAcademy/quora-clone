@@ -1,0 +1,20 @@
+<style>
+  body {
+    color: black;
+  }
+</style>
+<div class="entry">
+  <div><%= @question.user_id.nil? ? '&lt;nil&gt;' : @question.user.full_name %></div>
+  <div><%= @question.content %></div>
+</div>
+<%=
+@questionId = @question.id.to_s
+erb(:'/components/answer', layout: false)
+%>
+
+<% @question.answers.each do |answer| %>
+<div class="entry">
+  <div><%= answer.user.id %></div>
+  <div><%= answer.content %></div>
+</div>
+<% end %>
