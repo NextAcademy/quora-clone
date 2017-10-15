@@ -8,17 +8,15 @@ end
 post '/askquestion' do
   # Should add validation
 
-  if logged_in?
-    test = Question.new(user_id: session[:user_id], content: params[:content])
-    if test.save
-      'Success'
-    else
-      status(400)
-      body('400: Malformed post')
-    end
-  else
+  begin 
+    raise('Not logged in') if !logged_in?
+    question = Question.new(user_id: session[:user_id], content: params[:content])
+    createSucess = question.save
+    raise('Malformed post') if !createSucess
+    'Success'
+  rescue Exception => err
     status(400)
-    body('400: Not logged in')
+    body("Error: #{err.message}")
   end
 end
 

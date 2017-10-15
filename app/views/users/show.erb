@@ -24,12 +24,14 @@
 			cumulated_votes.each do |t|
 				votes += t.counter
 			end%>
-			<%= votes%>
+			<%= votes %>
 		</p>
 		<input class="downvote_button" type="submit" value="downvote">
 		<%= displayReply(row.id) %>
 		<div class="entry">
-			<%= displayAnswer(row.answers.first().id) %>
+		  <%= if row.answers.count > 0
+			  displayAnswer(row.answers.first().id)
+			end %>
 		</div>
 	</div>
 <% end %>
