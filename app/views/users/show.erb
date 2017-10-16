@@ -3,7 +3,7 @@
   <div class="entry">
     <div>Username: <%= row.user_id.nil? ? '&lt;nil&gt;' : User.find(row.user_id).full_name %></div>
     <div><a href="/question/<%= row.id %>"><%= row.content %></a></div>
-	
+
 		<input class = "question_id_upvote" type="hidden" value="<%= row.id%>">
 		<input class = "counter_state" type="hidden" 
 			value="<%= 
@@ -16,6 +16,7 @@
 			%>"
 		> 
 		<input class="upvote_button" type="submit" value="upvote">
+
 
 		<p class="vote_counter"><%
 			votes = 0;

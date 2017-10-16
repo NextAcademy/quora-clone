@@ -6,8 +6,8 @@
 
 	<div class="column_1">
 		<h3 class="title_block_1">Feeds</h3>
-		<p><a href=<%= "/profile/#{params[:id]}"%>>questions</a></p>
-		<p><a href=<%="/profile/#{params[:id]}/answers"%>>answers</a></p>
+		<p><a href=<%= "/profile/#{params[:id]}"%>>questions</a><%= Question.where(user_id: params[:id]).count%></p>
+		<p><a href=<%="/profile/#{params[:id]}/answers"%>>answers</a><%= Answer.where(user_id: params[:id]).count%></p>
 	</div>
 
 	<div class="column_2">
