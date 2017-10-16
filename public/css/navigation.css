@@ -18,6 +18,7 @@
  * other panes
  */
 .left-pane div {
+  display: none;
   background-color: blue;
   position: fixed;
   width: 200px; /* make the same as article margin */
@@ -26,6 +27,7 @@
 }
 
 .right-pane div {
+  display: none;
   background-color: orange;
   position: fixed;
   right: 0;
