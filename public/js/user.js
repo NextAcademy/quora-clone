@@ -20,48 +20,39 @@
 (function () {
   'use strict';
 
-  $(document).ready(function () {
-    var $body = $(document.body);
-    $('#askquestion').click(function () {
-      var $cover = $('<div>').addClass('cover');
-      var $button, $content;
-      var $askComponent =
-        $('<div class="ask">')
-          .append($('<div class="container">')
-            .append($content = $('<textarea>'))
-          )
-          .append($button = $('<div><input type="submit">'));
+  $(document).ready(function () { 
+    // Hide the form when first loading in and add the appropriate reveals
+    var $askForm = $('#ask-popup'); 
+    $askForm.hide();
+    $('#askquestion').click(function () { $askForm.show(); });
+    $('#ask-cover').click(function () { $askForm.hide(); });
 
-      function removeAskBox() {
-        $cover.remove();
-        $askComponent.remove();
-      }
-  
-      $button.click(function (ev) {
-        $.ajax({ // Submit message
-          url: '/askquestion',
-          method: 'POST',
-          data: { content: $content.val() },
-          success: function (msg) {
-            //if (receive error) // When have time to do error handling
-            removeAskBox();
-          }
-        })
-      });
-      
-      $cover.click(removeAskBox);
+    $('#askbutton').click(function (ev) {
+      function redirect() { 
+        window.location.replace("/");
+      };
 
-      $body.append($cover);
-      $body.append($askComponent);
+      // Redirect to main page if asking a question
+      var handler = (window.location.pathname === '/')
+        ? serverAPI('/question_ask').then(function () { $askForm.hide(); })
+        : serverAPI('/question_ask', redirect);
+      handler(ev);
     });
 
-    // For deleting answers/questions
+    // Separating into own structure to support adding/removing handles
     var eventHandlers = {
-      '.deletebutton': serverAPI('/delete'),
-      '.answerbutton': serverAPI('/answer'),
+      '.answerbutton': (window.location.pathname.startsWith('/question/'))
+        ? serverAPI('/answer_reply')
+        : serverAPI('/answer_reply',
+          function (textarea, hidden, data) {
+            // redirect to the question page
+            window.location.replace("/question/" + hidden);
+          }),
+      '.deletebutton': serverAPI('/delete'),    
     };
     addClickers(); // Add the handlers initially
     
+    // Apply all the click handlers, since adding remove requires
     function addClickers() {
       Object.keys(eventHandlers).forEach(function (key) {
         var $button = $(key);
@@ -73,20 +64,28 @@
 
     // Returns an event handler that makes a serverAPI request passing arguments
     // Sometimes not all the arguments are necessary
-    function serverAPI(link) {
-      return(function (ev) {
+    function serverAPI(link, callback) {
+      return(function (ev) {  
         var $button = $(ev.currentTarget);
-        var textarea = $($button.parent().parent().find('textarea')).val()
+        var $textarea = $($button.parent().parent().find('textarea'));
         var hidden = $button.parent().find('input[type="hidden"]').val();
-        return($.post(link, {
-          args: hidden,
-          content: textarea,
-        }, function (data) {
-          $('#refresh').html(data); // Refresh the page
-          addClickers(); // Newly added elements won't have the click handler
-        }).fail(function (err) {
-          console.error(err);
-        }));
+        var success = (callback != undefined)
+          ? function (data)
+            {
+              return callback.call(null, $textarea, hidden, data);
+            }
+
+          : function (data)
+            {
+              $('#refresh').html(data); // Refresh the page
+              $textarea.val('');
+              addClickers(); // Added elements don't have the click handler
+            };
+
+        return(jQuery
+          .post(link, { args: hidden, content: $textarea.val() }, success)
+          .fail(console.error)
+        );
       });
     }
   });
