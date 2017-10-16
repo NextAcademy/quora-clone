@@ -9,5 +9,19 @@ helpers do
 
 	def logged_in?
 		!current_user.nil?
-	end
+  end
+
+  def displayReply(id)
+    @questionId = id.to_s
+    erb(:'/components/reply', layout: false)
+  end
+  
+  def displayAnswer(id)
+    @answerId = id
+    erb(:'components/answer', layout: false)
+  end
+
+  def displayQuestion(id)
+    #erb()
+  end
 end
