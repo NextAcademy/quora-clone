@@ -1,0 +1,8 @@
+<form action="/question" method="post">
+  <h3>Please type a question</h3>
+  <input type="text" name="question_content" required>
+
+  <input type="submit" value="submit">
+  <br>
+  <font color="red"><%= @question_error %></font>
+</form>
