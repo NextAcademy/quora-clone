@@ -10,7 +10,7 @@
    box-sizing: border-box;
    width: 100%;
    position: absolute;
-   padding-left: 200px; /* make the same as .left margin */
+   padding-left: 300px; /* make the same as .left margin */
    padding-right: 300px; /* make the same as .right margin */
  }
 
@@ -21,7 +21,7 @@
   display: none;
   background-color: blue;
   position: fixed;
-  width: 200px; /* make the same as article margin */
+  width: 300px; /* make the same as article margin */
   height: 100%;
   z-index: 5;
 }
