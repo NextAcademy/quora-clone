@@ -5,15 +5,8 @@
 </style>
 
 <div class="entry">
-  <div><%= @question.user.full_name %></div>
-  <div><%= @question.content %></div>
+  <%= displayQuestion(@question) %>
 </div>
-
-
-
-<!-- Reply box -->
-<%= displayReply(@question.id) %>
-
 
 
 <!-- Answers -->
