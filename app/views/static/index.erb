@@ -1,2 +1,76 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+    <div id="header"></div>
+
+    <div id="whole">  
+      <div id="container">
+        <div id="tabssection">
+          <ul>
+            <li><a id="signup-link" href="#signup">Sign Up</a></li>
+            <li><a id="login-link" href="#login">Log In</a></li>
+          </ul>
+          </div>
+
+          <div>
+              <div>
+
+                <div id="signup">
+                  <h1>Sign Up for Free</h1><br>
+                   <form action="/signup" method="post">
+                      <div>
+                        <label>
+                          First Name<span class="req">*</span>
+                        </label>
+                        <input type="text" name="user[first_name]" /><br><br>
+                        </div>
+                      
+                      <div>
+                        <label>
+                          Last Name<span class="req">*</span>
+                        </label>
+                        <input type="text" name="user[last_name]"/><br><br>
+                        </div>
+                      <div>
+                        <label>
+                          Email Address<span class="req">*</span>
+                        </label>
+                        <input type="email" name="user[email]"/><br><br>
+                      </div>
+
+                      <div>
+                        <label>
+                          Set A Password<span class="req">*</span>
+                        </label>
+                        <input type="password" required autocomplete="off" name="user[password]"/><br><br><br>
+                      </div>
+
+                      <button type="submit"/>Get Started</button><br><br>
+                  </form>
+                </div>
+            
+                <div id="login">
+                  <h1>Welcome Back!</h1><br><br>
+                    <form action="/login" method="post">
+                      <div>
+                        <label>
+                          Email Address<span class="req">*</span>
+                        </label>
+                        <input type="email" name="user[email]"/><br><br>
+                        </div>
+
+                    <div>
+                      <label>
+                        Password<span class="req">*</span>
+                      </label>
+                      <input type="password" name="user[password]" /><br><br>
+                    </div>
+
+                    <button type='submit'>Log In</button>
+
+                    </form>
+
+                </div>
+
+              </div><!-- tab-content -->
+
+        </div> <!-- /form -->
+      </div>
+    </div>
