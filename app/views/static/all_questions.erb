@@ -1,0 +1,4 @@
+<% all_questions = Question.all.reverse %>
+<% all_questions.each do |x| %>
+  <h4><%= x.question_content %></h4>
+<% end %>

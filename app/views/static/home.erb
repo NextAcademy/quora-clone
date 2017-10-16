@@ -1,6 +1,16 @@
-<% if logged_in? %>
-  <p>haha</p>
-  <%= @current_user.first_name %>
-<% else %>
-  <p> lala </p>
-<% end %>
+<head>
+  <link rel="stylesheet" type"text/css" href="/css/main.css">
+</head>
+
+
+
+<a href='/'><img src="/img/quora_logo.png" class="logo" /></a>
+<h1>Welcome <%= current_user.first_name %> <%= current_user.last_name %></h1>
+<a href="/users/<%=current_user.id%>">MY PROFILE</a>
+<button><a href="/logout">LOGOUT</a></button>
+
+
+<div> <%= erb :"static/questions_form" %></div>
+
+
+<div> <%= erb :"static/all_questions" %> </div>

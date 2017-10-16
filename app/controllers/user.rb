@@ -28,18 +28,17 @@ post '/login' do
       erb :"/static/index"
     end
   # apply an authentication method to check if a user has enter a valid email and password
-  # if a user hsa successfully been authenticated, you can assign the current user id to a session.
+  # if a user has successfully been authenticated, you can assign the current user id to a session.
 end
 
-
-get '/users/:id' do
-  @user = User.find(params[:id])
-  erb :"/static/profile"
-end
-
-post '/logout' do
+get '/logout' do
   # kill a session when a user chooses to logout, for example, assign nil to a session.
   session[:user_id] = nil
   # redirect to the appropriate page
-  rediect '/'
+  redirect '/'
+end
+
+get '/users/:id' do
+  # @user = User.find(params[:id])
+  erb :"/static/profile"
 end

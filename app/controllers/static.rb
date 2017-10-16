@@ -1,10 +1,20 @@
 get '/' do
-  erb :"/static/index"
+  if logged_in?
+    redirect '/home'
+  else
+    erb :"/static/index"
+  end
 end
 
 get '/home' do
-  erb :'/static/home'
+  if logged_in?
+    erb :'/static/home'
+  else
+    redirect '/'
+  end
 end
+
+
 
 get '/abc' do
   session[:id] = rand(1..1000)
