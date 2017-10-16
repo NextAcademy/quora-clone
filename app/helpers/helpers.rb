@@ -6,9 +6,16 @@ helpers do
     end
   end
 
-
 	def logged_in?
 		!current_user.nil?
+  end
+
+  def profile_access?(id)
+    session[:user_id] == id.to_i  
+  end
+
+  def home_page?(id)
+    id.to_s.empty? 
   end
 
   def displayReply(id)

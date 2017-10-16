@@ -9,9 +9,13 @@
 					<li><a href="#">notification</a></li>
 					<li><a href="/profile">profile</a></li>
 					<li><button id="askquestion">Ask Question</button></a></li>
-					<li><form action="/logout" method="post">
-						<input class="submit_button" type="submit" value="logout">
-					</form></li>
+
+					<% if profile_access?(params[:id]) or home_page?(params[:id])%>
+
+						<li><form action="/logout" method="post">
+							<input class="submit_button" type="submit" value="logout">
+						</form></li>
+					<% end %>
 				</ul>
 			</nav>
 		</div>

@@ -12,11 +12,11 @@
 	<div class="column_2">
 		<h3 class="title_block_1">Answers</h3>
 		<% all_answers = User.find_by(id: params[:id]).answers %>
-		<p>
-			<% all_answers.each do |t| %>
-				<div class="question_content"><%= t.content %></div>
-			<% end %>	
-		</p>
+		<% all_answers.each do |t| %>
+			<div class="entry">
+				<%= displayAnswer(t.id) %>
+			</div>
+		<% end %>	
 	</div>
 </div>
 	

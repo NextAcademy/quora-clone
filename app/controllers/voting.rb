@@ -74,7 +74,7 @@ post '/upvote_answer' do
 
 		cumulated_votes = AnswerVote.where(answer_id: vote.answer_id)
 		cumulated_votes.each do |t|
-			votes_answer += 1
+			votes_answer += t.counter
 		end
 
 		return "#{votes_answer}"
@@ -107,7 +107,7 @@ post '/downvote_answer' do
 
 		cumulated_votes = AnswerVote.where(answer_id: vote.answer_id)
 		cumulated_votes.each do |t|
-			votes_answer+= 1
+			votes_answer += t.counter
 		end
 
 		return "#{votes_answer}"

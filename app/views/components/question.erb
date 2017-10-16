@@ -28,7 +28,7 @@
 		</div>
 
 		<div>
-			<div>Username: <%= row.user_id.nil? ? '&lt;nil&gt;' : User.find(row.user_id).full_name %></div>
+			<div>Username: <a href="/profile/<%= row.user_id%>"><%= row.user_id.nil? ? '&lt;nil&gt;' : User.find(row.user_id).full_name %></a></div>
 			<div><b><a href="/question/<%= row.id %>" class="question-header"><%= row.content %></a></b></div>
 		</div>
 		<div style="clear: both;"></div>
