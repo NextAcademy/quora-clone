@@ -181,3 +181,10 @@ article .entry {
 	color: black;
 	margin: 10px;
 }
+
+.entry .edit {
+	display: none;
+}
+
+.editbutton {
+}

@@ -1,40 +1,47 @@
-<% answer = Answer.find(@answerId)
-p '', '', 'yo', answer %>
-<div><%= answer.user.full_name %></div>
-<div><%= answer.content %></div>
+<% answer = Answer.find(@answerId) %>
+
+<div style="float: left;">
+	<input class = "answer_id" type="hidden" value="<%= answer.id%>">
+	<input class = "answer_counter_state" type="hidden" 
+		value="<%= 
+		x = AnswerVote.find_by(answer_id: answer.id, user_id: session[:user_id]);
+		if x == nil
+			'0'
+		else 
+			x.counter
+		end
+		%>"
+	> 
+	<input class="answer_upvote_button" type="submit" value="upvote">
 
 
-<% if session[:user_id] == answer.user.id %>
-  <div>
-    <input type="hidden" value="<%= "#{answer.id},answer" %>">
-    <input class="deletebutton" type="submit" value="Delete">
-  </div>
-<% end %>
+	<p class="vote_counter_answer"><%
+		votes = 0;
+		answer_id = answer.id;
+		cumulated_votes = AnswerVote.where(answer_id: answer_id);
+		cumulated_votes.each do |t|
+			votes += t.counter
+		end%>
+		<%= votes %>
+	</p>
 
-<input class = "answer_id" type="hidden" value="<%= answer.id%>">
-<input class = "answer_counter_state" type="hidden" 
-	value="<%= 
-	x = AnswerVote.find_by(answer_id: answer.id, user_id: session[:user_id]);
-	if x == nil
-		'0'
-	else 
-		x.counter
-	end
-	%>"
-> 
-<input class="answer_upvote_button" type="submit" value="upvote">
+	<input class="answer_downvote_button" type="submit" value="downvote">
+</div>
 
+<% uniqueId = "answer-#{answer.id}" %>
+<div>
+	<span class="answer"><%= answer.user.full_name %></span>
+	<% if session[:user_id] == answer.user.id %>
+		<input type="hidden" value="<%= uniqueId %>">
+		<input class="signaledit" type="submit" value="Edit">
+		<input class="deletebutton" type="submit" value="Delete">
+	<% end %>
+</div>
 
-<p class="vote_counter_answer"><%
-	votes = 0;
-	answer_id = answer.id;
-	cumulated_votes = AnswerVote.where(answer_id: answer_id);
-	cumulated_votes.each do |t|
-		votes += t.counter
-	end%>
-	<%= votes %>
-</p>
-
-<input class="answer_downvote_button" type="submit" value="downvote">
-
-
+<div id="<%= uniqueId %>">
+	<span><%= answer.content %></span>
+	<textarea class="edit"><%= answer.content %></textarea>
+	<input class="edit editbutton" type="submit" value="Edit">
+	<input type="hidden" value="<%= uniqueId %>">
+</div>
+<div style="clear: both;"></div>

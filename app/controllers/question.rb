@@ -26,7 +26,7 @@ post '/question_ask' do
 end
 
 post('/delete') do
-  id, type = params[:args].split(',') # two arguments passed csv
+  type, id = params[:args].split('-') # two arguments passed split by a dash
   begin
     raise('You must be logged in to delete') if !logged_in?
 
@@ -49,6 +49,35 @@ post('/delete') do
       raise('Not implemented yet')
     else
       raise('Invalid type')
+    end
+  rescue Exception => err
+    status(400)
+    body("Error: #{err.message}")
+  end
+end
+
+post('/edit') do
+  type, id = params[:args].split('-') # two arguments passed split by a dash
+  begin
+    raise('You must be logged in to edit') if !logged_in?
+
+    # Deleting either answer or question
+    case (type)
+    when 'answer'
+      answer = Answer.find(id)
+      questionId = answer.question.id
+      if session[:user_id] == answer.user.id
+        answer.content = params[:content]
+        answer.save
+      else
+        raise('You cannot delete posts by another user.')
+      end
+
+      # Then refresh the answers
+      displayAllAnswers(Question.find(questionId))
+        
+    when 'question'
+      raise('Not implemented yet')
     end
   rescue Exception => err
     status(400)

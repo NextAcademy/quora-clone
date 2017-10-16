@@ -28,7 +28,15 @@
 		</div>
 
 		<div>
-			<div>Username: <%= row.user_id.nil? ? '&lt;nil&gt;' : User.find(row.user_id).full_name %></div>
+			<div>
+				<span>Username: <%= row.user_id.nil? ? '&lt;nil&gt;' : User.find(row.user_id).full_name %>
+		
+				<!--
+				<input type="hidden" value="<%= "#{row.id},question" %>">
+				<input class="editbutton" type="submit" value="Edit">
+				<input class="deletebutton" type="submit" value="Delete">
+				-->
+			</div>
 			<div><b><a href="/question/<%= row.id %>" class="question-header"><%= row.content %></a></b></div>
 		</div>
 		<div style="clear: both;"></div>
