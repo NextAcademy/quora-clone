@@ -4,28 +4,34 @@
     <div>Username: <%= row.user_id.nil? ? '&lt;nil&gt;' : User.find(row.user_id).full_name %></div>
     <div><a href="/question/<%= row.id %>"><%= row.content %></a></div>
 	
-	<input class = "question_id_upvote" type="hidden" value="<%= row.id%>">
-	<input class = "counter_state" type="hidden" 
-		value="<%= 
-		x = QuestionVote.find_by(question_id: row.id, user_id: session[:user_id]);
-		if x == nil
-			'0'
-		else 
-			x.counter
-		end
-		%>"
-	> 
-	<input class="upvote_button" type="submit" value="upvote">
+		<input class = "question_id_upvote" type="hidden" value="<%= row.id%>">
+		<input class = "counter_state" type="hidden" 
+			value="<%= 
+			x = QuestionVote.find_by(question_id: row.id, user_id: session[:user_id]);
+			if x == nil
+				'0'
+			else 
+				x.counter
+			end
+			%>"
+		> 
+		<input class="upvote_button" type="submit" value="upvote">
 
- 	<p class="vote_counter"><%
- 		votes = 0;
-	 	question_id = row.id;
-	 	cumulated_votes = QuestionVote.where(question_id: question_id);
-		cumulated_votes.each do |t|
-			votes += t.counter
-		end%>
- 		<%= votes%>
- 	</p>
+		<p class="vote_counter"><%
+			votes = 0;
+			question_id = row.id;
+			cumulated_votes = QuestionVote.where(question_id: question_id);
+			cumulated_votes.each do |t|
+				votes += t.counter
+			end%>
+			<%= votes %>
+		</p>
 		<input class="downvote_button" type="submit" value="downvote">
-  </div>
+		<%= displayReply(row.id) %>
+		<div class="entry">
+		  <%= if row.answers.count > 0
+			  displayAnswer(row.answers.first().id)
+			end %>
+		</div>
+	</div>
 <% end %>

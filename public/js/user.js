@@ -51,6 +51,7 @@
       $body.append($askComponent);
     });
     
+    // For answering questions
     $('.answerbutton').click(function (ev) {
       var $button = $(ev.currentTarget);
       var content = $($button.parent().parent().find('textarea')).val()
@@ -63,7 +64,27 @@
       }).fail(function (err) {
         console.error(err);
       });
-      console.log(content);
     });
+
+    // For deleting answers/questions
+    $('.deletebutton').click(triggerServer('/delete', 'answer'));
+
+    function triggerServer(link, type) {
+      return(function (ev) {
+        var $button = $(ev.currentTarget);
+        var textarea = $($button.parent().parent().find('textarea')).val()
+        var hidden = $button.parent().find('input[type="hidden"]').val();
+        $.post(link, {
+          args: hidden,
+          content: textarea,
+        }, function (data) {
+          console.log(data);
+        }).fail(function (err) {
+          console.error(err);
+        });
+
+        
+      });
+    }
   });
 })();
