@@ -23,6 +23,14 @@ post '/upvote_question' do
 	end
 end
 
+post '/vote_status' do
+	if QuestionVote.find_by(user_id: session[:user_id], question_id: params[:question_id]) == nil
+		return "#{'0'}"
+	else
+		return "#{QuestionVote.find_by(user_id: session[:user_id], question_id: params[:question_id]).counter}"
+	end
+end
+
 post '/downvote_question' do
 	if session[:user_id] == nil
 		return "error"		

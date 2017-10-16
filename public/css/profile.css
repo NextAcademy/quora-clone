@@ -1,0 +1,100 @@
+/* need to have .navigation insider header to limit side panes' size */
+header {
+  min-height: 70px; /* Same as .navigation */
+}
+
+.navigation {
+  width: 100%;
+  height: 70px;  /* Same as .header */
+  background-color: black;
+  position: fixed;
+  text-align: center;
+}
+
+.navigation ul {
+	margin: 20px 0 0 0;
+	padding: 0;
+}
+
+.navigation li, .navigation form {
+	display: inline;
+	padding: 0 20px 0 20px;
+}
+
+.navigation a {
+	color: #ffffff;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 16px;
+}
+
+.navigation a:hover {
+	border-top: #ffffff 3px solid;
+}
+
+
+/*profile page*/
+.block_1{
+	width: 70%;
+	height: 100%;
+	float: left;
+}
+
+.block_2 {
+	width: 25%;
+	margin-left: 5%;
+	height: 100px;
+	display: inline;
+	float: right;
+}
+
+.column_3 {
+	/*position: absolute;*/
+	width: 100%;
+	height: 100%;
+	background-color: red;
+	float: right;
+}
+
+#top{
+	height: 100px;
+	border-bottom: 3px solid black;
+}
+
+.profile_container {
+	width: 100%;
+	height: 100%;
+	background-color: blue;
+	border-bottom: 3px solid black;
+	float: left;
+}
+
+.column_1 {
+	width: 25%;
+	display: inline;
+	background-color: orange;
+	float: left;
+	margin-right: 5%;
+}
+
+.title_block_1 {
+	border-bottom: 3px solid black;	
+}
+
+.question_content {
+	border-bottom: 3px solid black;
+}
+
+.column_2 {
+	width: 70%;
+	display: inline;
+	background-color: green;
+	float: right;
+}
+
+
+
+
+
+
+
