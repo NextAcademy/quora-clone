@@ -10,15 +10,15 @@ end
 
 
 # API Requests
-post '/askquestion' do
-  # Should add validation
+post '/question_ask' do
+  # Should add validation?
 
   begin 
     raise('Not logged in') if !logged_in?
     question = Question.new(user_id: session[:user_id], content: params[:content])
     createSucess = question.save
     raise('Malformed post') if !createSucess
-    'Success'
+    displayLatestQuestions
   rescue Exception => err
     status(400)
     body("Error: #{err.message}")
@@ -56,24 +56,7 @@ post('/delete') do
   end
 end
 
-post('/answer') do
-  begin
-    raise('Not logged in') if (!logged_in?)
-    # Question.find raises an exception if invalidId
-    question = Question.find(params[:args])
-    answer = Answer.new(user_id: session[:user_id], question_id: question.id,
-      content: params[:content])
-    update = answer.save
-    raise('Malformed post') if !update
-    displayAllAnswers(Question.find(params[:args]))    
-  rescue Exception => err
-    status(400)
-    body("Error: #{err.message}")
-  end
-end
-
-
-post('/lastestquestions') do
+post('/answer_reply') do
   begin
     raise('Not logged in') if (!logged_in?)
     # Question.find raises an exception if invalidId
