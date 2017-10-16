@@ -1,0 +1,5 @@
+<form method="post" action="/answers/<%= @answer.id %>">
+	Edit your answer:
+	<textarea name="answer[content]"><%= @answer.content %></textarea>
+	<input type="submit" value="Edit Answer">
+</form>

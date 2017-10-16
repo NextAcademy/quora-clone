@@ -1,1 +1,40 @@
-1 question with answers here
+<!-- SHOW THE QUESTION TOGETHER WITH ITS ANSWERS -->
+
+<% if @question.user != nil %>
+	<%= "On " + @question.created_at.to_s + ","%>
+	<%= @question.user.first_name + " " + @question.user.last_name + " asked:"%>
+<% end %>
+
+<div class="posted-question">
+	<%= @posted_question = Question.find(params[:id]) %>
+<!-- 	<p><%#= User.find(@posted_question.user_id) %></p> -->
+	<p><%= @posted_question.description%></p>
+	
+</div>
+
+<p class="answer-submit">
+	<form method="post" action="/questions/<%= @question.id %>/answers/new">
+		<textarea name="answer[content]" placeholder="Answer the question"></textarea>
+		<input id="answer_button" type="submit" value="Answer!">
+	</form>
+</p>
+
+<!-- <form id="back_button" method="get" action="/users/<%#= @user.id %>" >
+	<button type=submit value="Back" class="back-button">
+		Back
+	</button>
+</form> -->
+
+
+<!-- SHOW ALL ANSWERS FOR THE QUESTION -->
+Answers:
+
+<div class="posted-answer">
+
+	<% @question.answers.each do |answer| %>
+		<p>On <%= answer.created_at %>,<br></p>
+		<p><%= answer.user.first_name %> answered:</p>
+		<p><%= answer.content%></p>
+	<% end %>
+	
+</div> 

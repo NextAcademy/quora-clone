@@ -2,29 +2,61 @@
 <%= @errors if @errors %>
 
 <div class="navbar">
-      <ul class="pagelinks">
-        <li class="button" id="my_questions"><a href='/questions' style="color: black">MY QUESTIONS</a></li>
-        <li class="button" id="my_answers"><a href='/' style="color: black">MY ANSWERS</a></li>
-      </ul>
-  </div>
-<h2>Your Profile</h2>
+  <ul class="pagelinks">
 
+		<li class="button" id="home_page"><a href="/users/<%= @user.id %>" style="color: black">HOME</a></li>
+    <li class="button" id="my_questions"><a href="/questions" style="color: black">MY QUESTIONS</a></li>
+    <li class="button" id="my_answers"><a href="/answers" style="color: black">MY ANSWERS</a></li>
 
-<h2>Post a Question</h2>
+  </ul>
 
-<p class="question-submit">
-	<form id="question-form" action="/questions" method="post">
-
-	<textarea name="question[description]" placeholder="Type out your question here"></textarea>
-    <input id="submit_button" type="submit" value="Ask!">
-	
+  <form id="logout" method="post" action="/logout" >
+		<button type=submit value="Log out" class="logout-button">
+			Log out
+		</button>
 	</form>
-</p>
+</div>
 
+<h2><%= @user.first_name + " " + @user.last_name%>'s Profile</h2>
+<h4>Name: <%= @user.first_name %></h4>
+<h4>Email: <%= @user.email %></h4>
+<h4>Member since: <%= @user.created_at %></h4>
 
-<form id="logout" method="post" action="/logout" >
-	<button type=submit value="Log out" class="logout-button">
-		Log out
-	</button>
-</form>
+<br>
+
+<div>
+
+	<h2>Questions by <%= @user.first_name %></h2>
+
+		<ol>
+			<% @user.questions.each do |q| %>
+				<li>
+				<p>On <%= q.created_at %>, <%= @user.first_name %> asked:</p>
+				<p><%= q.description %></p>
+				<% if current_user.id == @user.id %>
+					<a href="/questions/<%= q.id %>/edit">[Edit]</a>
+					<a href="/questions/<%= q.id %>/delete">[Delete]</a>
+				<% end %>
+				</li>
+			<% end %>
+		</ol>
+</div>
+
+<div>
+
+	<h2>Answers by <%= @user.first_name %></h2>
+
+		<ol>
+			<% @user.answers.each do |a| %>
+				<li>
+				<p>On <%= a.created_at %>, <%= @user.first_name %> answered <%= a.question.user.first_name %>:</p>
+				<p><%= a.content %></p>
+				<% if current_user.id == @user.id %>
+					<a href="/answers/<%= a.id %>/edit">[Edit]</a>
+					<a href="/answers/<%= a.id %>/delete">[Delete]</a>
+				<% end %>
+				</li>
+			<% end %>
+		</ol>
+</div>
 

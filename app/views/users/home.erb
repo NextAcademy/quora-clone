@@ -1,0 +1,53 @@
+<div class="navbar">
+
+	<ul class="pagelinks">
+		<li class="button" id="profile_page"><a href="/users/<%= current_user.id %>/profile" style="color: black">MY PROFILE</a></li>
+    <li class="button" id="my_questions"><a href="/questions" style="color: black">MY QUESTIONS</a></li>
+    <li class="button" id="my_answers"><a href="/answers" style="color: black">MY ANSWERS</a></li>
+  </ul>
+
+  <form id="logout" method="post" action="/logout" >
+		<button type=submit value="Log out" class="logout-button">
+			Log out
+		</button>
+	</form>
+
+</div>
+
+<p>Welcome, <a href="/users/<%= current_user.id %>/profile"><%= current_user.first_name %></a></p>
+
+<br>
+
+<div>
+
+<h2>Post a Question</h2>
+
+<p class="question-submit">
+	<form id="question_form" method="post" action="/questions">
+
+	<textarea name="question[description]" placeholder="What is your question?"></textarea>
+	<input id="ask_button" type="submit" value="Ask!">
+	
+	</form>
+</p>
+
+</div>
+
+<div>
+
+<h2>Answer a Question</h2>
+
+<% @question_all.each do |q| %>
+    <p>On <%= q.created_at %>, <a href ="/users/<%= q.user.id %>/profile"><%= q.user.first_name + " "  + q.user.last_name %></a> asked:<br>
+        <%= q.description %></p>
+        <div>
+            <form method="post" action="/questions/<%= q.id %>/answers/new">
+            <textarea name="answer[content]" placeholder="Type an answer"></textarea>
+            <input type="submit" value="Answer!">
+            </form>
+        </div>
+        <a href="/questions/<%= q.id %>">Show all answers</a>
+        <br>
+<% end %>
+
+</div>

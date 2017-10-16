@@ -1,1 +1,22 @@
+
 ALL MY QUESTIONS
+
+<div class="my-questions">
+	
+	<% @question.each do |q| %>
+
+		<p><%= q.description %></p>
+		<a href="/questions/<%= q.id %>">Show answers</a>
+
+		<form id="edit_question" method="get" action="/questions/<%= q.id %>/edit">
+			<input id="edit_button" type="submit" value="Edit Question">
+		</form>
+
+		<form id="delete_question" method="get" action="/questions/<%= q.id %>/delete">
+			<input id="delete_button" type="submit" value="Delete Question">
+		</form>
+
+	<% end %>
+
+</div>
+

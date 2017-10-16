@@ -1,0 +1,21 @@
+ALL MY ANSWERS
+
+<div class="my-answers">
+
+	<% @answer.each do |a| %>
+		<p>You answered to <%= a.question.user.first_name %> :</p>
+		<p><%= a.content %></p>
+		<a href="/questions/<%= a.question.id %>">Show question</a>
+
+
+		<form id="edit_answer" method="get" action="/answers/<%= a.id %>/edit">
+			<input id="edit_button" type="submit" value="Edit Answer">
+		</form>
+
+		<form id="delete_answer" method="get" action="/answers/<%= a.id %>/delete">
+			<input id="delete_button" type="submit" value="Delete Answer">
+		</form>
+
+	<% end %>
+
+</div>
