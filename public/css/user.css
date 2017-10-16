@@ -188,3 +188,11 @@ article .entry {
 
 .editbutton {
 }
+
+.question-header {
+	text-decoration: none;
+}
+
+.question-header:hover {
+	text-decoration: underline;	
+}

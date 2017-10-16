@@ -66,19 +66,21 @@ post('/edit') do
     when 'answer'
       answer = Answer.find(id)
       questionId = answer.question.id
-      if session[:user_id] == answer.user.id
-        answer.content = params[:content]
-        answer.save
-      else
-        raise('You cannot delete posts by another user.')
-      end
-
-      # Then refresh the answers
-      displayAllAnswers(Question.find(questionId))
+      raise('Cannot edit posts by another user') if session[:user_id] != answer.user.id
+      answer.content = params[:content]
+      success = answer.save
+      raise('Database error') if !success
+      answer.content
         
     when 'question'
-      raise('Not implemented yet')
+      question = Question.find(id)
+      raise('Cannot edit posts by another user') if session[:user_id] != question.user.id
+      question.content = params[:content]
+      success = question.save
+      raise('Database error') if !success
+      question.content
     end
+
   rescue Exception => err
     status(400)
     body("Error: #{err.message}")

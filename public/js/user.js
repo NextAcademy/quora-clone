@@ -58,7 +58,10 @@
         $main.find('span').toggle();
       },
 
-      '.editbutton': serverAPI('/edit'),
+      '.editbutton': serverAPI('/edit', function ($textarea, id, data) {
+        $textarea.parent().find('span').html(data);
+        $('#toggle-' + id).trigger('click');
+      }),
     };
     addClickers(); // Add the handlers initially
     
