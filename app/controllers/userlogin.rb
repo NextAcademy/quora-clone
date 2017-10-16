@@ -36,10 +36,6 @@ post '/login' do
  	end
 end
 
-get '/question' do 
-	erb :'users/test', { layout: :"layouts/userpage" }
-end
-
 post '/logout' do 
 	session[:user_id] = nil
 	redirect '/'
