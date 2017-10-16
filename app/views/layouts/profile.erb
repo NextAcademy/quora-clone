@@ -6,7 +6,7 @@
 		<meta charset="UTF-8">
 		<title>UserInterface</title>
 		<link rel="stylesheet" href="/css/user.css">
-		<link rel="stylesheet" href="/css/navigation.css">
+		<link rel="stylesheet" href="/css/profile.css">
 		<script type="text/javascript" src="/js/jquery.js"></script>
 		<script type="text/javascript" src="/js/user.js"></script>
 		<script type="text/javascript" src="/js/upvote_downvote.js"></script>
@@ -22,21 +22,18 @@
 							<li><a href="#">notification</a></li>
 							<li><a href="/profile/:id">profile</a></li>
 							<li><button id="askquestion">Ask Question</button></a></li>
-							<li><form action="/logout" method="post">
-								<input class="submit_button" type="submit" value="logout">
-							</form></li>
 						</ul>
 					</nav>
 				</div>
 			</div>
 		</header>
-		<section>
-			<aside class="left-pane"><div>asdf</div></aside>
-			<aside class="right-pane"><div>asdf</div></aside>
+		<section class='container'>
+
 			<article>
-				<div class="main-pane">
+			
+
 				<%= yield %>
-				</div>
+				
 			</article>
 			
 		</section>

@@ -1,0 +1,32 @@
+
+<div class='block_1'>
+	<div class="profile_container">
+		<p><%= User.find_by(id: params[:id]).full_name%></p>
+	</div>
+
+	<div class="column_1">
+		<h3 class="title_block_1">Feeds</h3>
+		<p><a href=<%= "/profile/#{params[:id]}"%>>questions</a></p>
+		<p><a href=<%="/profile/#{params[:id]}/answers"%>>answers</a></p>
+	</div>
+
+	<div class="column_2">
+		<h3 class="title_block_1">Questions</h3>
+		<% all_questions = User.find_by(id: params[:id]).questions %>
+		<p>
+			<% all_questions.each do |t| %>
+				<div class="question_content"><%= t.content %></div>
+			<% end %>	
+		</p>
+	</div>
+</div>
+	
+<div class="block_2">
+	<div class="column_3" id = "top">
+		<p>hello</p>
+	</div>
+	<div class="column_3">
+		<p>hello</p>
+	</div>
+
+</div>
