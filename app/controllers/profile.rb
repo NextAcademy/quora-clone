@@ -8,7 +8,6 @@ end
 
 get '/profile' do
 	if logged_in?
-		p "","","","hello","","/profile/#{session[:user_id]}"
 		redirect("/profile/#{session[:user_id]}")
 	end
 end

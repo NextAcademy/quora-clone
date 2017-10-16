@@ -14,71 +14,97 @@ $(document).ready(function(){
 	$('.upvote_button').click(function(e){
 		var $target = $(e.currentTarget);
 		var $target_downvote = $target.parent().find('.downvote_button')
-		var x = $target.parent().find('.question_id_upvote').val();
+		var y = $target.parent().find('.question_id_upvote').val();
 
-		$.post("/upvote_question", 
-			{ question_id: x
-			},
-			function (data) {
-				if (data == "error") {
-					window.location.assign("http://localhost:9393/")
-				} else {
-				$target.parent().find('.vote_counter').text(data);
-					$.post("/vote_status",
-						{ question_id: x
-						},
-						function (y) {
-							if 	(y == "1") {
-								$target.css("background", "grey")
-								$target_downvote.css("background", "white") 
-							} else if (y == "0") {
-								$target.css("background", "white")
-								$target_downvote.css("background", "white") 
-							} else if (y == "-1") {
-								$target.css("background", "white")
-								$target_downvote.css("background", "grey") 
-							};
-						}
-					);		
-				}
-			}
-		);
+		upvote("/upvote_question", y, $target, $target_downvote)
 	});
 
 
 	$('.downvote_button').click(function(e){
 		var $target = $(e.currentTarget)
 		var $target_upvote = $target.parent().find('.upvote_button')
-		var x = $target.parent().find('.question_id_upvote').val();
-		var y = $target.parent().find('.counter_state').val();
+		var y = $target.parent().find('.question_id_upvote').val();
+		
+		downvote("/downvote_question", y, $target, $target_upvote)
+	});
 
-		$.post("/downvote_question", 
-			{ question_id: x
-			},
-			function(data){ 
-				if (data == "error") {
-					window.location.assign("http://localhost:9393/")
-				} else {	
-				$target.parent().find('.vote_counter').text(data)
-						$.post("/vote_status",
-						{ question_id: x
-						},
-						function (y) {
-							console.log(y)
-							if 	(y == "1") {
-								$target.css("background", "white")
-								$target_upvote.css("background", "grey") 
-							} else if (y == "0") {
-								$target.css("background", "white")
-								$target_upvote.css("background", "white") 
-							} else if (y == "-1") {
-								$target.css("background", "grey")
-								$target_upvote.css("background", "white") 
-							};
-						}
-					);	
-				};
-			}
-		);
+	$('.upvote_button_answer').click(function(e){
+		var $target = $(e.currentTarget);
+		var $target_downvote = $target.parent().find('.downvote_button_answer')
+		var y = $target.parent().find('.answer_id').val();
+
+		upvote("/upvote_answer", y, $target, $target_downvote)
+	});
+
+	$('.downvote_button_answer').click(function(e){
+		var $target = $(e.currentTarget);
+		var $target_downvote = $target.parent().find('.upvote_button_answer')
+		var y = $target.parent().find('.answer_id').val();
+
+		downvote("/downvote_answer", y, $target, $target_downvote)
 	});
 });
+
+
+
+
+
+function upvote(link, id_of_question_answer, $button, $opposite_button){
+	$.post(link, 
+		{ question_answer_id: id_of_question_answer
+		},
+		function (data) {
+			if (data == "error") {
+				window.location.assign("http://localhost:9393/")
+			} else {
+			$button.parent().find('.vote_counter').text(data);
+				$.post("/vote_status",
+					{ question_answer_id: id_of_question_answer
+					},
+					function (y) {
+						if 	(y == "1") {
+							$button.css("background", "grey")
+							$opposite_button.css("background", "white") 
+						} else if (y == "0") {
+							$button.css("background", "white")
+							$opposite_button.css("background", "white") 
+						} else if (y == "-1") {
+							$button.css("background", "white")
+							$opposite_button.css("background", "grey") 
+						};
+					}
+				);		
+			}
+		}
+	);
+};
+
+function downvote(link, id_of_question_answer, $button, $opposite_button){
+	$.post(link, 
+		{ question_answer_id: id_of_question_answer
+		},
+		function(data){ 
+			if (data == "error") {
+				window.location.assign("http://localhost:9393/")
+			} else {	
+			$button.parent().find('.vote_counter').text(data)
+					$.post("/vote_status",
+					{ question_answer_id: id_of_question_answer
+					},
+					function (y) {
+						if 	(y == "1") {
+							$button.css("background", "white")
+							$opposite_button.css("background", "grey") 
+						} else if (y == "0") {
+							$button.css("background", "white")
+							$opposite_button.css("background", "white") 
+						} else if (y == "-1") {
+							$button.css("background", "grey")
+							$opposite_button.css("background", "white") 
+						};
+					}
+				);	
+			};
+		}
+	);
+}
