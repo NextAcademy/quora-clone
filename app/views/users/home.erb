@@ -25,7 +25,7 @@
 <p class="question-submit">
 	<form id="question_form" method="post" action="/questions">
 
-	<textarea name="question[description]" placeholder="What is your question?"></textarea>
+	<textarea name="question[description]" placeholder="What is your question?" required></textarea>
 	<input id="ask_button" type="submit" value="Ask!">
 	
 	</form>
@@ -37,7 +37,10 @@
 
 <h2>Answer a Question</h2>
 
-<% @question_all.each do |q| %>
+<% @question_pagination = Question.order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
+	@user = User.find(params[:id]) %>
+
+<% @question_pagination.each do |q| %>
     <p>On <%= q.created_at %>, <a href ="/users/<%= q.user.id %>/profile"><%= q.user.first_name + " "  + q.user.last_name %></a> asked:<br>
         <%= q.description %></p>
 
@@ -60,3 +63,5 @@
 <% end %>
 
 </div>
+
+<%= will_paginate @question_pagination %>

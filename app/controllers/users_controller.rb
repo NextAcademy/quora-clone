@@ -14,10 +14,7 @@ end
 
 #READ - USER INFO
 get '/users/:id' do
-	@question_all = Question.all
-	@user = User.find(params[:id])
 	erb :"users/home"
-
 end
 
 # get '/homepage' do
