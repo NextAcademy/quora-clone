@@ -1,0 +1,64 @@
+/*background*/
+html, body {
+    margin: 0;
+}
+
+body.logged-out {
+	background-image: url("/img/bg2.jpg");
+	background-size: contain;
+}	
+
+
+/*signup box*/
+.signupbox{
+	width: 500px;
+	height: 510px;
+	background-color: white;
+	border: 1px solid #e2e2e2;
+	box-shadow: 0 0 5px #888;
+	border-radius: 4px;
+	padding-top: 30px;
+	margin: 200px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+form{
+	text-align: center;
+}
+
+#icon{
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#tagline{
+	text-align: center;
+}
+
+input{
+	width:40%;
+	padding: 10px;
+	margin: 10px 0;
+	border-radius: 4px;
+}
+
+input[type=submit]{
+	background-color: #b30000;
+	width:40%;
+	padding: 10px;
+	margin: 10px 0;
+	border-radius: 4px;
+	color: white;
+	border: none;
+}
+
+input[type=submit]:hover{
+background-color: #800000;
+}
+
+p{
+color: #666666;
+font-size: 15px;
+}

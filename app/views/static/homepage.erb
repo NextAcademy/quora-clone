@@ -1,0 +1,49 @@
+<div class= "showbox">
+	<h1><%= current_user.first_name %> <%= current_user.last_name %></h1>
+
+	<form method="post" action="/homepage" >
+		<input id="questionbox" type="text" placeholder= "What is your question?" name="question" required><br>
+		<!-- <input type="text" placeholder= "Description" name="description"><br> -->
+		<input id= "submitquestion" type="submit" value="Submit"><br>
+	</form>
+</div>
+
+<div>
+
+	<% @questions.each do |p|%>
+	<div class= "postbox">
+		<div class= "qandadivide">
+			<p class= "votecount">Votes: <span class= "totalvotes"><%= p.votes %></span></p>
+			<h2><%= p.question %></h2>
+			<!-- <p><%= p.description %></p> -->
+			<p>Asked by <%= p.user.first_name %> <%= p.user.last_name %></p>
+			<p><%= p.created_at %></p>
+			<button class="upvotebutton" data-qid="<%= p.id %>">Upvote Question</button>
+			<button class="downvotebutton" data-qid="<%= p.id %>">Downvote Question</button>
+		</div>
+
+
+
+		<% p.answers.each do |a| %>
+		<div class= "betweeneachanswer">
+			<p>Answered by <%= a.user.first_name %> <%= a.user.last_name %>, <%= a.qualifications %></p>
+			<p class= "cleartext"><%= a.body %></p>
+			
+			<button class="upvoteanswer" data-aid="<%= a.id %>">Upvote</button>
+			<button class="downvoteanswer" data-aid="<%= a.id %>">Downvote</button>
+			<span>Votes: <span class= "totalvotes"><%= a.votes %></span><br>
+
+		</div>
+		<%end%>
+
+
+		<a id="answerbutton" href="/question/<%= p.id %>/answer"><i class="fa fa-pencil" aria-hidden="true"></i>Answer</a>
+
+	</div>
+	<%end%>
+</div>
+
+<div class= "apple_pagination">
+	<%=will_paginate @questions %>
+</div>
+

@@ -1,0 +1,13 @@
+<div>
+	<h2 id= "title">
+		<%= @question.question %>
+	</h2>
+
+	<% @answer.each do |a|%>
+	<div class= "showbox2">
+	<p>Answered by <%= a.user.first_name %> <%= a.user.last_name %>, <%= a.qualifications %></p>
+	<p class= "cleartext2"><%= a.body %></p>
+	<p>Answered on <%= a.created_at %></p>
+		</div>
+	<%end %>
+</div>

@@ -1,0 +1,19 @@
+<div class= "showbox">
+	<h1>My Questions</h1>
+	<% Question.where(user_id: @user.id).each do |x| %>
+	<h2>
+		<a href="/questions/<%= x.id%>/answers">
+			<%= x.question %>
+			(<%= Answer.where(question_id: x.id).count %> answers)
+		</a>
+	</h2>
+	<p>Created at: <%= x.created_at %></p>
+	<% end %>
+</div>
+
+
+
+
+
+
+
