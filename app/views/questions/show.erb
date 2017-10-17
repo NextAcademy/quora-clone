@@ -1,3 +1,20 @@
+<div class="navbar">
+
+	<ul class="pagelinks">
+		<li class="button" id="home_page"><a href="/users/<%= current_user.id %>" style="color: black">HOME</a></li>
+		<li class="button" id="profile_page"><a href="/users/<%= current_user.id %>/profile" style="color: black">MY PROFILE</a></li>
+    <li class="button" id="my_questions"><a href="/questions" style="color: black">MY QUESTIONS</a></li>
+    <li class="button" id="my_answers"><a href="/answers" style="color: black">MY ANSWERS</a></li>
+  </ul>
+
+  <form id="logout" method="post" action="/logout" >
+		<button type=submit value="Log out" class="logout-button">
+			Log out
+		</button>
+	</form>
+
+</div>
+
 <!-- SHOW THE QUESTION TOGETHER WITH ITS ANSWERS -->
 
 <% if @question.user != nil %>
@@ -45,8 +62,7 @@ Answers:
 <div class="posted-answer">
 
 	<% @question.answers.each do |a| %>
-		<p>On <%= a.created_at %>,<br></p>
-		<p><%= a.user.first_name %> answered:</p>
+		<p>On <%= a.created_at %>, <%= a.user.first_name %> answered:</p>
 		<p><%= a.content%></p>
 
 		<form id='answer_upvote_<%= a.id %>' style='display:inline;' method='post' action='/answers/<%= a.id %>/up'>

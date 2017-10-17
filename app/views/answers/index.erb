@@ -1,9 +1,26 @@
+<div class="navbar">
+
+	<ul class="pagelinks">
+		<li class="button" id="home_page"><a href="/users/<%= current_user.id %>" style="color: black">HOME</a></li>
+		<li class="button" id="profile_page"><a href="/users/<%= current_user.id %>/profile" style="color: black">MY PROFILE</a></li>
+    <li class="button" id="my_questions"><a href="/questions" style="color: black">MY QUESTIONS</a></li>
+  </ul>
+
+  <form id="logout" method="post" action="/logout" >
+		<button type=submit value="Log out" class="logout-button">
+			Log out
+		</button>
+	</form>
+
+</div>
+
 ALL MY ANSWERS
 
 <div class="my-answers">
-
+	<ol>
 	<% @answer.each do |a| %>
-		<p>You answered to <%= a.question.user.first_name %> :</p>
+		<li>
+		<p>On <%= a.created_at %>, you answered to <%= a.question.user.first_name %> :</p>
 		<p><%= a.content %></p>
 		<a href="/questions/<%= a.question.id %>">Show question</a>
 
@@ -15,7 +32,7 @@ ALL MY ANSWERS
 		<form id="delete_answer" method="get" action="/answers/<%= a.id %>/delete">
 			<input id="delete_button" type="submit" value="Delete Answer">
 		</form>
-
+	</li>
 	<% end %>
-
+	</ol>
 </div>

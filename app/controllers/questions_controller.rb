@@ -13,6 +13,7 @@ end
 
 #READ - SHOW A QUESTION WITH ANSWERS
 get '/questions/:id' do
+
   @question = Question.find(params[:id])
   @questions = current_user.questions
   erb :"questions/show"
