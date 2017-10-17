@@ -1,0 +1,19 @@
+A user signup and login page
+- index
+
+An index page listing all the questions (top stories)
+- main
+
+A page showing a particular question including its answers (and associated user)
+- question
+
+A user profile page (don’t worry about profile images or any social media element for now)
+- profile
+
+A page showing all a user's submissions (e.g. “My Questions”)
+- user/questions
+
+A page showing all a user's answers (e.g. “My Answers”)
+- user/answers
+
+<%= "User not found" if @user.nil? %>

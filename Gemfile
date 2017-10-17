@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 
 # Ruby Version
 # ruby "2.2.1"
-
+gem 'byebug'
+gem 'bcrypt', '~>3.1.7'
 # Adding Sinatra Drivers
 gem 'sinatra'
 gem 'sinatra-contrib'
@@ -34,4 +35,10 @@ group :production do
 	# ==================
 	gem 'rails_12factor' # Heroku Gem Supports
 	gem 'puma' # Using puma for
+end
+
+resources :users do
+  resources :questions do
+    resources :answers
+  end
 end

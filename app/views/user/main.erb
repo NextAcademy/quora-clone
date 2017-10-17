@@ -1,0 +1,53 @@
+
+<%= "Welcome, "  + current_user.first_name + "!" %>
+
+<a href="/logout"><button>Logout</button></a>
+
+<p><a href="/question">Ask a question</a></p>
+
+<p><a href="/user/<%=current_user.id%>">My profile</a></p>
+
+<p><a href="/question/show">My questions</a></p>
+
+<p><a href="/answer/show">My answers</a></p>
+
+<%= @message if @message %>
+
+<div class="first">
+	<h1> Top questions </h1>
+<% Question.all.each do |x| %>
+	<p><%= x.question_description %></p>
+
+	<form action="/answer_create" method="post" >
+	    <input type=text placeholder="Answer this" name="answer[answer_description]"><br>
+	    <input type="hidden" name="answer[question_id]" value="<%= x.id %>">
+	    <input type=submit value="Submit">
+	</form>
+
+		<a href="/question/<%= x.id %>/upvote"><button>Upvote</button></a>
+		<%= x.question_votes.where(vote: 1).count %>
+		<a href="/question/<%= x.id %>/downvote"><button>Downvote</button></a>
+		<%= x.question_votes.where(vote: -1).count %>
+
+	<% x.answers.each do |q| %>
+		<p><%= q.answer_description %></p>
+
+		<a href="/answer/<%= q.id %>/upvote"><button>Upvote</button></a>
+		<%= q.answer_votes.where(vote: 1).count %>
+		<a href="/answer/<%= q.id %>/downvote"><button>Downvote</button></a>
+		<%= q.answer_votes.where(vote: -1).count %>
+
+	<% end %>
+
+<% end %>
+
+<p>Search for user :</p>
+	<form action="/other" method="post" >
+	    <input type=text placeholder="Search User" name="user[first_name]"><br>
+	    <input type=submit value="Submit">
+	</form>
+<%= @message1 if @message1 %>
+
+
+
+</div>
