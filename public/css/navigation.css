@@ -1,0 +1,73 @@
+.center {
+  display: table;
+  margin: 0px auto;
+}
+
+/**
+ * main
+ */
+ article {
+   box-sizing: border-box;
+   width: 100%;
+   position: absolute;
+   padding-left: 300px; /* make the same as .left margin */
+   padding-right: 300px; /* make the same as .right margin */
+ }
+
+/**
+ * other panes
+ */
+.left-pane div {
+  display: none;
+  background-color: blue;
+  position: fixed;
+  width: 300px; /* make the same as article margin */
+  height: 100%;
+  z-index: 5;
+}
+
+.right-pane div {
+  display: none;
+  background-color: orange;
+  position: fixed;
+  right: 0;
+  width: 300px; /* make the same as article margin */
+  height: 100%;
+  z-index: 5;
+}
+
+/**
+ * top pane
+ */
+header {
+  min-height: 70px; /* Same as .navigation */
+}
+
+/* need to have .navigation insider header to limit side panes' size */
+.navigation {
+  width: 100%;
+  height: 70px;  /* Same as .header */
+  background-color: black;
+  position: fixed;
+}
+
+.navigation ul {
+	margin: 20px 0 0 0;
+	padding: 0;
+}
+
+.navigation li, .navigation form {
+	display: inline;
+	padding: 0 20px 0 20px;
+}
+
+.navigation a {
+	color: #ffffff;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 16px;
+}
+
+.navigation a:hover {
+	border-top: #ffffff 3px solid;
+}

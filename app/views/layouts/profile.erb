@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+	<head>
+		<title>Sinatra Framework</title>
+		<meta charset="UTF-8">
+		<title>UserInterface</title>
+		<link rel="stylesheet" href="/css/user.css">
+		<link rel="stylesheet" href="/css/profile.css">
+		<script type="text/javascript" src="/js/jquery.js"></script>
+		<script type="text/javascript" src="/js/user.js"></script>
+		<script type="text/javascript" src="/js/upvote_downvote.js"></script>
+	</head>
+	<body>
+		<%= erb :"/components/header", layout: false %>
+
+		<section class='container'>
+
+			<article>
+			
+
+				<%= yield %>
+				
+			</article>
+			
+		</section>
+
+	</body>
+</html>
+</html>

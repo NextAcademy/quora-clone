@@ -1,0 +1,32 @@
+
+<header>
+	<div class="navigation">
+		<div class="center">
+			<nav>
+				<ul>
+					<li><a href="/">home</a></li>
+					<li><a href="#">answer</a></li>
+					<li><a href="#">notification</a></li>
+					<li><a href="/profile">profile</a></li>
+					<li><button id="askquestion">Ask Question</button></a></li>
+
+					<% if profile_access?(params[:id]) or home_page?(params[:id])%>
+
+						<li><form action="/logout" method="post">
+							<input class="submit_button" type="submit" value="logout">
+						</form></li>
+					<% end %>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>
+
+<section id="ask-popup">
+  <div id="ask-cover"></div>
+	<div id="ask-container">
+		<div class="ask-header">Ask a Question</div>
+		<textarea></textarea>
+		<div><input id="askbutton" type="submit"></div>
+	</div>
+</section>

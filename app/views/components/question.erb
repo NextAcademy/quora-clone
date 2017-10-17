@@ -1,0 +1,70 @@
+<div class="entry">
+	<div>
+		<div style="float: left; border: 1px solid black;">
+			<input class = "question_id" type="hidden" value="<%= row.id%>">
+			<input class = "counter_state" type="hidden" 
+				value="<%= 
+				x = QuestionVote.find_by(question_id: row.id, user_id: session[:user_id]);
+				if x == nil
+					'0'
+				else 
+					x.counter
+				end
+				%>"
+			> 
+			<input class="upvote_button" type="submit" value="upvote">
+
+
+			<p class="vote_counter"><%
+				votes = 0;
+				question_id = row.id;
+				cumulated_votes = QuestionVote.where(question_id: question_id);
+				cumulated_votes.each do |t|
+					votes += t.counter
+				end%>
+				<%= votes %>
+			</p>
+			<input class="downvote_button" type="submit" value="downvote">
+		</div>
+
+
+
+		<!-- Right column -->
+		<% uniqueId = "question-#{row.id}" %>
+		<div>
+
+			<!-- First row: Header and buttons -->
+			<div>
+				<span>Username: <a href="/profile/<%= row.user_id%>"><%= row.user_id.nil? ? '&lt;nil&gt;' : User.find(row.user_id).full_name %></a>
+		
+				<% if session[:user_id] == row.user.id %>
+					<input type="hidden" value="<%= uniqueId %>">
+					<input class="signaledit" id="<%= "toggle-#{uniqueId}" %>" type="submit" value="Edit">
+					<input class="deletebutton" type="submit" value="Delete">
+				<% end %>
+			</div>
+
+			<!-- Second row: Main content -->
+			<div id="<%= uniqueId %>">
+				<!-- Is toggled in the javascript -->
+				<!-- Only link if we're linking not from the question main page -->
+				<% if request.path_info != "/question/#{row.id}" %>
+					<a class="question-header" href="/question/<%= row.id %>">
+						<span><%= row.content %></span>
+					</a>
+				<% else %>
+					<span><%= row.content %></span>
+				<% end %>
+				</span>
+
+				<!-- Edit stuff, all are toggled in the javascript -->
+				<textarea class="edit"><%= row.content %></textarea>
+				<input class="edit editbutton" type="submit" value="Save">
+				<input type="hidden" value="<%= uniqueId %>">
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+
+	<%= displayReply(row.id) %>
+</div>
