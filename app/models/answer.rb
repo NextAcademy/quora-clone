@@ -3,6 +3,7 @@ class Answer < ActiveRecord::Base
 
 	belongs_to :user
   belongs_to :question
+  has_many :answer_votes, dependent: :destroy
 
   validates :content, presence: { message: "cannot be empty."}
 

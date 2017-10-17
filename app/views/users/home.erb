@@ -40,6 +40,15 @@
 <% @question_all.each do |q| %>
     <p>On <%= q.created_at %>, <a href ="/users/<%= q.user.id %>/profile"><%= q.user.first_name + " "  + q.user.last_name %></a> asked:<br>
         <%= q.description %></p>
+
+			<form id='question_upvote_<%= q.id %>' style='display:inline;' method='post' action='/questions/<%= q.id %>/up'>
+				<input id='upvote_<%= q.id%>' type='submit' value='Upvote <%= QuestionVote.where(question_id: q.id, points: 1).count %>'>
+			</form>
+		
+			<form id='question_downvote_<%= q.id %>' style='display:inline;' method='post' action='/questions/<%= q.id %>/down'>
+				<input id='downvote_<%= q.id %>' type='submit' value='Downvote <%= QuestionVote.where(question_id: q.id, points: -1).count %>'>
+			</form>
+
         <div>
             <form method="post" action="/questions/<%= q.id %>/answers/new">
             <textarea name="answer[content]" placeholder="Type an answer"></textarea>

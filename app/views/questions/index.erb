@@ -8,6 +8,8 @@ ALL MY QUESTIONS
 		<p><%= q.description %></p>
 		<a href="/questions/<%= q.id %>">Show answers</a>
 
+		<!-- <button><a href="/questions/<%#= q.id %>/edit" id="edit_button">edit question</a></button> -->
+
 		<form id="edit_question" method="get" action="/questions/<%= q.id %>/edit">
 			<input id="edit_button" type="submit" value="Edit Question">
 		</form>

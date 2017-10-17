@@ -3,7 +3,7 @@ post '/users' do
 	#byebug
 	@user = User.new(params[:user]) #"[:user]" covers all data under "user[]" in index.erb
 		if @user.save
-			session[:user_id] = @user.id #logs user in on sign up
+			session[:user_id] = @user.id # to make it so that it logs user in on sign up
 			redirect "/users/#{@user.id}"
 		else
 			@error = @user.errors.full_messages.join(" or ")
