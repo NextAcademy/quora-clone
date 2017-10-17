@@ -1,9 +1,6 @@
 <div class="first">
-	<h1>Quora</h1>
-	<p>Ask. Answer. Discover. Repeat.</p>
 
-<!-- <h1>Login now</h1>
-<a href="/login"><button>Login</button></a> -->
+
 <h2>Login</h2>
 <form action="/login" method="post" >
     <input type=text placeholder="Email" name="user[email]"><br>
@@ -22,6 +19,9 @@
 	<input type=submit value="Sign up">
 </form>
 </div>
-<%= "User not found" if @user.nil? %>
-<%= @message if @message%>
+
+<%= @message if @message %>
+
+
+
 </div>

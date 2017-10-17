@@ -1,0 +1,14 @@
+<h2>Edit your profile</h2>
+<form action="/user/<%= current_user.id %>/update" method="post">
+	<label>First_name</label><br>
+	<input type="text" value="<%= current_user.first_name %>" name="user[first_name]"><br>
+	<label>Last_name</label><br>
+	<input type="text" value="<%= current_user.last_name %>" name="user[last_name]"><br>
+	<label>Email</label><br>
+	<input type="email" value="<%= current_user.email %>" name="user[email]"><br>
+	<label>Password</label><br>
+	<input type="password" value="<%= current_user.password %>" name="user[password]"><br>
+	<br>
+	<input type="submit" value="Update"><br>
+
+</form>

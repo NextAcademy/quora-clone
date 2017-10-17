@@ -1,0 +1,11 @@
+
+<% current_user.answers.each do |ans| %>
+	<p><%= ans.question.question_description %></p>
+	<p><%= ans.answer_description %></p> 
+	<a href="/answer/<%= ans.id %>/edit"><button>Edit</button></a>
+	<a href="/answer/<%= ans.id%>/delete"><button>Delete</button></a>
+<% end %>
+
+<p>Questions answered: </p>
+<%= @count %>
+<p><a href="/main">Back to main page</a></p>

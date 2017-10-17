@@ -1,0 +1,19 @@
+<%= @message if @message %>
+<%= @user.first_name if @user.first_name%><br>
+<%= @user.last_name if @user.last_name%><br>
+<%= @user.email  if @user.email%></br>
+
+<p>Questions asked</p>
+<% @question.each do |q| %>
+	<li><%= q.question_description %></li>
+<% end %>
+
+<p> Questions answered </p>
+<% @user.answers.each do |ans| %>
+	<p><%= ans.question.question_description %></p>
+	<p><%= ans.answer_description %></p> 
+<% end %>
+
+
+
+<p><a href="/main">Back to main page</a></p>

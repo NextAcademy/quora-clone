@@ -1,0 +1,16 @@
+
+<%= @message if @message %>
+<%= @user.first_name if @user.first_name%><br>
+<%= @user.last_name if @user.last_name%><br>
+<%= @user.email  if @user.email%></br>
+
+<% @question.each do |q| %>
+<p>
+	<%= q.question_description %>
+	<a href="/question/<%= q.id %>/edit">Edit</a>
+	<a href="/question/<%= q.id%>/delete"><button>Delete</button></a>
+</p>
+<% end %>
+
+<p><a href="/main">Back to main page</a></p>
+<p><a href="/user/<%= @user.id%>/update"><button>Edit profile</button></a></p>

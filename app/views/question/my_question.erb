@@ -1,0 +1,14 @@
+<%= @message if @message %>
+<% @question.each do |q| %>
+<p>
+	<%= q.question_description %>
+	<a href="/question/<%= q.id %>/edit"><button>Edit</button></a>
+	<a href="/question/<%= q.id%>/delete"><button>Delete</button></a>
+</p>
+
+<p>
+
+<% end %>
+<p>Questions asked: </p>
+<%= @count %>
+<p><a href="/main">Back to main page</a></p>

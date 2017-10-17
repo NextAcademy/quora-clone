@@ -7,5 +7,9 @@ class User < ActiveRecord::Base
 
 	has_secure_password # method inside gem bcrypt that alows user to encrypt tha password given, and able to authenticate it automatically
 
+  has_many :questions
+  has_many :answers
+
+	
 end
 
