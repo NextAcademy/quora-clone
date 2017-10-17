@@ -1,0 +1,40 @@
+/*Navbar*/
+.nav{
+    padding-left: 20px;
+    padding-right: 30px;
+    background-color: #333;
+}
+
+.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 46px;
+}
+
+.nav li {
+    float: left;
+    color: white;
+    line-height: 46px;
+}
+
+.nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 0px 16px;
+    text-decoration: none;
+    line-height: 46px;
+}
+
+#quoraicon{
+    padding: 5.5px;
+}
+
+#usericon{
+    padding: 7px;
+}
+.nav .name{
+    padding-right: 20px;
+}

@@ -1,0 +1,15 @@
+<div class= "showbox">
+	<h1>My Answers</h1>
+	<% @questions.each do |k, x| %>
+	<h2>
+		<a href="/questions/<%= x.id%>/answers">
+			<%= x.question %>
+		</a>
+	</h2>
+	<% x.answers.each do |y|%>
+	
+	<p><%= y.body %></p>
+	<% end %>
+	
+	<% end %>
+</div>

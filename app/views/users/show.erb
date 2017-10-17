@@ -1,5 +1,14 @@
-<h1>hi <%= @user.first_name %><%= @user.last_name %>  </h1>
-<!-- make real quora page  -->
-<!-- <form action="/logout" method="post">
-  <button type="submit">Log out</button> 
-</form> -->
+<div class= "profile">
+	<img id="user" src="/img/user.png" width='100' height="100">
+	<h1>Hello, <%= @user.first_name %> <%= @user.last_name %>! 
+		<p><%= @user.email %></p>
+	</h1>
+
+	<a class= "profilebuttons" href="/homepage">Go to Homepage</a>
+	<a href="/users/<%= @user.id %>/questions" class= "profilebuttons" >My Questions</a>
+	<a href="/users/<%= @user.id %>/answers" class= "profilebuttons" >My Answers</a>
+</div>
+
+
+
+

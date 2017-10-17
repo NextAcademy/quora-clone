@@ -1,0 +1,6 @@
+<h1><%= @question.question %></h1>
+<form method="post" action="/question/<%= @question.id %>/answer">
+<input type="text" name="qualifications" placeholder="Your qualifications"><br>
+<textarea name="answer" rows="5" cols="50" placeholder="Your answer"></textarea><br>
+<input type="submit" name="Submit">
+</form>

@@ -4,7 +4,7 @@ ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile', __FILE__)
 # Perform requiring gem that we need
 ######################################################################
 	# basic
-	require 'byebug'
+require 'byebug'
 require 'rubygems'
 require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
 require 'pathname'
@@ -21,6 +21,11 @@ require "sinatra/reloader" if development?
 	# embedded ruby
 require 'erb'
 require 'uri'
+
+# will paginate
+require 'will_paginate'
+require 'will_paginate/active_record'  # or data_mapper/sequel
+
 ######################################################################
 
 

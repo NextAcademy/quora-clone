@@ -1,16 +1,43 @@
 <html>
-	<head>
-		<title>Sinatra Framework</title>
-		<link rel="stylesheet" type="text/css" href="/css/application.css">
-	</head>
-	<body>
-		<% if logged_in? %>
-				<form action="/logout" 		method="post">
-  			<button type="submit">Log out</button> 
-				</form>
-			<% else %>
-			<p>log in</p>
-		<% end %>
-		<%= yield %>
-	</body>
+<head>
+	<title>Sinatra Framework</title>
+	<link rel="stylesheet" type="text/css" href="/css/application.css">
+	<link rel="stylesheet" type="text/css" href="/css/profile.css">
+	<link rel="stylesheet" type="text/css" href="/css/homepage.css">
+	<link rel="stylesheet" type="text/css" href="/css/navbar.css">
+	<link rel="stylesheet" type="text/css" href="/css/singleqanda.css">
+	
+	<script src="https://use.fontawesome.com/0c4af263c6.js"></script>
+	<script
+	src="https://code.jquery.com/jquery-3.2.1.min.js"
+	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	crossorigin="anonymous"></script>
+
+	<script type="text/javascript" src="/js/application.js"></script>
+</head>
+
+<% if logged_in? %>
+<body class="logged-in">
+<div class="nav">
+	<ul>
+		<li><a id= "quoraicon" href="/homepage"><img src="/img/quora-small-icon.png" width="35" height="35"></a></li>
+		<li><a href="/homepage">Top Stories</a></li>
+		<li><a href="">Answer</a></li>
+		<li><a href="/homepage">Ask Question</a></li>
+		<li><a href="/logout">Log Out</a></li>
+		<li style="float:right"><a id= "usericon" href="/users/<%= current_user.id %>"><i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i></a>
+		<li class= "name" style="float:right"><%= current_user.first_name %> <%= current_user.last_name %></li>
+		</li>
+	</ul>
+</div>
+	<%= yield %>
+
+</body>
+<% else %>
+<body class="logged-out">
+	<p>log in</p>
+	<%= yield %>
+</body>
+<% end %>
+
 </html>

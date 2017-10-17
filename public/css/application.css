@@ -1,5 +1,9 @@
 /*background*/
-body{
+html, body {
+    margin: 0;
+}
+
+body.logged-out {
 	background-image: url("/img/bg2.jpg");
 	background-size: contain;
 }	
