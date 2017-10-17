@@ -1,0 +1,6 @@
+<form method="post" action="/questions/<%= @question.id %>">
+	Edit your question:
+	<textarea name="question[description]"><%= @question.description %></textarea>
+	<input type="submit" value="Edit Question">
+</form>
+

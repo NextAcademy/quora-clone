@@ -1,0 +1,77 @@
+<div class="navbar">
+
+	<ul class="pagelinks">
+		<li class="button" id="home_page"><a href="/users/<%= current_user.id %>" style="color: black">HOME</a></li>
+		<li class="button" id="profile_page"><a href="/users/<%= current_user.id %>/profile" style="color: black">MY PROFILE</a></li>
+    <li class="button" id="my_questions"><a href="/questions" style="color: black">MY QUESTIONS</a></li>
+    <li class="button" id="my_answers"><a href="/answers" style="color: black">MY ANSWERS</a></li>
+  </ul>
+
+  <form id="logout" method="post" action="/logout" >
+		<button type=submit value="Log out" class="logout-button">
+			Log out
+		</button>
+	</form>
+
+</div>
+
+<!-- SHOW THE QUESTION TOGETHER WITH ITS ANSWERS -->
+
+<% if @question.user != nil %>
+	<%= "On " + @question.created_at.to_s + ","%>
+	<%= @question.user.first_name + " " + @question.user.last_name + " asked:"%>
+<% end %>
+
+<div class="posted-question">
+	<%= @posted_question = Question.find(params[:id]) %>
+<!-- 	<p><%#= User.find(@posted_question.user_id) %></p> -->
+	<p><%= @posted_question.description%></p>
+
+	
+	<% @questions.each do |q| %>
+
+		<form id='question_upvote_<%= q.id %>' style='display:inline;' method='post' action='/questions/<%= q.id %>/up'>
+			<input id='upvote_<%= q.id%>' type='submit' value='Upvote <%= QuestionVote.where(question_id: q.id, points: 1).count %>'>				
+		</form>
+		
+		<form id='question_downvote_<%= q.id %>' style='display:inline;' method='post' action='/questions/<%= q.id %>/down'>
+			<input id='downvote_<%= q.id %>' type='submit' value='Downvote <%= QuestionVote.where(question_id: q.id, points: -1).count %>'>
+		</form>
+	
+	<% end %>
+
+</div>
+
+<p class="answer-submit">
+	<form method="post" action="/questions/<%= @question.id %>/answers/new">
+		<textarea name="answer[content]" placeholder="Answer the question"></textarea>
+		<input id="answer_button" type="submit" value="Answer!">
+	</form>
+</p>
+
+<!-- <form id="back_button" method="get" action="/users/<%#= @user.id %>" >
+	<button type=submit value="Back" class="back-button">
+		Back
+	</button>
+</form> -->
+
+
+<!-- SHOW ALL ANSWERS FOR THE QUESTION -->
+Answers:
+
+<div class="posted-answer">
+
+	<% @question.answers.each do |a| %>
+		<p>On <%= a.created_at %>, <%= a.user.first_name %> answered:</p>
+		<p><%= a.content%></p>
+
+		<form id='answer_upvote_<%= a.id %>' style='display:inline;' method='post' action='/answers/<%= a.id %>/up'>
+			<input id='upvote_<%= a.id%>' type='submit' value='Upvote <%= AnswerVote.where(answer_id: a.id, points: 1).count %>'>
+		</form>
+		
+		<form id='answer_downvote_<%= a.id %>' style='display:inline;' method='post' action='/answers/<%= a.id %>/down'>
+			<input id='downvote_<%= a.id%>' type='submit' value='Downvote <%= AnswerVote.where(answer_id: a.id, points: -1).count %>'>
+		</form>
+	<% end %>
+	
+</div> 

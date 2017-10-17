@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 
 # Ruby Version
 # ruby "2.2.1"
-
+gem 'byebug'
+gem 'bcrypt', '~> 3.1.7'
+gem 'will_paginate', '~> 3.1.1'
 # Adding Sinatra Drivers
 gem 'sinatra'
 gem 'sinatra-contrib'

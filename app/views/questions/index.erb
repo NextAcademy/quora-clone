@@ -1,0 +1,41 @@
+<div class="navbar">
+
+	<ul class="pagelinks">
+		<li class="button" id="home_page"><a href="/users/<%= current_user.id %>" style="color: black">HOME</a></li>
+		<li class="button" id="profile_page"><a href="/users/<%= current_user.id %>/profile" style="color: black">MY PROFILE</a></li>
+    <li class="button" id="my_answers"><a href="/answers" style="color: black">MY ANSWERS</a></li>
+  </ul>
+
+  <form id="logout" method="post" action="/logout" >
+		<button type=submit value="Log out" class="logout-button">
+			Log out
+		</button>
+	</form>
+
+</div>
+
+
+ALL MY QUESTIONS
+
+<div class="my-questions">
+	<ol>
+	<% @question.each do |q| %>
+	<li>
+		<p>On <%= q.created_at %>, you asked:</p>
+		<p><%= q.description %></p>
+		<a href="/questions/<%= q.id %>">Show answers</a>
+
+		<!-- <button><a href="/questions/<%#= q.id %>/edit" id="edit_button">edit question</a></button> -->
+
+		<form id="edit_question" method="get" action="/questions/<%= q.id %>/edit">
+			<input id="edit_button" type="submit" value="Edit Question">
+		</form>
+
+		<form id="delete_question" method="get" action="/questions/<%= q.id %>/delete">
+			<input id="delete_button" type="submit" value="Delete Question">
+		</form>
+	</li>
+	<% end %>
+	</ol>
+</div>
+

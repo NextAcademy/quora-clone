@@ -1,2 +1,29 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<!-- <h1 class="title">Quora</h1> -->
+
+<a href="/"><img class="title" src="img/quoralogo.png" width="200px" height="100px"></a>
+
+<p class="description">It's time to get some answers.</p>
+
+<div class="enter">
+	<div style="float: left;">
+		<form id="signup" method="post" action="/users" >
+			<input type=text placeholder="First Name" name="user[first_name]"><br>
+			<input type=text placeholder="Last Name" name="user[last_name]"><br>
+		    <input type=text placeholder="Email" name="user[email]"><br>
+		    <input type=password placeholder="Password" name="user[password]"></br>
+		    <input type=submit value="Sign up">
+		</form>
+	</div>
+<!-- 	create separate divs to enable one to float beside the other -->
+	<div>
+		<form id="login" method="post" action="/login" >
+		    <input type=text placeholder="Email" name="email"><br>
+		    <input type=password placeholder="Password" name="password"></br>
+		    <input type=submit value="Log in">
+		</form>
+	</div>
+</div>
+
+
+
+<!-- params ={user: {first_name: "xxx", last_name}}
