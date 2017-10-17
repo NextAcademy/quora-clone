@@ -181,3 +181,18 @@ article .entry {
 	color: black;
 	margin: 10px;
 }
+
+.entry .edit {
+	display: none;
+}
+
+.editbutton {
+}
+
+.question-header {
+	text-decoration: none;
+}
+
+.question-header:hover {
+	text-decoration: underline;	
+}

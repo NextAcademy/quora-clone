@@ -1,6 +1,6 @@
 
 <% # question defined in local from helpers
-question.answers.each do |answer|
+question.answers.order(created_at: :asc).each do |answer|
 %>
   <div class="entry">
     <%= displayAnswer(answer.id) %>

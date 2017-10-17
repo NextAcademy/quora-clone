@@ -26,7 +26,7 @@ post '/question_ask' do
 end
 
 post('/delete') do
-  id, type = params[:args].split(',') # two arguments passed csv
+  type, id = params[:args].split('-') # two arguments passed split by a dash
   begin
     raise('You must be logged in to delete') if !logged_in?
 
@@ -50,6 +50,37 @@ post('/delete') do
     else
       raise('Invalid type')
     end
+  rescue Exception => err
+    status(400)
+    body("Error: #{err.message}")
+  end
+end
+
+post('/edit') do
+  type, id = params[:args].split('-') # two arguments passed split by a dash
+  begin
+    raise('You must be logged in to edit') if !logged_in?
+
+    # Deleting either answer or question
+    case (type)
+    when 'answer'
+      answer = Answer.find(id)
+      questionId = answer.question.id
+      raise('Cannot edit posts by another user') if session[:user_id] != answer.user.id
+      answer.content = params[:content]
+      success = answer.save
+      raise('Database error') if !success
+      answer.content
+        
+    when 'question'
+      question = Question.find(id)
+      raise('Cannot edit posts by another user') if session[:user_id] != question.user.id
+      question.content = params[:content]
+      success = question.save
+      raise('Database error') if !success
+      question.content
+    end
+
   rescue Exception => err
     status(400)
     body("Error: #{err.message}")

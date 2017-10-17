@@ -48,7 +48,20 @@
             // redirect to the question page
             window.location.replace("/question/" + hidden);
           }),
-      '.deletebutton': serverAPI('/delete'),    
+
+      '.deletebutton': serverAPI('/delete'),
+
+      '.signaledit': function (ev) {
+        var $hidden = $(ev.currentTarget).parent().find('input[type="hidden"]');
+        var $main = $(document.getElementById($hidden.val()))
+        $main.find('.edit').toggle();
+        $main.find('span').toggle();
+      },
+
+      '.editbutton': serverAPI('/edit', function ($textarea, id, data) {
+        $textarea.parent().find('span').html(data);
+        $('#toggle-' + id).trigger('click');
+      }),
     };
     addClickers(); // Add the handlers initially
     
