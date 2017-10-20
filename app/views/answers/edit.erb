@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="d-flex">
+    <div class="p-2">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Quora_logo_2015.svg/1024px-Quora_logo_2015.svg.png" width="100" height="30" alt="Quora Logo">
+    </div>
+    <div class="p-2">
+      <a href="/users/<%= current_user.id %>">Home</a>
+    </div>
+    <div class="mr-auto p-2">
+      <a href="/questions">Answer</a>
+    </div>
+    <div class="ml-auto p-2">
+      Logged in as <a href="/users/<%= current_user.id %>/profile"><%= current_user.first_name %></a>
+    </div>
+		<div class="p-2">
+    	<form method="post" action="/logout" class="inline">
+  		<input type="hidden" name="extra_submit_param" value="extra_submit_value">
+  		<button type="submit" name="submit_param" value="submit_value" class="link-button">
+    	Logout
+  		</button>
+			</form>
+		</div>
+  </div>
+<div>
+<form method="post" action="/answers/<%= @answer.id %>"> <!-- Only GET and POST are allowed. Other methods must be "faked" using form parameters. -->
+	<input type="hidden" name="_method" value="put"> <!-- If the form parameters include a "_method" key, its value will be treated as the type of the request. Setting up a "hidden" input is one way to include such a parameter. -->
+	Edit the answer:<br>
+	<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="answer[content]"><%= @answer.content %></textarea>
+	<input type="submit" value="Edit">
+</form>
+</div>
+
+</div>

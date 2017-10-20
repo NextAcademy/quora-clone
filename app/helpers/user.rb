@@ -11,4 +11,9 @@ helpers do
   def logged_in?
     !current_user.nil?
   end
+
+  def all_posted
+  all_posted = Question.all
+  end
+  
 end

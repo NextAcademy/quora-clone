@@ -1,23 +1,68 @@
-[Quora logo]
-<br>A place to share knowledge and better understand the world
-<br>
-<br>Sign Up
-<form id="sign_up" action='/users' method='post'>
-		FIRST NAME
-		<input type="text" name="user[first_name]" size="45"><br>
-		LAST NAME
-		<input type="text" name="user[last_name]" size="45"><br>
-		EMAIL
-		<input type="text" name="user[email]" size="45"><br>
-		PASSWORD
-		<input type="password" name="user[password]" size="45"><br>
-		By clicking "Sign Up" you indicate that you have read and agree to the Terms of Service and Privacy Policy.<br>
-		<input type="submit" value="Sign Up">
-</form>
-<br>
-Log In
-<form id="log_in" action='/login' method='post'>
-		<input type="text" name="email" size="45" placeholder="Email"><br>
-		<input type="password" name="password" size="45" placeholder="Password"><br>
-		<input type="submit" value="Login">
-</form>
+<div class="front">
+<div class="rounded mx-auto d-block text-center pt-4 bg-light" style="max-width: 50rem;">
+	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Quora_logo_2015.svg/1024px-Quora_logo_2015.svg.png" width="200" height="60" alt="Quora Logo"><br>
+	<br>A place to share knowledge and better understand the world
+	<br>
+	<br>
+	<div class="container pt-4">
+		<div class="row">
+			<div class="col pb-1"> Sign Up
+			<form id="sign_up" action='/users' method='post' class="pt-4">
+			  <div class="form-row">
+			    <div class="form-group col-md-6 text-left">
+			      <label for="inputFirst_name">First Name</label>
+			      <input type="text" name="user[first_name]" class="form-control" id="inputFirst_name">
+			    </div>
+			    <div class="form-group col-md-6 text-left">
+			      <label for="inputLast_name">Last Name</label>
+			      <input type="text" name="user[last_name]" class="form-control" id="inputLast_name">
+			    </div>
+			  </div>
+			  <div class="form-group text-left">
+			    <label for="inputEmail">Email</label>
+			    <input type="email" name="user[email]" class="form-control" id="inputEmail" placeholder="abc@example.com">
+			    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+			  </div>
+			  <div class="form-group text-left">
+			    <label for="inputPassword">Password</label>
+			    <input type="password" name="user[password]" class="form-control" id="inputPassword">
+			  </div>
+					By clicking "Sign Up" you indicate that you have read and agree to the Terms of Service and Privacy Policy.<br><br>
+					<input class="btn btn-primary" type="submit" value="Sign Up">
+				</form>
+			</div>
+			<br>
+			<div class="col verticalLine"> Log In
+			<form id="log_in" action='/login' method='post' class="pt-5">
+				<div class="form-group text-left">
+			    <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email">
+				</div>
+			  <div class="form-group text-left">
+			    <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
+			  </div>
+			  <input class="btn btn-primary" type="submit" value="Login">
+			</form>
+		</div>
+		</div>
+	</div>
+</div>
+</div>
+
+<!-- 
+		 <form id="sign_up" action='/users' method='post'>
+			FIRST NAME <br>
+      <input type="text" name="user[first_name]" size="45"><br>
+			LAST NAME <br>
+      <input type="text" name="user[last_name]" size="45"><br>
+      EMAIL <br>
+			<input type="text" name="user[email]" size="45"><br>
+			<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+			PASSWORD <br>
+			<input type="password" name="user[password]" size="45"><br>
+
+			Log In
+			<input type="text" name="email" size="45" placeholder="Email"><br>
+			<input type="password" name="password" size="45" placeholder="Password"><br>
+			<input type="submit" value="Login">
+	</form>
+ -->

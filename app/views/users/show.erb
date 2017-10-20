@@ -1,16 +1,56 @@
-<p>Howdy, <%= @user.first_name %></p>
-<br>
+<div class="container">
+  <div class="col d-flex">
+    <div class="p-2">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Quora_logo_2015.svg/1024px-Quora_logo_2015.svg.png" width="100" height="30" alt="Quora Logo">
+    </div>
+    <div class="p-2">
+      <a href="/users/<%= current_user.id %>">Home</a>
+    </div>
+    <div class="mr-auto p-2">
+      <a href="/questions">Answer</a>
+    </div>
+    <div class="ml-auto p-2">
+      Logged in as <a href="/users/<%= current_user.id %>/profile"><%= current_user.first_name %></a>
+    </div>
+		<div class="p-2">
+    	<form method="post" action="/logout" class="inline">
+  		<input type="hidden" name="extra_submit_param" value="extra_submit_value">
+  		<button type="submit" name="submit_param" value="submit_value" class="link-button">
+    	Logout
+  		</button>
+			</form>
+		</div>
+  </div>
 
-<!-- Logout is using button, will customize look like a LINK in css -->
-<form method="post" action="/logout" class="inline">
-  <input type="hidden" name="extra_submit_param" value="extra_submit_value">
-  <button type="submit" name="submit_param" value="submit_value" class="link-button">
-    Logout
-  </button>
-</form>
-<br>
-<br>
-<input type="text" name="question" size="100" placeholder="Type your question here"><br>
-<a href="#">Cancel</a>
-<input type="submit" value="Ask Question">
+	<div class="row">
+  	<div class="col-3">
+      <br><h6>Feeds</h6>
+      <a href="#">Top Stories</a><br>
+      <a href="#">New Questions</a><br>
+      <a href="#">Bookmarked Answers</a>
+  	</div>
 
+	<div class="col rounded mx-auto d-block text-left pt-2 pb-2 bg-light" style="max-width: 50rem;">
+		<p>Howdy, <a href="/users/<%= current_user.id %>/profile"><%= @user.first_name %></a></p>
+		<form method="post" action="/questions">
+		<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" type="text" name="description" placeholder="What is your question?"></textarea>
+		<input type="submit" value="Ask Question"> <a href="#">Cancel</a>
+		</form>
+
+		<br>
+		<% @question_all.each do |x| %>
+		<div class="rounded mx-auto d-block text-left pt-2 bg-light" style="max-width: 50rem;">
+		<p>A question on <%= x.created_at %> by <a href="/users/<%= x.user.id %>/profile"><%= x.user.first_name + ' ' + x.user.last_name %></a>:<br>
+		<h5><%= x.question_description %></h5></p>
+		<div>
+			<form method="post" action="/question/<%= x.id %>/answers/new">
+			<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="answer[content]" placeholder="Write an answer"></textarea>
+			<input type="submit" value="Answer"> <a href="/question/<%= x.id %>">Show all answer</a>
+			</form>
+		</div>
+		<br>
+		<br>
+	</div>
+<% end %>
+</div>
+</div>

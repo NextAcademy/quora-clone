@@ -1,0 +1,13 @@
+/*#box{
+	text-align: center;
+	vertical-align: middle;
+	font-family: 'Raleway', sans-serif;
+}*/
+
+.verticalLine {
+  border-left: thin solid #7a7373;
+}
+
+.front {
+	background-image: url("https://img00.deviantart.net/0aa5/i/2011/246/c/1/colored_octopus_doodle_by_animevampireneko-d45lhaq.jpg");
+}

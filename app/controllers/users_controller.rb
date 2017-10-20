@@ -9,9 +9,18 @@ post '/users' do
 	end
 end
 
-
-#R- SHOW
+#R - SHOW USER DASHBOARD
 get '/users/:id' do
 	@user = User.find(params[:id])
+	@question_all = Question.all
 	erb :"users/show"
 end
+
+#R - SHOW USER PROFILE
+get '/users/:id/profile' do
+	@user = User.find(params[:id])
+	# @question = Question.find(params[:id])
+	erb :"users/profile"
+end
+
+#U - UPDATE USER PROFILE
