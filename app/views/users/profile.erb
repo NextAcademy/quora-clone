@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="d-flex">
+    <div class="p-2">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Quora_logo_2015.svg/1024px-Quora_logo_2015.svg.png" width="100" height="30" alt="Quora Logo">
+    </div>
+    <div class="p-2">
+      <a href="/users/<%= current_user.id %>">Home</a>
+    </div>
+    <div class="mr-auto p-2">
+      <a href="/questions">Answer</a>
+    </div>
+    <div class="ml-auto p-2">
+      Logged in as <a href="/users/<%= current_user.id %>/profile"><%= current_user.first_name %></a>
+    </div>
+		<div class="p-2">
+    	<form method="post" action="/logout" class="inline">
+  		<input type="hidden" name="extra_submit_param" value="extra_submit_value">
+  		<button type="submit" name="submit_param" value="submit_value" class="link-button">
+    	Logout
+  		</button>
+			</form>
+		</div>
+  </div>
+
+  <div class="media">
+  	<div class="media-body">
+		<img src="http://www.hexatar.com/gallery/thumb/151208_020651_fe104ea6634.png" alt="picture" class="rounded-circle mr-3 float-left" style="width: 150px; height: 150px;">
+		<h5 class="mt-4"><%= @user.first_name + " " + @user.last_name %></h5>
+		Member since <%= @user.created_at %>
+		</div>
+	</div>
+
+	<div class="container">
+
+	<br>Questions asked by <%= @user.first_name %>:
+	<ol>
+	<% @user.questions.each do |x| %>
+		<li>
+			On <%= x.created_at %>, <%= current_user.first_name %> asked:
+			<%= x.question_description %>
+			<% if current_user.id == @user.id %>
+				<a href="/questions/<%= x.id %>/edit">[Edit]</a>
+
+				<form method="post" action="/questions/<%= x.id %>/delete">
+					<input type="hidden" name="_method" value="delete"> <!-- fake the form parameter -->
+					<input type="submit" value="Delete This Question">
+				</form>
+
+			<% end %>
+		</li>
+		<br>
+	<% end %>
+	</ol>
+</div>
+
+<div class="container">
+	Answers replied by <%= @user.first_name %>:
+	<ol>
+	<% @user.answers.each do |y| %>
+		<li>
+			On <%= y.created_at %>, <%= current_user.first_name %> answered to <%= y.question.user.first_name %>:
+			<%= y.content %>
+			<% if current_user.id == @user.id %>
+				<a href="/answers/<%= y.id %>/edit">[Edit]</a>
+
+
+				<form method="post" action="/answers/<%= y.id %>/delete">
+					<input type="hidden" name="_method" value="delete"> <!-- fake the form parameter -->
+					<input type="submit" value="Delete This Answer">
+				</form>
+
+
+
+			<% end %>
+		</li>
+		<br>
+	<% end %>
+	</ol>
+</div>
+</div>
