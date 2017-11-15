@@ -18,5 +18,10 @@ post '/users' do
 end 
 
 get '/signedin' do 
-	erb :"static/userloggedin"
+	erb :"static/userloggedin" 
 end
+
+get '/user/:id' do 
+	@user = User.find(params[:id])
+	erb :"static/users/show"
+end 
