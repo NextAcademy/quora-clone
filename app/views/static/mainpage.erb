@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/application.css">
+
+	<title></title>
+</head>
+<body>
+
+	<div class="welcome center">
+		<h1> SINATRA </h1> <p>clone</p>
+		<h3> Have an Account? </h3> 
+	  		<div class="login_interface center">
+				<h1> Have an account? Log in! </h1>
+
+				<form id="login" class="center" action="/sessions" method="post">
+					email <input id="text_field" type="text" name="email">
+					<br>
+					<br>
+					password <input id="text_field" type="text" name="password">
+					<br>
+					<br>
+					<input id="button" type="submit" value="Submit">
+				</form>
+
+				<p>pleasework@mail.com</p> 
+				<p> pleasework </p>
+ 			</div>
+		<h3> New User? </h3>
+		<form  action= "/users/new" method="get">
+			<button type="submit"> Sign Up </button>
+		</form>
+	</div>
+</body>
+</html>

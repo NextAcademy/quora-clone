@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/application.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/login.js"></script>
+</head>
+<body>
+  <div class="main container-fluid">
+
+		<div class="signup_interface center">
+
+			<h1> Sign up! </h1>
+
+			<form id="signup" action="/users" method="post">
+			   	 your user name <input id="text_field" type="text" name="user[user_name]"> 
+			   	 <br>
+			   	 <% if @errors%>
+					<% @errors[:user_name].each do |i|%>
+						<div> 
+							<p class="red"> username  <%= p i %> </p>
+						</div>
+					<% end %>
+				<% end %>
+			   	 <br>
+				 your password <input id="text_field" type="password" name="user[password]"> 
+				 <br>
+				 <% if @errors%>
+					<% @errors[:password].each do |i|%>
+					<div> 
+						<p class="red"> password <%= p i %> </p>
+					</div>
+					<% end %>
+				<% end %>
+				 <br>
+				 your email <input id="text_field" type="text" name="user[user_email]"> 
+				 <br>
+				 <% if @errors%>
+					<% @errors[:user_email].each do |i|%>
+					<div> 
+						<p class="red"> email <%= p i %> </p>
+					</div>
+					<% end %>
+				<% end %>
+				 <br>
+				<input id="button" type="submit" value="Submit">
+			</form>
+			<form action="/" method="get">
+				<button type="submit"> Sign In </button>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>
