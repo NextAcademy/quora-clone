@@ -32,9 +32,7 @@
 	    </ul>
 	  </div>
 	</nav>
-	<h1 class="quored">Welcome !</h1>
-
-	<p>Your email is <%= @user.email %> </p>
+	<h1 class="quored">Questions</h1>
 
 	<table>
 		<tr>
@@ -44,14 +42,12 @@
 			<th>User ID</th>
 		</tr>
 		<% Question.all.each do |x| %>
-		<%if x.user_id == current_user.id%>
 		<tr>
 			<td class="center"><%= x.id%></td>
 			<td class="padleft"><%= x.title%></td>
-			<td><%= x.content%></td> 
+			<td><a href="SOMETHING"> <%= x.content%></td></a>
+			<td><%= x.user_id%></td>
 		</tr>
-		<%else%>
-		<%end%>
 		<%end%>
 		<%# Question.all.each do |x| %>
 		<tr>

@@ -26,7 +26,10 @@ get "/questions/:id" do
 	end
 end
 
-get '/questions' do
+get '/question/user/:id' do
 	redirect "/users/#{current_user.id}"
 end
 
+get '/quora_questions' do
+	erb :"questions/index"
+end

@@ -10,5 +10,5 @@ end
 
 get '/logout' do 
 	session[:user_id] = nil
-	erb :"static/index"
+	redirect '/'
 end
