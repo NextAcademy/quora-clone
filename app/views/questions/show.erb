@@ -6,6 +6,24 @@
 	<title></title>
 </head>
 <body>
+	<h1 class="quored">Welcome !</h1>
+
+	<p>Your email is <%= @user.email %> </p>
+
+	<table>
+		<tr>
+			<th class="center">No.</th>
+			<th class="center">Title</th>
+			<th class="center">Content</th>
+		</tr>
+		<% Question.all.each do |x| %>
+		<tr>
+			<td class="center"><%= x.id%></td>
+			<td class="padleft"><%= x.title%></td>
+			<td><%= x.content%></td> 
+		</tr>
+		<%end%>
+	</table>
 
 </body>
 </html>

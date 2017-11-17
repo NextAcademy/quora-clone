@@ -1,30 +1,27 @@
-get '/users/new' do
-	erb :"users/new"
-end
-
-post '/users' do
+post '/questions' do
 	# Do something processing with user input
 
-	i = User.new(params[:user])
+	i = Question.new(params[:question])
 	if i.save
 		# i.to_json
 		# {success: true, message: i}.to_json
-		redirect "/users/#{i.id}"
+		p @current_user
+		redirect "/questions/#{current_user.id}"
 	else
 		# @errors = i.errors.messages
 		# {success: false, message: (i.errors.messages)}.to_json
-		redirect '/'
+		redirect '/users/:id'
 	end
 
 end
 
-get '/users/:id' do
+get "/questions/:id" do
 	id = params[:id]
 	@user = User.find(id)
+
 	if session[:user_id] == @user.id
-		erb :"users/show"	
+		erb :"questions/show"	
 	else
 		redirect '/'
 	end
 end
-
