@@ -6,6 +6,10 @@ body {
     font-style: bold;
 }
 
+.margin-auto {
+    margin: auto;
+}
+
 *[role="form"] {
     max-width: 530px;
     padding: 15px;
@@ -21,7 +25,6 @@ body {
 
 .quored {
     color: #b92b27 ;
-    font-family: Times New Roman, Courier New, Arial ;
 }
 
 .center {
