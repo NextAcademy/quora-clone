@@ -21,7 +21,8 @@ end
 get '/users/:id' do
 	id = params[:id]
 	@user = User.find(id)
-	if session[:user_id] == @user.id
+	# @question = Question.find_by(user_id:id)
+	if session[:user_id] == @user.id  #|| @question.user_id
 		erb :"users/show"	
 	else
 		redirect '/'

@@ -25,3 +25,8 @@ get "/questions/:id" do
 		redirect '/'
 	end
 end
+
+get '/questions' do
+	redirect "/users/#{current_user.id}"
+end
+

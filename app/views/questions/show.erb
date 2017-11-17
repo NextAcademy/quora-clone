@@ -4,8 +4,34 @@
 <html>
 <head>
 	<title></title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/users.css">
 </head>
 <body>
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	    	<a href='/questions'>
+	      <img src="https://cdn.worldvectorlogo.com/logos/quora-1.svg" alt="Quora Logo" style="width:10em;height:3.5em;">
+	      </a>
+	    </div>
+	    <!-- <ul class="nav navbar-nav">
+	      <li class="active"><a href="#">Home</a></li>
+	      <li><a href="#">Page 1</a></li>
+	      <li><a href="#">Page 2</a></li>
+	    </ul> -->
+	    <ul class="nav navbar-nav navbar-right">
+	      <!-- <li><a href="#"><span class="glyphicon glyphicon-user green"></span> Sign Up</a></li> -->
+	      <li><a href="/logout" class="quored"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+	    </ul>
+	  </div>
+	</nav>
 	<h1 class="quored">Welcome !</h1>
 
 	<p>Your email is <%= @user.email %> </p>
@@ -15,14 +41,26 @@
 			<th class="center">No.</th>
 			<th class="center">Title</th>
 			<th class="center">Content</th>
+			<th>User ID</th>
 		</tr>
 		<% Question.all.each do |x| %>
+		<%if x.user_id == current_user.id%>
 		<tr>
 			<td class="center"><%= x.id%></td>
 			<td class="padleft"><%= x.title%></td>
 			<td><%= x.content%></td> 
 		</tr>
+		<%else%>
 		<%end%>
+		<%end%>
+		<%# Question.all.each do |x| %>
+		<tr>
+			<!-- <td class="center"><%#= x.id%></td>
+			<td class="padleft"><%#= x.title%></td>
+			<td><%#= x.content%></td>
+			<td><%#= x.user_id%></td>  -->
+		</tr>
+		<%#end%>
 	</table>
 
 </body>

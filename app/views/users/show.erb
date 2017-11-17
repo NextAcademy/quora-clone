@@ -44,10 +44,29 @@
 	      <label for="smFormGroupInput" class="col-sm-2 col-form-label col-form-label-sm">Question Content</label>
 	      <div class="col-sm-10">
 	        <input name="question[content]" type="qcontent" class="form-control form-control-sm" id="smFormGroupInput" placeholder="Key in your question content!">
+	      	<input type="hidden" name="question[user_id]" value="<%= current_user.id%>">
 	      </div>
 	    </div>
 	    <button class="btn btn-lg btn-block quored" type="submit">Ask Quora</button>
 	  </form>
+
+	  <table>
+	  	<tr>
+	  		<th class="center">No.</th>
+	  		<th class="center">Title</th>
+	  		<th class="center">Content</th>
+	  	</tr>
+	  	<% Question.all.each do |x| %>
+	  	<%if x.user_id == current_user.id%>
+	  	<tr>
+	  		<td class="center"><%= x.id%></td>
+	  		<td class="padleft"><%= x.title%></td>
+	  		<td><%= x.content%></td> 
+	  	</tr>
+	  	<%else%>
+	  	<%end%>
+	  	<%end%>
+	  </table>
 	</div>
 </body>
 </html>
