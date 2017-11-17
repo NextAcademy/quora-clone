@@ -32,7 +32,10 @@
 	    </ul>
 	  </div>
 	</nav>
-	<h1 class="quored">Questions</h1>
+	<h1 class="quored">Question and Answers</h1>
+	<div></div>
+
+	<h2 class="quored"><%=@question.content%></h2>
 
 	<table>
 		<tr>
@@ -42,13 +45,14 @@
 			<th>User ID</th>
 		</tr>
 		<% Question.all.each do |x| %>
+		<%if x.user_id == current_user.id%>
 		<tr>
 			<td class="center"><%= x.id%></td>
 			<td class="padleft"><%= x.title%></td>
-			<%#@question = x.content%>
-			<td><a href= <%= x.id%> > <%= x.content %></a></td>
-			<td><%= x.user_id%></td>
+			<td><%= x.content%></td> 
 		</tr>
+		<%else%>
+		<%end%>
 		<%end%>
 		<%# Question.all.each do |x| %>
 		<tr>
