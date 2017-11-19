@@ -65,14 +65,14 @@
 			<th>User ID</th>
 		</tr>
 		<% Answer.all.each do |x| %>
-		<!-- <%#if x.question_id == @question.id%> -->
+		<%if x.question_id == @question.id%>
 		<tr>
 			<td class="center"><%= x.id%></td>
 			<td class="padleft"><%= x.content%></td>
 			<td><%= x.user_id%></td> 
 		</tr>
-		<%#else%>
-		<%#end%>
+		<%else%>
+		<%end%>
 		<%end%>
 		<%# Question.all.each do |x| %>
 		<tr>
