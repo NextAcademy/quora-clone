@@ -9,6 +9,7 @@ post '/users' do
 	if i.save
 		# i.to_json
 		# {success: true, message: i}.to_json
+		session[:user_id] = i.id
 		redirect "/users/#{i.id}"
 	else
 		# @errors = i.errors.messages

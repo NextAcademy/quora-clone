@@ -34,25 +34,45 @@
 	</nav>
 	<h1 class="quored">Question and Answers</h1>
 	<div></div>
-
 	<h2 class="quored"><%=@question.content%></h2>
+
+	<div class="container">
+	  <form action="/answers" method="post">
+	    <div class="form-group row">
+	      <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Post Your Answer</label>
+	      <div class="col-sm-10">
+	        <input name="answer[content]" type="qtitle" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="Key in your answer!">
+	      </div>
+	      	<input type="hidden" name="answer[user_id]" value="<%= current_user.id%>">
+	      </div>
+	      	<input type="hidden" name="answer[question_id]" value="<%= @question.id%>">
+	      </div>
+	    </div>
+	    <!-- <div class="form-group row">
+	      <label for="smFormGroupInput" class="col-sm-2 col-form-label col-form-label-sm">Question Content</label>
+	      <div class="col-sm-10">
+	        <input name="question[content]" type="qcontent" class="form-control form-control-sm" id="smFormGroupInput" placeholder="Key in your question content!">
+	      	<input type="hidden" name="question[user_id]" value="<%= current_user.id%>">
+	      </div>
+	    </div> -->
+	    <button class="btn btn-lg btn-block quored" type="submit">Submit Answer</button>
+	  </form>
 
 	<table>
 		<tr>
 			<th class="center">No.</th>
-			<th class="center">Title</th>
 			<th class="center">Content</th>
 			<th>User ID</th>
 		</tr>
-		<% Question.all.each do |x| %>
-		<%if x.user_id == current_user.id%>
+		<% Answer.all.each do |x| %>
+		<!-- <%#if x.question_id == @question.id%> -->
 		<tr>
 			<td class="center"><%= x.id%></td>
-			<td class="padleft"><%= x.title%></td>
-			<td><%= x.content%></td> 
+			<td class="padleft"><%= x.content%></td>
+			<td><%= x.user_id%></td> 
 		</tr>
-		<%else%>
-		<%end%>
+		<%#else%>
+		<%#end%>
 		<%end%>
 		<%# Question.all.each do |x| %>
 		<tr>
