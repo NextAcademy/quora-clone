@@ -42,7 +42,7 @@
 			<th class="center">Title</th>
 			<th class="center">Content</th>
 			<th>User ID</th>
-			<th>Votes Count</th>
+			<th>Vote Count</th>
 			<th>Vote</th>
 		</tr>
 		<% Question.all.each do |x| %>
@@ -52,15 +52,16 @@
 			<%#@question = x.content%>
 			<td><a href= <%= x.id%> > <%= x.content %></a></td>
 			<td><%= x.user_id%></td>
-			<td></td>
+			<td><%= QuestionVote.where(question_id:x.id).inject(0){|sum,n| sum + n.question_vote}%></td>
 			<td>
-				<button type="button" 
-				        id="testBtn" 
-				        class="btn btn-success glyphicon glyphicon-thumbs-up" 
-				        data-loading-text=" ... ">
-				    </button>
-				<button type="button" id="testBtnDown" class="btn btn-success glyphicon glyphicon-thumbs-down" data-loading-text=" ... ">
-				    </button>
+				<form action= /vote_up/<%= x.id %> method="post">
+					<button type="submit" class="btn btn-success glyphicon glyphicon-thumbs-up"></button>
+				</form>
+			</td>
+			<td>
+				<form action= /vote_down/<%= x.id %> method="post">
+					<button type="submit" class="btn btn-success glyphicon glyphicon-thumbs-down"></button>
+				</form>
 			</td>
 		</tr>
 		<%end%>

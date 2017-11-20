@@ -61,13 +61,16 @@
 	  		<th class="center">No.</th>
 	  		<th class="center">Title</th>
 	  		<th class="center">Content</th>
+	  		<th>Vote Count</th>
 	  	</tr>
 	  	<% Question.all.each do |x| %>
 	  	<%if x.user_id == current_user.id%>
 	  	<tr>
 	  		<td class="center"><%= x.id%></td>
 	  		<td class="padleft"><%= x.title%></td>
-	  		<td><%= x.content%></td> 
+	  		<td><%= x.content%></td>
+	  		<td><%= QuestionVote.where(question_id:x.id).inject(0){|sum,n| sum + n.question_vote}%></td>
+
 	  	</tr>
 	  	<%else%>
 	  	<%end%>

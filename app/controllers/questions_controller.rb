@@ -2,8 +2,12 @@ post '/questions' do
 	# Do something processing with user input
 
 	i = Question.new(params[:question])
+
+	# i.update(question_votes:x.question_vote)
 	@user = current_user
 	if i.save
+		x = QuestionVote.new(user_id:current_user.id, question_id:i.id)
+		x.save
 		# i.to_json
 		# {success: true, message: i}.to_json
 		# p @current_user
