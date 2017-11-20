@@ -1,0 +1,103 @@
+<!-- question index page showing all the questions -->
+<!-- A page showing a particular question including its answers -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/users.css">
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	    	<a href='/question/user/:id'>
+	      <img src="https://cdn.worldvectorlogo.com/logos/quora-1.svg" alt="Quora Logo" style="width:10em;height:3.5em;">
+	      </a>
+	    </div>
+	    <!-- <ul class="nav navbar-nav">
+	      <li class="active"><a href="#">Home</a></li>
+	      <li><a href="#">Page 1</a></li>
+	      <li><a href="#">Page 2</a></li>
+	    </ul> -->
+	    <ul class="nav navbar-nav navbar-right">
+	      <!-- <li><a href="#"><span class="glyphicon glyphicon-user green"></span> Sign Up</a></li> -->
+	      <form action="/logout" method="post">
+	      <li><button class="btn btn-lg btn-block quored" type="submit">Log out</button><!-- <a href="/logout" class="quored"><span class="glyphicon glyphicon-log-out"></span> Log out</a> --></li>
+	      </form>
+	    </ul>
+	  </div>
+	</nav>
+	<h1 class="quored">Question and Answers</h1>
+	<div></div>
+	<h2 class="quored"><%=@question.content%></h2>
+
+	<div class="container">
+	  <form action="/answers" method="post">
+	    <div class="form-group row">
+	      <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Post Your Answer</label>
+	      <div class="col-sm-10">
+	        <input name="answer[content]" type="qtitle" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="Key in your answer!">
+	      </div>
+	      	<input type="hidden" name="answer[user_id]" value="<%= current_user.id%>">
+	      </div>
+	      	<input type="hidden" name="answer[question_id]" value="<%= @question.id%>">
+	      </div>
+	    </div>
+	    <!-- <div class="form-group row">
+	      <label for="smFormGroupInput" class="col-sm-2 col-form-label col-form-label-sm">Question Content</label>
+	      <div class="col-sm-10">
+	        <input name="question[content]" type="qcontent" class="form-control form-control-sm" id="smFormGroupInput" placeholder="Key in your question content!">
+	      	<input type="hidden" name="question[user_id]" value="<%= current_user.id%>">
+	      </div>
+	    </div> -->
+	    <button class="btn btn-lg btn-block quored" type="submit">Submit Answer</button>
+	  </form>
+
+	<table>
+		<tr>
+			<th class="center">No.</th>
+			<th class="center">Content</th>
+			<th>User ID</th>
+			<th>Vote Count</th>
+			<th>Vote</th>
+		</tr>
+		<% Answer.all.each do |x| %>
+		<%if x.question_id == @question.id%>
+		<tr>
+			<td class="center"><%= x.id%></td>
+			<td class="padleft"><%= x.content%></td>
+			<td><%= x.user_id%></td>
+			<td><%= AnswerVote.where(answer_id:x.id).inject(0){|sum,n| sum + n.answer_vote}%></td>
+			<td>
+				<form action= /vote_ans_up/<%= x.id %> method="post">
+					<button type="submit" class="btn btn-success glyphicon glyphicon-thumbs-up"></button>
+				</form>
+			</td>
+			<td>
+				<form action= /vote_ans_down/<%= x.id %> method="post">
+					<button type="submit" class="btn btn-success glyphicon glyphicon-thumbs-down"></button>
+				</form>
+			</td>
+		</tr>
+		<%else%>
+		<%end%>
+		<%end%>
+		<%# Question.all.each do |x| %>
+		<tr>
+			<!-- <td class="center"><%#= x.id%></td>
+			<td class="padleft"><%#= x.title%></td>
+			<td><%#= x.content%></td>
+			<td><%#= x.user_id%></td>  -->
+		</tr>
+		<%#end%>
+	</table>
+
+</body>
+</html>

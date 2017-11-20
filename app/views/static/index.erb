@@ -1,2 +1,141 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<!-- <h1>Hello World</h1>
+<p>See Me in views/static/index.html.erb</p> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/application.css">
+	<script type="text/javascript" src="/js/application.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+	<div class="container-fluid center">
+		<img src="https://cdn.worldvectorlogo.com/logos/quora-1.svg" alt="Quora Logo" style="width:20em;height:7em;">
+		<span class="clone">Clone</span>
+		<h4 class="quored bold">Ask and You Shall Receive </h4>
+		<h5 class="quored italic bold">- Tim, 2017 </h5>
+		<!-- <h1 class="red center">Quora</h1> -->
+	</div>
+
+	<aside id="sticky-social">
+	    <ul>
+	        <li><a href="#" class="entypo-facebook" target="_blank"><span>Facebook</span></a></li>
+	        <li><a href="#" class="entypo-twitter" target="_blank"><span>Twitter</span></a></li>
+	        <li><a href="#" class="entypo-gplus" target="_blank"><span>Google+</span></a></li>
+	        <li><a href="#" class="entypo-linkedin" target="_blank"><span>LinkedIn</span></a></li>
+	        <li><a href="#" class="entypo-instagrem" target="_blank"><span>Instagram</span></a></li>
+	        <li><a href="#" class="entypo-stumbleupon" target="_blank"><span>StumbleUpon</span></a></li>
+	        <li><a href="#" class="entypo-pinterest" target="_blank"><span>Pinterest</span></a></li>
+	        <li><a href="#" class="entypo-flickr" target="_blank"><span>Flickr</span></a></li>
+	        <li><a href="#" class="entypo-tumblr" target="_blank"><span>Tumblr</span></a></li>
+	    </ul>
+	</aside>
+
+	<!-- <ul class='social'>
+	  <li>
+	    <a class="fa fa-facebook" href="#">    
+	      <span>Facebook</span>
+	    </a> 
+	  </li>
+	  
+	  <li>
+	    <a class="fa fa-twitter" href="#">
+	      <span>Twitter</span>
+	    </a>
+	  </li>
+	  
+	  <li>
+	    <a class="fa fa-dribbble" href="#">
+	      <span>Dribbble</span>
+	    </a>
+	  </li>
+	  
+	  <li>
+	    <a class="fa fa-google-plus" href="#">
+	    <span>Google Plus</span>
+	    </a> 
+	  </li>
+	  
+	</ul> -->
+
+  <div class="container">
+
+    <form class="form-signin" action="/login" method="post">
+      <h3 class="form-signin-heading quored">Login</h3>
+      <label for="inputEmail" class="sr-only">Email</label>
+      <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+    </form>
+
+    <form class="form-signin">
+    	<a href="/users/new" class="btn btn-lg btn-info btn-block" id="submit" role="button">Sign Up</a>
+    </form>
+
+    
+
+  </div> <!-- /container -->
+	
+
+	  
+
+
+
+	<!-- <div class="container">
+
+	      <form class="form-signin">
+	        <h2 class="form-signin-heading">Please sign in</h2>
+	        <label for="inputEmail" class="sr-only">Email address</label>
+	        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+	        <label for="inputPassword" class="sr-only">Password</label>
+	        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+	        <div class="checkbox">
+	          <label>
+	            <input type="checkbox" value="remember-me"> Remember me
+	          </label>
+	        </div>
+	        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+	      </form>
+
+	    </div> -->
+
+	<!-- <form action="/action_page.php">
+	  <div class="imgcontainer">
+	    <img src="img_avatar2.png" alt="Avatar" class="avatar">
+	  </div>
+
+	  <div class="container">
+	    <label><b>Email</b></label>
+	    <input type="text" placeholder="Enter Email" name="email" required>
+
+	    <label><b>Password</b></label>
+	    <input type="password" placeholder="Enter Password" name="password" required>
+	        
+	    <button type="submit">Login</button> -->
+	    <!-- <input type="checkbox" checked="checked"> Remember me -->
+	  <!-- </div>
+
+	  <div class="container" style="background-color:#f1f1f1">
+	    <button type="button" class="cancelbtn">Cancel</button>
+	    <span class="psw">Forgot <a href="#">password?</a></span>
+	  </div>
+	</form> -->
+</body>
+</html>
