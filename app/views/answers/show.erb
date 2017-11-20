@@ -28,7 +28,9 @@
 	    </ul> -->
 	    <ul class="nav navbar-nav navbar-right">
 	      <!-- <li><a href="#"><span class="glyphicon glyphicon-user green"></span> Sign Up</a></li> -->
-	      <li><a href="/logout" class="quored"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+	      <form action="/logout" method="post">
+	      <li><button class="btn btn-lg btn-block quored" type="submit">Log out</button><!-- <a href="/logout" class="quored"><span class="glyphicon glyphicon-log-out"></span> Log out</a> --></li>
+	      </form>
 	    </ul>
 	  </div>
 	</nav>
@@ -63,13 +65,26 @@
 			<th class="center">No.</th>
 			<th class="center">Content</th>
 			<th>User ID</th>
+			<th>Vote Count</th>
+			<th>Vote</th>
 		</tr>
 		<% Answer.all.each do |x| %>
 		<%if x.question_id == @question.id%>
 		<tr>
 			<td class="center"><%= x.id%></td>
 			<td class="padleft"><%= x.content%></td>
-			<td><%= x.user_id%></td> 
+			<td><%= x.user_id%></td>
+			<td><%= AnswerVote.where(answer_id:x.id).inject(0){|sum,n| sum + n.answer_vote}%></td>
+			<td>
+				<form action= /vote_ans_up/<%= x.id %> method="post">
+					<button type="submit" class="btn btn-success glyphicon glyphicon-thumbs-up"></button>
+				</form>
+			</td>
+			<td>
+				<form action= /vote_ans_down/<%= x.id %> method="post">
+					<button type="submit" class="btn btn-success glyphicon glyphicon-thumbs-down"></button>
+				</form>
+			</td>
 		</tr>
 		<%else%>
 		<%end%>
