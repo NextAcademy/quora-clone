@@ -2,11 +2,13 @@ post '/questions' do
 	# Do something processing with user input
 
 	i = Question.new(params[:question])
+	@user = current_user
 	if i.save
 		# i.to_json
 		# {success: true, message: i}.to_json
-		p @current_user
-		redirect "/questions/#{current_user.id}"
+		# p @current_user
+		erb :"users/show"	
+		# redirect "/questions/#{current_user.id}"
 	else
 		# @errors = i.errors.messages
 		# {success: false, message: (i.errors.messages)}.to_json
