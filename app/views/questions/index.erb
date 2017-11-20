@@ -42,6 +42,8 @@
 			<th class="center">Title</th>
 			<th class="center">Content</th>
 			<th>User ID</th>
+			<th>Votes Count</th>
+			<th>Vote</th>
 		</tr>
 		<% Question.all.each do |x| %>
 		<tr>
@@ -50,6 +52,16 @@
 			<%#@question = x.content%>
 			<td><a href= <%= x.id%> > <%= x.content %></a></td>
 			<td><%= x.user_id%></td>
+			<td></td>
+			<td>
+				<button type="button" 
+				        id="testBtn" 
+				        class="btn btn-success glyphicon glyphicon-thumbs-up" 
+				        data-loading-text=" ... ">
+				    </button>
+				<button type="button" id="testBtnDown" class="btn btn-success glyphicon glyphicon-thumbs-down" data-loading-text=" ... ">
+				    </button>
+			</td>
 		</tr>
 		<%end%>
 		<%# Question.all.each do |x| %>
